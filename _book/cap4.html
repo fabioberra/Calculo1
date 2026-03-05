@@ -1,0 +1,3004 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>4. Aplicaciones de la derivación – Notas de teoría - Cálculo I</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./cap3.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-d9ea66fcd6c317012447f26e9c021348.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./cap4.html"><span class="chapter-title">4. Aplicaciones de la derivación</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Notas de teoría - Cálculo I</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Cálculo I</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./cap1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">1. Funciones</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./cap2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">2. Límites, continuidad y derivadas</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./cap3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">3. Derivadas</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./cap4.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">4. Aplicaciones de la derivación</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Contenidos</h2>
+   
+  <ul>
+  <li><a href="#seccion_4.1" id="toc-seccion_4.1" class="nav-link active" data-scroll-target="#seccion_4.1">4.1 Valores máximos y mínimos</a>
+  <ul class="collapse">
+  <li><a href="#cómo-encontrar-los-extremos-de-una-función-continua-f-en-un-intervalo-cerrado-ab" id="toc-cómo-encontrar-los-extremos-de-una-función-continua-f-en-un-intervalo-cerrado-ab" class="nav-link" data-scroll-target="#cómo-encontrar-los-extremos-de-una-función-continua-f-en-un-intervalo-cerrado-ab">¿Cómo encontrar los extremos de una función continua <span class="math inline">\(f\)</span> en un intervalo cerrado <span class="math inline">\([a,b]\)</span>?</a></li>
+  </ul></li>
+  <li><a href="#seccion_4.3" id="toc-seccion_4.3" class="nav-link" data-scroll-target="#seccion_4.3">4.3. ¿Cómo afectan las derivadas la forma de una gráfica?</a>
+  <ul class="collapse">
+  <li><a href="#qué-dice-f-con-respecto-a-f" id="toc-qué-dice-f-con-respecto-a-f" class="nav-link" data-scroll-target="#qué-dice-f-con-respecto-a-f">¿Qué dice <span class="math inline">\(f'\)</span> con respecto a <span class="math inline">\(f\)</span>?</a></li>
+  <li><a href="#qué-dice-f-con-respecto-a-f-1" id="toc-qué-dice-f-con-respecto-a-f-1" class="nav-link" data-scroll-target="#qué-dice-f-con-respecto-a-f-1">¿Qué dice <span class="math inline">\(f''\)</span> con respecto a <span class="math inline">\(f\)</span>?</a></li>
+  </ul></li>
+  <li><a href="#seccion_4.4" id="toc-seccion_4.4" class="nav-link" data-scroll-target="#seccion_4.4">4.4 Formas indeterminadas y la regla de L’Hospital</a>
+  <ul class="collapse">
+  <li><a href="#productos-indeterminados" id="toc-productos-indeterminados" class="nav-link" data-scroll-target="#productos-indeterminados">Productos indeterminados</a></li>
+  <li><a href="#diferencias-indeterminadas" id="toc-diferencias-indeterminadas" class="nav-link" data-scroll-target="#diferencias-indeterminadas">Diferencias indeterminadas</a></li>
+  <li><a href="#potencias-indeterminadas" id="toc-potencias-indeterminadas" class="nav-link" data-scroll-target="#potencias-indeterminadas">Potencias indeterminadas</a></li>
+  </ul></li>
+  <li><a href="#seccion_4.5" id="toc-seccion_4.5" class="nav-link" data-scroll-target="#seccion_4.5">4.5. Resumen de trazo de curvas</a></li>
+  <li><a href="#seccion_4.7" id="toc-seccion_4.7" class="nav-link" data-scroll-target="#seccion_4.7">4.7. Problemas de optimización</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-title">4. Aplicaciones de la derivación</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="seccion_4.1" class="level2">
+<h2 class="anchored" data-anchor-id="seccion_4.1">4.1 Valores máximos y mínimos</h2>
+<div class="callout callout-style-default callout-note callout-titled" title="Definición (Valores máximos y mínimos)">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definición (Valores máximos y mínimos)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Una función <span class="math inline">\(f\)</span> tiene un <strong>máximo absoluto</strong> (o <strong>máximo global</strong>) en <span class="math inline">\(c\)</span> si</p>
+<p><span class="math display">\[
+f(x)\leq f(c) \quad \text{ para todo } \quad x\in D,
+\]</span></p>
+<p>siendo <span class="math inline">\(D\)</span> el dominio de <span class="math inline">\(f\)</span>. Al número <span class="math inline">\(f(c)\)</span> se lo llama <strong>valor máximo</strong> de <span class="math inline">\(f\)</span> en <span class="math inline">\(D\)</span>.</p>
+<p>Análogamente, <span class="math inline">\(f\)</span> tiene un <strong>mínimo absoluto</strong> (o <strong>mínimo global</strong>) en <span class="math inline">\(c\)</span> si</p>
+<p><span class="math display">\[
+f(x)\geq f(c) \quad \text{ para todo } \quad x\in D.
+\]</span></p>
+<p>En este caso, a <span class="math inline">\(f(c)\)</span> se lo llama <strong>valor mínimo</strong> de <span class="math inline">\(f\)</span> en <span class="math inline">\(D\)</span>.</p>
+<p>Los valores máximos y mínimos de <span class="math inline">\(f\)</span> se conocen como <strong>valores extremos</strong> de <span class="math inline">\(f\)</span>.</p>
+</div>
+</div>
+<p>En la siguiente gráfica vemos una función con máximo absoluto en <span class="math inline">\(d\)</span> y mínimo absoluto en <span class="math inline">\(a\)</span>. Esto significa que el punto <span class="math inline">\((d,f(d))\)</span> es el más alto de la gráfica y <span class="math inline">\((a,f(a))\)</span> el más bajo.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap4/4.1-minymax.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
+</figure>
+</div>
+<p>Si solamente restringimos la atención al intervalo <span class="math inline">\((a,c)\)</span>, entonces <span class="math inline">\(f(b)\)</span> es el valor más grande de <span class="math inline">\(f\)</span> en esa región. En este caso, decimos que <span class="math inline">\(f(b)\)</span> es un valor máximo local de <span class="math inline">\(f\)</span>. De manera similar, <span class="math inline">\(f(c)\)</span> y <span class="math inline">\(f(e)\)</span> son valores mínimos locales de <span class="math inline">\(f\)</span>.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Definición (Valores máximos y mínimos)">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definición (Valores máximos y mínimos)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Una función <span class="math inline">\(f\)</span> tiene un <strong>máximo local</strong> (o <strong>máximo relativo</strong>) en <span class="math inline">\(c\)</span> si <span class="math inline">\(f(x)\leq f(c)\)</span> para <span class="math inline">\(x\)</span> a <span class="math inline">\(c\)</span> (es decir, si existe <span class="math inline">\(r&gt;0\)</span> tal que la desigualdad anterior se cumple para todo <span class="math inline">\(x\in (c-r,c+r)\)</span> que esté en el dominio de <span class="math inline">\(f\)</span>).</p>
+<p>De manera similar, <span class="math inline">\(f\)</span> tiene un <strong>mínimo local</strong> en <span class="math inline">\(c\)</span> si <span class="math inline">\(f(x)\geq  f(c)\)</span> para todo <span class="math inline">\(x\)</span> cercano a <span class="math inline">\(c\)</span>.</p>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Encontrar extremos locales y absolutos de la función <span class="math inline">\(f(x)=\cos x\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Recordemos que <span class="math inline">\(-1\leq \cos x\leq 1\)</span> para todo <span class="math inline">\(x\in\mathbb{R}\)</span>. Por lo tanto, <span class="math inline">\(1\)</span> es el valor máximo absoluto de <span class="math inline">\(f\)</span> (y, en consecuencia, también local) y <span class="math inline">\(f\)</span> toma este valor una cantidad infinita de veces, en todo <span class="math inline">\(x=2n\pi\)</span>, con <span class="math inline">\(n\in \mathbb{Z}\)</span>.</p>
+<p>Por otro lado, <span class="math inline">\(-1\)</span> es el valor mínimo absoluto (y local) de <span class="math inline">\(f\)</span>, que se alcanza siempre que <span class="math inline">\(x=(2n+1)\pi\)</span>, con <span class="math inline">\(n\in \mathbb{Z}\)</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap4/4.1-coseno.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Analizar extremos locales y absolutos de <span class="math inline">\(f(x)=x^2\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Observemos primero que <span class="math inline">\(f(0)=0\leq x^2=f(x)\)</span>, es decir, <span class="math inline">\(f(0)\leq f(x)\)</span> para cualquier <span class="math inline">\(x\in\mathbb{R}\)</span>. Esto nos dice que <span class="math inline">\(0\)</span> es el valor mínimo absoluto (y local) de la función <span class="math inline">\(f\)</span>, y se alcanza cuando <span class="math inline">\(x=0\)</span>.</p>
+<p>Sin embargo, <span class="math inline">\(f\)</span> no tiene máximo absoluto, ya que</p>
+<p><span class="math display">\[
+\lim_{x\to \infty} x^2 =\infty \quad \text{ y } \quad \lim_{x\to -\infty} x^2=\infty.
+\]</span></p>
+<p>Inspeccionando el gráfico de <span class="math inline">\(f\)</span> podemos ver que tampoco hay máximos locales.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap4/4.1-cuadratica.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:25.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Analizar extremos para la función <span class="math inline">\(f(x)=x^3\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Notemos que <span class="math inline">\(f\)</span> no tiene valor extremos absolutos, puesto que</p>
+<p><span class="math display">\[
+\lim_{x\to \infty} x^3 =\infty \quad \text{ y } \quad \lim_{x\to -\infty} x^3=-\infty.
+\]</span></p>
+<p>Observando el gráfico de <span class="math inline">\(f\)</span> podemos comprobar que tampoco existen extremos locales.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap4/4.1-cubica.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:25.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Analizar los extremos de la función</p>
+<p><span class="math display">\[
+f(x)=3x^4-16x^3+18x^2, \quad\text{ para }\quad  -1\leq x\leq 4.
+\]</span></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap4/4.1-ejemplo-minmax.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
+</figure>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Observando el gráfico podemos ver que <span class="math inline">\(f(1)=5\)</span> es un valor máximo local y <span class="math inline">\(f(-1)=37\)</span> es el valor máximo absoluto de <span class="math inline">\(f\)</span> sobre el intervalo (éste no se considera máximo local por encontrarse en un extremo del intervalo dado).</p>
+<p>Por otra parte, <span class="math inline">\(f(0)=0\)</span> es un mínimo local y <span class="math inline">\(f(3)=-27\)</span> es el valor mínimo absoluto, y también resulta local.</p>
+</div>
+</div>
+</div>
+<p>El siguiente teorema será una herramienta importante para encontrar extremos de funciones continuas sobre intervalos cerrados.</p>
+<div id="teo-valores-ext" class="theorem">
+<p>Teorema del valor extremo</p>
+<p>Si <span class="math inline">\(f\)</span> es continua sobre el intervalo cerrado <span class="math inline">\([a,b]\)</span>, entonces <span class="math inline">\(f\)</span> alcanza un valor máximo absoluto <span class="math inline">\(f(c)\)</span> y un valor mínimo absoluto <span class="math inline">\(f(d)\)</span> en algunos números <span class="math inline">\(c,d\)</span> en <span class="math inline">\([a,b]\)</span>.</p>
+</div>
+<p>Este teorema nos asegura existencia de los puntos <span class="math inline">\(c\)</span> y <span class="math inline">\(d\)</span>, pero como vemos en la siguiente figura éstos podrían no ser únicos.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap4/4.1-teovalorextremo.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+<p>En general, si <span class="math inline">\(f\)</span> no es continua o el intervalo no es cerrado, el resultado anterior podría no valer. Aquí vemos algunos ejemplos donde esto ocurre.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap4/4.1-teovalorextremo2.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%"></p>
+</figure>
+</div>
+<p>A la izquierda, vemos que <span class="math inline">\(f\)</span> tiene un valor mínimo <span class="math inline">\(f(2)=0\)</span>, pero no hay valor máximo. A la derecha no hay valor mínimo ni máximo.</p>
+<p>El <a href="#teo-valores-ext">teorema anterior</a> nos da condiciones para asegurar la existencia de extremos de una función en un intervalo, pero no dice cómo encontrarlos. Para responder a esta pregunta, veamos el siguiente resultado.</p>
+<div id="teo-fermat" class="theorem">
+<p>Teorema de Fermat</p>
+<p>Si <span class="math inline">\(f\)</span> tiene un extremo local en <span class="math inline">\(c\)</span> y <span class="math inline">\(f'(c)\)</span> existe, entonces <span class="math inline">\(f'(c)=0\)</span>.</p>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap4/4.1-teofermat.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:35.0%"></p>
+</figure>
+</div>
+<div class="callout callout-style-default callout-caution callout-titled" title="Importante">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Importante
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>El recíproco del <a href="#teo-fermat">teorema de Fermat</a> es <strong>falso</strong>, como veremos en el siguiente ejemplo.</p>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Mostrar que <span class="math inline">\(f(x)=x^3\)</span> satisface <span class="math inline">\(f'(0)=0\)</span> pero que <span class="math inline">\(f\)</span> no alcanza extremos locales en <span class="math inline">\(x=0\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Dado que <span class="math inline">\(f'(x)=3x^2\)</span>, es inmediato comprobar que <span class="math inline">\(f'(0)=0\)</span>. Por otro lado, si consideramos el intervalo <span class="math inline">\((0-r,0+r)=(-r,r)\)</span> para cualquier <span class="math inline">\(r&gt;0\)</span>, tenemos que</p>
+<p><span class="math display">\[
+f(x)&lt;f(0) \quad \text{ para } -r&lt;x&lt;0
+\]</span></p>
+<p>y</p>
+<p><span class="math display">\[
+f(x)&gt;f(0) \quad \text{ para } 0&lt;x&lt;r.
+\]</span></p>
+<p>En consecuencia, en <span class="math inline">\(x=0\)</span> no puede haber ni un mínimo ni un máximo local.</p>
+</div>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Mostrar que <span class="math inline">\(f(x)=|x|\)</span> presenta un extremo (local y global) en <span class="math inline">\(x=0\)</span> pero <span class="math inline">\(f'(0)\)</span> no existe.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Dado que <span class="math inline">\(f(0)=0\leq |x|=f(x)\)</span> para todo <span class="math inline">\(x\)</span>, <span class="math inline">\(f\)</span> presenta un mínimo local y global en <span class="math inline">\(x=0\)</span>, de valor 0. Sin embargo, según vimos en el Ejemplo 44 de la <a href="cap2.html#seccion_2.8">Sección 2.8</a>, <span class="math inline">\(f\)</span> no es derivable en <span class="math inline">\(x=0\)</span>.</p>
+</div>
+</div>
+</div>
+<p>El teorema de Fermat establece que si <span class="math inline">\(f\)</span> presenta algún extremo local, éste debe ocurrir en un punto <span class="math inline">\(c\)</span> tal que <span class="math inline">\(f'(c)=0\)</span> o bien que cumpla que <span class="math inline">\(f'(c)\)</span> no exista. Introduciremos una definición que será de utilidad en adelante.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Definición (Número crítico)">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definición (Número crítico)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Si <span class="math inline">\(c\)</span> es un número en el dominio de <span class="math inline">\(f\)</span> tal que <span class="math inline">\(f'(c)=0\)</span> o bien <span class="math inline">\(f'(c)\)</span> no existe, entonces <span class="math inline">\(c\)</span> se llama <strong>número crítico</strong> o <strong>número estacionario</strong> de <span class="math inline">\(f\)</span>.</p>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Encontrar los números críticos de <span class="math inline">\(f(x)=x^{3/5}(4-x)\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>La derivada de <span class="math inline">\(f\)</span> es</p>
+<p><span class="math display">\[
+f'(x)=\frac{3}{5}x^{3/5-1}(4-x)+x^{3/5}(-1)=\frac{12-3x-5x}{5x^{2/5}}=\frac{12-8x}{5x^{2/5}}.
+\]</span></p>
+<p>Luego, <span class="math inline">\(f'(x)=0\)</span> si y sólo si <span class="math inline">\(12-8x=0\)</span>, o bien <span class="math inline">\(x=3/2\)</span>. Por otro lado, <span class="math inline">\(f'(x)\)</span> no existe si <span class="math inline">\(x=0\)</span>. Por lo tanto, los números críticos de <span class="math inline">\(f\)</span> son <span class="math inline">\(x=0\)</span> y <span class="math inline">\(x=3/2\)</span>.</p>
+</div>
+</div>
+</div>
+<p>Con la definición de número crítico, el teorema de Fermat puede refrasearse como sigue:</p>
+<div class="formula-box">
+<p>Si <span class="math inline">\(f\)</span> tiene un máximo o un mínimo local en <span class="math inline">\(c\)</span>, entonces <span class="math inline">\(c\)</span> es un número crítico de <span class="math inline">\(f\)</span>.</p>
+</div>
+<p>Es decir, todos los extremos locales tienen lugar en números críticos. Sin embargo, no todo número crítico da lugar a un extremo, por lo que será necesario clasificarlos de alguna manera, como veremos luego.</p>
+<section id="cómo-encontrar-los-extremos-de-una-función-continua-f-en-un-intervalo-cerrado-ab" class="level3 callout-question">
+<h3 class="anchored" data-anchor-id="cómo-encontrar-los-extremos-de-una-función-continua-f-en-un-intervalo-cerrado-ab">¿Cómo encontrar los extremos de una función continua <span class="math inline">\(f\)</span> en un intervalo cerrado <span class="math inline">\([a,b]\)</span>?</h3>
+<p>Para ello podemos seguir los siguientes pasos:</p>
+<ol type="1">
+<li>Hallar los valores de <span class="math inline">\(f\)</span> en cada número crítico de <span class="math inline">\(f\)</span> en <span class="math inline">\((a,b)\)</span>.</li>
+<li>Calcular <span class="math inline">\(f(a)\)</span> y <span class="math inline">\(f(b)\)</span>.</li>
+<li>Comparar todos estos valores. El más grande de todos es el valor máximo absoluto y el más chico el valor mínimo absoluto.</li>
+</ol>
+</section>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Calcular los valores máximos y mínimos absolutos de <span class="math inline">\(f(x)=x^3-3x^2+1\)</span> en el itervalo <span class="math inline">\([-1/2, 4]\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Antes de comenzar, notemos que <span class="math inline">\(f\)</span> es continua en el intervalo cerrado <span class="math inline">\([-1/2,4]\)</span> por tratarse de un polinomio. El <a href="#teo-valores-ext">teorema del valor extremo</a> nos asegura entonces que existen el máximo y el mínimo absolutos de <span class="math inline">\(f\)</span> en el intervalo.</p>
+<p>Primero buscamos los números críticos de <span class="math inline">\(f\)</span>. Tenemos que <span class="math inline">\(f'(x)=3x^2-6x=3x(x-2)\)</span>, por lo que <span class="math inline">\(f'(x)=0\)</span> si y sólo si <span class="math inline">\(x=0\)</span> o <span class="math inline">\(x=2\)</span>. Estos son los únicos puntos críticos de <span class="math inline">\(f\)</span> ya que no hay valores de <span class="math inline">\(x\)</span> para los que <span class="math inline">\(f'(x)\)</span> no exista.</p>
+<p>Siguiendo los pasos de la lista anterior, hallamos</p>
+<p><span class="math display">\[
+f(0)=0^3-3\cdot 0^2+1=1 \quad \text{ y } \quad f(2)=2^3-3\cdot 2^2+1=-3.
+\]</span></p>
+<p>Ahora calculamos la imagen por <span class="math inline">\(f\)</span> de los extremos del intervalo</p>
+<p><span class="math display">\[
+f\left(-\frac{1}{2}\right)=\left(-\frac{1}{2}\right)^3-3\cdot \left(-\frac{1}{2}\right)^2+1=\frac{1}{8} \quad \text{ y } \quad f(4)=4^3-3\cdot 4^2+1=17.
+\]</span></p>
+<p>El valor máximo absoluto de <span class="math inline">\(f\)</span> es 17 y se alcanza en <span class="math inline">\(x=4\)</span>, y el valor mínimo absoluto es <span class="math inline">\(-3\)</span>, cuando <span class="math inline">\(x=2\)</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap4/4.1-ejemplo-cubica.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Hallar los valores máximos y mínimos de <span class="math inline">\(f(x)=x-2\operatorname{sen} x\)</span> en <span class="math inline">\(I=[0, 2\pi]\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Primero observemos que <span class="math inline">\(y=x\)</span> e <span class="math inline">\(y=2\operatorname{sen} x\)</span> son funciones continuas en <span class="math inline">\(I\)</span>, con lo cual <span class="math inline">\(f\)</span> es continua en <span class="math inline">\(I\)</span>. El <a href="#teo-valores-ext">teorema del valor extremo</a> asegura la existencia de extremos absolutos.</p>
+<p>Notar que <span class="math inline">\(f'(x)=1-2\cos x\)</span>, con lo cual <span class="math inline">\(f'(x)=0\)</span> si y sólo si <span class="math inline">\(\cos x=\frac{1}{2}\)</span>. Los puntos de <span class="math inline">\(I\)</span> que satisfacen esta ecuación son <span class="math inline">\(x=\pi/3\)</span> y <span class="math inline">\(x=5\pi/3\)</span>.</p>
+<p>Evaluamos <span class="math inline">\(f\)</span> en estos puntos</p>
+<p><span class="math display">\[
+f\left(\frac{\pi}{3}\right)=\frac{\pi}{3}-2\operatorname{sen}\left(\frac{\pi}{3}\right)=\frac{\pi}{3}-\sqrt{3}\approx -0.68 \quad \text{ y }\quad f\left(\frac{5\pi}{3}\right)=\frac{5\pi}{3}-2\operatorname{sen}\left(\frac{5\pi}{3}\right)=\frac{5\pi}{3}+\sqrt{3}\approx 6.97
+\]</span></p>
+<p>y luego en los extremos de <span class="math inline">\(I\)</span></p>
+<p><span class="math display">\[
+f(0)=0-2\operatorname{sen} 0=0 \quad \text{ y } \quad f(2\pi)=2\pi-2\operatorname{sen}(2\pi)=2\pi \approx 6.28,
+\]</span></p>
+<p>con lo que el valor máximo absoluto de <span class="math inline">\(f\)</span> en <span class="math inline">\(I\)</span> es <span class="math inline">\(5\pi/3+\sqrt{3}\)</span> cuando <span class="math inline">\(x=5\pi/3\)</span> y el valor mínimo absoluto es <span class="math inline">\(\pi/3-\sqrt{3}\)</span> cuando <span class="math inline">\(x=\pi/3\)</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap4/4.1-ejemplo-seno.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p><a href="#seccion_4.1">↑ Volver al inicio de la sección</a></p>
+</section>
+<section id="seccion_4.3" class="level2">
+<h2 class="anchored" data-anchor-id="seccion_4.3">4.3. ¿Cómo afectan las derivadas la forma de una gráfica?</h2>
+<section id="qué-dice-f-con-respecto-a-f" class="level3">
+<h3 class="anchored" data-anchor-id="qué-dice-f-con-respecto-a-f">¿Qué dice <span class="math inline">\(f'\)</span> con respecto a <span class="math inline">\(f\)</span>?</h3>
+<p>En la siguiente figura podemos ver que entre los puntos <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> las rectas tangentes tienen pendiente positiva, con lo cual <span class="math inline">\(f'(x)&gt;0\)</span>. Esto mismo ocurre entre <span class="math inline">\(C\)</span> y <span class="math inline">\(D\)</span>. Por otro lado, entre <span class="math inline">\(B\)</span> y <span class="math inline">\(C\)</span> las pendientes son negativas, con lo que <span class="math inline">\(f'(x)&lt;0\)</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap4/4.3-crec-decrec.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+<div id="teo-prueba-cd" class="theorem">
+<p>Prueba creciente/decreciente</p>
+<ul>
+<li><p>Si <span class="math inline">\(f'(x)&gt;0\)</span> sobre un intervalo, entonces <span class="math inline">\(f\)</span> es creciente en ese intervalo.</p></li>
+<li><p>Si <span class="math inline">\(f'(x)&lt;0\)</span> sobre un intervalo, <span class="math inline">\(f\)</span> es decreciente en ese intervalo.</p></li>
+</ul>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Encontrar dónde cree la función <span class="math inline">\(f(x)=3x^4-4x^3-12x^2+5\)</span> y dónde decrece.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Tenemos que <span class="math inline">\(f'(x)=12x^3-12x^2-24x=12x(x^2-x-2)=12x(x-2)(x+1)\)</span>. Con esto, vemos que <span class="math inline">\(f'\)</span> se anula en <span class="math inline">\(x=-1\)</span>, <span class="math inline">\(x=0\)</span> y <span class="math inline">\(x=2\)</span>. Para determinar el signo de <span class="math inline">\(f'\)</span> en cada uno de los intervalos que resultan de dividir la recta en los puntos críticos de <span class="math inline">\(f\)</span> realizamos la siguiente tabla</p>
+<div class="math-table">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Intervalo</th>
+<th><span class="math inline">\((x+1)\)</span></th>
+<th><span class="math inline">\(12x\)</span></th>
+<th><span class="math inline">\((x-2)\)</span></th>
+<th><span class="math inline">\(f'(x)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\((-\infty,-1)\)</span></td>
+<td><span class="math inline">\(-\)</span></td>
+<td><span class="math inline">\(-\)</span></td>
+<td><span class="math inline">\(-\)</span></td>
+<td><span class="math inline">\(-\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\((-1,0)\)</span></td>
+<td><span class="math inline">\(+\)</span></td>
+<td><span class="math inline">\(-\)</span></td>
+<td><span class="math inline">\(-\)</span></td>
+<td><span class="math inline">\(+\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\((0,2)\)</span></td>
+<td><span class="math inline">\(+\)</span></td>
+<td><span class="math inline">\(+\)</span></td>
+<td><span class="math inline">\(-\)</span></td>
+<td><span class="math inline">\(-\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\((2,+\infty)\)</span></td>
+<td><span class="math inline">\(+\)</span></td>
+<td><span class="math inline">\(+\)</span></td>
+<td><span class="math inline">\(+\)</span></td>
+<td><span class="math inline">\(+\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Observando la última columna de la tabla y utilizando <a href="#teo-prueba-cd">la prueba creciente/decreciente</a>, obtenemos que <span class="math inline">\(f\)</span> es creciente en <span class="math inline">\((-1,0)\)</span> y en <span class="math inline">\((2,+\infty)\)</span>, y decrece en <span class="math inline">\((-\infty,-1)\)</span> y en <span class="math inline">\((0,2)\)</span>.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution callout-titled" title="Importante">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Importante
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Notar que en el ejemplo anterior hemos escrito: <span class="math inline">\(f\)</span> es creciente en <span class="math inline">\((-1,0)\)</span> y en <span class="math inline">\((2,+\infty)\)</span>, y <strong>no escribimos</strong> <span class="math inline">\(f\)</span> es creciente en <span class="math inline">\((-1,0)\cup (2,+\infty)\)</span>. Ésta última expresión es incorrecta, pues de acuerdo con la definición de función creciente, debería ocurrir que <span class="math inline">\(f(x_1)&lt;f(x_2)\)</span> siempre que <span class="math inline">\(x_1&lt;x_2\)</span>. Al considerar el conjunto <span class="math inline">\((-1,0)\cup (2,+\infty)\)</span> ésto no se cumpliría pues, por ejemplo, <span class="math inline">\(x_1=0.5\)</span> y <span class="math inline">\(x_2=2.5\)</span> están en este conjunto, y <span class="math inline">\(x_1&lt;x_2\)</span>, sin embargo <span class="math inline">\(f(x_1)=1.6875\)</span> y <span class="math inline">\(f(x_2)=-15.3125\)</span>.</p>
+<p>Una observación similar puede hacerse para el caso decreciente.</p>
+</div>
+</div>
+<p>El siguiente resultado nos permitirá clasificar los números críticos de una función para saber si corresponden a extremos locales.</p>
+<div id="teo-prueba-primerader" class="theorem">
+<p>Prueba de la primera derivada</p>
+<p>Sea <span class="math inline">\(f\)</span> continua, <span class="math inline">\(c\)</span> un número crítico de <span class="math inline">\(f\)</span> y supongamos que <span class="math inline">\(f'(x)\)</span> existe cerca de <span class="math inline">\(c\)</span> (excepto quizás en <span class="math inline">\(c\)</span>). Luego:</p>
+<ul>
+<li>si <span class="math inline">\(f'(x)&gt;0\)</span> para <span class="math inline">\(x&lt;c\)</span> y <span class="math inline">\(f'(x)&lt;0\)</span> para <span class="math inline">\(x&gt;c\)</span>, entonces <span class="math inline">\(f\)</span> tiene un máximo local en <span class="math inline">\(x=c\)</span>.</li>
+<li>si <span class="math inline">\(f'(x)&lt;0\)</span> para <span class="math inline">\(x&lt;c\)</span> y <span class="math inline">\(f'(x)&gt;0\)</span> para <span class="math inline">\(x&gt;c\)</span>, entonces <span class="math inline">\(f\)</span> tiene un mínimo local en <span class="math inline">\(x=c\)</span>.</li>
+<li>si <span class="math inline">\(f'\)</span> es positiva (o negativa) a ambos lados de <span class="math inline">\(c\)</span>, entonces <span class="math inline">\(f\)</span> no tiene máximo ni mínimo local en <span class="math inline">\(x=c\)</span>.</li>
+</ul>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap4/4.3-primerader1.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%"></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap4/4.3-primerader2.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%"></p>
+</figure>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Encontrar los valores máximos y mínimos locales de la función <span class="math inline">\(f\)</span> del Ejemplo 10.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-16" class="callout-16-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Ya sabemos que los números críticos de <span class="math inline">\(f\)</span> son <span class="math inline">\(-1\)</span>, <span class="math inline">\(0\)</span> y <span class="math inline">\(2\)</span>. En <span class="math inline">\(x=-1\)</span> el signo de <span class="math inline">\(f'\)</span> pasa de negativo a positivo, con lo que la <a href="#teo-prueba-primerader">prueba de la primera derivada</a> nos dice que <span class="math inline">\(f\)</span> tiene un mínimo local en <span class="math inline">\(x=-1\)</span>, cuyo valor es <span class="math inline">\(f(-1)=0\)</span>.</p>
+<p>De manera similar, <span class="math inline">\(f'\)</span> pasa de positiva a negativa en <span class="math inline">\(x=0\)</span>, con lo que en este punto <span class="math inline">\(f\)</span> presenta un máximo local de valor <span class="math inline">\(f(0)=5\)</span>.</p>
+<p>Por último, <span class="math inline">\(f'\)</span> cambia de negativa a positiva en <span class="math inline">\(x=2\)</span>, con lo que aquí <span class="math inline">\(f\)</span> tiene un mínimo local, cuyo valor es <span class="math inline">\(f(2)=-27\)</span>.</p>
+</div>
+</div>
+</div>
+<p>La siguiente propiedad será de utilidad en diversas ocasiones.</p>
+<div id="teo-propiedad-signoconst" class="theorem">
+<p>Propiedad del signo constante</p>
+<p>Supongamos que <span class="math inline">\(f\)</span> es continua en <span class="math inline">\((a,b)\)</span> y además <span class="math inline">\(f(x)\neq 0\)</span> para todo <span class="math inline">\(x\in (a,b)\)</span>. Entonces <span class="math inline">\(f\)</span> tiene signo constante sobre el intervalo, es decir, o bien se cumple que</p>
+<p><span class="math display">\[f(x)&gt;0 \quad \text{ para todo }x\in (a,b)\]</span></p>
+<p>o bien</p>
+<p><span class="math display">\[f(x)&lt;0 \quad \text{ para todo }x\in (a,b).\]</span></p>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Determinar los valores máximo y mínimo de la función <span class="math inline">\(g(x)=x+2\operatorname{sen} x\)</span> en el intervalo <span class="math inline">\([0,2\pi]\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-17" class="callout-17-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>El <a href="#teo-valor-ext">teorema del valor extremo</a> asegura la existencia de valor máximo y mínimo absoluto, ya que <span class="math inline">\(g\)</span> es continua en el intervalo cerrado <span class="math inline">\([0, 2\pi]\)</span>.</p>
+<p>La derivada de <span class="math inline">\(g\)</span> es <span class="math inline">\(g'(x)=1+2\cos x\)</span>, y <span class="math inline">\(g'(x)=0\)</span> si y sólo si <span class="math inline">\(x=2\pi/3\)</span> o <span class="math inline">\(x=4\pi/3\)</span>.</p>
+<p>Ahora bien, <span class="math inline">\(g'\)</span> es continua en <span class="math inline">\((0,2\pi/3)\)</span>, <span class="math inline">\((2\pi/3,4\pi/3)\)</span> y en <span class="math inline">\((4\pi/3,2\pi)\)</span> y además es no nula en cada uno de estos intervalos.</p>
+<p>Por la <a href="#teo-propiedad-signoconst">propiedad del signo constante</a>, <span class="math inline">\(g'\)</span> tiene signo constante en cada uno de estos intervalos. Por lo tanto, para analizar el signo de <span class="math inline">\(g'\)</span> en cada intervalo basta con evaluar el signo de <span class="math inline">\(g'\)</span> en cualquier punto de los mismos. La siguiente tabla muestra estos cálculos, en la cual el crecimiento o decrecimiento en cada caso es consecuencia de la <a href="#teo-prueba-cd">prueba creciente/decreciente</a>.</p>
+<div class="math-table">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Intervalo</th>
+<th><span class="math inline">\(x_0\)</span></th>
+<th><span class="math inline">\(g'(x_0)\)</span></th>
+<th><span class="math inline">\(g\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\((0,2\pi/3)\)</span></td>
+<td>1</td>
+<td><span class="math inline">\(+\)</span></td>
+<td>crece</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\((2\pi/3,4\pi/3)\)</span></td>
+<td>3</td>
+<td><span class="math inline">\(-\)</span></td>
+<td>decrece</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\((4\pi/3,2\pi)\)</span></td>
+<td>5</td>
+<td><span class="math inline">\(+\)</span></td>
+<td>crece</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Utilizando ahora la <a href="#teo-prueba-primerader">prueba de la primera derivada</a> podemos concluir que <span class="math inline">\(g\)</span> presenta un máximo local en <span class="math inline">\(x=2\pi/3\)</span>, de valor</p>
+<p><span class="math display">\[
+g\left(\frac{2\pi}{3}\right)=\frac{2\pi}{3}+\sqrt{3}\approx 3.83
+\]</span></p>
+<p>y en <span class="math inline">\(x=4\pi/3\)</span> presenta un mínimo local cuyo valor es</p>
+<p><span class="math display">\[
+g\left(\frac{4\pi}{3}\right)=\frac{4\pi}{3}-\sqrt{3}\approx 2.46.
+\]</span></p>
+<p>Ahora analizamos los extremos del intervalo</p>
+<p><span class="math display">\[
+g(0)=0+2\operatorname{sen} 0=0 \quad \text{ y } \quad g(2\pi)=2\pi+2\operatorname{sen}(2\pi)=2\pi \approx 6.28,
+\]</span></p>
+<p>con lo que <span class="math inline">\(g\)</span> alcanza sus valores mínimo y máximo absoluto en los extremos izquierdo y derecho del intervalo, respectivamente.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="qué-dice-f-con-respecto-a-f-1" class="level3">
+<h3 class="anchored" data-anchor-id="qué-dice-f-con-respecto-a-f-1">¿Qué dice <span class="math inline">\(f''\)</span> con respecto a <span class="math inline">\(f\)</span>?</h3>
+<p>En la siguiente figura vemos el gráfico de dos funciones crecientes que unen el punto <span class="math inline">\(A\)</span> con el punto <span class="math inline">\(B\)</span>, pero se flexionan en direcciones distintas.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap4/4.3-concavidad1.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%"></p>
+</figure>
+</div>
+<p>Si dibujamos algunas rectas tangentes en distintos puntos, vemos que la gráfica de la izquierda queda por arriba de estas rectas, y la de la derecha por debajo.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap4/4.3-concavidad2.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%"></p>
+</figure>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Definición (Concavidad)">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definición (Concavidad)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Si la gráfica de <span class="math inline">\(f\)</span> queda por arriba de todas sus tangentes en un intervalo <span class="math inline">\(I\)</span>, entonces <span class="math inline">\(f\)</span> se dice <strong>cóncava hacia arriba</strong> o <strong>convexa</strong> en <span class="math inline">\(I\)</span>.</p>
+<p>Si en cambio la gráfica de <span class="math inline">\(f\)</span> queda por debajo de sus tangentes en <span class="math inline">\(I\)</span>, <span class="math inline">\(f\)</span> se dice <strong>cóncava hacia abajo</strong> o <strong>cóncava</strong> en <span class="math inline">\(I\)</span>.</p>
+</div>
+</div>
+<p>En la primera gráfica vemos que la pendiente se incrementa de izquierda a derecha. Esto quiere decir que <span class="math inline">\(f'\)</span> es creciente y, por lo tanto, su derivada <span class="math inline">\(f''\)</span> es positiva. De manera similar, en la segunda gráfica la pendiente disminuye de izquierda a derecha, con lo que <span class="math inline">\(f'\)</span> es decreciente y su derivada <span class="math inline">\(f''\)</span> resulta negativa. Esta idea nos ayuda a establecer el siguiente criterio de concavidad.</p>
+<div id="teo-prueba-concavidad" class="theorem">
+<p>Prueba de la concavidad</p>
+<ul>
+<li><p>Si <span class="math inline">\(f''(x)&gt;0\)</span> para todo <span class="math inline">\(x\)</span> en <span class="math inline">\(I=(a,b)\)</span>, entonces la gráfica de <span class="math inline">\(f\)</span> es cóncava hacia arriba en <span class="math inline">\(I\)</span>.</p></li>
+<li><p>Si <span class="math inline">\(f''(x)&lt;0\)</span> para todo <span class="math inline">\(x\in I\)</span>, entonces la gráfica de <span class="math inline">\(f\)</span> es cóncava hacia abajo sobre <span class="math inline">\(I\)</span>.</p></li>
+</ul>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Definición (Punto de inflexión)">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definición (Punto de inflexión)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Un punto <span class="math inline">\(P\)</span> en la curva <span class="math inline">\(y=f(x)\)</span> recibe el nombre de <strong>punto de inflexión</strong> si <span class="math inline">\(f\)</span> es continua allí y además la curva cambia de cóncava hacia abajo a cóncava hacia arriba, o bien de cóncava hacia arriba a cóncava hacia abajo en <span class="math inline">\(P\)</span>.</p>
+</div>
+</div>
+<p>En virtud de la prueba de concavidad, habrá puntos de inflexión donde la derivada segunda cambie de signo.</p>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Trazar una posible gráfica de una función <span class="math inline">\(f\)</span> que cumpla las siguientes condiciones:</p>
+<ul>
+<li><p><span class="math inline">\(f'(x)&gt;0\)</span> en <span class="math inline">\((-\infty,1)\)</span>, <span class="math inline">\(f'(x)&lt;0\)</span> en <span class="math inline">\((1,\infty)\)</span>,</p></li>
+<li><p><span class="math inline">\(f''(x)&gt;0\)</span> en <span class="math inline">\((-\infty,-2) \cup (2,\infty)\)</span>, <span class="math inline">\(f''(x)&lt;0\)</span> en <span class="math inline">\((-2,2)\)</span>,</p></li>
+<li><p><span class="math inline">\(\displaystyle \lim_{x\to -\infty} f(x)=-2\)</span>, <span class="math inline">\(\displaystyle \lim_{x\to \infty} f(x)=0\)</span>.</p></li>
+</ul>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-20-contents" aria-controls="callout-20" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-20" class="callout-20-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>En virtud de la <a href="#teo-prueba-cd">prueba creciente/decreciente</a>, la primera condición establece que <span class="math inline">\(f\)</span> es creciente en <span class="math inline">\((-\infty,1)\)</span> y decreciente en <span class="math inline">\((1,\infty)\)</span>.</p>
+<p>De la segunda condición, aplicando la <a href="#teo-prueba-concavidad">prueba de la concavidad</a> concluimos que la gráfica de <span class="math inline">\(f\)</span> debe ser cóncava hacia arriba en <span class="math inline">\((-\infty,-2)\cup (2,\infty)\)</span> y cóncava hacia abajo en <span class="math inline">\((-2,2)\)</span>.</p>
+<p>Por último, la tercera condición establece que <span class="math inline">\(y=-2\)</span> e <span class="math inline">\(y=0\)</span> son las ecuaciones de las asíntotas horizontales de <span class="math inline">\(f\)</span>.</p>
+<p>Con esta información trazamos un posible gráfico aproximado.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap4/4.3-ejemplo-funcion.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>Como otra aplicación de la derivada segunda, podemos dar una forma alternativa de determinar la naturaleza de un punto crítico.</p>
+<div id="teo-prueba-segundader" class="theorem">
+<p>Prueba de la segunda derivada</p>
+<p>Supongamos que <span class="math inline">\(f''\)</span> es continua cerca de <span class="math inline">\(c\)</span>.</p>
+<ul>
+<li><p>Si <span class="math inline">\(f'(c)=0\)</span> y <span class="math inline">\(f''(c)&gt;0\)</span>, entonces <span class="math inline">\(f\)</span> tiene un mínimo relativo en <span class="math inline">\(x=c\)</span>.</p></li>
+<li><p>Si <span class="math inline">\(f'(c)=0\)</span> y <span class="math inline">\(f''(c)&lt;0\)</span>, entonces <span class="math inline">\(f\)</span> tiene un máximo relativo en <span class="math inline">\(x=c\)</span>.</p></li>
+</ul>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Analizar la curva <span class="math inline">\(y=x^4-4x^3\)</span> con respecto a la concavidad, puntos de inflexión y extremos locales. Dibujar la curva.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-21-contents" aria-controls="callout-21" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-21" class="callout-21-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Primero calculamos la derivada primera <span class="math inline">\(y'(x)=4x^3-12x^2=4x^2(x-3)\)</span>. Entonces <span class="math inline">\(y'(x)=0\)</span> si y sólo si <span class="math inline">\(x=0\)</span> o <span class="math inline">\(x=3\)</span>. Éstos son los números críticos de la función.</p>
+<p>Ahora calculamos la derivada segunda <span class="math inline">\(y''(x)=12x^2-24x=12x(x-2)\)</span>. Observemos ahora que</p>
+<p><span class="math display">\[
+f''(3)=36&gt;0,
+\]</span></p>
+<p>con lo que <span class="math inline">\(y\)</span> presenta un mínimo local en <span class="math inline">\(x=3\)</span> cuyo valor es <span class="math inline">\(y(3)=-27\)</span>, en virtud de la <a href="#teo-prueba-segundader">prueba de la segunda derivada</a>. Sin embargo,</p>
+<p><span class="math display">\[
+y''(0)=0
+\]</span></p>
+<p>con lo cual no podemos utilizar este mismo argumento para conocer la naturaleza del punto <span class="math inline">\(x=0\)</span>. Como <span class="math inline">\(y'\)</span> no cambia de signo en <span class="math inline">\(x=0\)</span>, en este punto no tenemos extremo.</p>
+<p>Para determinar la concavidad y puntos de inflexión hacemos la siguiente tabla (recordar la <a href="#teo-propiedad-signoconst">propiedad del signo constante</a>, que aplicamos a <span class="math inline">\(y''\)</span>) y luego la <a href="#teo-prueba-concavidad">prueba de concavidad</a>.</p>
+<div class="math-table">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Intervalo</th>
+<th><span class="math inline">\(x_0\)</span></th>
+<th><span class="math inline">\(y''(x_0)\)</span></th>
+<th><span class="math inline">\(y\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\((-\infty,0)\)</span></td>
+<td><span class="math inline">\(-1\)</span></td>
+<td><span class="math inline">\(+\)</span></td>
+<td>convexa</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\((0,2)\)</span></td>
+<td>1</td>
+<td><span class="math inline">\(-\)</span></td>
+<td>cóncava</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\((2,+\infty)\)</span></td>
+<td>3</td>
+<td><span class="math inline">\(+\)</span></td>
+<td>convexa</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Luego la curva <span class="math inline">\(y=x^4-4x^3\)</span> es convexa en los intervalos <span class="math inline">\((-\infty,0)\)</span> y <span class="math inline">\((2,+\infty)\)</span>, y cóncava en <span class="math inline">\((0,2)\)</span>.</p>
+<p>Como <span class="math inline">\(y\)</span> cambia de convexidad en <span class="math inline">\(x=0\)</span> y en <span class="math inline">\(x=2\)</span>, y además resulta continua allí, los puntos <span class="math inline">\(P_1=(0,y(0))=(0,0)\)</span> y <span class="math inline">\(P_2=(2,y(2))=(2,-16)\)</span> son puntos de inflexión de <span class="math inline">\(y\)</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap4/4.3-ejemplo-funcion2.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Trazar la gráfica de <span class="math inline">\(f(x)=x^{2/3}(6-x)^{1/3}\)</span>, sabiendo que</p>
+<p><span class="math display">\[
+f'(x)=\frac{4-x}{x^{1/3}(6-x)^{2/3}} \quad\text{ y }\quad f''(x)=-\frac{8}{x^{4/3}(6-x)^{5/3}}.
+\]</span></p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-22-contents" aria-controls="callout-22" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-22" class="callout-22-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Podemos ver que <span class="math inline">\(f'(x)=0\)</span> si y sólo si <span class="math inline">\(x=4\)</span>. Además, <span class="math inline">\(f'\)</span> no existe cuando <span class="math inline">\(x=0\)</span> o cuando <span class="math inline">\(x=6\)</span>. Entonces <span class="math inline">\(0\)</span>, <span class="math inline">\(4\)</span> y <span class="math inline">\(6\)</span> son los tres números críticos de <span class="math inline">\(f\)</span>. Utilizando la <a href="#teo-propiedad-signoconst">propiedad del signo constante</a> y luego la<br>
+<a href="#teo-prueba-primerader">prueba de la primera derivada</a> armamos la siguiente tabla.</p>
+<div class="math-table">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Intervalo</th>
+<th><span class="math inline">\(x_0\)</span></th>
+<th><span class="math inline">\(f'(x_0)\)</span></th>
+<th><span class="math inline">\(f\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\((-\infty,0)\)</span></td>
+<td><span class="math inline">\(-1\)</span></td>
+<td><span class="math inline">\(-\)</span></td>
+<td>decrece</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\((0,4)\)</span></td>
+<td>1</td>
+<td><span class="math inline">\(+\)</span></td>
+<td>crece</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\((4,6)\)</span></td>
+<td>5</td>
+<td><span class="math inline">\(-\)</span></td>
+<td>decrece</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\((6,+\infty)\)</span></td>
+<td>7</td>
+<td><span class="math inline">\(-\)</span></td>
+<td>decrece</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Por otro lado, observando <span class="math inline">\(f''\)</span> vemos que nunca se anula, y no existe cuando <span class="math inline">\(x=0\)</span> o <span class="math inline">\(x=6\)</span>. La siguiente tabla nos da el signo de <span class="math inline">\(f''\)</span> y la convexidad, utilizando la <a href="#teo-prueba-concavidad">prueba de la concavidad</a>.</p>
+<div class="math-table">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Intervalo</th>
+<th><span class="math inline">\(x_0\)</span></th>
+<th><span class="math inline">\(f''(x_0)\)</span></th>
+<th><span class="math inline">\(f\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\((-\infty,0)\)</span></td>
+<td><span class="math inline">\(-1\)</span></td>
+<td><span class="math inline">\(-\)</span></td>
+<td>cóncava</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\((0,6)\)</span></td>
+<td><span class="math inline">\(1\)</span></td>
+<td><span class="math inline">\(-\)</span></td>
+<td>cóncava</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\((6,+\infty)\)</span></td>
+<td><span class="math inline">\(7\)</span></td>
+<td><span class="math inline">\(7\)</span></td>
+<td>convexa</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>La curva cambia de convexidad en <span class="math inline">\(x=6\)</span> y resulta continua allí, con lo cual <span class="math inline">\(P=(6,f(6))=(6,0)\)</span> es el único punto de inflexión de la curva. El gráfico se muestra a continuación.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap4/4.3-ejemplo-funcion3.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p><a href="#seccion_4.3">↑ Volver al inicio de la sección</a></p>
+</section>
+</section>
+<section id="seccion_4.4" class="level2">
+<h2 class="anchored" data-anchor-id="seccion_4.4">4.4 Formas indeterminadas y la regla de L’Hospital</h2>
+<p>Si tenemos un límite de la forma <span class="math display">\[
+\lim_{x\to a} \frac{f(x)}{g(x)},
+\]</span></p>
+<p>donde <span class="math inline">\(f(x)\to 0\)</span> y <span class="math inline">\(g(x)\to 0\)</span> cuando <span class="math inline">\(x\to a\)</span>, éste puede existir o no, y se conoce como <strong>forma indeterminada de tipo <span class="math inline">\(\displaystyle \frac{0}{0}\)</span></strong>.</p>
+<p>Si en cambio <span class="math inline">\(f(x)\to \pm\infty\)</span> y <span class="math inline">\(g(x)\to \pm\infty\)</span> el límite del cociente puede existir o no, y se conoce como <strong>forma indeterminada de tipo <span class="math inline">\(\displaystyle \frac{\infty}{\infty}\)</span></strong>.</p>
+<p>En esta sección veremos una forma de calcular estos límites utilizando derivadas.</p>
+<div id="teo-regla-LH" class="theorem">
+<p>Regla de L’Hospital</p>
+<p>Sean <span class="math inline">\(f\)</span> y <span class="math inline">\(g\)</span> dos funciones derivables, de manera que <span class="math inline">\(g'(x)\neq 0\)</span> en un intervalo abierto <span class="math inline">\(I\)</span> que contiene a <span class="math inline">\(a\)</span> (excepto quizás en <span class="math inline">\(a\)</span>). Supongamos además que</p>
+<p><span class="math display">\[
+\lim_{x\to a}f(x)=0\quad \text{ y }\quad \lim_{x\to a}g(x)=0,
+\]</span></p>
+<p>o bien que</p>
+<p><span class="math display">\[
+\lim_{x\to a}f(x)=\pm \infty\quad \text{ y }\quad \lim_{x\to a}g(x)=\pm\infty.
+\]</span></p>
+<p>En otras palabras, tenemos una forma indeterminada del tipo <span class="math inline">\(0/0\)</span> o <span class="math inline">\(\infty/\infty\)</span>. Entonces</p>
+<p><span class="math display">\[
+\lim_{x\to a}\frac{f(x)}{g(x)}=\lim_{x\to a}\frac{f'(x)}{g'(x)},
+\]</span></p>
+<p>si este último límite existe (o si es <span class="math inline">\(\infty\)</span> o <span class="math inline">\(-\infty\)</span>).</p>
+</div>
+<p>Esta regla también es válida para límites laterales y límites en el infinito. Es decir, sigue siendo válida si reemplazamos <span class="math inline">\(x\to a\)</span> por <span class="math inline">\(x\to a^+\)</span>, <span class="math inline">\(x\to a^-\)</span>, <span class="math inline">\(x\to\infty\)</span> o <span class="math inline">\(x\to -\infty\)</span>.</p>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Encontrar <span class="math inline">\(\displaystyle \lim_{x\to 1} \frac{\ln x}{x-1}\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-23-contents" aria-controls="callout-23" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-23" class="callout-23-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Si escribimos <span class="math inline">\(f(x)=\ln x\)</span> y <span class="math inline">\(g(x)=x-1\)</span>, entonces tenemos que</p>
+<p><span class="math display">\[
+\lim_{x\to 1} f(x)=0 \quad \text{ y } \quad \lim_{x\to 1} g(x)=1.
+\]</span></p>
+<p>Además, <span class="math inline">\(g'(x)=1\neq 0\)</span> para todo <span class="math inline">\(x\)</span>. Estudiamos el límite</p>
+<p><span class="math display">\[
+\lim_{x\to 1} \frac{f'(x)}{g'(x)}=\lim_{x\to 1} \frac{\frac{1}{x}}{1}=\lim_{x\to 1} \frac{1}{x}=1.
+\]</span></p>
+<p>Como el límite de <span class="math inline">\(f'/g'\)</span> existe, la <a href="#teo-regla-LH">regla de L’Hospital</a> establece que</p>
+<p><span class="math display">\[
+\lim_{x\to 1} \frac{f(x)}{g(x)}=\lim_{x\to 1} \frac{f'(x)}{g'(x)}=1.
+\]</span></p>
+</div>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Calcular <span class="math inline">\(\displaystyle \lim_{x\to \infty} \frac{e^x}{x^2}\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-24-contents" aria-controls="callout-24" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-24" class="callout-24-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Escribiendo <span class="math inline">\(f(x)=e^x\)</span> y <span class="math inline">\(g(x)=x^2\)</span>, es inmediato que</p>
+<p><span class="math display">\[
+\lim_{x\to \infty} f(x)=\infty \quad \text{ y } \quad \lim_{x\to \infty} g(x)=\infty,
+\]</span></p>
+<p>por lo que se trata de una indeterminación del tipo <span class="math inline">\(\infty/\infty\)</span>. Calculamos</p>
+<p><span class="math display">\[
+\lim_{x\to \infty} \frac{f'(x)}{g'(x)}=\lim_{x\to \infty} \frac{e^x}{2x},
+\]</span></p>
+<p>que vuelve a resultar una indeterminación del tipo <span class="math inline">\(\infty/\infty\)</span>. Repitiendo el proceso una vez más</p>
+<p><span class="math display">\[
+\lim_{x\to \infty} \frac{f''(x)}{g''(x)}=\lim_{x\to \infty} \frac{e^x}{2}=\infty.
+\]</span></p>
+<p>Utilizando la <a href="#teo-regla-LH">regla de L’Hospital</a> concluimos que</p>
+<p><span class="math display">\[
+\lim_{x\to \infty} \frac{f(x)}{g(x)}=\lim_{x\to \infty} \frac{f'(x)}{g'(x)}=\lim_{x\to \infty} \frac{f''(x)}{g''(x)}=\infty.
+\]</span></p>
+</div>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Calcular <span class="math inline">\(\displaystyle \lim_{x\to \infty} \frac{\ln x}{\sqrt[3]{x}}\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-25-contents" aria-controls="callout-25" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-25" class="callout-25-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Sean <span class="math inline">\(f(x)=\ln x\)</span> y <span class="math inline">\(g(x)=\sqrt[3]{x}\)</span>. Dado que</p>
+<p><span class="math display">\[
+\lim_{x\to \infty} f(x)=\infty \quad \text{ y } \quad \lim_{x\to \infty} g(x)=\infty,
+\]</span></p>
+<p>tenemos una indeterminación de tipo <span class="math inline">\(\infty/\infty\)</span>. Calculamos</p>
+<p><span class="math display">\[
+\lim_{x\to \infty} \frac{f'(x)}{g'(x)}=\lim_{x\to \infty} \frac{\frac{1}{x}}{\frac{1}{3x^{2/3}}}=\lim_{x\to \infty} \frac{3x^{2/3}}{x}=\lim_{x\to \infty} \frac{3}{x^{1/3}}=0.
+\]</span></p>
+<p>Como el límite de <span class="math inline">\(f'/g'\)</span> existe, por la <a href="#teo-regla-LH">regla de L’Hospital</a> concluimos que</p>
+<p><span class="math display">\[
+\lim_{x\to \infty} \frac{f(x)}{g(x)}=\lim_{x\to \infty} \frac{f'(x)}{g'(x)}=0.
+\]</span></p>
+</div>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Encontrar <span class="math inline">\(\displaystyle \lim_{x\to 0} \frac{\tan x-x}{x^3}\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-26-contents" aria-controls="callout-26" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-26" class="callout-26-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Escribimos <span class="math inline">\(f(x)=\tan x-x\)</span> y <span class="math inline">\(g(x)=x^3\)</span>. Es fácil comprobar que</p>
+<p><span class="math display">\[
+\lim_{x\to 0} f(x)=0 \quad \text{ y que } \quad \lim_{x\to 0} g(x)=0,
+\]</span></p>
+<p>con lo cual tenemos una indeterminación del tipo <span class="math inline">\(0/0\)</span>. Además, <span class="math inline">\(g'(x)=3x^2\)</span> con lo que <span class="math inline">\(g'(x)\neq 0\)</span> para todo <span class="math inline">\(x\neq 0\)</span>. Calculamos el límite del cociente de derivadas</p>
+<p><span class="math display">\[
+\lim_{x\to 0} \frac{f'(x)}{g'(x)}=\lim_{x\to 0} \frac{\sec^2 x-1}{3x^2},
+\]</span></p>
+<p>que resulta nuevamente indeterminado del tipo <span class="math inline">\(0/0\)</span>. Si calculamos el límite del cociente de las derivadas segundas</p>
+<p><span class="math display">\[
+\lim_{x\to 0} \frac{f''(x)}{g''(x)}=\lim_{x\to 0} \frac{2\sec x\,\tan x}{6x}=\lim_{x\to 0} \frac{1}{3}\frac{\operatorname{sen} x}{x}\frac{1}{\cos^2 x}=\frac{1}{3},
+\]</span> en virtud de la <a href="-@eq-limite-seno">fórmula</a> obtenida en la <a href="cap3.html#seccion_3.3">Sección 3.3</a>.</p>
+<p>Finalmente, por la <a href="#teo-regla-LH">regla de L’Hospital</a> tenemos</p>
+<p><span class="math display">\[
+\lim_{x\to 0} \frac{f(x)}{g(x)}=\lim_{x\to 0} \frac{f'(x)}{g'(x)}=\lim_{x\to 0} \frac{f''(x)}{g''(x)}=\frac{1}{3}.
+\]</span></p>
+</div>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Hallar <span class="math inline">\(\displaystyle \lim_{x\to \pi^-} \frac{\operatorname{sen} x}{1-\cos x}\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-27-contents" aria-controls="callout-27" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-27" class="callout-27-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Notar que la función dada es continua en <span class="math inline">\(x=\pi\)</span>, por lo que una sustitución directa nos da</p>
+<p><span class="math display">\[
+\lim_{x\to \pi^-} \frac{\operatorname{sen} x}{1-\cos x}=\frac{\operatorname{sen} \pi}{1-\cos \pi}=\frac{0}{2}=0.
+\]</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution callout-titled" title="Importante">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Importante
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Si intentamos aplicar la regla de L’Hospital sin advertir que no se trata de una indeterminación del tipo 0/0, obtendríamos</p>
+<p><span class="math display">\[
+\lim_{x\to \pi^-} \frac{\operatorname{sen} x}{1-\cos x}=\lim_{x\to \pi^-}\frac{\cos x}{\operatorname{sen} x}=+\infty,
+\]</span></p>
+<p>lo que nos da una respuesta equivocada.</p>
+</div>
+</div>
+<section id="productos-indeterminados" class="level3">
+<h3 class="anchored" data-anchor-id="productos-indeterminados">Productos indeterminados</h3>
+<p>Si tenemos <span class="math inline">\(\displaystyle \lim_{x\to a}f(x)=0\)</span> y <span class="math inline">\(\lim_{x\to a}g(x)=\pm \infty\)</span>, entonces el límite</p>
+<p><span class="math display">\[
+\lim_{x\to a}f(x)g(x)
+\]</span></p>
+<p>se llama <strong>forma indeterminada de tipo <span class="math inline">\(0\cdot \infty\)</span></strong>. Para resolverlo, se convierte el producto en un cociente de la siguiente manera</p>
+<p><span class="math display">\[f\cdot g =\frac{f}{1/g}\quad \text{ o bien} \quad f\cdot g=\frac{g}{1/f},\]</span></p>
+<p>y de esta forma se lo lleva a una indeterminación del tipo <span class="math inline">\(0/0\)</span> o <span class="math inline">\(\infty/\infty\)</span>.</p>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Evaluar <span class="math inline">\(\lim_{x\to 0^+}x\ln x\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-29-contents" aria-controls="callout-29" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-29" class="callout-29-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Si <span class="math inline">\(f(x)=x\)</span> y <span class="math inline">\(g(x)=\ln x\)</span>, entonces es claro que</p>
+<p><span class="math display">\[
+\lim_{x\to 0^+} f(x)=0 \quad \text{ y } \quad \lim_{x\to 0^+} g(x)=-\infty,
+\]</span></p>
+<p>por lo que se trata de un producto indeterminado. Si reescribimos el producto como un cociente obtenemos</p>
+<p><span class="math display">\[
+\lim_{x\to 0^+} \frac{\ln x}{\frac{1}{x}},
+\]</span></p>
+<p>que es una indeterminación de tipo <span class="math inline">\(\infty/\infty\)</span>. Planteamos entonces</p>
+<p><span class="math display">\[
+\lim_{x\to 0^+} \frac{\frac{d}{dx}(\ln x)}{\frac{d}{dx}\left(\frac{1}{x}\right)}=\lim_{x\to 0^+} \frac{\frac{1}{x}}{-\frac{1}{x^2}}=\lim_{x\to 0^+} -\frac{x^2}{x}=0.
+\]</span></p>
+<p>Como éste último límite existe, podemos concluir por la <a href="#teo-regla-LH">regla de L’Hospital</a> que</p>
+<p><span class="math display">\[
+\lim_{x\to 0^+}x\ln x = 0.
+\]</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="diferencias-indeterminadas" class="level3">
+<h3 class="anchored" data-anchor-id="diferencias-indeterminadas">Diferencias indeterminadas</h3>
+<p>Si <span class="math inline">\(\displaystyle \lim_{x\to a}f(x)=\infty\)</span> y <span class="math inline">\(\lim_{x\to a}g(x)= \infty\)</span>, entonces el límite</p>
+<p><span class="math display">\[
+\lim_{x\to a}\left(f(x)-g(x)\right)
+\]</span></p>
+<p>se llama <strong>forma indeterminada de tipo <span class="math inline">\(\infty - \infty\)</span></strong>.</p>
+<p>En este caso se intenta convertir la diferencia en un cociente (por ejemplo, buscando un denominador común o haciendo una racionalización) para obtener una indeterminación del tipo <span class="math inline">\(0/0\)</span> o <span class="math inline">\(\infty/\infty\)</span>.</p>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Calcular <span class="math inline">\(\lim_{x\to (\pi/2)^-}\left(\sec x-\tan x\right)\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-30-contents" aria-controls="callout-30" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-30" class="callout-30-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Tanto el minuendo como el sustraendo tienen límite <span class="math inline">\(\infty\)</span>, con lo cual reescribimos la expresión como</p>
+<p><span class="math display">\[
+\sec x-\tan x=\frac{1}{\cos x}-\frac{\operatorname{sen} x}{\cos x}=\frac{1-\operatorname{sen} x}{\cos x}.
+\]</span></p>
+<p>Llamando <span class="math inline">\(f(x)=1-\operatorname{sen} x\)</span> y <span class="math inline">\(g(x)=\cos x\)</span> tenemos que</p>
+<p><span class="math display">\[
+\lim_{x\to (\pi/2)^-} f(x)=0 \quad \text{ y } \quad  \lim_{x\to (\pi/2)^-}g(x)= 0,
+\]</span></p>
+<p>por lo que resulta una indeterminación del tipo <span class="math inline">\(0/0\)</span>. Notemos que <span class="math inline">\(g'(x)=-\operatorname{sen} x\)</span>, y es no nula cerca de <span class="math inline">\(\pi/2\)</span>. Calculamos entonces</p>
+<p><span class="math display">\[
+\lim_{x\to (\pi/2)^-}\frac{f'(x)}{g'(x)}=\lim_{x\to (\pi/2)^-}\frac{-\cos x}{-\operatorname{sen} x}=0,
+\]</span></p>
+<p>y por la <a href="#teo-regla-LH">regla de L’Hospital</a> concluimos que</p>
+<p><span class="math display">\[
+\lim_{x\to (\pi/2)^-}\frac{f(x)}{g(x)}=\lim_{x\to (\pi/2)^-}\frac{f'(x)}{g'(x)}=0.
+\]</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="potencias-indeterminadas" class="level3">
+<h3 class="anchored" data-anchor-id="potencias-indeterminadas">Potencias indeterminadas</h3>
+<p>Consideremos el límite <span class="math inline">\(\displaystyle \lim_{x\to a} f(x)^{g(x)}\)</span>.</p>
+<ul>
+<li>Cuando</li>
+</ul>
+<p><span class="math display">\[
+\lim_{x\to a}f(x)=0\quad\text{ y }\quad \lim_{x\to a}g(x)=0
+\]</span></p>
+<p>se llama <strong>forma indeterminada de tipo <span class="math inline">\(0^0\)</span></strong>.</p>
+<ul>
+<li>Si ocurre que</li>
+</ul>
+<p><span class="math display">\[
+\lim_{x\to a}f(x)=\infty\quad\text{ y }\quad \lim_{x\to a}g(x)=0,
+\]</span></p>
+<p>se dice <strong>forma indeterminada de tipo <span class="math inline">\(\infty^0\)</span></strong>.</p>
+<ul>
+<li>Si</li>
+</ul>
+<p><span class="math display">\[
+\lim_{x\to a}f(x)=1\quad\text{ y }\quad \lim_{x\to a}g(x)=\pm \infty
+\]</span></p>
+<p>el límite se conoce como <strong>forma indeterminada de tipo <span class="math inline">\(1^\infty\)</span></strong>.</p>
+<p>Para resolver este tipo de indeterminaciones, podemos utilizar el logaritmo natural. Si <span class="math display">\[
+y=f(x)^{g(x)}
+\]</span></p>
+<p>entonces</p>
+<p><span class="math display">\[
+\ln y=g(x)\ln(f(x)).
+\]</span></p>
+<p>O bien, si usamos la exponencial</p>
+<p><span class="math display">\[
+f(x)^{g(x)}=e^{g(x)\ln(f(x))}.
+\]</span></p>
+<p>En ambos casos se obtiene el producto indeterminado <span class="math inline">\(g(x)\ln(f(x))\)</span>, que es de la forma <span class="math inline">\(0\cdot \infty\)</span>.</p>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Calcular <span class="math inline">\(\lim_{x\to 0^+}(1+\operatorname{sen}(4x))^{\cot x}\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-31-contents" aria-controls="callout-31" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-31" class="callout-31-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Observemos que la función en la base tiene límite <span class="math inline">\(1\)</span> y la del exponente <span class="math inline">\(\infty\)</span>, por lo que tenemos una indeterminación del tipo <span class="math inline">\(1^\infty\)</span>.</p>
+<p>Si llamamos <span class="math inline">\(F(x)=(1+\operatorname{sen}(4x))^{\cot x}\)</span>, aplicando logaritmo natural resulta</p>
+<p><span class="math display">\[
+\ln F(x) =\ln\left((1+\operatorname{sen}(4x))^{\cot x}\right)=\cot x \ln((1+\operatorname{sen}(4x)))=\frac{\ln((1+\operatorname{sen}(4x)))}{\tan x}=\frac{f(x)}{g(x)}.
+\]</span></p>
+<p>Dado que ahora tanto <span class="math inline">\(f\)</span> como <span class="math inline">\(g\)</span> tienen límite <span class="math inline">\(0\)</span> para <span class="math inline">\(x\to 0^+\)</span>, y como <span class="math inline">\((\tan x)'=\sec^2 x\)</span> es no nula cerca de <span class="math inline">\(0\)</span>, calculamos</p>
+<p><span class="math display">\[
+\lim_{x\to 0^+}\frac{f'(x)}{g'(x)}=\lim_{x\to 0^+}\frac{\frac{4\cos(4x)}{1+\operatorname{sen}(4x)}}{\sec^2x}=\lim_{x\to 0^+} \frac{4\cos(4x)\cos^2 x}{1+\operatorname{sen}(4x)}=4.
+\]</span></p>
+<p>Utilizando la <a href="#teo-regla-LH">regla de L’Hospital</a>, concluimos que</p>
+<p><span class="math display">\[
+\lim_{x\to 0^+}\ln F(x)=\lim_{x\to 0^+}\frac{f(x)}{g(x)}=\lim_{x\to 0^+}\frac{f'(x)}{g'(x)}=4.
+\]</span></p>
+<p>Finalmente</p>
+<p><span class="math display">\[
+\lim_{x\to 0^+} F(x)=\lim_{x\to 0^+} e^{\ln F(x)}=e^{\lim_{x\to 0^+} \ln F(x)}=e^4,
+\]</span></p>
+<p>dado que <span class="math inline">\(y=e^x\)</span> es una función continua.</p>
+</div>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Encontrar <span class="math inline">\(\lim_{x\to 0^+}x^x\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-32-contents" aria-controls="callout-32" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-32" class="callout-32-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>En este caso tenemos una forma indeterminada del tipo <span class="math inline">\(0^0\)</span>. Si <span class="math inline">\(F(x)=x^x\)</span>, aplicamos logaritmo natural como antes</p>
+<p><span class="math display">\[
+\ln F(x)=\ln x^x=x\ln x.
+\]</span></p>
+<p>En consecuencia,</p>
+<p><span class="math display">\[
+\lim_{x\to 0^+} \ln F(x)=\lim_{x\to 0^+} x\ln x=0,
+\]</span></p>
+<p>según vimos en el Ejemplo 21. Por lo tanto</p>
+<p><span class="math display">\[
+\lim_{x\to 0^+} F(x)=\lim_{x\to 0^+} e^{\ln F(x)}=e^{\lim_{x\to 0^+} \ln F(x)}=1,
+\]</span></p>
+<p>ya que <span class="math inline">\(y=e^x\)</span> es una función continua.</p>
+</div>
+</div>
+</div>
+<p><a href="#seccion_4.4">↑ Volver al inicio de la sección</a></p>
+</section>
+</section>
+<section id="seccion_4.5" class="level2">
+<h2 class="anchored" data-anchor-id="seccion_4.5">4.5. Resumen de trazo de curvas</h2>
+<p>En esta sección reuniremos todo lo aprendido hasta el momento para realizar el estudio completo de una función dada. Para ello seguiremos una serie de pasos que nos ayudarán a visualizar el gráfico de la función, además de obtener los elementos más distintivos de la misma.</p>
+<div class="theorem">
+<p>Pasos a seguir en el estudio de una función</p>
+<p><strong>(A) Dominio</strong> Recordemos que el dominio <span class="math inline">\(D_f\)</span> de <span class="math inline">\(f\)</span> consiste en todos los valores de <span class="math inline">\(x\)</span> para los cuales <span class="math inline">\(f\)</span> está definida.</p>
+<p><strong>(B) Intersecciones</strong> La gráfica de <span class="math inline">\(y=f(x)\)</span> corta al eje <span class="math inline">\(y\)</span> en <span class="math inline">\(f(0)\)</span>. Por otra parte, los valores de <span class="math inline">\(x\)</span> donde el gráfico corta al eje de abscisas se encuentran resolviendo la ecuación <span class="math inline">\(f(x)=0\)</span>. (Este paso puede omitirse si la ecuación es difícil de resolver).</p>
+<p><strong>(C) Simetría y periodicidad</strong> En este paso podemos investigar si la función resulta par o impar.</p>
+<p>Recordemos que <span class="math inline">\(f\)</span> es par si se cumple que</p>
+<p><span class="math display">\[
+f(-x)=f(x) \quad \text{ para todo }\quad x\in D_f.
+\]</span></p>
+<p>Por otro lado, <span class="math inline">\(f\)</span> es impar si se cumple que</p>
+<p><span class="math display">\[
+f(-x)=-f(x) \quad \text{ para todo }\quad x\in D_f.
+\]</span></p>
+<p>Por otro lado, para estudiar la periodicidad debemos analizar si existe un número <span class="math inline">\(p&gt;0\)</span> tal que</p>
+<p><span class="math display">\[
+f(x+p)=f(x) \quad \text{ para todo }\quad x\in D_f.
+\]</span></p>
+<p>Si esto pasa, entonces <span class="math inline">\(f\)</span> es periódica. El número <span class="math inline">\(p\)</span> más pequeño que satisface esta igualdad se llama <strong>período</strong> de <span class="math inline">\(f\)</span>.</p>
+<p><strong>(D) Asíntotas</strong> La recta <span class="math inline">\(x=a\)</span> es una asíntota vertical de <span class="math inline">\(f\)</span> si se cumple al menos una de las siguientes condiciones</p>
+<div class="columns">
+<div class="column" style="width:40%;">
+<ul>
+<li><span class="math inline">\(\displaystyle \lim_{x\to a^+}f(x)=\infty\)</span>,</li>
+<li><span class="math inline">\(\displaystyle \lim_{x\to a^+}f(x)=-\infty\)</span>,</li>
+</ul>
+</div><div class="column" style="width:40%;">
+<ul>
+<li><span class="math inline">\(\displaystyle \lim_{x\to a^-}f(x)=\infty\)</span>,</li>
+<li><span class="math inline">\(\displaystyle \lim_{x\to a^-}f(x)=-\infty\)</span>.</li>
+</ul>
+</div>
+</div>
+<p>La recta <span class="math inline">\(y=L\)</span> es una asíntota horizontal de la curva <span class="math inline">\(y=f(x)\)</span> si se cumple que</p>
+<p><span class="math display">\[
+\lim_{x\to \infty}f(x)=L\quad\text{ o bien }\quad \lim_{x\to -\infty}f(x)=L.
+\]</span></p>
+<p><strong>(E) Intervalos de crecimiento y decrecimiento</strong> Calculamos <span class="math inline">\(f'(x)\)</span> y determinamos en qué intervalos es positiva y en cuáles negativa. La <a href="#teo-prueba-cd">prueba creciente/decreciente</a> nos dará los intervalos donde <span class="math inline">\(f\)</span> crece y donde decrece.</p>
+<p><strong>(F) Valores extremos locales</strong> Calculamos los números críticos de <span class="math inline">\(f\)</span>, es decir, aquellos valores <span class="math inline">\(c\)</span> para los que <span class="math inline">\(f'(c)=0\)</span> o <span class="math inline">\(f'(c)\)</span> no existe. Para clasificarlos podemos utilizar la <a href="#teo-prueba-primerader">prueba de la primera derivada</a> o la de la <a href="#teo-prueba-segundader">segunda derivada</a>.</p>
+<p><strong>(G) Concavidad y puntos de inflexión</strong> Calculamos <span class="math inline">\(f''(x)\)</span> y aplicamos la <a href="#teo-prueba-concavidad">prueba de concavidad</a>. La función resultará cóncava hacia arriba donde <span class="math inline">\(f''(x)&gt;0\)</span> y cóncava hacia abajo donde <span class="math inline">\(f''(x)&lt;0\)</span>. Los puntos de inflexión serán aquellos donde <span class="math inline">\(f\)</span> sea continua y cambie la concavidad de la curva.</p>
+<p><strong>(H) Trazar la gráfica</strong> Con toda la información obtenida hasta ahora podemos hacer un esbozo aproximado de la curva, indicando los elementos más distintivos.</p>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Graficar la función <span class="math inline">\(\displaystyle f(x)=\frac{2x^2}{x^2-1}\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-33-contents" aria-controls="callout-33" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-33" class="callout-33-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Seguiremos los pasos indicados en el cuadro anterior.</p>
+<p><strong>(A) Dominio</strong> Al ser una función racional, sabemos que el dominio consiste en todos los valores de <span class="math inline">\(x\)</span> tales que el denominador es no nulo. Como <span class="math inline">\(x^2-1=0\)</span> si y sólo si <span class="math inline">\(x=\pm 1\)</span>, tenemos que <span class="math inline">\(D_f =\mathbb{R}\setminus \{-1,1\}\)</span>.</p>
+<p><strong>(B) Intersecciones</strong></p>
+<ul>
+<li>Para saber dónde la gráfica corta al eje <span class="math inline">\(x\)</span> planteamos</li>
+</ul>
+<p><span class="math display">\[
+f(x)=0, \quad \text{ es decir,} \quad \frac{2x^2}{x^2-1}=0,
+\]</span></p>
+<p>de donde resulta <span class="math inline">\(x=0\)</span>.</p>
+<ul>
+<li>Para conocer la intersección con el eje <span class="math inline">\(y\)</span> evaluamos</li>
+</ul>
+<p><span class="math display">\[
+f(0)=\frac{2\cdot 0^2}{0^2-1}=0.
+\]</span></p>
+<p>Entonces la gráfica interseca al eje <span class="math inline">\(y\)</span> en <span class="math inline">\(y=0\)</span>.</p>
+<p>En conclusión, la única intersección de la curva con los ejes se da en el origen de coordenadas.</p>
+<p><strong>(C) Simetría y periodicidad</strong></p>
+<p>Para estudiar la simetría calculamos <span class="math inline">\(f(-x)\)</span></p>
+<p><span class="math display">\[
+f(-x)=\frac{2(-x)^2}{(-x)^2-1}=\frac{2x^2}{x^2-1}=f(x).
+\]</span></p>
+<p>Como <span class="math inline">\(f(-x)=f(x)\)</span> para todo <span class="math inline">\(x\)</span> en el dominio, <span class="math inline">\(f\)</span> es una función par.</p>
+<p>Además <span class="math inline">\(f\)</span> no resulta periódica.</p>
+<p><strong>(D) Asíntotas</strong></p>
+<ul>
+<li>Comencemos buscando las asíntotas verticales. Como <span class="math inline">\(f\)</span> es racional, es continua en su dominio, por lo tanto los valores de <span class="math inline">\(x\)</span> candidatos a dar asíntotas verticales son <span class="math inline">\(x=-1\)</span> y <span class="math inline">\(x=1\)</span>. Vamos a comprobarlo</li>
+</ul>
+<p><span class="math display">\[
+\lim_{x\to -1^+} f(x)=\lim_{x\to -1^+} \frac{2x^2}{(x-1)(x+1)}=-\infty,
+\]</span></p>
+<p>dado que el denominador tiende a cero con valores negativos y el numerador se aproxima a <span class="math inline">\(2&gt;0\)</span>. Haciendo un análisis similar, también podemos ver que</p>
+<p><span class="math display">\[
+\lim_{x\to -1^-} f(x)=\infty, \quad \lim_{x\to 1^-} f(x)=-\infty \quad \text{ y } \quad \lim_{x\to 1^+} f(x)=\infty.
+\]</span></p>
+<p>Con esto, comprobamos que <span class="math inline">\(x=-1\)</span> y <span class="math inline">\(x=1\)</span> son ambas asíntotas verticales de <span class="math inline">\(f\)</span>.</p>
+<ul>
+<li>Para las asíntotas horizontales, calculamos</li>
+</ul>
+<p><span class="math display">\[
+\lim_{x\to\infty} f(x)=\lim_{x\to \infty} \frac{2x^2}{x^2-1}=\lim_{x\to \infty} \frac{2x^2}{x^2\left(1-\frac{1}{x^2}\right)}=\lim_{x\to \infty} \frac{2}{1-\frac{1}{x^2}}=2,
+\]</span></p>
+<p>y también</p>
+<p><span class="math display">\[
+\lim_{x\to-\infty} f(x)=\lim_{x\to -\infty} \frac{2x^2}{x^2-1}==\lim_{x\to -\infty} \frac{2}{1-\frac{1}{x^2}}=2.
+\]</span></p>
+<p>Esto nos dice que <span class="math inline">\(y=2\)</span> es asíntota horizontal del gráfico de <span class="math inline">\(f\)</span>.</p>
+<p><strong>(E) Intervalos de crecimiento y decrecimiento</strong></p>
+<p>Calculamos <span class="math inline">\(f'\)</span> con la regla del cociente</p>
+<p><span class="math display">\[
+f'(x)=\frac{4x(x^2-1)-2x^2(2x)}{(x^2-1)^2}=-\frac{4x}{(x^2-1)^2}.
+\]</span></p>
+<p>Observemos que <span class="math inline">\(f'(x)=0\)</span> si y sólo si <span class="math inline">\(x=0\)</span>. También vemos que <span class="math inline">\(f'\)</span> no existe en <span class="math inline">\(x=\pm 1\)</span>, sin embargo éstos puntos no son críticos pues no están en el dominio de <span class="math inline">\(f\)</span>. Por lo tanto <span class="math inline">\(f\)</span> tiene un único punto crítico, <span class="math inline">\(x=0\)</span>. Recordando la <a href="#teo-propiedad-signoconst">propiedad del signo constante</a>, <span class="math inline">\(f'\)</span> tendrá signo constante en los intervalos <span class="math inline">\((-\infty, -1)\)</span>, <span class="math inline">\((-1,0)\)</span>, <span class="math inline">\((0,1)\)</span> y <span class="math inline">\((1,+\infty)\)</span>. En la siguiente tabla determinamos el signo de <span class="math inline">\(f'\)</span> en cada uno de ellos.</p>
+<div class="math-table">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Intervalo</th>
+<th><span class="math inline">\(x_0\)</span></th>
+<th><span class="math inline">\(f'(x_0)\)</span></th>
+<th><span class="math inline">\(f\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\((-\infty,-1)\)</span></td>
+<td><span class="math inline">\(-2\)</span></td>
+<td><span class="math inline">\(+\)</span></td>
+<td>crece</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\((-1,0)\)</span></td>
+<td>-0.5</td>
+<td><span class="math inline">\(+\)</span></td>
+<td>crece</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\((0,1)\)</span></td>
+<td>0.5</td>
+<td><span class="math inline">\(-\)</span></td>
+<td>decrece</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\((1,+\infty)\)</span></td>
+<td>2</td>
+<td><span class="math inline">\(-\)</span></td>
+<td>decrece</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Mediante la <a href="#teo-prueba-cd">prueba creciente/decreciente</a> podemos concluir que <span class="math inline">\(f\)</span> crece en <span class="math inline">\((-\infty,-1)\)</span> y en <span class="math inline">\((-1,0)\)</span> y decrece en <span class="math inline">\((0,1)\)</span> y en <span class="math inline">\((0,+\infty)\)</span>.</p>
+<p><strong>(F) Valores extremos locales</strong></p>
+<p>Observando la tabla anterior, <span class="math inline">\(f'\)</span> cambia de positiva a negativa en <span class="math inline">\(x=0\)</span>, por lo que <span class="math inline">\(f\)</span> presenta un máximo local en este punto (en virtud de la <a href="#teo-prueba-primerader">prueba de la primera derivada</a>) de valor <span class="math inline">\(f(0)=0\)</span>.</p>
+<p><strong>(G) Concavidad y puntos de inflexión</strong></p>
+<p>Calculamos la derivada segunda de <span class="math inline">\(f\)</span>, nuevamente utilizando la regla del cociente</p>
+<p><span class="math display">\[
+f''(x)=-\frac{4(x^2-1)^2-4x\cdot 2(x^2-1)2x}{(x^2-1)^4}=-\frac{4(x^2-1)-16x^2}{(x^2-1)^3}=\frac{12x^2+4}{(x^2-1)^3}.
+\]</span></p>
+<p>Observemos que <span class="math inline">\(f''\)</span> nunca se anula, y es continua en <span class="math inline">\((-\infty,-1)\)</span>, <span class="math inline">\((-1,1)\)</span> y en <span class="math inline">\((1,+\infty)\)</span>. Entonces la <a href="#teo-propiedad-signoconst">propiedad del signo constante</a> nos dice que tendrá signo constante en cada uno de estos intervalos, los cuales calculamos en la siguiente tabla.</p>
+<div class="math-table">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Intervalo</th>
+<th><span class="math inline">\(x_0\)</span></th>
+<th><span class="math inline">\(f''(x_0)\)</span></th>
+<th><span class="math inline">\(f\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\((-\infty,-1)\)</span></td>
+<td><span class="math inline">\(-2\)</span></td>
+<td><span class="math inline">\(+\)</span></td>
+<td>convexa</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\((-1,1)\)</span></td>
+<td>0</td>
+<td><span class="math inline">\(-\)</span></td>
+<td>cóncava</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\((1,+\infty)\)</span></td>
+<td>2</td>
+<td><span class="math inline">\(+\)</span></td>
+<td>convexa</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Entonces <span class="math inline">\(f\)</span> resulta convexa en los intervalos <span class="math inline">\((-\infty,-1)\)</span> y en <span class="math inline">\((1,+\infty)\)</span>, y cóncava en <span class="math inline">\((-1,1)\)</span>, en virtud de la <a href="#teo-prueba-concavidad">prueba de la concavidad</a>. El signo de <span class="math inline">\(f''\)</span> cambia en <span class="math inline">\(x=-1\)</span> y en <span class="math inline">\(x=1\)</span>, pero estos puntos no están en el dominio de <span class="math inline">\(f\)</span>, por lo que la gráfica no presenta puntos de inflexión.</p>
+<p><strong>(H) Trazar la gráfica</strong> Con todo lo calculado trazamos la gráfica aproximada de <span class="math inline">\(f\)</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap4/4.5-funcion1.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:45.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Trazar la gráfica de <span class="math inline">\(\displaystyle f(x)=\frac{x^2}{\sqrt{x+1}}\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-34-contents" aria-controls="callout-34" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-34" class="callout-34-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Procedemos siguiendo los mismos pasos que antes.</p>
+<p><strong>(A) Dominio</strong> Por un lado, <span class="math inline">\(\sqrt{x+1}\)</span> está bien definido siempre que <span class="math inline">\(x+1\geq 0\)</span>. Sin embargo, al aparecer en el denominador el valor cero no está permitido. Luego <span class="math inline">\(x+1&gt;0\)</span>, o bien <span class="math inline">\(x&gt;-1\)</span> con lo que <span class="math inline">\(D_f =(-1,+\infty)\)</span>.</p>
+<p><strong>(B) Intersecciones</strong></p>
+<ul>
+<li>Para encontrar intersecciones con el eje <span class="math inline">\(x\)</span> planteamos</li>
+</ul>
+<p><span class="math display">\[
+f(x)=0, \quad \text{ es decir,} \quad \frac{x^2}{\sqrt{x+1}}=0,
+\]</span></p>
+<p>de donde resulta <span class="math inline">\(x=0\)</span>.</p>
+<ul>
+<li>Para conocer la intersección con el eje <span class="math inline">\(y\)</span> evaluamos</li>
+</ul>
+<p><span class="math display">\[
+f(0)=\frac{0^2}{\sqrt{0+1}}=0.
+\]</span></p>
+<p>Entonces la gráfica corta al eje <span class="math inline">\(y\)</span> en <span class="math inline">\(y=0\)</span>.</p>
+<p>Al igual que en el ejemplo anterior, la única intersección de la curva con los ejes ocurre en el origen.</p>
+<p><strong>(C) Simetría y periodicidad</strong></p>
+<p>Notemos que</p>
+<p><span class="math display">\[
+f(-x)=\frac{(-x)^2}{\sqrt{-x+1}}=\frac{x^2}{\sqrt{1-x}},
+\]</span></p>
+<p>que no coincide con <span class="math inline">\(f(x)\)</span> ni con <span class="math inline">\(-f(x)\)</span>, por lo que <span class="math inline">\(f\)</span> no es par ni impar. También observamos que <span class="math inline">\(f\)</span> no es periódica.</p>
+<p><strong>(D) Asíntotas</strong></p>
+<ul>
+<li>Calculemos las asíntotas verticales. Como <span class="math inline">\(f\)</span> es continua en todo su dominio por ser cociente de funciones continuas, el único punto candidato a originar una asíntota vertical es <span class="math inline">\(x=-1\)</span>. Como <span class="math inline">\(f\)</span> sólamente está definida a la derecha de <span class="math inline">\(-1\)</span>, calculamos</li>
+</ul>
+<p><span class="math display">\[
+\lim_{x\to -1^+} f(x)=\lim_{x\to -1^+} \frac{x^2}{\sqrt{x+1}}=\infty,
+\]</span></p>
+<p>pues el denominador tiende a cero con valores positivos y el numerador se aproxima a <span class="math inline">\(1&gt;0\)</span>. En conclusión, <span class="math inline">\(x=-1\)</span> es la única asíntota vertical del gráfico de <span class="math inline">\(f\)</span>.</p>
+<ul>
+<li>Recordando nuevamente que <span class="math inline">\(f\)</span> existe sólo para <span class="math inline">\(x&gt;-1\)</span>, calculamos el límite</li>
+</ul>
+<p><span class="math display">\[
+\lim_{x\to\infty} f(x)=\lim_{x\to \infty} \frac{x^2}{\sqrt{x+1}}=\lim_{x\to \infty} \frac{x^2}{\sqrt{x}\sqrt{1+\frac{1}{x}}}=\lim_{x\to \infty} \frac{x^{3/2}}{\sqrt{1+\frac{1}{x}}}=\infty.
+\]</span></p>
+<p>En consecuencia, <span class="math inline">\(f\)</span> no presenta asíntotas horizontales.</p>
+<p><strong>(E) Intervalos de crecimiento y decrecimiento</strong></p>
+<p>Calculamos <span class="math inline">\(f'\)</span> con la regla del cociente</p>
+<p><span class="math display">\[
+f'(x)=\frac{2x\sqrt{x+1}-x^2\frac{1}{2\sqrt{x+1}}}{\left(\sqrt{x+1}\right)^2}=\frac{x(3x+4)}{2(x+1)^{3/2}}.
+\]</span></p>
+<p>Notemos que <span class="math inline">\(f'(x)=0\)</span> cuando <span class="math inline">\(x=0\)</span> y <span class="math inline">\(x-=4/3\)</span>. Como éste último valor no está en el dominio de <span class="math inline">\(f\)</span>, el único punto crítico de <span class="math inline">\(f\)</span> es <span class="math inline">\(x=0\)</span>. Aplicando la <a href="#teo-propiedad-signoconst">propiedad del signo constante</a>, <span class="math inline">\(f'\)</span> tendrá signo constante en los intervalos <span class="math inline">\((-1, 0)\)</span> y <span class="math inline">\((0,+\infty)\)</span>. En la siguiente tabla determinamos el signo de <span class="math inline">\(f'\)</span> en cada uno de ellos.</p>
+<div class="math-table">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Intervalo</th>
+<th><span class="math inline">\(x_0\)</span></th>
+<th><span class="math inline">\(f'(x_0)\)</span></th>
+<th><span class="math inline">\(f\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\((-1,0)\)</span></td>
+<td><span class="math inline">\(-0.5\)</span></td>
+<td><span class="math inline">\(-\)</span></td>
+<td>decrece</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\((0,+\infty)\)</span></td>
+<td>1</td>
+<td><span class="math inline">\(+\)</span></td>
+<td>crece</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Mediante la <a href="#teo-prueba-cd">prueba creciente/decreciente</a> podemos concluir que <span class="math inline">\(f\)</span> crece en <span class="math inline">\((0,+\infty)\)</span> y decrece en <span class="math inline">\((-1,0)\)</span>.</p>
+<p><strong>(F) Valores extremos locales</strong></p>
+<p>En la tabla anterior podemos ver que <span class="math inline">\(f'\)</span> cambia de negativa a positiva en <span class="math inline">\(x=0\)</span>, por lo que <span class="math inline">\(f\)</span> presenta un mínimo local en este punto de valor <span class="math inline">\(f(0)=0\)</span>, en virtud de la <a href="#teo-prueba-primerader">prueba de la primera derivada</a>.</p>
+<p><strong>(G) Concavidad y puntos de inflexión</strong></p>
+<p>Calculamos la derivada segunda de <span class="math inline">\(f\)</span>, nuevamente utilizando la regla del cociente</p>
+<p><span class="math display">\[
+\begin{aligned}
+f''(x)=-\frac{(6x+4)2(x+1)^{3/2}-(3x^2+4x)2\frac{3}{2}(x+1)^{1/2}}{4(x+1)^3}&amp;=\frac{(12x+8)(x+1)-3(3x^2+4x)}{4(x+1)^{5/2}}\\
+\\
+&amp;=\frac{3x^2+8x+8}{4(x+1)^{5/2}}.
+\end{aligned}
+\]</span></p>
+<p>Dado que <span class="math inline">\(f''&gt;0\)</span> en <span class="math inline">\((-1,+\infty)\)</span>, <span class="math inline">\(f\)</span> resulta convexa en todo su dominio por la <a href="#teo-prueba-concavidad">prueba de la concavidad</a>. De esta manera, el gráfico de <span class="math inline">\(f\)</span> no presenta puntos de inflexión.</p>
+<p><strong>(H) Trazar la gráfica</strong> Trazamos la gráfica aproximada de <span class="math inline">\(f\)</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap4/4.5-funcion2.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:45.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Graficar <span class="math inline">\(\displaystyle f(x)=xe^x\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-35-contents" aria-controls="callout-35" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-35" class="callout-35-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Procedemos como en los ejemplos anteriores.</p>
+<p><strong>(A) Dominio</strong> La función es el producto de un polinomio por una exponencial, con lo cual <span class="math inline">\(D_f=\mathbb{R}\)</span>.</p>
+<p><strong>(B) Intersecciones</strong></p>
+<ul>
+<li>Para encontrar intersecciones con el eje <span class="math inline">\(x\)</span> escribimos</li>
+</ul>
+<p><span class="math display">\[
+f(x)=0, \quad \text{ es decir,} \quad x\,e^x=0,
+\]</span></p>
+<p>y como <span class="math inline">\(e^x&gt;0\)</span> para todo <span class="math inline">\(x\)</span>, obtenemos que <span class="math inline">\(x=0\)</span>.</p>
+<ul>
+<li>Para calcular la intersección con el eje <span class="math inline">\(y\)</span> evaluamos</li>
+</ul>
+<p><span class="math display">\[
+f(0)=0\,e^0=0.
+\]</span></p>
+<p>Entonces la gráfica interseca al eje <span class="math inline">\(y\)</span> en <span class="math inline">\(y=0\)</span>.</p>
+<p>En conclusión, el única corte con los ejes se da en el origen de coordenadas.</p>
+<p><strong>(C) Simetría y periodicidad</strong></p>
+<p>Comenzamos calculando <span class="math inline">\(f(-x)\)</span></p>
+<p><span class="math display">\[
+f(-x)=(-x)e^{-x}=-xe^{-x},
+\]</span></p>
+<p>que no coincide con <span class="math inline">\(f(x)\)</span> ni con <span class="math inline">\(f(-x)\)</span>, por lo que la función no es par ni impar. Vemos que <span class="math inline">\(f\)</span> tampoco resulta periódica.</p>
+<p><strong>(D) Asíntotas</strong></p>
+<ul>
+<li><p>La gráfica no presenta asíntotas verticales, ya que se trata de una función continua en todo <span class="math inline">\(\mathbb{R}\)</span>.</p></li>
+<li><p>Para las asíntotas horizontales, calculamos</p></li>
+</ul>
+<p><span class="math display">\[
+\lim_{x\to\infty} f(x)=\lim_{x\to \infty} xe^x=\infty,
+\]</span></p>
+<p>ya que se trata de un producto donde cada factor se hace arbitrariamente grande. Por otro lado, llamando <span class="math inline">\(y=-x\)</span></p>
+<p><span class="math display">\[
+\lim_{x\to-\infty} f(x)=\lim_{x\to -\infty} xe^x=\lim_{y\to \infty} (-y)e^{-y}=\lim_{y\to \infty} -\frac{y}{e^y}=0,
+\]</span></p>
+<p>utilizando la <a href="#teo-regla-LH">regla de L’Hospital</a>. Esto nos dice que <span class="math inline">\(y=0\)</span> es asíntota horizontal del gráfico de <span class="math inline">\(f\)</span>.</p>
+<p><strong>(E) Intervalos de crecimiento y decrecimiento</strong></p>
+<p>Calculamos <span class="math inline">\(f'\)</span> con la regla del producto</p>
+<p><span class="math display">\[
+f'(x)=e^x+xe^x=e^x(x+1),
+\]</span></p>
+<p>de donde podemos ver que <span class="math inline">\(f'(x)=0\)</span> si y sólo si <span class="math inline">\(x=-1\)</span>. Por lo tanto <span class="math inline">\(f\)</span> tiene un único punto crítico, <span class="math inline">\(x=-1\)</span>. Utilizando la <a href="#teo-propiedad-signoconst">propiedad del signo constante</a>, <span class="math inline">\(f'\)</span> tendrá signo constante en los intervalos <span class="math inline">\((-\infty, -1)\)</span> y en <span class="math inline">\((-1,+\infty)\)</span>. En la siguiente tabla determinamos el signo de <span class="math inline">\(f'\)</span> en cada uno de ellos.</p>
+<div class="math-table">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Intervalo</th>
+<th><span class="math inline">\(x_0\)</span></th>
+<th><span class="math inline">\(f'(x_0)\)</span></th>
+<th><span class="math inline">\(f\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\((-\infty,-1)\)</span></td>
+<td><span class="math inline">\(-2\)</span></td>
+<td><span class="math inline">\(-\)</span></td>
+<td>decrece</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\((-1,+\infty)\)</span></td>
+<td>0</td>
+<td><span class="math inline">\(+\)</span></td>
+<td>crece</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Con la <a href="#teo-prueba-cd">prueba creciente/decreciente</a> podemos concluir que <span class="math inline">\(f\)</span> crece en <span class="math inline">\((-1,+\infty)\)</span> y que decrece en <span class="math inline">\((-\infty,-1)\)</span>.</p>
+<p><strong>(F) Valores extremos locales</strong></p>
+<p>En la tabla anterior vemos que <span class="math inline">\(f'\)</span> cambia de negativa a positiva en <span class="math inline">\(x=-1\)</span>, por lo que <span class="math inline">\(f\)</span> presenta un mínimo local en este punto (por la <a href="#teo-prueba-primerader">prueba de la primera derivada</a>) y su valor es <span class="math inline">\(f(-1)=-1\,e^{-1}=-1/e\approx -0.37\)</span>.</p>
+<p><strong>(G) Concavidad y puntos de inflexión</strong></p>
+<p>Calculamos la derivada segunda de <span class="math inline">\(f\)</span>, nuevamente con la regla del producto</p>
+<p><span class="math display">\[
+f''(x)=e^x(x+1)+e^x=e^x(x+2).
+\]</span></p>
+<p>Así, <span class="math inline">\(f''(x)=0\)</span> si y sólo si <span class="math inline">\(x=-2\)</span>. Por la <a href="#teo-propiedad-signoconst">propiedad del signo constante</a>, <span class="math inline">\(f''\)</span> tendrá signo constante en <span class="math inline">\((-\infty,-2)\)</span> y en <span class="math inline">\((-2,+\infty)\)</span>. En la siguiente tabla calculamos estos signos.</p>
+<div class="math-table">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Intervalo</th>
+<th><span class="math inline">\(x_0\)</span></th>
+<th><span class="math inline">\(f''(x_0)\)</span></th>
+<th><span class="math inline">\(f\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\((-\infty,-2)\)</span></td>
+<td><span class="math inline">\(-3\)</span></td>
+<td><span class="math inline">\(-\)</span></td>
+<td>cóncava</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\((-2,+\infty)\)</span></td>
+<td>-1</td>
+<td><span class="math inline">\(+\)</span></td>
+<td>convexa</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Entonces <span class="math inline">\(f\)</span> resulta convexa en <span class="math inline">\((-2,+\infty)\)</span> y cóncava en <span class="math inline">\((-\infty,-2)\)</span> como consecuencia de la <a href="#teo-prueba-concavidad">prueba de la concavidad</a>. El signo de <span class="math inline">\(f''\)</span> cambia en <span class="math inline">\(x=-2\)</span>, que resulta un punto de continuidad de <span class="math inline">\(f\)</span>, por lo que <span class="math inline">\(P=(-2,f(-2))=(-2,-2/e^2)\)</span> es el único punto de inflexión de la gráfica.</p>
+<p><strong>(H) Trazar la gráfica</strong> Con lo calculado anteriormente trazamos la gráfica aproximada de <span class="math inline">\(f\)</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap4/4.5-funcion3.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Realizar el gráfico de la función <span class="math inline">\(\displaystyle f(x)=\frac{\cos x}{2+\operatorname{sen} x}\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-36-contents" aria-controls="callout-36" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-36" class="callout-36-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>(A) Dominio</strong> Observemos que <span class="math inline">\(-1\leq \operatorname{sen} x\leq 1\)</span>, con lo que <span class="math inline">\(2+\operatorname{sen}x\geq 1\)</span> para todo <span class="math inline">\(x\)</span>, es decir, el denominador nunca se anula. En consecuencia, <span class="math inline">\(D_f=\mathbb{R}\)</span>.</p>
+<p><strong>(B) Intersecciones</strong></p>
+<ul>
+<li>Para encontrar intersecciones con el eje <span class="math inline">\(x\)</span> escribimos</li>
+</ul>
+<p><span class="math display">\[
+f(x)=0, \quad \text{ es decir,} \quad\frac{\cos x}{2+\operatorname{sen} x}=0,
+\]</span></p>
+<p>que se cumple cuando <span class="math inline">\(\cos x=0\)</span>, es decir, si <span class="math inline">\(x=(2n+1)\pi/2\)</span>, <span class="math inline">\(n\in\mathbb{Z}\)</span>.</p>
+<ul>
+<li>Para calcular la intersección con el eje <span class="math inline">\(y\)</span> evaluamos</li>
+</ul>
+<p><span class="math display">\[
+f(0)=\frac{\cos 0}{2+\operatorname{sen} 0}=\frac{1}{2}.
+\]</span></p>
+<p>Entonces la gráfica interseca al eje <span class="math inline">\(y\)</span> en <span class="math inline">\(y=1/2\)</span>.</p>
+<p><strong>(C) Simetría y periodicidad</strong></p>
+<p>Comenzamos calculando <span class="math inline">\(f(-x)\)</span></p>
+<p><span class="math display">\[
+f(-x)=\frac{\cos(-x)}{2+\operatorname{sen}(-x)}=\frac{\cos x}{2-\operatorname{sen}x},
+\]</span></p>
+<p>ya que <span class="math inline">\(y=\cos x\)</span> es una función par e <span class="math inline">\(y=\operatorname{sen} x\)</span> es impar. Esta expresión no coincide con <span class="math inline">\(f(x)\)</span> ni con <span class="math inline">\(f(-x)\)</span>, por lo que la función no es par ni impar.</p>
+<p>Para la periodicidad, como las funciones trigonométricas son periódicas, esperamos obtener una función periódica. Para determinar el período, si <span class="math inline">\(p&gt;0\)</span> está fijo planteamos la condición <span class="math inline">\(f(x+p)=f(x)\)</span> e intentaremos determinar <span class="math inline">\(p\)</span>.</p>
+<p>Esta condición resulta</p>
+<p><span class="math display">\[
+\frac{\cos(x+p)}{2+\operatorname{sen}(x+p)}=\frac{\cos x}{2+\operatorname{sen} x}.
+\]</span></p>
+<p>Utilizando las fórmulas para el seno y el coseno de una suma de ángulos</p>
+<p><span class="math display">\[
+\operatorname{sen}(\alpha+\beta)=\operatorname{sen} \alpha \cos \beta +\cos\alpha \operatorname{sen} \beta \quad \text{ y } \quad \cos(\alpha+\beta)=\cos\alpha\cos\beta-\operatorname{sen} \alpha\operatorname{sen} \beta
+\]</span></p>
+<p>obtenemos</p>
+<p><span class="math display">\[
+\frac{\cos x\cos p-\operatorname{sen} x\operatorname{sen} p}{2+\operatorname{sen} x\cos p+\cos x\operatorname{sen} p}=\frac{\cos x}{2+\operatorname{sen} x}.
+\]</span></p>
+<p>Esta igualdad implica que</p>
+<p><span class="math display">\[
+(\cos x\cos p-\operatorname{sen} x\operatorname{sen} p)(2+\operatorname{sen} x)=(2+\operatorname{sen} x\cos p+\cos x\operatorname{sen} p)\cos x
+\]</span></p>
+<p>o de manera equivalente</p>
+<p><span class="math display">\[
+2\cos x\cos p+\cos x\operatorname{sen} x\cos p-2\operatorname{sen} x\operatorname{sen} p-\operatorname{sen}^2 x\operatorname{sen} p=2\cos x+\cos x\operatorname{sen} x\cos p+\cos^2x\operatorname{sen} p,
+\]</span></p>
+<p>que puede ser reducida a</p>
+<p><span id="eq-periodicidad"><span class="math display">\[
+2\cos x(\cos p-1)=\operatorname{sen} p(1+2\operatorname{sen} x).
+\tag{5.1}\]</span></span></p>
+<p>Ahora bien, si <span class="math inline">\(\operatorname{sen} p\neq 0\)</span>, entonces obtenemos</p>
+<p><span class="math display">\[
+\frac{\cos p-1}{\operatorname{sen} p}=\frac{1+2\operatorname{sen} x}{2\cos x},
+\]</span></p>
+<p>pero como esta igualdad debe cumplirse para todo <span class="math inline">\(x\)</span> tal que <span class="math inline">\(\cos x\neq 0\)</span>, es un absurdo. Entonces debe ser <span class="math inline">\(\operatorname{sen} p=0\)</span>, y sustituyendo esto en (<a href="#eq-periodicidad" class="quarto-xref"><span>5.1</span></a>) resulta</p>
+<p><span class="math display">\[
+2\cos x(\cos p-1)=0,
+\]</span></p>
+<p>de donde concluimos que <span class="math inline">\(\cos p=1\)</span>. El valor positivo <span class="math inline">\(p\)</span> más pequeño que verifica <span class="math inline">\(\operatorname{sen} p=0\)</span> y <span class="math inline">\(\cos p=1\)</span> es <span class="math inline">\(p=2\pi\)</span>, con lo cual <span class="math inline">\(f\)</span> es periódica de período <span class="math inline">\(2\pi\)</span>. Así, basta analizarla ahora en <span class="math inline">\([0,2\pi]\)</span> y luego extender su gráfico a todo <span class="math inline">\(\mathbb{R}\)</span> de forma periódica.</p>
+<p><strong>(D) Asíntotas</strong></p>
+<ul>
+<li><p>La gráfica no presenta asíntotas verticales, ya que se trata de una función continua en todo <span class="math inline">\(\mathbb{R}\)</span>.</p></li>
+<li><p>No presenta asíntotas horizontales, ya que se trata de una función periódica de período <span class="math inline">\(2\pi\)</span>.</p></li>
+</ul>
+<p><strong>(E) Intervalos de crecimiento y decrecimiento</strong></p>
+<p>Como <span class="math inline">\(f\)</span> es periódica de período <span class="math inline">\(2\pi\)</span>, Calculamos <span class="math inline">\(f'\)</span> usando la regla del cociente</p>
+<p><span class="math display">\[
+f'(x)=\frac{-\operatorname{sen} x(2+\operatorname{sen} x)-\cos x\cos x}{(2+\operatorname{sen} x)^2}=-\frac{1+2\operatorname{sen} x}{(2+\operatorname{sen} x)^2}.
+\]</span></p>
+<p>Luego <span class="math inline">\(f'(x)=0\)</span> si y sólo si <span class="math inline">\(1+2\operatorname{sen} x=0\)</span>, o de forma equivalente <span class="math inline">\(\operatorname{sen} x=-1/2\)</span>. Esto significa que los puntos críticos de <span class="math inline">\(f\)</span> son <span class="math inline">\(x=7\pi/6\)</span> y <span class="math inline">\(11\pi/6\)</span>. Por la <a href="#teo-propiedad-signoconst">propiedad del signo constante</a>, <span class="math inline">\(f'\)</span> tendrá signo constante en los intervalos <span class="math inline">\((0, 7\pi/6)\)</span>, <span class="math inline">\((7\pi/6,11\pi/6)\)</span> y <span class="math inline">\((11\pi/6,2\pi)\)</span>. En la siguiente tabla determinamos el signo de <span class="math inline">\(f'\)</span> en cada uno de ellos.</p>
+<div class="math-table">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Intervalo</th>
+<th><span class="math inline">\(x_0\)</span></th>
+<th><span class="math inline">\(f'(x_0)\)</span></th>
+<th><span class="math inline">\(f\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(\displaystyle \left(0, \frac{7\pi}{6}\right)\)</span></td>
+<td><span class="math inline">\(\pi\)</span></td>
+<td><span class="math inline">\(-\)</span></td>
+<td>decrece</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\displaystyle \left(\frac{7\pi}{6}, \frac{11\pi}{6}\right)\)</span></td>
+<td><span class="math inline">\(\displaystyle\frac{3\pi}{2}\)</span></td>
+<td><span class="math inline">\(+\)</span></td>
+<td>crece</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\displaystyle \left(\frac{11\pi}{6}, 2\pi\right)\)</span></td>
+<td><span class="math inline">\(\displaystyle\frac{23\pi}{12}\)</span></td>
+<td><span class="math inline">\(-\)</span></td>
+<td>decrece</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Con la <a href="#teo-prueba-cd">prueba creciente/decreciente</a> podemos concluir que <span class="math inline">\(f\)</span> crece en <span class="math inline">\((7\pi/6, 11\pi/6)\)</span> y que decrece en <span class="math inline">\((0, 7\pi/6)\)</span> y en <span class="math inline">\((11\pi/6, 2\pi)\)</span>.</p>
+<p><strong>(F) Valores extremos locales</strong></p>
+<p>En la tabla anterior vemos que <span class="math inline">\(f'\)</span> cambia de negativa a positiva en <span class="math inline">\(x=7\pi/6\)</span>, por lo que <span class="math inline">\(f\)</span> presenta un mínimo local en este punto (por la <a href="#teo-prueba-primerader">prueba de la primera derivada</a>) y su valor es <span class="math inline">\(f(7\pi/6)=-\sqrt{3}/2\approx -0.577\)</span>. También vemos que <span class="math inline">\(f'\)</span> cambia de positiva a negativa en <span class="math inline">\(x=11\pi/6\)</span>, con lo cual <span class="math inline">\(f\)</span> presenta un máximo local en este punto de valor <span class="math inline">\(f(11\pi/6)=\sqrt{3}/2\approx 0.577\)</span>.</p>
+<p><strong>(G) Concavidad y puntos de inflexión</strong></p>
+<p>Calculamos la derivada segunda de <span class="math inline">\(f\)</span>, nuevamente con la regla del cociente</p>
+<p><span class="math display">\[
+f''(x)=-\frac{2\cos x(2+\operatorname{sen} x)^2-(1+2\operatorname{sen} x)2(2+\operatorname{sen} x)\cos x}{(2+\operatorname{sen} x)^4}=-\frac{2\cos x(1-\operatorname{sen} x)}{(2+\operatorname{sen} x)^3}.
+\]</span></p>
+<p>Así, <span class="math inline">\(f''(x)=0\)</span> cuando <span class="math inline">\(\cos x=0\)</span> o cuando <span class="math inline">\(\operatorname{sen} x=1\)</span>. Los puntos son <span class="math inline">\(x=\pi/2\)</span> y <span class="math inline">\(x=3\pi/2\)</span> para que se cumpla la primera, y <span class="math inline">\(x=\pi/2\)</span> para la segunda. Por la <a href="#teo-propiedad-signoconst">propiedad del signo constante</a> <span class="math inline">\(f''\)</span> tendrá signo constante en <span class="math inline">\((0,\pi/2)\)</span>, en <span class="math inline">\((\pi/2,3\pi/2)\)</span> y en <span class="math inline">\((3\pi/2, 2\pi)\)</span>. En la siguiente tabla calculamos estos signos.</p>
+<div class="math-table">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Intervalo</th>
+<th><span class="math inline">\(x_0\)</span></th>
+<th><span class="math inline">\(f'(x_0)\)</span></th>
+<th><span class="math inline">\(f\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(\displaystyle \left(0, \frac{\pi}{2}\right)\)</span></td>
+<td><span class="math inline">\(\displaystyle\frac{\pi}{4}\)</span></td>
+<td><span class="math inline">\(-\)</span></td>
+<td>cóncava</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\displaystyle \left(\frac{\pi}{2}, \frac{3\pi}{2}\right)\)</span></td>
+<td><span class="math inline">\(\pi\)</span></td>
+<td><span class="math inline">\(+\)</span></td>
+<td>convexa</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\displaystyle \left(\frac{3\pi}{2}, 2\pi\right)\)</span></td>
+<td><span class="math inline">\(\displaystyle\frac{7\pi}{4}\)</span></td>
+<td><span class="math inline">\(-\)</span></td>
+<td>cóncava</td>
+</tr>
+</tbody>
+</table>
+<p>Entonces <span class="math inline">\(f\)</span> resulta convexa en <span class="math inline">\((\pi/2,3\pi/2)\)</span> y cóncava en <span class="math inline">\((0,\pi/2)\)</span> y en <span class="math inline">\((3\pi/2,2\pi)\)</span> como consecuencia de la <a href="#teo-prueba-concavidad">prueba de la concavidad</a>. El signo de <span class="math inline">\(f''\)</span> cambia en <span class="math inline">\(x=\pi/2\)</span> y en <span class="math inline">\(x=3\pi/2\)</span>, ambos puntos de continuidad de <span class="math inline">\(f\)</span>, por lo que <span class="math inline">\(P=(\pi/2,f(\pi/2))=(\pi/2,0)\)</span> y <span class="math inline">\(Q=(3\pi/2, f(3\pi/2))=(3\pi/2,0)\)</span> son los dos puntos de inflexión de la gráfica.</p>
+<p><strong>(H) Trazar la gráfica</strong> Con lo calculado anteriormente trazamos la gráfica aproximada de <span class="math inline">\(f\)</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap4/4.5-funcion4.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Graficar <span class="math inline">\(y=\ln(4-x^2)\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-37-contents" aria-controls="callout-37" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-37" class="callout-37-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>(A) Dominio</strong> Debido a que el logaritmo de cero y de números negativos no existe, planteamos que <span class="math inline">\(4-x^2&gt;0\)</span>, lo que nos lleva a <span class="math inline">\(|x|&lt;2\)</span>, o también <span class="math inline">\(-2&lt;x&lt;2\)</span>. En consecuencia, <span class="math inline">\(D_f=(-2,2)\)</span>.</p>
+<p><strong>(B) Intersecciones</strong></p>
+<ul>
+<li>Para encontrar intersecciones con el eje <span class="math inline">\(x\)</span> hacemos</li>
+</ul>
+<p><span class="math display">\[
+f(x)=0, \quad \text{ es decir,} \quad \ln(4-x^2)=0,
+\]</span></p>
+<p>que nos conduce a <span class="math inline">\(x^2=3\)</span> y entonces <span class="math inline">\(x=\pm \sqrt{3}\)</span>.</p>
+<ul>
+<li>Para calcular la intersección con el eje <span class="math inline">\(y\)</span> evaluamos</li>
+</ul>
+<p><span class="math display">\[
+f(0)=\ln(4-0^2)=\ln 4\approx 1.386.
+\]</span></p>
+<p>Entonces la gráfica interseca al eje <span class="math inline">\(y\)</span> en <span class="math inline">\(y=\ln 4\)</span>.</p>
+<p><strong>(C) Simetría y periodicidad</strong></p>
+<p>Comenzamos calculando <span class="math inline">\(f(-x)\)</span></p>
+<p><span class="math display">\[
+f(-x)=\ln(4-(-x)^2)=\ln(4-x^2)=f(x),
+\]</span></p>
+<p>para todo <span class="math inline">\(x\)</span> en el dominio de <span class="math inline">\(f\)</span>, de donde resulta que <span class="math inline">\(f\)</span> es par.</p>
+<p>En este caso <span class="math inline">\(f\)</span> no resulta periódica.</p>
+<p><strong>(D) Asíntotas</strong></p>
+<ul>
+<li>Dado que <span class="math inline">\(f\)</span> es continua en su dominio, analizamos los puntos extremos del intervalo.</li>
+</ul>
+<p>Observar que tanto cuando <span class="math inline">\(x\to 2^-\)</span> como cuando <span class="math inline">\(x\to -2^+\)</span>, <span class="math inline">\(4-x^2\to 0\)</span> con valores positivos. Como <span class="math inline">\(\lim_{t\to 0^+} ln(t)=-\infty\)</span>, concluimos que</p>
+<p><span class="math display">\[
+\lim_{x\to -2^+} f(x)=-\infty \quad \text{ y también } \quad \lim_{x\to 2^-} f(x)=-\infty.
+\]</span></p>
+<p>Es decir, <span class="math inline">\(x=-2\)</span> y <span class="math inline">\(x=2\)</span> son asíntotas verticales de la gráfica de <span class="math inline">\(f\)</span>.</p>
+<ul>
+<li>La función no presenta asíntotas horizontales, ya que <span class="math inline">\(f\)</span> sólamente está definida en <span class="math inline">\((-2,2)\)</span>.</li>
+</ul>
+<p><strong>(E) Intervalos de crecimiento y decrecimiento</strong></p>
+<p>Calculamos <span class="math inline">\(f'\)</span> utilizando la derivada del logaritmo natural y la regla de la cadena</p>
+<p><span class="math display">\[
+f'(x)=-\frac{2x}{4-x^2},
+\]</span></p>
+<p>de donde podemos ver que <span class="math inline">\(f'(x)=0\)</span> si y sólo si <span class="math inline">\(x=0\)</span>. Por lo tanto <span class="math inline">\(f\)</span> tiene un único punto crítico, <span class="math inline">\(x=0\)</span>. Utilizando la <a href="#teo-propiedad-signoconst">propiedad del signo constante</a>, <span class="math inline">\(f'\)</span> tendrá signo constante en los intervalos <span class="math inline">\((-2, 0)\)</span> y en <span class="math inline">\((0,2)\)</span>. La siguiente tabla muestra el signo de <span class="math inline">\(f'\)</span> en cada uno.</p>
+<div class="math-table">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Intervalo</th>
+<th><span class="math inline">\(x_0\)</span></th>
+<th><span class="math inline">\(f'(x_0)\)</span></th>
+<th><span class="math inline">\(f\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\((-2,0)\)</span></td>
+<td><span class="math inline">\(-1\)</span></td>
+<td><span class="math inline">\(+\)</span></td>
+<td>crece</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\((0,2)\)</span></td>
+<td>1</td>
+<td><span class="math inline">\(-\)</span></td>
+<td>decrece</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Utilizando la <a href="#teo-prueba-cd">prueba creciente/decreciente</a> concluimos que <span class="math inline">\(f\)</span> crece en <span class="math inline">\((-2,0)\)</span> y decrece en <span class="math inline">\((0,2)\)</span>.</p>
+<p><strong>(F) Valores extremos locales</strong></p>
+<p>En la tabla anterior vemos que <span class="math inline">\(f'\)</span> cambia de positiva a negativa en <span class="math inline">\(x=0\)</span>, por lo que <span class="math inline">\(f\)</span> presenta un máximo local en este punto (por la <a href="#teo-prueba-primerader">prueba de la primera derivada</a>) y su valor es <span class="math inline">\(f(0)=\ln 4\)</span>.</p>
+<p><strong>(G) Concavidad y puntos de inflexión</strong></p>
+<p>Calculamos la derivada segunda de <span class="math inline">\(f\)</span> usando la regla del cociente</p>
+<p><span class="math display">\[
+f''(x)=-\frac{2(4-x^2)-2x(-2x)}{(4-x^2)^2}=-\frac{2x^2+8}{(4-x^2)^2}.
+\]</span></p>
+<p>Podemos observar que <span class="math inline">\(f''(x)&lt;0\)</span> en todo su dominio, es decir, en todo el intervalo <span class="math inline">\((-2,2)\)</span>. Por la <a href="#teo-prueba-concavidad">prueba de la concavidad</a> <span class="math inline">\(f\)</span> resulta cóncava en todo su dominio, y en consecuencia no hay puntos de inflexión.</p>
+<p><strong>(H) Trazar la gráfica</strong> Con todo lo calculado anteriormente trazamos la gráfica aproximada de <span class="math inline">\(f\)</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap4/4.5-funcion5.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:45.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p><a href="#seccion_4.5">↑ Volver al inicio de la sección</a></p>
+</section>
+<section id="seccion_4.7" class="level2">
+<h2 class="anchored" data-anchor-id="seccion_4.7">4.7. Problemas de optimización</h2>
+<p>En esta sección aplicaremos los métodos aprendidos para hallar extremos de una función a problemas concretos. La idea es optimizar cierta cantidad, estableciendo una función que debe maximizarse (como utilidades o ganancias) o minimizarse (como un costo, una distancia o un tiempo de recorrido). Veamos algunos ejemplos.</p>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Un granjero tiene 2400 pies de cerca y desea cercar un campo rectangular que limita con un río recto. No necesita cercar a lo largo del río. ¿Cuáles son las dimensiones del campo que tiene el área más grande?</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap4/4.7-campo-rectangular.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:30.0%"></p>
+</figure>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-38-contents" aria-controls="callout-38" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-38" class="callout-38-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>El primer paso es definir adecuadamente la función a optimizar, especificando las unidades de medida y el intervalo al que pertenece la variable independiente. Si llamamos <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> a las longitudes medidas en pies de los laterales del campo y del fondo, respectivamente, entonces el área encerrada es <span class="math display">\[
+A=xy.
+\]</span></p>
+<p>Sin embargo, sabemos que el perímetro de la región resultante debe sewr de 2400 pies, con lo cual</p>
+<p><span class="math display">\[
+2x+y=2400, \quad \text{ o bien} \quad y=2400-2x.
+\]</span></p>
+<p>Ahora podemos expresar el área como una función de <span class="math inline">\(x\)</span></p>
+<p><span class="math display">\[
+A(x)=x(2400-2x)=2400x-2x^2,
+\]</span></p>
+<p>donde <span class="math inline">\(0\leq x\leq 1200\)</span>. Esta restricción aparece al imponer las condiciones de que tanto <span class="math inline">\(x\)</span> como <span class="math inline">\(A(x)\)</span> sean no negativas.</p>
+<p>Como <span class="math inline">\(A\)</span> es una función continua en el intervalo <span class="math inline">\([0,1200]\)</span>, el <a href="#teo-valores-extremos">teorema de los valores extremos</a> asegura que alcanza tanto un máximo como un mínimo absoluto en el intervalo.</p>
+<p>Buscamos entonces los puntos críticos de <span class="math inline">\(A\)</span>. Tenemos que</p>
+<p><span class="math display">\[
+A'(x)=2400-4x,
+\]</span></p>
+<p>y <span class="math inline">\(A'(x)=0\)</span> si y sólo si <span class="math inline">\(x=600\)</span>. Ahora evaluamos <span class="math inline">\(A\)</span> en este punto, y en los extremos del intervalo</p>
+<p><span class="math display">\[
+A(600)=2400\cdot 600-2(600)^2=720000
+\]</span></p>
+<p><span class="math display">\[
+A(0)=2400\cdot 0 - 2\cdot 0^2=0, \quad A(1200)=2400\cdot 1200- 2(1200)^2=0.
+\]</span></p>
+<p>De esta manera, el máximo valor posible para el área es <span class="math inline">\(720000\)</span> pies<sup>2</sup>, y se logra cuando <span class="math inline">\(x=600\)</span> pies. Luego, <span class="math inline">\(y=2400-2\cdot 600=1200\)</span> pies. Por lo que el sector que encierra área máxima debe tener <span class="math inline">\(600\)</span> pies en los laterales y <span class="math inline">\(1200\)</span> pies en el fondo.</p>
+</div>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Se va a fabricar una lata para que contenga 1 litro de aceite. Hallar las dimensiones que minimizarán el costo del metal para fabricar la lata.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap4/4.7-lata.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:25.0%"></p>
+</figure>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-39-contents" aria-controls="callout-39" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-39" class="callout-39-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Como queremos minimizar el costo de fabricación, debemos minimizar el área de la superficie de la lata. Si llamamos <span class="math inline">\(r\)</span> y <span class="math inline">\(h\)</span> al radio de la base y la altura, respectivamente, medidas en cm, el área de la superficie es</p>
+<p><span class="math display">\[
+A=A_\ell+A_b=2\pi rh+2\pi r^2.
+\]</span></p>
+<p>La condición sobre la capacidad de la lata nos da</p>
+<p><span class="math display">\[
+1000 =\pi r^2 h,
+\]</span></p>
+<p>y despejando <span class="math inline">\(h\)</span> en términos de <span class="math inline">\(r\)</span></p>
+<p><span class="math display">\[
+h=\frac{1000}{\pi r^2}.
+\]</span></p>
+<p>Usando esta relación en la fórmula para el área resulta</p>
+<p><span class="math display">\[
+A(r)=2\pi r\frac{1000}{\pi r^2}+2\pi r^2=\frac{2000}{r}+2\pi r^2
+\]</span></p>
+<p>con <span class="math inline">\(r\in(0,+\infty)\)</span>.</p>
+<p>Buscamos los puntos críticos de <span class="math inline">\(A\)</span>, calculando la derivada.</p>
+<p><span class="math display">\[
+A'(r)=-\frac{2000}{r^2}+4\pi r
+\]</span></p>
+<p>con lo cual <span class="math inline">\(A'(r)=0\)</span> si y sólo si <span class="math inline">\(r=\sqrt[3]{500/\pi}=r_0\)</span>. Para determinar la naturaleza de este punto crítico, podemos emplear la <a href="#teo-prueba-segundader">prueba de la segunda derivada</a>.</p>
+<p><span class="math display">\[
+A''(r)=\frac{4000}{r^3}+4\pi,
+\]</span></p>
+<p>de donde <span class="math inline">\(A''(r_0)&gt;0\)</span> y entonces la función <span class="math inline">\(A\)</span> alcanza un mínimo local en <span class="math inline">\(r_0\)</span>, cuyo valor es</p>
+<p><span class="math display">\[
+A(r_0)=\frac{2000}{r_0}+2\pi r_0^2=\frac{2000}{\sqrt[3]{500/\pi}}+2\pi (500/\pi)^{2/3}=\frac{3000}{\sqrt[3]{500/\pi}}\, \mathrm{cm}^2 \approx 553.58 \mathrm{cm}^2.
+\]</span></p>
+<p>Para asegurarnos de que este valor mínimo local es también absoluto, estudiamos los límites de <span class="math inline">\(A\)</span> cuando <span class="math inline">\(r\)</span> se aproxima a cero o a infinito</p>
+<p><span class="math display">\[
+\lim_{r\to 0^+} A(r)=\lim_{r\to 0^+} \frac{2000}{r}+2\pi r^2=\infty
+\]</span></p>
+<p>y</p>
+<p><span class="math display">\[
+\lim_{r\to \infty} A(r)=\lim_{r\to \infty} \frac{2000}{r}+2\pi r^2=\infty,
+\]</span></p>
+<p>con lo cual el mínimo encontrado es absoluto. Las dimensiones de la lata que minimizan el área de la superficien (y, por lo tanto, el costo de fabricación) son</p>
+<p><span class="math display">\[
+r=r_0=\sqrt[3](500/pi)\approx 5.419 \,\mathrm{cm} \quad \text{ y } \quad h=\frac{1000}{\pi r_0^2}=2r_0=2\sqrt[3](500/pi)\approx 10.838 \,\mathrm{cm}.
+\]</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution callout-titled" title="Importante">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Importante
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Podemos utilizar otro método para determinar la naturaleza del punto crítico hallado. Como <span class="math inline">\(A'\)</span> es continua en <span class="math inline">\((0,+\infty)\)</span> y se anula en <span class="math inline">\(r_0\)</span>, la <a href="#teo-prueba-signoconst">propiedad del signo constante</a> establece que tendrá signo constante en <span class="math inline">\((0,r_0)\)</span> y en <span class="math inline">\((r_0,+\infty)\)</span>. En la siguiente tabla tenemos el signo de <span class="math inline">\(A'\)</span> en cada uno.</p>
+<div class="math-table">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Intervalo</th>
+<th><span class="math inline">\(r\)</span></th>
+<th><span class="math inline">\(A'(r)\)</span></th>
+<th><span class="math inline">\(A\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\((0,r_0)\)</span></td>
+<td><span class="math inline">\(1\)</span></td>
+<td><span class="math inline">\(-\)</span></td>
+<td>decrece</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\((r_0,+\infty)\)</span></td>
+<td><span class="math inline">\(6\)</span></td>
+<td><span class="math inline">\(+\)</span></td>
+<td>crece</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Por la <a href="#teo-prueba-cd">prueba creciente/decreciente</a> sabemos que <span class="math inline">\(A\)</span> decrece en <span class="math inline">\((0,r_0)\)</span> y crece en <span class="math inline">\((r_0,+\infty)\)</span>, por lo que en <span class="math inline">\(r_0\)</span> alcanza su único mínimo local, que también es absoluto.</p>
+</div>
+</div>
+<p>Podemos dar una versión de la <a href="#teo-prueba-primerader">prueba de la primera derivada</a> para extremos absolutos.</p>
+<div id="teo-primerader-global" class="theorem">
+<p>Prueba de la primera derivada para valores extremos absolutos</p>
+<p>Supongamos que <span class="math inline">\(c\)</span> es un punto crítico de una función continua definida sobre un intervalo <span class="math inline">\(I\)</span>.</p>
+<ul>
+<li><p>Si <span class="math inline">\(f'(x)&gt;0\)</span> para todo <span class="math inline">\(x&lt;c\)</span> con <span class="math inline">\(x\in I\)</span> y <span class="math inline">\(f'(x)&lt;0\)</span> para todo <span class="math inline">\(x&gt;c\)</span>, <span class="math inline">\(x\in I\)</span> entonces <span class="math inline">\(f(c)\)</span> es el valor máximo absoluto de <span class="math inline">\(f\)</span> en <span class="math inline">\(I\)</span>.</p></li>
+<li><p>Si <span class="math inline">\(f'(x)&lt;0\)</span> para todo <span class="math inline">\(x&lt;c\)</span> con <span class="math inline">\(x\in I\)</span> y <span class="math inline">\(f'(x)&gt;0\)</span> para <span class="math inline">\(x&gt;c\)</span>, <span class="math inline">\(x\in I\)</span> entonces <span class="math inline">\(f(c)\)</span> es el valor mínimo absoluto de <span class="math inline">\(f\)</span> en <span class="math inline">\(I\)</span>.</p></li>
+</ul>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Encontrar el punto sobre la parábola <span class="math inline">\(y^2=2x\)</span> más cercano al punto <span class="math inline">\((1,4)\)</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap4/4.7-parabola.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:35.0%"></p>
+</figure>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-41-contents" aria-controls="callout-41" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-41" class="callout-41-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Si <span class="math inline">\((x,y)\)</span> es cualquier punto sobre la parábola, entonces queremos que la distancia desde <span class="math inline">\((x,y)\)</span> a <span class="math inline">\((1,4)\)</span>, es decir</p>
+<p><span class="math display">\[
+d=\sqrt{(x-1)^2+(y-4)^2}
+\]</span></p>
+<p>sea lo más chica posible. Como <span class="math inline">\(y^2=2x\)</span> por estar el punto en la parábola, también podemos escribir <span class="math inline">\(x=y^2/2\)</span>. Con esta relación expresamos a la distancia en términos de <span class="math inline">\(y\)</span></p>
+<p><span class="math display">\[
+d(y)=\sqrt{\left(\frac{1}{2}y^2-1\right)^2+(y-4)^2}.
+\]</span></p>
+<p>Dado que <span class="math inline">\(d(y)\geq 0\)</span> para todo <span class="math inline">\(y\)</span>, <span class="math inline">\(d\)</span> es mínima si y sólo si <span class="math inline">\(d^2\)</span> es mínima. Para evitar trabajar con la raíz cuadrada, consideramos</p>
+<p><span class="math display">\[
+f(y)=d^2(y)=\left(\frac{1}{2}y^2-1\right)^2+(y-4)^2,
+\]</span></p>
+<p>para <span class="math inline">\(y\in \mathbb{R}\)</span>. Buscamos los puntos críticos, hallando <span class="math inline">\(f'\)</span>.</p>
+<p><span class="math display">\[
+f'(y)=2\left(\frac{1}{2}y^2-1\right)y+2(y-4)=y^3-8,
+\]</span></p>
+<p>con lo que <span class="math inline">\(f'(y)=0\)</span> si y sólo si <span class="math inline">\(y=2\)</span>. Como <span class="math inline">\(f\)</span> presenta un único punto crítico en <span class="math inline">\(\mathbb{R}\)</span>, hacemos la tabla</p>
+<div class="math-table">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Intervalo</th>
+<th><span class="math inline">\(y_0\)</span></th>
+<th><span class="math inline">\(f'(y_0)\)</span></th>
+<th><span class="math inline">\(f\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\((-\infty,2)\)</span></td>
+<td><span class="math inline">\(0\)</span></td>
+<td><span class="math inline">\(-\)</span></td>
+<td>decrece</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\((2,+\infty)\)</span></td>
+<td><span class="math inline">\(3\)</span></td>
+<td><span class="math inline">\(+\)</span></td>
+<td>crece</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Utilizando la <a href="#teo-primerader-global">prueba de la primera derivada para valores extremos absolutos</a> concluimos que <span class="math inline">\(f\)</span> presenta un mínimo absoluto en <span class="math inline">\(y=2\)</span>, cuyo valor es</p>
+<p><span class="math display">\[
+f(2)=\left(\frac{1}{2}2^2-1\right)^2+(2-4)^2=5,
+\]</span></p>
+<p>con lo que la distancia mínima es <span class="math inline">\(d=\sqrt{5}\)</span> (recordar que minimizamos <span class="math inline">\(d^2\)</span>). El punto sobre la parábola donde se alcanza esta distancia mínima es <span class="math inline">\((2^2/2,2)=(2,2)\)</span>.</p>
+</div>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Un hombre está en un punto <span class="math inline">\(A\)</span> sobre una de las riberas de un río recto que tiene 3 km de ancho y desea llegar hasta el punto <span class="math inline">\(B\)</span>, 8 km corriente abajo en la ribera opuesta, tan rápido como le sea posible. Podría remar en su bote, cruzar directamente el río hasta el punto <span class="math inline">\(C\)</span> y correr hasta <span class="math inline">\(B\)</span>, o podría remar hasta <span class="math inline">\(B\)</span> o, en última instancia, remar hasta algún punto <span class="math inline">\(D\)</span>, entre <span class="math inline">\(C\)</span> y <span class="math inline">\(B\)</span>, y luego correr hasta <span class="math inline">\(B\)</span>. Si puede remar a 6 km/h y correr a 8 km/h, ¿dónde debe desembarcar para llegar a <span class="math inline">\(B\)</span> tan pronto como sea posible? (Suponer que la rapidez del agua es insignificante comparada con la rapidez a la que rema el hombre.)</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap4/4.7-rio.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
+</figure>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-42-contents" aria-controls="callout-42" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-42" class="callout-42-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Supongamos que el hombre rema desde <span class="math inline">\(A\)</span> hasta un punto <span class="math inline">\(D\)</span> ubicado entre <span class="math inline">\(C\)</span> y <span class="math inline">\(B\)</span> (pudiendo, tal vez, coincidir con alguno de éstos). Sea <span class="math inline">\(x\)</span> la distancia en km desde el punto <span class="math inline">\(C\)</span> al punto <span class="math inline">\(D\)</span>. Si <span class="math inline">\(d_1(x)\)</span> es la distancia en km desde <span class="math inline">\(A\)</span> hasta <span class="math inline">\(D\)</span>, utilizando el teorema de Pitágoras resulta</p>
+<p><span class="math display">\[
+d_1^2(x)=x^2+3^2, \quad \text{ o bien }\quad d_1(x)=\sqrt{9+x^2}.
+\]</span></p>
+<p>Entonces el hombre rema <span class="math inline">\(d_1(x)\)</span> km desde <span class="math inline">\(A\)</span> hasta <span class="math inline">\(D\)</span>, y luego corre <span class="math inline">\(d_2(x)=8-x\)</span> kilómetros desde <span class="math inline">\(D\)</span> hasta <span class="math inline">\(B\)</span>. Podemos calcular el tiempo total dividiendo cada distancia por la velocidad correspondiente. Si llamamos <span class="math inline">\(T(x)\)</span> tal tiempo en horas, en función de <span class="math inline">\(x\)</span> obtenemos</p>
+<p><span class="math display">\[
+T(x)=\frac{d_1(x)}{6}+\frac{d_2(x)}{8}=\frac{\sqrt{9+x^2}}{6}+\frac{8-x}{8},
+\]</span></p>
+<p>donde <span class="math inline">\(x\in [0,8]\)</span>.</p>
+<p>Para llegar al punto <span class="math inline">\(B\)</span> lo más rapido posible, es preciso minimizar el tiempo de recorrido.</p>
+<p>Como estamos en el caso de una función continua en un intervalo cerrado, buscamos los puntos críticos en <span class="math inline">\((0,8)\)</span> y comparamos los valores de la función en estos puntos con los valores que toma en los extremos del intervalo.</p>
+<p><span class="math display">\[
+T'(x)=\frac{1}{6}\frac{1}{2\sqrt{9+x^2}}2x+\frac{1}{8}(-1)=\frac{x}{6\sqrt{9+x^2}}-\frac{1}{8}
+\]</span></p>
+<p>que se anula cuando <span class="math inline">\(x=9\sqrt{7}/7\approx 3.4\)</span> km. Dado que</p>
+<p><span class="math display">\[
+T(9\sqrt{7}/7)=\frac{\sqrt{9+\frac{81\cdot 7}{49}}}{6}+\frac{8-\frac{9\sqrt{7}}{7}}{8}=1+\frac{\sqrt{7}}{8}\approx 1.33
+\]</span></p>
+<p>y</p>
+<p><span class="math display">\[
+T(0)=\frac{\sqrt{9+0^2}}{6}+\frac{8-0}{8}=\frac{1}{2}+1=1.5 \quad \text{ y }\quad T(8)=\frac{\sqrt{9+8^2}}{6}+\frac{8-8}{8}=\frac{\sqrt{73}}{6}\approx 1.42,
+\]</span></p>
+<p>el mínimo tiempo posible se consigue cuando <span class="math inline">\(x=9\sqrt{7}/7\)</span> km.</p>
+</div>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Encontrar el área del rectángulo más grande que puede inscribirse en una semicircunferencia de radio <span class="math inline">\(r\)</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap4/4.7-semicircunferencia.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
+</figure>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-43-contents" aria-controls="callout-43" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-43" class="callout-43-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Por simplicidad podemos ubicar la semicircunferencia centrada en el origen, abarcando el primer y el segundo cuadrantes. Sean <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> las coordenadas del vértice superior derecho del rectángulo que toca a la circunferencia (es decir, <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> son positivos). Entonces el rectángulo tiene altura <span class="math inline">\(y\)</span> y base de longitud <span class="math inline">\(2x\)</span>. Su área resulta entonces</p>
+<p><span class="math display">\[
+A=2xy.
+\]</span></p>
+<p>Como el punto <span class="math inline">\((x,y)\)</span> también está ubicado sobre la semicircunferencia, se cumple que <span class="math inline">\(x^2+y^2=r^2\)</span>, o también <span class="math inline">\(y=\sqrt{r^2-x^2}\)</span>. Por lo tanto, el área como función de <span class="math inline">\(x\)</span> resulta ser</p>
+<p><span class="math display">\[
+A(x)=2x\sqrt{r^2-x^2},
+\]</span></p>
+<p>con <span class="math inline">\(0\leq x\leq r\)</span>. Como <span class="math inline">\(A\)</span> es continua en el intervalo cerrado dado, sabemos que alcanza extremos absolutos. La derivada de <span class="math inline">\(A\)</span> es</p>
+<p><span class="math display">\[
+A'(x)=2\sqrt{r^2-x^2}+2x\frac{1}{2\sqrt{r^2-x^2}}(-2x)=\frac{2r^2-4x^2}{\sqrt{r^2-x^2}}.
+\]</span></p>
+<p>El único punto crítico en el intervalo <span class="math inline">\((0,r)\)</span> es <span class="math inline">\(x=r\sqrt{2}/2\)</span>. Evaluamos entonces</p>
+<p><span class="math display">\[
+A(r\sqrt{2}/2)=2\frac{\sqrt{2}}{2}r\sqrt{r^2-\frac{r^2}{2}}=r^2
+\]</span></p>
+<p>y también en los extremos del intervalo</p>
+<p><span class="math display">\[
+A(0)=2\cdot 0\sqrt{r^2-0^2}=0 \quad \text{ y }\quad A(r)=2r\sqrt{r^2-r^2}=0.
+\]</span></p>
+<p>Con lo cual, el área máxima es <span class="math inline">\(r^2\)</span> y se alcanza cuando <span class="math inline">\(x=r\sqrt{2}/2\)</span> e <span class="math inline">\(y=\sqrt{r^2-\frac{r^2}{2}}=r\sqrt{2}/2\)</span>. Es decir, el rectángulo tiene altura igual a la mitad de su base.</p>
+</div>
+</div>
+</div>
+<p><a href="#seccion_4.7">↑ Volver al inicio de la sección</a></p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./cap3.html" class="pagination-link" aria-label="3. Derivadas">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">3. Derivadas</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

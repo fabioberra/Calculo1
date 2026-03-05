@@ -1,0 +1,16 @@
+---
+title: "Cálculo I"
+numbered: false
+---
+
+# Presentación
+
+Este material ha sido elaborado como apoyo para el cursado de la asignatura **Cálculo I**, con el objetivo de facilitar el estudio y la comprensión de los principales conceptos del análisis matemático.
+
+A lo largo de los distintos capítulos se desarrollan, de manera progresiva y sistemática, los temas fundamentales del curso: funciones, límites, continuidad, derivadas e integrales. Cada uno de estos contenidos constituye una herramienta esencial para el estudio de fenómenos propios de la matemática, la física, la ingeniería y otras ciencias aplicadas.
+
+El enfoque adoptado combina el desarrollo teórico con ejemplos resueltos paso a paso, buscando fortalecer tanto la comprensión conceptual como la capacidad de resolución de problemas. Se prioriza una presentación clara, ordenada y gradual, que permita al estudiante construir los conocimientos progresivamente.
+
+Este libro está pensado como un complemento al trabajo en clase y al estudio personal, y pretende servir como una guía de consulta permanente a lo largo del cursado.
+
+Se recomienda al lector trabajar activamente con los ejemplos y ejercicios, y utilizar este material como apoyo para afianzar los contenidos vistos en cada unidad.

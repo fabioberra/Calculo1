@@ -1,0 +1,2636 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>1. Funciones – Notas de teoría - Cálculo I</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./cap2.html" rel="next">
+<link href="./index.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-d9ea66fcd6c317012447f26e9c021348.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./cap1.html"><span class="chapter-title">1. Funciones</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Notas de teoría - Cálculo I</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Cálculo I</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./cap1.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">1. Funciones</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./cap2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">2. Límites, continuidad y derivadas</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./cap3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">3. Derivadas</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./cap4.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4. Aplicaciones de la derivación</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Contenidos</h2>
+   
+  <ul>
+  <li><a href="#seccion_1.1" id="toc-seccion_1.1" class="nav-link active" data-scroll-target="#seccion_1.1">1.1. Definición y ejemplos</a>
+  <ul class="collapse">
+  <li><a href="#relación-entre-curvas-y-gráfico-de-funciones" id="toc-relación-entre-curvas-y-gráfico-de-funciones" class="nav-link" data-scroll-target="#relación-entre-curvas-y-gráfico-de-funciones">Relación entre curvas y gráfico de funciones</a></li>
+  <li><a href="#funciones-seccionalmente-definidas" id="toc-funciones-seccionalmente-definidas" class="nav-link" data-scroll-target="#funciones-seccionalmente-definidas">Funciones seccionalmente definidas</a></li>
+  <li><a href="#simetría" id="toc-simetría" class="nav-link" data-scroll-target="#simetría">Simetría</a></li>
+  <li><a href="#funciones-crecientes-y-decrecientes" id="toc-funciones-crecientes-y-decrecientes" class="nav-link" data-scroll-target="#funciones-crecientes-y-decrecientes">Funciones crecientes y decrecientes</a></li>
+  </ul></li>
+  <li><a href="#seccion_1.2" id="toc-seccion_1.2" class="nav-link" data-scroll-target="#seccion_1.2">1.2. Modelos matemáticos: un catálogo de funciones básicas</a>
+  <ul class="collapse">
+  <li><a href="#modelos-lineales" id="toc-modelos-lineales" class="nav-link" data-scroll-target="#modelos-lineales">Modelos lineales</a></li>
+  <li><a href="#polinomios" id="toc-polinomios" class="nav-link" data-scroll-target="#polinomios">Polinomios</a></li>
+  <li><a href="#funciones-de-potencia" id="toc-funciones-de-potencia" class="nav-link" data-scroll-target="#funciones-de-potencia">Funciones de potencia</a></li>
+  <li><a href="#funciones-racionales" id="toc-funciones-racionales" class="nav-link" data-scroll-target="#funciones-racionales">Funciones racionales</a></li>
+  <li><a href="#funciones-algebraicas" id="toc-funciones-algebraicas" class="nav-link" data-scroll-target="#funciones-algebraicas">Funciones algebraicas</a></li>
+  <li><a href="#funciones-trigonométricas" id="toc-funciones-trigonométricas" class="nav-link" data-scroll-target="#funciones-trigonométricas">Funciones trigonométricas</a></li>
+  <li><a href="#funciones-exponenciales" id="toc-funciones-exponenciales" class="nav-link" data-scroll-target="#funciones-exponenciales">Funciones exponenciales</a></li>
+  <li><a href="#funciones-logarítmicas" id="toc-funciones-logarítmicas" class="nav-link" data-scroll-target="#funciones-logarítmicas">Funciones logarítmicas</a></li>
+  <li><a href="#funciones-trascendentes" id="toc-funciones-trascendentes" class="nav-link" data-scroll-target="#funciones-trascendentes">Funciones trascendentes</a></li>
+  </ul></li>
+  <li><a href="#seccion_1.3" id="toc-seccion_1.3" class="nav-link" data-scroll-target="#seccion_1.3">1.3: Funciones nuevas a partir de funciones antiguas</a>
+  <ul class="collapse">
+  <li><a href="#traslaciones" id="toc-traslaciones" class="nav-link" data-scroll-target="#traslaciones">Traslaciones</a></li>
+  <li><a href="#alargamientos-y-reflexione-verticales-y-horizontales" id="toc-alargamientos-y-reflexione-verticales-y-horizontales" class="nav-link" data-scroll-target="#alargamientos-y-reflexione-verticales-y-horizontales">Alargamientos y reflexione verticales y horizontales</a></li>
+  <li><a href="#combinación-de-funciones" id="toc-combinación-de-funciones" class="nav-link" data-scroll-target="#combinación-de-funciones">Combinación de funciones</a></li>
+  </ul></li>
+  <li><a href="#seccion_1.5" id="toc-seccion_1.5" class="nav-link" data-scroll-target="#seccion_1.5">1.5: Funciones exponenciales</a>
+  <ul class="collapse">
+  <li><a href="#aplicación-modelos-poblacionales" id="toc-aplicación-modelos-poblacionales" class="nav-link" data-scroll-target="#aplicación-modelos-poblacionales">Aplicación: modelos poblacionales</a></li>
+  <li><a href="#el-número-e" id="toc-el-número-e" class="nav-link" data-scroll-target="#el-número-e">El número <span class="math inline">\(e\)</span></a></li>
+  </ul></li>
+  <li><a href="#seccion_1.6" id="toc-seccion_1.6" class="nav-link" data-scroll-target="#seccion_1.6">1.6: Funciones inversas y logarítmicas</a>
+  <ul class="collapse">
+  <li><a href="#cómo-encontrar-la-función-inversa-de-una-función-uno-a-uno" id="toc-cómo-encontrar-la-función-inversa-de-una-función-uno-a-uno" class="nav-link" data-scroll-target="#cómo-encontrar-la-función-inversa-de-una-función-uno-a-uno">¿Cómo encontrar la función inversa de una función uno a uno?</a></li>
+  <li><a href="#funciones-logarítmicas-1" id="toc-funciones-logarítmicas-1" class="nav-link" data-scroll-target="#funciones-logarítmicas-1">Funciones logarítmicas</a></li>
+  <li><a href="#logaritmos-naturales" id="toc-logaritmos-naturales" class="nav-link" data-scroll-target="#logaritmos-naturales">Logaritmos naturales</a></li>
+  <li><a href="#funciones-trigonométricas-inversas" id="toc-funciones-trigonométricas-inversas" class="nav-link" data-scroll-target="#funciones-trigonométricas-inversas">Funciones trigonométricas inversas</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-title">1. Funciones</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<!-- SECCION 1.1 -->
+<section id="seccion_1.1" class="level2">
+<h2 class="anchored" data-anchor-id="seccion_1.1">1.1. Definición y ejemplos</h2>
+<div class="callout callout-style-default callout-note callout-titled" title="Definición (Función)">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definición (Función)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Una <strong>función</strong> <span class="math inline">\(f\)</span> es una regla que asigna a cada elemento <span class="math inline">\(x\)</span> de un conjunto <span class="math inline">\(D\)</span> exactamente un elemento de un conjunto <span class="math inline">\(E\)</span>, denotado <span class="math inline">\(f(x)\)</span>. Esta asignación podemos indicarla mediante la expresión <span class="math inline">\(f\colon D\rightarrow E\)</span>.</p>
+</div>
+</div>
+<p>El conjunto <span class="math inline">\(D\)</span> se llama <strong>dominio</strong> de la función. Usualmente escribiremos <span class="math inline">\(D=\text{Dom}(f)\)</span> o <span class="math inline">\(D=D_f\)</span>. El <strong>rango</strong> o <strong>conjunto imagen</strong> de <span class="math inline">\(f\)</span> consiste en todos los valores <span class="math inline">\(f(x)\)</span> conforme <span class="math inline">\(x\)</span> varía en su dominio, es decir</p>
+<p><span class="math display">\[\operatorname{Im}(f)=\{y: y=f(x) \text{ para algún }x\in D\}\subseteq E.\]</span></p>
+<p>Un símbolo que representa un número arbitrario en el dominio de <span class="math inline">\(f\)</span> se llama <strong>variable independiente</strong>, mientras que uno en el rango de <span class="math inline">\(f\)</span> se llama <strong>variable dependiente</strong>.</p>
+<p>El número <span class="math inline">\(f(x)\)</span> es el valor de la función <span class="math inline">\(f\)</span> en <span class="math inline">\(x\)</span>, y lo leemos “<span class="math inline">\(f\)</span> de <span class="math inline">\(x\)</span>”. En general trabajaremos con funciones para las que <span class="math inline">\(D\)</span> y <span class="math inline">\(E\)</span> son subconjuntos de los números reales. Éstas reciben el nombre de <strong>funciones escalares</strong>.</p>
+<p>Podemos pensar una función como si fuese una máquina: si <span class="math inline">\(x\)</span> está en el dominio de <span class="math inline">\(f\)</span> entonces ingresa en la máquina, que la acepta como una entrada. La máquina produce como salida <span class="math inline">\(f(x)\)</span>, según la regla que define a la función.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap1/1.1-funcion-maquina.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
+</figure>
+</div>
+<p>Así, podemos concebir al dominio como el conjunto de todas las entradas posibles <span class="math inline">\(x\)</span> y a la imagen como el conjunto de todas las salidas posibles <span class="math inline">\(f(x)\)</span>.</p>
+<p>Otra forma de representar una función es mediante un diagrama de flechas o <strong>diagrama de Venn</strong>. Cada flecha relaciona un elemento en <span class="math inline">\(D\)</span> con su único valor asociado mediante <span class="math inline">\(f\)</span> en el conjunto <span class="math inline">\(E\)</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap1/1.1-funcion-venn.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
+</figure>
+</div>
+<p>El método más común para visualizar una función es su <strong>gráfico</strong> (o gráfica). Si <span class="math inline">\(f\)</span> es una función con dominio <span class="math inline">\(D\)</span> su gráfico es el conjunto de pares ordenados <span class="math display">\[\text{Gráf}(f)=\{(x,f(x)): x\in D\}.\]</span></p>
+<p>En otras palabras, el gráfico está formado por los pares <span class="math inline">\((x,y)\)</span> del plano que verifican que <span class="math inline">\(y=f(x)\)</span>, con <span class="math inline">\(x\)</span> en el dominio de <span class="math inline">\(f\)</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap1/1.1-grafico-funcion.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+<p>El gráfico da un esbozo útil del comportamiento o de la “historia de vida” de una función. En cada <span class="math inline">\(x\)</span> del dominio, el valor correspondiente a <span class="math inline">\(f(x)\)</span> se puede leer como la altura del gráfico sobre <span class="math inline">\(x\)</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap1/1.1-dominio-rango.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%"></p>
+</figure>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Dado el siguiente gráfico</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap1/1.1-Ejemplo1.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
+</figure>
+</div>
+<ul>
+<li>Encontrar el valor de <span class="math inline">\(f(1)\)</span> y <span class="math inline">\(f(2)\)</span>.</li>
+<li>¿Cuáles son el dominio y el rango de <span class="math inline">\(f\)</span>?</li>
+</ul>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Observando el gráfico de la función podemos ver que <span class="math inline">\(f(1)=0\)</span> y que <span class="math inline">\(f(2)=-1\)</span>. El dominio de <span class="math inline">\(f\)</span> es <span class="math inline">\(D=[1,3]\)</span> y el rango corresponde al intervalo <span class="math inline">\([-1,2]\)</span>.</p>
+</div>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Trazar la gráfica y encontrar el dominio y rango de cada función.</p>
+<ul>
+<li><span class="math inline">\(f(x)=2x-1\)</span>.</li>
+<li><span class="math inline">\(g(x)=x^2\)</span>.</li>
+</ul>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Observemos que <span class="math inline">\(f\)</span> es una función y lineal y <span class="math inline">\(g\)</span> una cuadrática, por lo que sus gráficos corresponden a una recta y una parábola, respectivamente.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap1/1.1-ejemplo-recta-parabola.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:55.0%"></p>
+</figure>
+</div>
+<p>En relación a la función <span class="math inline">\(f\)</span>, tenemos que <span class="math inline">\(D=\text{Im}(f)=\mathbb{R}\)</span>. Con respecto a <span class="math inline">\(g\)</span>, tenemos que <span class="math inline">\(D=\mathbb{R}\)</span> mientras que <span class="math inline">\(\text{Im}(g)=\mathbb{R}_0^+=[0,\infty)\)</span>, dado que <span class="math inline">\(x^2\geq 0\)</span> para todo número real <span class="math inline">\(x\)</span>.</p>
+</div>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Un recipiente rectangular para almacenamiento, con su parte superior abierta, tiene un volumen de 10 <span class="math inline">\(m^3\)</span>. La longitud de su base es el doble de su ancho. Si el material de la base cuesta 10 dólares por <span class="math inline">\(m^2\)</span> y el de los lados 6 dólares por <span class="math inline">\(m^2\)</span>, expresar el costo de fabricación en función del ancho de la base.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap1/1.1-ejemplo-caja.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
+</figure>
+</div>
+<p>Si denotamos con <span class="math inline">\(w\)</span> al ancho de la base, entonces su longitud es <span class="math inline">\(2w\)</span>. Si además <span class="math inline">\(h\)</span> representa la altura de la caja, entonces podemos calcular el volumen como <span class="math display">\[ V= (2w) \cdot w\cdot h=2w^2h.\]</span></p>
+<p>Dado que el volumen es de 10 <span class="math inline">\(m^3\)</span>, tenemos que <span class="math inline">\(h=\displaystyle \frac{5}{w^2}\)</span>. Con esta relación podemos expresar el área de la base <span class="math inline">\(A_b\)</span> de la caja y su área lateral <span class="math inline">\(A_\ell\)</span> en función de <span class="math inline">\(w\)</span>.</p>
+<p><span class="math display">\[A_b=(2w)\cdot w=2w^2 \quad \text{ y }\quad A_\ell=2\cdot (2w)\cdot h+ 2\cdot w\cdot h=6wh=\frac{30}{w}.\]</span></p>
+<p>Ahora calculamos los costos <span class="math inline">\(C_b\)</span> y <span class="math inline">\(C_\ell\)</span> para la base y el lateral, respectivamente.</p>
+<p><span class="math display">\[C_b=10\, \frac{\text{dólares}}{m^2}\cdot (2w^2)\, m^2= 20w^2\, \text{dólares}.\]</span></p>
+<p><span class="math display">\[C_\ell=6\, \frac{\text{dólares}}{m^2}\cdot \frac{30}{w}\, m^2= \frac{180}{w}\, \text{dólares}.\]</span></p>
+<p>Finalmente, el costo total es <span class="math inline">\(C=C_b+C_\ell=20w^2+\displaystyle\frac{180}{w}\)</span>, expresado en dólares.</p>
+</div>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Encuentre el dominio de cada función.</p>
+<ul>
+<li><span class="math inline">\(f(x)=\sqrt{x+2}\)</span></li>
+<li><span class="math inline">\(g(x)=\displaystyle \frac{1}{x^2-x}\)</span></li>
+</ul>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Para determinar el dominio de <span class="math inline">\(f\)</span>, observemos que la función está bien definida siempre y cuando <span class="math inline">\(x+2\geq 0\)</span>, o equivalentemente <span class="math inline">\(x\geq -2\)</span>. Por lo tanto, <span class="math inline">\(D=[-2,\infty)\)</span>.</p>
+<p>En el caso de <span class="math inline">\(g\)</span>, recordemos que la división por cero no está definida. Ya que <span class="math inline">\(x^2-x=x(x-1)\)</span>, entonces <span class="math inline">\(x\)</span> no puede tomar el valor 0 ni el valor 1. Por lo tanto, <span class="math inline">\(D=\mathbb{R}\setminus \{0,1\}\)</span>.</p>
+</div>
+</div>
+</div>
+<section id="relación-entre-curvas-y-gráfico-de-funciones" class="level3">
+<h3 class="anchored" data-anchor-id="relación-entre-curvas-y-gráfico-de-funciones">Relación entre curvas y gráfico de funciones</h3>
+<p>La gráfica de una función resulta ser una curva en el plano <span class="math inline">\(xy\)</span>. Pero dada cualquier curva plana, ¿cómo saber si se trata del gráfico de una función? Para responder esta pregunta, utilizamos la siguiente propiedad.</p>
+<div class="theorem">
+<p>Prueba de la línea vertical</p>
+<p>Una curva en el plano <span class="math inline">\(xy\)</span> es la gráfica de una función de <span class="math inline">\(x\)</span> si y sólo si ninguna línea vertical se interseca con la curva más de una vez.</p>
+</div>
+<p>Si cada recta vertical <span class="math inline">\(x=a\)</span> corta a la curva sólo una vez, en el punto <span class="math inline">\((a,b)\)</span>, entonces definimos la función <span class="math inline">\(f\)</span> de modo tal que <span class="math inline">\(f(a)=b\)</span>.</p>
+<p>Sin embargo, si hay algún valor <span class="math inline">\(a\)</span> para el cual <span class="math inline">\(x=a\)</span> corta a la curva en más de un punto, ésta no puede representar a una función pues no podemos asignar dos valores distintos <span class="math inline">\(b\)</span> y <span class="math inline">\(c\)</span> a <span class="math inline">\(x=a\)</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap1/1.1-lineavertical.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%"></p>
+</figure>
+</div>
+<p>Por ejemplo, si consideramos <span class="math inline">\(x=y^2-2\)</span>, ésta no es la gráfica de una función de <span class="math inline">\(x\)</span>, según la prueba de la línea vertical.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap1/1.1-parabola-horizontal.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
+</figure>
+</div>
+<p>Sin embargo, si despejamos la variable <span class="math inline">\(y\)</span> obtenemos <span class="math display">\[|y|=\sqrt{x+2}\quad\text{ o bien }\quad y=\pm\sqrt{x+2},\]</span></p>
+<p>y cada una de estas ecuaciones se corresponde con las dos mitades de la parábola de arriba. Cada una de estas curvas obtenidas resulta ser el gráfico de una función de <span class="math inline">\(x\)</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap1/1.1-parabola-mitades.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%"></p>
+</figure>
+</div>
+</section>
+<section id="funciones-seccionalmente-definidas" class="level3">
+<h3 class="anchored" data-anchor-id="funciones-seccionalmente-definidas">Funciones seccionalmente definidas</h3>
+<p>Estas funciones se definen con diferentes reglas en diferentes partes de su dominio.</p>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Sea <span class="math inline">\(f\)</span> la función definida por <span class="math display">\[
+f(x)=
+\begin{cases}
+1-x &amp; \text{ si } x\leq 1,\\
+x^2 &amp; \text{ si } x&gt;1.
+\end{cases}
+\]</span></p>
+<p>Calcular <span class="math inline">\(f(0)\)</span>, <span class="math inline">\(f(1)\)</span>, <span class="math inline">\(f(2)\)</span> y trazar la gráfica.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Para calcular <span class="math inline">\(f(0)\)</span> observemos que debemos usar la expresión <span class="math inline">\(1-x\)</span>, ya que <span class="math inline">\(0\leq 1\)</span>. Entonces resulta <span class="math inline">\(f(0)=1-0=1\)</span>. De la misma manera, <span class="math inline">\(f(1)=1-1=0\)</span> y <span class="math inline">\(f(2)=2^2=4\)</span>, ya que <span class="math inline">\(2&gt;1\)</span>.</p>
+<p>La gráfica de la función resulta</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap1/1.1-ejemplo-funcion-partes.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>Un ejemplo muy común de función seccionalmente definida y que utilizaremos con frecuencia es la función <strong>valor absoluto</strong>. El valor absoluto de un número <span class="math inline">\(x\)</span> se define como</p>
+<div id="form-valorabs" class="formula-box">
+<p><span class="math display">\[
+|x|=
+\begin{cases}
+x &amp; \text{si } x\geq 0,\\
+-x &amp; \text{si } x&lt;0.
+\end{cases}
+\]</span></p>
+</div>
+<p>El valor absoluto de <span class="math inline">\(x\)</span> puede interpretarse como la <strong>distancia</strong> desde <span class="math inline">\(x\)</span> hasta <span class="math inline">\(0\)</span> en la recta numérica. De la definición podemos ver que <span class="math inline">\(|x|\geq 0\)</span> para todo <span class="math inline">\(x\)</span>.</p>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Trazar la gráfica de <span class="math inline">\(y=|x|\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Usando la definición de valor absoluto, obtenemos la gráfica al dibujar la recta <span class="math inline">\(y=x\)</span> sólamente para <span class="math inline">\(x\geq 0\)</span> e <span class="math inline">\(y=-x\)</span> para cuando <span class="math inline">\(x&lt;0\)</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap1/1.1-ejemplo-valor-absoluto.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Encontrar una fórmula explícita para la función dada en el siguiente gráfico.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap1/1.1-ejemplo-funcion-tramos.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
+</figure>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Notemos que el gráfico de la función está compuesto por tres tramos de recta. El primero de ellos es el segmento que une los puntos <span class="math inline">\((0,0)\)</span> y <span class="math inline">\((1,1)\)</span>. Utilizando la <a href="#recta-dos-puntos">ecuación de la recta que pasa por dos puntos</a> <span class="math inline">\((x_1,y_1)\)</span> y <span class="math inline">\((x_2,y_2)\)</span> obtenemos</p>
+<div id="recta-dos-puntos" class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>📐 Ecuación de la recta por dos puntos
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math display">\[
+y-y_1=\frac{y_2-y_1}{x_2-x_1}(x-x_1)
+\]</span></p>
+</div>
+</div>
+</div>
+<p><span class="math display">\[
+y-0=\frac{1-0}{1-0}(x-0) \quad \text{ o, equivalentemente }\quad  y=x.
+\]</span></p>
+<p>Repitiendo el mismo proceso para el segundo tramo de recta, que conecta los puntos <span class="math inline">\((1,1)\)</span> y <span class="math inline">\((2,0)\)</span> resulta</p>
+<p><span class="math display">\[
+y-1=\frac{0-1}{2-1}(x-1) \quad \text{ o, equivalentemente }\quad  y=-x+2.
+\]</span></p>
+<p>Finalmente, en el tercer tramo de recta la función es constante y nula, con lo cual su ecuación es simplemente <span class="math inline">\(y=0\)</span>.</p>
+<p>Resumiendo todo lo realizado, escribimos a <span class="math inline">\(f\)</span> como una función definida por partes <span class="math display">\[
+f(x)=\begin{cases}
+x &amp; \text{si } 0\leq x\leq 1,\\
+-x+2 &amp; \text{si } 1&lt;x\leq 2,\\
+0 &amp; \text{si } x&gt;2.
+\end{cases}
+\]</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="simetría" class="level3">
+<h3 class="anchored" data-anchor-id="simetría">Simetría</h3>
+<div class="callout callout-style-default callout-note callout-titled" title="Definición (Función par)">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definición (Función par)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Decimos que una función <span class="math inline">\(f\)</span> es <strong>par</strong> si satisface <span class="math display">\[f(x)=f(-x)\]</span></p>
+<p>para todo <span class="math inline">\(x\)</span> en el dominio de <span class="math inline">\(f\)</span>.</p>
+</div>
+</div>
+<p>Geométricamente, las funciones pares son simétricas respecto del eje <span class="math inline">\(y\)</span>. Si conocemos el gráfico de <span class="math inline">\(f\)</span> para <span class="math inline">\(x\geq 0\)</span>, basta con reflejarlo sobre el eje <span class="math inline">\(y\)</span> para obtener el gráfico completo.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap1/1.1-funcion-par.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+<p>Por ejemplo, la función <span class="math inline">\(f(x)=x^2\)</span> es par, pues <span class="math display">\[f(-x)=(-x)^2=x^2=f(x),\]</span></p>
+<p>para todo <span class="math inline">\(x\)</span>.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Definición (Función impar)">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definición (Función impar)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Decimos que una función <span class="math inline">\(f\)</span> es <strong>impar</strong> si satisface <span class="math display">\[f(x)=-f(-x)\]</span></p>
+<p>para todo <span class="math inline">\(x\)</span> en el dominio de <span class="math inline">\(f\)</span>.</p>
+</div>
+</div>
+<p>La gráfica de las funciones impares son simétricas respecto del origen de coordenadas. Si conocemos el gráfico de <span class="math inline">\(f\)</span> para <span class="math inline">\(x\geq 0\)</span>, basta con rotarlo 180 grados respecto al origen para conocer el gráfico completo.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap1/1.1-funcion-impar.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+<p>Como ejemplo de función impar podemos mencionar <span class="math inline">\(f(x)=x^3\)</span>. En efecto, <span class="math display">\[f(-x)=(-x)^3=-x^3=-f(x),\]</span> para todo <span class="math inline">\(x\)</span>.</p>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Determinar si cada una de las siguientes funciones es par, impar, o ninguna.</p>
+<ul>
+<li><span class="math inline">\(f(x)=x^3+x\)</span>.</li>
+<li><span class="math inline">\(g(x)=1-x^4\)</span>.</li>
+<li><span class="math inline">\(h(x)=2x-x^2\)</span>.</li>
+</ul>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Comencemos por la función <span class="math inline">\(f\)</span>. Notemos que <span class="math display">\[f(-x)=(-x)^3+(-x)=-x^3-x=-(x^3+x)=-f(x)\]</span></p>
+<p>para todo <span class="math inline">\(x\in\mathbb{R}\)</span>. Entonces <span class="math inline">\(f\)</span> es impar.</p>
+<p>En el caso de <span class="math inline">\(g\)</span> obtenemos <span class="math display">\[g(-x)=1-(-x)^4=1-x^4=g(x)\]</span> para todo <span class="math inline">\(x\in\mathbb{R}\)</span>. En consecuencia, <span class="math inline">\(g\)</span> es par.</p>
+<p>Por último <span class="math display">\[h(-x)=2(-x)-(-x)^2=-2x-x^2.\]</span> Ésta última expresión no coincide con <span class="math inline">\(h(x)\)</span> ni con <span class="math inline">\(-h(x)\)</span>, por lo tanto <span class="math inline">\(h\)</span> no es par ni impar.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="funciones-crecientes-y-decrecientes" class="level3">
+<h3 class="anchored" data-anchor-id="funciones-crecientes-y-decrecientes">Funciones crecientes y decrecientes</h3>
+<p>En la siguiente figura vemos que el gráfico de <span class="math inline">\(f\)</span> sube desde <span class="math inline">\(A\)</span> hasta <span class="math inline">\(B\)</span>, desciende de <span class="math inline">\(B\)</span> a <span class="math inline">\(C\)</span> y luego vuelve a subir desde <span class="math inline">\(C\)</span> hasta <span class="math inline">\(D\)</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap1/1.1-creciente-decreciente.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%"></p>
+</figure>
+</div>
+<p>En este caso decimos que <span class="math inline">\(f\)</span> está <strong>creciendo</strong> sobre el intervalo <span class="math inline">\([a,b]\)</span>, <strong>decreciendo</strong> sobre <span class="math inline">\([b,c]\)</span> y luego <strong>crece</strong> de nuevo en <span class="math inline">\([c,d]\)</span>.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Definición (Función creciente y decreciente)">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definición (Función creciente y decreciente)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Decimos que la función <span class="math inline">\(f\)</span> es <strong>creciente</strong> sobre un intervalo <span class="math inline">\(I\)</span> si <span class="math display">\[f(x_1)&lt;f(x_2) \quad\text{ siempre que }\quad x_1&lt;x_2 \quad \text{ en }\quad  I.\]</span></p>
+<p>Análogamente, decimos que <span class="math inline">\(f\)</span> es <strong>decreciente</strong> sobre el intervalo <span class="math inline">\(I\)</span> si</p>
+<p><span class="math display">\[f(x_1)&gt;f(x_2) \quad\text{ siempre que }\quad x_1&lt;x_2 \quad \text{ en }\quad  I.\]</span></p>
+</div>
+</div>
+<p>Observar que para que una función sea creciente o decreciente en un intervalo, las correspondientes desigualdades de arriba tienen que valer <strong>para todo par de números</strong> <span class="math inline">\(x_1,x_2\)</span> en el intervalo.</p>
+<p><a href="#seccion_1.1">↑ Volver al inicio de la sección</a></p>
+</section>
+</section>
+<section id="seccion_1.2" class="level2">
+<h2 class="anchored" data-anchor-id="seccion_1.2">1.2. Modelos matemáticos: un catálogo de funciones básicas</h2>
+<section id="modelos-lineales" class="level3">
+<h3 class="anchored" data-anchor-id="modelos-lineales">Modelos lineales</h3>
+<p>Una <strong>función lineal</strong> es de la forma</p>
+<div class="formula-box">
+<p><span class="math display">\[
+f(x)=mx+b
+\]</span></p>
+</div>
+<p>donde <span class="math inline">\(m\)</span> es la <strong>pendiente</strong> y <span class="math inline">\(b\)</span> la <strong>ordenada al origen</strong>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap1/1.2-modelo-lineal.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:30.0%"></p>
+</figure>
+</div>
+<p>El gráfico de estas funciones corresponde a una recta en el plano y crecen en una proporción constante (es decir, <span class="math inline">\(y\)</span> se incrementa de igual forma cuando <span class="math inline">\(x\)</span> se incrementa a intervalos constantes).</p>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>A medida que el aire seco se mueve hacia arriba, se expande y se enfría. Supongamos que la función que modela la temperatura en función de la altura es lineal.</p>
+<ol type="1">
+<li>Si la temperatura del suelo es de 20°C y a una altura de 1 km es de 10°C, expresar la temperatura <span class="math inline">\(T\)</span> (en °C) como una función de la altura <span class="math inline">\(h\)</span> (en kilómetros).</li>
+<li>Trazar la gráfica de la función del inciso (1). ¿Qué representa la pendiente?</li>
+<li>¿Cuál es la temperatura a una altura de 2.5 km?</li>
+</ol>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><p>Queremos expresar la temperatura como una función lineal de la altura. Entonces escribimos <span class="math inline">\(T(h)=mh+b\)</span>, donde <span class="math inline">\(m\)</span> y <span class="math inline">\(b\)</span> son los coeficientes que queremos determinar. Como la temperatura al nivel del suelo es de 20°C, tenemos que <span class="math inline">\(T(0)=20\)</span>, es decir</p>
+<p><span class="math display">\[
+20=m\cdot 0+b=b,
+\]</span></p>
+<p>de donde <span class="math inline">\(b=20\)</span>. Por otra parte <span class="math inline">\(T(1)=10\)</span>, con lo cual</p>
+<p><span class="math display">\[
+10=m\cdot 1+b=m+20,
+\]</span></p>
+<p>con lo que deducimos que <span class="math inline">\(m=-10\)</span>. Finalmente nuestra función <span class="math inline">\(T\)</span> resulta</p>
+<p><span class="math display">\[
+T(h)=-10h+20
+\]</span></p>
+<p>y nos da la temperatura expresada en °C de la altura <span class="math inline">\(h\)</span> dada en kilómetros.</p></li>
+<li><p>El gráfico de la función <span class="math inline">\(T\)</span> es el siguiente</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap1/1.2-ejemplo-temperatura.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+<p>En este caso la pendiente representa la relación de cambio de la temperatura con respecto a la altura. Dado que <span class="math inline">\(m=-10\)</span>, esto significa que por cada kilómetro que se ascienda en altura, la temperatura desciende 10°C.</p></li>
+<li><p>Si <span class="math inline">\(h=2.5\)</span>, entonces <span class="math inline">\(T(2.5)=-10(2.5)+20=-5\)</span>.</p></li>
+</ol>
+</div>
+</div>
+</div>
+</section>
+<section id="polinomios" class="level3">
+<h3 class="anchored" data-anchor-id="polinomios">Polinomios</h3>
+<p>A una función <span class="math inline">\(P\)</span> se la llama <strong>polinomio</strong> si es de la forma</p>
+<div class="formula-box">
+<p><span class="math display">\[p(x)=a_nx^n+a_{n-1}x^{n-1}+\dots+a_2x^2+a_1x+a_0=\sum_{i=0}^n a_ix^i,\]</span></p>
+</div>
+<p>donde <span class="math inline">\(n\)</span> es un entero no negativo y los números <span class="math inline">\(a_i\)</span> son constantes llamadas <strong>coeficientes</strong> del polinomio, para <span class="math inline">\(1\leq i\leq n\)</span>. A <span class="math inline">\(a_n\)</span> se lo llama <strong>coeficiente principal</strong> y a <span class="math inline">\(a_0\)</span> <strong>término independiente</strong> de <span class="math inline">\(p\)</span>.</p>
+<p>El dominio de cualquier polinomio es <span class="math inline">\(\mathbb{R}\)</span>. Si <span class="math inline">\(a_n\neq 0\)</span>, decimos que el <strong>grado</strong> de <span class="math inline">\(p\)</span> es <span class="math inline">\(n\)</span>. Por ejemplo, <span class="math display">\[p(x)=2x^6-x^4+\frac{2}{3}x^3+\sqrt{2}\]</span> es un polinomio de grado 6.</p>
+<ul>
+<li><p>Los polinomios de grado 1 son de la forma <span class="math inline">\(p(x)=mx+b\)</span>, es decir, son <strong>funciones lineales</strong>.</p></li>
+<li><p>Si <span class="math inline">\(p\)</span> tiene grado 2, entonces <span class="math display">\[p(x)=ax^2+bx+c\]</span> y se llama <strong>función cuadrática</strong>. Su gráfica es una parábola que abre hacia arriba cuando <span class="math inline">\(a&gt;0\)</span> y hacia abajo cuando <span class="math inline">\(a&lt;0\)</span>.</p></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap1/1.2-modelo-cuadratico.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%"></p>
+</figure>
+</div>
+<ul>
+<li>Un polinomio de grado 3 tiene la forma <span class="math display">\[p(x)=ax^3+bx^2+cx+d,\quad a\neq 0\]</span> y recibe el nombre de <strong>función cúbica</strong>. Algunos ejemplos son</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap1/1.2-modelo-cubico.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%"></p>
+</figure>
+</div>
+</section>
+<section id="funciones-de-potencia" class="level3">
+<h3 class="anchored" data-anchor-id="funciones-de-potencia">Funciones de potencia</h3>
+<p>Una función de la forma</p>
+<div class="formula-box">
+<p><span class="math display">\[f(x)=x^a\]</span></p>
+</div>
+<p>donde <span class="math inline">\(a\)</span> es una constante, recibe el nombre de <strong>función potencia</strong>. Consideramos diferentes casos:</p>
+<ul>
+<li><p><span class="math inline">\(a=n\)</span>, con <span class="math inline">\(n\)</span> entero positivo. Observemos algunos ejemplos, que incluyen algunos modelos ya estudiados.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap1/1.2-modelo-potencia-natural.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%"></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap1/1.2-modelo-potencia-natural2.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%"></p>
+</figure>
+</div>
+<p>La forma general de la gráfica de <span class="math inline">\(f(x)=x^n\)</span> depende de si <span class="math inline">\(n\)</span> es par o impar, obteniendo respectivamente una gráfica simétrica respecto del eje <span class="math inline">\(y\)</span> o del origen de coordenadas.</p>
+<p>Conforme aumenta <span class="math inline">\(n\)</span>, la gráfica se hace más aplastada cerca del origen y se vuelve más pronunciada cuando <span class="math inline">\(|x|\geq 1\)</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap1/1.2-comparacion-potencias.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+</figure>
+</div></li>
+<li><p><span class="math inline">\(a=1/n\)</span>, donde <span class="math inline">\(n\)</span> es un entero positivo. La función <span class="math inline">\(f(x)=x^{1/n}=\sqrt[n]{x}\)</span> se denomina <strong>función raíz</strong>. Cuando <span class="math inline">\(n\)</span> es par, el dominio de la función es <span class="math inline">\([0,\infty)\)</span>. Para <span class="math inline">\(n\)</span> impar, el dominio es <span class="math inline">\(\mathbb{R}\)</span> y la gráfica es simétrica respecto del origen de coordenadas.</p></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap1/1.2-funciones-raiz.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%"></p>
+</figure>
+</div>
+<ul>
+<li><span class="math inline">\(a=-1\)</span>. La función <span class="math inline">\(\displaystyle f(x)=x^{-1}= \frac{1}{x}\)</span> se denomina <strong>función recíproca</strong>. Se trata de una hipérbola que tiene a los ejes coordenados como asíntotas. El dominio de esta función es <span class="math inline">\(D=\mathbb{R}\setminus \{0\}\)</span>.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap1/1.2-funcion-reciproca.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
+</figure>
+</div>
+</section>
+<section id="funciones-racionales" class="level3">
+<h3 class="anchored" data-anchor-id="funciones-racionales">Funciones racionales</h3>
+<p>Una función <strong>racional</strong> <span class="math inline">\(f\)</span> es un cociente de dos polinomios</p>
+<div class="formula-box">
+<p><span class="math display">\[
+f(x)=\frac{P(x)}{Q(x)}.
+\]</span></p>
+</div>
+<p>Dado que no es posible dividir por cero, el dominio de <span class="math inline">\(f\)</span> consiste de todos los valores de <span class="math inline">\(x\)</span> tales que <span class="math inline">\(Q(x)\neq 0\)</span>.</p>
+<p>Por ejemplo, las funciones <span class="math display">\[
+f(x)=\frac{1}{x},\quad g(x)=\frac{2x^4-x^2+1}{x^2-4}
+\]</span></p>
+<p>son racionales.</p>
+</section>
+<section id="funciones-algebraicas" class="level3">
+<h3 class="anchored" data-anchor-id="funciones-algebraicas">Funciones algebraicas</h3>
+<p>Son aquellas funciones que pueden construirse utilizando <strong>operaciones algebraicas</strong> (suma, resta, multiplicación, división, raíces). En particular, cualquier función racional es también algebraica. Otros ejemplos que podemos mencionar son <span class="math display">\[
+f(x)=\sqrt{x^2+1}, \quad g(x)=\frac{x^4-16x^2}{x+\sqrt{x}}+(x-2)\sqrt[3]{x+1}.
+\]</span></p>
+</section>
+<section id="funciones-trigonométricas" class="level3">
+<h3 class="anchored" data-anchor-id="funciones-trigonométricas">Funciones trigonométricas</h3>
+<p>Por convención, siempre utilizaremos el argumento de estas funciones medido en <strong>radianes</strong> (recordemos que <span class="math inline">\(180^{\circ}=\pi\)</span> radianes). Veamos cómo lucen los gráficos para las funciones <strong>seno</strong> y <strong>coseno</strong>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap1/1.2-seno-coseno.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%"></p>
+</figure>
+</div>
+<p>El dominio de estas funciones es <span class="math inline">\(D=\mathbb{R}\)</span> y el rango es el intervalo <span class="math inline">\([-1,1]\)</span>. Es decir, tenemos que <span class="math display">\[
+-1\leq \sin x\leq 1 \quad \text { y }\quad  -1\leq \cos x\leq 1
+\]</span> o, en términos de valor absoluto <span class="math display">\[
+|\sin x|\leq 1 \quad \text{ y }\quad |\cos x|\leq 1.
+\]</span></p>
+<p>Además <span class="math display">\[
+\sin x = 0 \quad\text{ si y sólo si }\quad x=n\pi, \,\,n\in\mathbb{Z}
+\]</span></p>
+<p>y</p>
+<p><span class="math display">\[
+\cos x = 0 \quad\text{ si y sólo si }\quad x=(2n+1)\pi/2, \,\,n\in\mathbb{Z}.
+\]</span></p>
+<p>Estas dos funciones son periódicas de período <span class="math inline">\(2\pi\)</span>. Esto significa que <span class="math display">\[
+\sin(x+2\pi)=\sin x\quad \text{ y }\quad \cos(x+2\pi)=\cos x
+\]</span> para todo valor de <span class="math inline">\(x\)</span>.</p>
+<p>La función <strong>tangente</strong> está dada por <span class="math inline">\(\displaystyle\tan x=\frac{\sin x}{\cos x}.\)</span></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap1/1.2-tangente.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%"></p>
+</figure>
+</div>
+<p>Observar que esta función no está definida cuando <span class="math inline">\(\cos x=0\)</span>, es decir, cuando <span class="math inline">\(x=(2n+1)\pi/2\)</span>, con <span class="math inline">\(n\in\mathbb{Z}\)</span>. Su rango es todo <span class="math inline">\(\mathbb{R}\)</span>, es decir, toma todos los valores reales.</p>
+<p>La función tangente es periódica de período <span class="math inline">\(\pi\)</span>. Esto quiere decir que <span class="math display">\[
+\tan(x+\pi)=\tan x
+\]</span> para todo <span class="math inline">\(x\)</span> en el dominio.</p>
+</section>
+<section id="funciones-exponenciales" class="level3">
+<h3 class="anchored" data-anchor-id="funciones-exponenciales">Funciones exponenciales</h3>
+<p>Son de la forma</p>
+<div class="formula-box">
+<p><span class="math display">\[
+f(x)=a^x
+\]</span></p>
+</div>
+<p>donde <span class="math inline">\(a\)</span> es un número <strong>positivo</strong>. A continuación vemos las gráficas para <span class="math inline">\(a=2\)</span> y <span class="math inline">\(a=1/2\)</span>, respectivamente.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap1/1.2-exponencial.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%"></p>
+</figure>
+</div>
+<p>En ambos casos el dominio es <span class="math inline">\(\mathbb{R}\)</span> y el rango el intervalo <span class="math inline">\((0,\infty)\)</span>. Observemos además que estas funciones son crecientes cuando <span class="math inline">\(a&gt;1\)</span> y decrecientes cuando <span class="math inline">\(0&lt;a&lt;1\)</span>.</p>
+</section>
+<section id="funciones-logarítmicas" class="level3">
+<h3 class="anchored" data-anchor-id="funciones-logarítmicas">Funciones logarítmicas</h3>
+<p>Son de la forma</p>
+<div class="formula-box">
+<p><span class="math display">\[
+f(x)=\log_a x
+\]</span></p>
+</div>
+<p>donde <span class="math inline">\(a&gt;0\)</span> y <span class="math inline">\(a\neq 1\)</span>. Estas son las inversas de las funciones exponenciales. Su dominio es <span class="math inline">\((0,\infty)\)</span> y su rango es <span class="math inline">\(\mathbb{R}\)</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap1/1.2-logaritmos.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%"></p>
+</figure>
+</div>
+</section>
+<section id="funciones-trascendentes" class="level3">
+<h3 class="anchored" data-anchor-id="funciones-trascendentes">Funciones trascendentes</h3>
+<p>Estas funciones no son algebraicas. Incluyen a las trigonométricas y sus inversas, exponenciales, logarítmicas, entre otras.</p>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Clasificar las siguientes funciones como algunos de los tipos analizados anteriormente.</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li><span class="math inline">\(\displaystyle f(x)=5^x\phantom{\frac{x^5}{x^3}}\)</span></li>
+<li><span class="math inline">\(g(x)=x^5\)</span></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<ul>
+<li><span class="math inline">\(\displaystyle h(x)=\frac{1+x}{1-\sqrt{x}}\)</span></li>
+<li><span class="math inline">\(u(t)=1-t+5t^4\)</span></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Las funciones <span class="math inline">\(g\)</span> y <span class="math inline">\(u\)</span> son polinómicas. Por otro lado, <span class="math inline">\(f\)</span> es una función exponencial de base <span class="math inline">\(a=5\)</span> y <span class="math inline">\(h\)</span> es una función algebraica.</p>
+</div>
+</div>
+</div>
+<p><a href="#seccion_1.2">↑ Volver al inicio de la sección</a></p>
+</section>
+</section>
+<section id="seccion_1.3" class="level2">
+<h2 class="anchored" data-anchor-id="seccion_1.3">1.3: Funciones nuevas a partir de funciones antiguas</h2>
+<p>En esta sección veremos cómo obtener el gráfico de ciertas funciones más generales que las aprendidas en la sección previa. Veamos algunos tipos de transformaciones que pueden aplicarse a la gráfica de una función y qué efecto tienen.</p>
+<section id="traslaciones" class="level3">
+<h3 class="anchored" data-anchor-id="traslaciones">Traslaciones</h3>
+<p>Consideremos <span class="math inline">\(c&gt;0\)</span> y partimos del gráfico de <span class="math inline">\(y=f(x)\)</span>. Entonces</p>
+<div class="math-table">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Para obtener el gráfico de</th>
+<th>Se desplaza el de <span class="math inline">\(y=f(x)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(y=f(x)+c\)</span></td>
+<td><span class="math inline">\(c\)</span> unidades hacia arriba</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(y=f(x)-c\)</span></td>
+<td><span class="math inline">\(c\)</span> unidades hacia abajo</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(y=f(x-c)\)</span></td>
+<td><span class="math inline">\(c\)</span> unidades a la derecha</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(y=f(x+c)\)</span></td>
+<td><span class="math inline">\(c\)</span> unidades a la izquierda</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap1/1.3-traslaciones.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%"></p>
+</figure>
+</div>
+</section>
+<section id="alargamientos-y-reflexione-verticales-y-horizontales" class="level3">
+<h3 class="anchored" data-anchor-id="alargamientos-y-reflexione-verticales-y-horizontales">Alargamientos y reflexione verticales y horizontales</h3>
+<p>Consideremos ahora <span class="math inline">\(c&gt;1\)</span> y partimos del gráfico de <span class="math inline">\(y=f(x)\)</span>. Entonces</p>
+<div class="math-table">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Para obtener el gráfico de</th>
+<th>El de <span class="math inline">\(y=f(x)\)</span> debe</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(y=cf(x)\)</span></td>
+<td>alargarse verticalmente en un factor de <span class="math inline">\(c\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(y=(1/c)f(x)\)</span></td>
+<td>comprimirse verticalmente en un factor de <span class="math inline">\(c\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(y=f(cx)\)</span></td>
+<td><span class="math inline">\(c\)</span> comprimirse horizontalmente en un factor <span class="math inline">\(c\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(y=f(x/c)\)</span></td>
+<td><span class="math inline">\(c\)</span> alargarse horizontalmente en un factor <span class="math inline">\(c\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(y=-f(x)\)</span></td>
+<td><span class="math inline">\(c\)</span> reflejarse respecto del eje <span class="math inline">\(x\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(y=f(-x)\)</span></td>
+<td><span class="math inline">\(c\)</span> reflejarse respecto del eje <span class="math inline">\(y\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap1/1.3-alargamientos-compresiones.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%"></p>
+</figure>
+</div>
+<p>Ilustremos estas transformaciones con la función <span class="math inline">\(y=\cos x\)</span>. Dibujamos la gráfica junto a la de las funciones <span class="math inline">\(y=c\cos x\)</span>, para <span class="math inline">\(c=2\)</span> y <span class="math inline">\(c=1/2\)</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap1/1.3-transformaciones-coseno.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%"></p>
+</figure>
+</div>
+<p>Dibujamos ahora <span class="math inline">\(y=\cos(cx)\)</span>, también para <span class="math inline">\(c=2\)</span> y <span class="math inline">\(c=1/2\)</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap1/1.3-transformaciones-coseno2.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%"></p>
+</figure>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Partiendo del gráfico de <span class="math inline">\(y=f(x)=\sqrt{x}\)</span> usar transformaciones para dibujar el de las funciones</p>
+<ul>
+<li><p><span class="math inline">\(f_1(x)=\sqrt{x}-2\)</span></p></li>
+<li><p><span class="math inline">\(f_2(x)=\sqrt{x-2}\)</span></p></li>
+<li><p><span class="math inline">\(f_3(x)=-\sqrt{x}\)</span></p></li>
+<li><p><span class="math inline">\(f_4(x)=2\sqrt{x}\)</span></p></li>
+<li><p><span class="math inline">\(f_5(x)=\sqrt{-x}\)</span></p></li>
+</ul>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-16" class="callout-16-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>El gráfico de <span class="math inline">\(f_1\)</span> se obtiene trasladando el de <span class="math inline">\(f\)</span> dos unidades verticalmente hacia abajo.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap1/1.3-ejemplo-traslacion-raiz.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
+</figure>
+</div>
+<p>Si trasladamos el gráfico de <span class="math inline">\(f\)</span> dos unidades hacia la derecha, obtenemos el gráfico de <span class="math inline">\(f_2\)</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap1/1.3-ejemplo-traslacion-raiz2.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
+</figure>
+</div>
+<p>Para el caso de <span class="math inline">\(f_3\)</span> basta con reflejar el gráfico de <span class="math inline">\(f\)</span> con respecto al eje <span class="math inline">\(x\)</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap1/1.3-ejemplo-traslacion-raiz3.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
+</figure>
+</div>
+<p>El gráfico de <span class="math inline">\(f_4\)</span> resulta de alargar el de <span class="math inline">\(f\)</span> de forma vertical en un factor de 2.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap1/1.3-ejemplo-traslacion-raiz4.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:35.0%"></p>
+</figure>
+</div>
+<p>Por último, reflejando el gráfico de <span class="math inline">\(f\)</span> respecto al eje <span class="math inline">\(y\)</span> obtenemos el de <span class="math inline">\(f_5\)</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap1/1.3-ejemplo-traslacion-raiz5.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Esbozar el gráfico de la función <span class="math inline">\(f(x)=x^2+6x+10\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-17" class="callout-17-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Podemos graficar sencillamente a <span class="math inline">\(f\)</span> si completamos cuadrados. En efecto, observemos que</p>
+<p><span class="math display">\[
+x^2+6x+10=(x^2+6x+9)-9+10=(x+3)^2+1.
+\]</span></p>
+<p>Ahora, partiendo del gráfico de <span class="math inline">\(y=x^2\)</span> podemos obtener el de <span class="math inline">\(f\)</span> realizando un desplazamiento horizontal tres unidades para la izquierda, seguido de un desplazamiento vertical de una unidad hacia arriba.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap1/1.3-ejemplo-parabola.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Trazar el gráfico de las funciones</p>
+<ul>
+<li><span class="math inline">\(y=\operatorname{sen}(2x)\)</span></li>
+<li><span class="math inline">\(y=1-\operatorname{sen} x\)</span></li>
+</ul>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-18" class="callout-18-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>En este caso tomamos de base el gráfico de la función seno, es decir, <span class="math inline">\(y=\operatorname{sen} x\)</span>. Para la primera, debemos realizar una compresión horizontal en un factor de 2 y el gráfico resulta</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap1/1.3-ejemplo-seno1.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%"></p>
+</figure>
+</div>
+<p>Para la segunda función debemos realizar dos movimientos: primero reflejamos <span class="math inline">\(y=\operatorname{sen} x\)</span> con respecto al eje <span class="math inline">\(x\)</span> y luego trasladamos el gráfico una unidad verticalmente hacia arriba.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap1/1.3-ejemplo-seno2.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Dibujar la función <span class="math inline">\(y=|x^2-1|\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-19" class="callout-19-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Si aplicamos directamente la <a href="#form-valorabs">definición de valor absoluto</a> , obtenemos <span class="math display">\[
+|x^2-1|=\begin{cases}
+x^2-1 &amp; \text{si } x^2-1\geq  0,\\
+-(x^2-1) &amp; \text{si } x^2-1&lt;0.
+\end{cases}
+\]</span></p>
+<p>Observemos a continuación que <span class="math display">\[ x^2-1\geq 0 \quad \Longleftrightarrow \quad x^2\geq 1 \quad \Longleftrightarrow \quad |x|\geq 1 \quad \Longleftrightarrow \quad  x\geq 1 \quad \text{ o }\quad x\leq -1,
+\]</span></p>
+<p>y también</p>
+<p><span class="math display">\[ x^2-1&lt; 0 \quad \Longleftrightarrow \quad x^2&lt; 1 \quad \Longleftrightarrow \quad |x|&lt; 1 \quad \Longleftrightarrow \quad  -1&lt;x&lt;1.
+\]</span></p>
+<p>Con esto, podemos reescribir la función de la siguiente manera <span class="math display">\[
+|x^2-1|=\begin{cases}
+x^2-1 &amp; \text{si } \quad x\geq 1 \quad \text{ o }\quad x\leq -1,\\
+-x^2+1 &amp; \text{si } \quad  -1&lt;x&lt;1.
+\end{cases}
+\]</span></p>
+<p>Por lo tanto, el gráfico es</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap1/1.3-valor-absoluto-parabola.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled" title="Observación">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Observación
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>El procedimiento utilizado en el ejemplo anterior se puede generalizar de forma sencilla a cualquier función. En efecto, consideremos una función <span class="math inline">\(f\)</span> y supongamos que su gráfico está dado por</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap1/1.3-valor-absoluto-funcion1.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
+</figure>
+</div>
+<p>Si queremos dibujar <span class="math inline">\(y=|f(x)|\)</span> podemos usar la <a href="#form-valorabs">definición de valor absoluto</a> para escribir <span class="math display">\[
+|f(x)|=\begin{cases}
+f(x) &amp; \text{si } f(x)\geq 0,\\
+-f(x) &amp; \text{si }   f(x)&lt;0.
+\end{cases}
+\]</span></p>
+<p>Entonces el gráfico de <span class="math inline">\(y=|f(x)|\)</span> coincide con el de <span class="math inline">\(f\)</span> cuando los valores de la función son no negativos (esto es, cuando la curva está sobre o por encima del eje <span class="math inline">\(x\)</span>) y en caso contrario se refleja respecto de este eje. Así, resulta</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap1/1.3-valor-absoluto-funcion2.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="combinación-de-funciones" class="level3">
+<h3 class="anchored" data-anchor-id="combinación-de-funciones">Combinación de funciones</h3>
+<p>Dadas dos funciones <span class="math inline">\(f\)</span> y <span class="math inline">\(g\)</span>, podemos formar otras nuevas realizando operaciones entre ellas.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Definición (Suma y resta de funciones)">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definición (Suma y resta de funciones)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>La <strong>suma</strong> y <strong>resta</strong> se definen como <span class="math display">\[
+(f+g)(x)=f(x)+g(x)\quad \text{ y }\quad (f-g)(x)=f(x)-g(x).
+\]</span></p>
+<p>Si <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> son los respectivos dominios de <span class="math inline">\(f\)</span> y de <span class="math inline">\(g\)</span>, el dominio de las funciones de arriba es <span class="math inline">\(D=A\cap B\)</span>.</p>
+</div>
+</div>
+<p>Por ejemplo, si <span class="math inline">\(f(x)=\sqrt{x}\)</span> y <span class="math inline">\(g(x)=\sqrt{2-x}\)</span>, tenemos que <span class="math inline">\(D_f=[0,\infty)\)</span> y <span class="math inline">\(D_g=(-\infty,2]\)</span>. De esta manera, <span class="math display">\[
+(f+g)(x)=f(x)+g(x)=\sqrt{x}+\sqrt{2-x}
+\]</span> tiene como dominio <span class="math inline">\(D_f\cap D_g=[0,2]\)</span>.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Definición (Producto y cociente de funciones)">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definición (Producto y cociente de funciones)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>El <strong>producto</strong> y el <strong>cociente</strong> se definen de manera análoga <span class="math display">\[
+(fg)(x)=f(x)g(x)\quad\text{ y }\quad \left(\frac{f}{g}\right)(x)=\frac{f(x)}{g(x)}.
+\]</span></p>
+<p>El dominio de <span class="math inline">\(fg\)</span> es <span class="math inline">\(A\cap B\)</span> y el de <span class="math inline">\(f/g\)</span> es <span class="math inline">\((A\cap B)\setminus\{x\in B: g(x)=0\}\)</span>.</p>
+</div>
+</div>
+<p>Por ejemplo, si <span class="math inline">\(f(x)=x^2\)</span> y <span class="math inline">\(g(x)=x-1\)</span>, entonces la función cociente es <span class="math display">\[
+\left(\frac{f}{g}\right)(x)=\frac{f(x)}{g(x)}=\frac{x^2}{x-1},
+\]</span> y su dominio es <span class="math inline">\(\mathbb{R}\setminus \{1\}\)</span>.</p>
+<p>Existe otra manera de combinar dos funciones. Dadas <span class="math inline">\(f\)</span> y <span class="math inline">\(g\)</span>, si <span class="math inline">\(x\)</span> está en el dominio de <span class="math inline">\(g\)</span> y su imagen por <span class="math inline">\(g\)</span>, <span class="math inline">\(g(x)\)</span> está en el dominio de <span class="math inline">\(f\)</span>, entonces podemos calcular <span class="math inline">\(f(g(x))\)</span>. El resultado es una nueva función <span class="math inline">\(h(x)=f(g(x))\)</span> llamada <strong>composición</strong> de <span class="math inline">\(f\)</span> y <span class="math inline">\(g\)</span>, y denotada por <span class="math inline">\(f\circ g\)</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap1/1.3-esquema-composicion.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%"></p>
+</figure>
+</div>
+<p>El dominio de <span class="math inline">\(f\circ g\)</span> es el conjunto de todos los <span class="math inline">\(x\)</span> en el dominio de <span class="math inline">\(g\)</span> tales que <span class="math inline">\(g(x)\)</span> está en el dominio de <span class="math inline">\(f\)</span>.</p>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Si <span class="math inline">\(f(x)=x^2\)</span> y <span class="math inline">\(g(x)=x-3\)</span>, hallar <span class="math inline">\(f\circ g\)</span> y <span class="math inline">\(g\circ f\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-23-contents" aria-controls="callout-23" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-23" class="callout-23-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Por un lado tenemos que <span class="math display">\[
+(f\circ g)(x)=f(g(x))=f(x-3)=(x-3)^2
+\]</span></p>
+<p>mientras que</p>
+<p><span class="math display">\[
+(g\circ f)(x)=g(f(x))=g\left(x^2\right)=x^2-3.
+\]</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled" title="Importante">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Importante
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>En general no es cierto que <span class="math inline">\(f\circ g=g\circ f\)</span>. La notación <span class="math inline">\(f\circ g\)</span> indica que primero se aplica <span class="math inline">\(g\)</span> y luego <span class="math inline">\(f\)</span> (y se lee “<span class="math inline">\(g\)</span> compuesta con <span class="math inline">\(f\)</span>”).</p>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Sean <span class="math inline">\(f(x)=\sqrt{x}\)</span> y <span class="math inline">\(g(x)=\sqrt{2-x}\)</span>. Hallar las siguientes funciones y sus respectivos dominios</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li><span class="math inline">\(f\circ g\)</span>.</li>
+<li><span class="math inline">\(g\circ f\)</span>.</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<ul>
+<li><span class="math inline">\(f\circ f\)</span>.</li>
+<li><span class="math inline">\(g\circ g\)</span>.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-25-contents" aria-controls="callout-25" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-25" class="callout-25-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Comencemos calculando <span class="math inline">\(f\circ g\)</span>. Tenemos que <span class="math display">\[
+(f\circ g)(x)=f(g(x))=f\left(\sqrt{2-x}\right)=\sqrt{\sqrt{2-x}}=\sqrt[4]{2-x}.
+\]</span></p>
+<p>El dominio de <span class="math inline">\(f\circ g\)</span> consiste en todos los números <span class="math inline">\(x\)</span> tales que <span class="math inline">\(2-x\geq 0\)</span>, es decir, <span class="math inline">\(D_{f\circ g}=(-\infty,2]\)</span>.</p>
+<p>Ahora calculamos <span class="math inline">\(g\circ f\)</span>, esto es <span class="math display">\[
+(g\circ f)(x)=g(f(x))=g\left(\sqrt{x}\right)=\sqrt{2-\sqrt{x}}.
+\]</span></p>
+<p>Para que <span class="math inline">\(g\circ f\)</span> esté bien definida es preciso que <span class="math inline">\(x\geq 0\)</span> y también que <span class="math inline">\(2-\sqrt{x}\geq 0\)</span>. Con esto resulta <span class="math inline">\(D_{g\circ f}=[0,4]\)</span>.</p>
+<p>Para el caso de <span class="math inline">\(f\circ f\)</span> resulta</p>
+<p><span class="math display">\[
+(f\circ f)(x)=f(f(x))=f\left(\sqrt{x}\right)=\sqrt{\sqrt{x}}=\sqrt[4]{x},
+\]</span> cuyo dominio es <span class="math inline">\(D_{f\circ f}=[0,+\infty)\)</span>.</p>
+<p>Finalmente, para <span class="math inline">\(g\circ g\)</span> escribimos <span class="math display">\[
+(g\circ g)(x)=g(g(x))=g\left(\sqrt{2-x}\right)=\sqrt{2-\sqrt{2-x}}.
+\]</span> Esta función está bien definida siempre que se cumpla <span class="math inline">\(2-x\geq 0\)</span> y <span class="math inline">\(2-\sqrt{2-x}\geq 0\)</span>, lo que nos da <span class="math inline">\(D_{g\circ g}=[-2,2]\)</span>.</p>
+</div>
+</div>
+</div>
+<p>Es posible componer más de dos funciones. Por ejemplo, si <span class="math inline">\(f\)</span>, <span class="math inline">\(g\)</span> y <span class="math inline">\(h\)</span> son tres funciones entonces <span class="math display">\[
+(f\circ g\circ h)(x)=f(g(h(x))),
+\]</span> siempre que esta expresión pueda calcularse.</p>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Encontrar <span class="math inline">\(f\circ g\circ h\)</span> siendo</p>
+<p><span class="math display">\[
+f(x)=\frac{x}{x+1},\quad g(x)=x^{10},\quad \text{ y }\quad h(x)=x+3.
+\]</span></p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-26-contents" aria-controls="callout-26" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-26" class="callout-26-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Procedemos como en el ejemplo anterior, obteniendo <span class="math display">\[
+f(g(h(x)))=f(g(x+3))=f\left((x+3)^{10}\right)=\frac{(x+3)^{10}}{(x+3)^{10}+1}.
+\]</span></p>
+</div>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Dada la función <span class="math inline">\(F(x)=\cos^2(x+9)\)</span>, encontrar funciones <span class="math inline">\(f\)</span>, <span class="math inline">\(g\)</span> y <span class="math inline">\(h\)</span> de modo que <span class="math inline">\(F=f\circ g\circ h\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-27-contents" aria-controls="callout-27" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-27" class="callout-27-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Notemos que para calcular <span class="math inline">\(F(x)\)</span> primero tomamos el número <span class="math inline">\(x\)</span> y sumamos 9, a este resultado le calculamos el coseno y finalmente elevamos al cuadrado. Teniendo en cuenta este orden de operaciones, podemos definir <span class="math inline">\(h(x)=x+9\)</span>, <span class="math inline">\(g(x)=\cos x\)</span> y <span class="math inline">\(f(x)=x^2\)</span>. Con esta elección tenemos que <span class="math inline">\(F(x)=f(g(h(x)))\)</span>.</p>
+</div>
+</div>
+</div>
+<p><a href="#seccion_1.3">↑ Volver al inicio de la sección</a></p>
+</section>
+</section>
+<section id="seccion_1.5" class="level2">
+<h2 class="anchored" data-anchor-id="seccion_1.5">1.5: Funciones exponenciales</h2>
+<p>Hemos visto que una función exponencial es de la forma</p>
+<div class="formula-box">
+<p><span class="math display">\[
+f(x)=a^x,
+\]</span></p>
+</div>
+<p>donde <span class="math inline">\(a\)</span> es una constante positiva. Recordemos que</p>
+<ul>
+<li><p>Si <span class="math inline">\(x=n\)</span>, con <span class="math inline">\(n\in\mathbb{N}\)</span>, entonces <span class="math display">\[
+a^x=a^n=\underbrace{a\times a\times \dots \times a}_{n \text{ factores}}.
+\]</span></p></li>
+<li><p>Si <span class="math inline">\(x=0\)</span>, <span class="math inline">\(a^0=1\)</span>, y si <span class="math inline">\(x=-n\)</span> con <span class="math inline">\(n\in\mathbb{N}\)</span> entonces</p></li>
+</ul>
+<p><span class="math display">\[
+a^{-n}=\frac{1}{a^n}.
+\]</span></p>
+<ul>
+<li>Si <span class="math inline">\(x=\displaystyle \frac{p}{q}\)</span>, donde <span class="math inline">\(p,q\in \mathbb{N}\)</span>, entonces</li>
+</ul>
+<p><span class="math display">\[
+a^x=a^{p/q}=\sqrt[q]{a^p}=\left(\sqrt[q]{a}\right)^p.
+\]</span></p>
+<p>¿Qué significa <span class="math inline">\(a^x\)</span> cuando <span class="math inline">\(x\)</span> es un número <strong>irracional</strong>?</p>
+<p>En la siguiente figura vemos un esbozo del gráfico de <span class="math inline">\(y=a^x\)</span> para <span class="math inline">\(x\)</span> racional.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap1/1.5-exponencial-racional.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
+</figure>
+</div>
+<p>Los “huecos” de esta gráfica corresponden a los valores <span class="math inline">\(f(x)\)</span> cuando <span class="math inline">\(x\)</span> es un número irracional.</p>
+<p>Podemos pensar en completar estos espacios definiendo a <span class="math inline">\(f\)</span> como una función creciente. Por ejemplo, si tomamos <span class="math inline">\(a=2\)</span> y queremos conocer el valor de <span class="math inline">\(2^{\sqrt{3}}\)</span>, observamos primero que</p>
+<p><span class="math display">\[
+1\text{.}7&lt;\sqrt{3}&lt;1\text{.}8
+\]</span></p>
+<p>y como la función es creciente, debe ocurrir que</p>
+<p><span class="math display">\[2^{1\text{.}7}&lt;2^{\sqrt{3}}&lt;2^{1\text{.}8}.\]</span></p>
+<p>Como tanto <span class="math inline">\(1\text{.}7\)</span> como <span class="math inline">\(1\text{.}8\)</span> son racionales, podemos calcular <span class="math inline">\(2^{1\text{.}7}\)</span> y <span class="math inline">\(2^{1\text{.}8}\)</span>, obteniendo una aproximación del número <span class="math inline">\(2^{\sqrt{3}}\)</span>. Si se desea conocer con más precisión, notemos que</p>
+<p><span class="math display">\[
+1\text{.}73&lt;\sqrt{3}&lt;1\text{.}74 \quad\Longrightarrow\quad 2^{1\text{.}73}&lt;2^{\sqrt{3}}&lt;2^{1\text{.}74}
+\]</span></p>
+<p><span class="math display">\[
+1\text{.}732&lt;\sqrt{3}&lt;1\text{.}733 \quad\Longrightarrow\quad 2^{1\text{.}732}&lt;2^{\sqrt{3}}&lt;2^{1\text{.}733}
+\]</span></p>
+<p><span class="math display">\[
+1\text{.}73205&lt;\sqrt{3}&lt;1\text{.}73206 \quad\Longrightarrow\quad 2^{1\text{.}73205}&lt;2^{\sqrt{3}}&lt;2^{1\text{.}73206}
+\]</span></p>
+<p>Es posible demostrar que existe un único número mayor que todos los valores</p>
+<p><span class="math display">\[
+2^{1\text{.}73}, 2^{1\text{.}732}, 2^{1\text{.}73205}, \dots
+\]</span></p>
+<p>y menor que todos los números</p>
+<p><span class="math display">\[
+2^{1\text{.}74}, 2^{1\text{.}733}, 2^{1\text{.}73206}, \dots
+\]</span></p>
+<p>Entonces definimos <span class="math inline">\(2^{\sqrt{3}}\)</span> como este número. Usando el proceso de aproximación anterior podemos obtener la siguiente estimación (correcta hasta seis cifras decimales)</p>
+<p><span class="math display">\[
+2^{\sqrt{3}}\approx 3\text{.}321997
+\]</span></p>
+<p>Este ejemplo puede repetirse con cualquier otro número irracional <span class="math inline">\(x\)</span> y, de esta manera, completar la gráfica punteada anterior.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap1/1.5-exponenciales.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%"></p>
+</figure>
+</div>
+<p>Observemos que, si <span class="math inline">\(f(x)=a^{x}\)</span> entonces</p>
+<p><span class="math display">\[
+\left(\frac{1}{a}\right)^x=\frac{1}{a^x}=a^{-x}=f(-x),
+\]</span></p>
+<p>con lo que la gráfica de <span class="math inline">\(y=(1/a)^x\)</span> puede obtenerse de la de <span class="math inline">\(f\)</span> <strong>reflejándola con respecto al eje</strong> <span class="math inline">\(y\)</span>.</p>
+<div class="theorem">
+<p>Proposición (Leyes de los exponentes)</p>
+<p>Sean <span class="math inline">\(a,b\)</span> positivos y <span class="math inline">\(x,y\)</span> números reales. Entonces</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ol type="1">
+<li><span class="math inline">\(a^{x+y}=a^x\,a^y\)</span>.</li>
+<li><span class="math inline">\(a^{x-y}=\displaystyle \frac{a^x}{a^y}\)</span>.</li>
+</ol>
+</div><div class="column" style="width:50%;">
+<ol start="3" type="1">
+<li><span class="math inline">\(\left(a^x\right)^y=a^{xy}\)</span>.</li>
+<li><span class="math inline">\((ab)^x=a^x\,b^x\)</span>.</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Trazar la gráfica de <span class="math inline">\(y=3-2^x\)</span>. Determinar su dominio e imagen.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-28-contents" aria-controls="callout-28" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-28" class="callout-28-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Comencemos con el gráfico de <span class="math inline">\(y=f(x)=2^x\)</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap1/1.5-ejemplo-exponencial.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:35.0%"></p>
+</figure>
+</div>
+<p>Para obtener el de la función deseada, reflejamos éste respecto del eje <span class="math inline">\(x\)</span> y luego realizamos una traslación vertical, tres unidades hacia arriba. Así, resulta</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap1/1.5-ejemplo-exponencial2.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:35.0%"></p>
+</figure>
+</div>
+<p>Como la expresión <span class="math inline">\(2^x\)</span> está definida para cualquier número real, tenemos que el dominio es <span class="math inline">\(D_f=\mathbb{R}\)</span>. Por otro lado, <span class="math inline">\(2^x&gt;0\)</span> implica que <span class="math inline">\(-2^x&lt;0\)</span>, y si sumamos 3 a ambos miembros de la desigualdad concluimos que <span class="math inline">\(3-2^x&lt;3\)</span>, es decir, <span class="math inline">\(y&lt;3\)</span>. Con esto vemos que <span class="math inline">\(\operatorname{Im}(f)=(-\infty,3)\)</span>.</p>
+</div>
+</div>
+</div>
+<section id="aplicación-modelos-poblacionales" class="level3">
+<h3 class="anchored" data-anchor-id="aplicación-modelos-poblacionales">Aplicación: modelos poblacionales</h3>
+<p>Consideremos una población de bacterias en un medio nutriente homogéneo. Al realizar mediciones periódicas, se observa que la población se duplica cada hora.</p>
+<p>Si inicialmente se cuenta con 1000 individuos, ¿qué función permite modelar la población en cada instante de tiempo?</p>
+<p>Si <span class="math inline">\(p(t)\)</span> denota la cantidad de individuos a tiempo <span class="math inline">\(t\)</span>, medido en horas, entonces observemos que</p>
+<p><span class="math display">\[
+\begin{aligned}
+p(0)&amp;=1000\\
+p(1)&amp;=2p(0)=2^1\times 1000\\
+p(2)&amp;=2p(1)=2\times(2\times 1000)=2^2\times 1000\\
+p(3)&amp;=2p(2)=2\times(2^2\times 1000)=2^3\times 1000
+\end{aligned}
+\]</span></p>
+<p>continuando este patrón, podemos ver que</p>
+<p><span class="math display">\[
+p(t)=1000\times 2^t.
+\]</span></p>
+</section>
+<section id="el-número-e" class="level3">
+<h3 class="anchored" data-anchor-id="el-número-e">El número <span class="math inline">\(e\)</span></h3>
+<p>Hay una base <span class="math inline">\(a\)</span> en la función exponencial que será especialmente útil. La elección de la base influye en la forma en que la gráfica de <span class="math inline">\(y=a^x\)</span> cruza al eje <span class="math inline">\(y\)</span>.</p>
+<p>La <strong>recta tangente</strong> en el punto (0,1) (que luego definiremos más precisamente, pero que podemos pensar como la recta que sólo toca al gráfico en ese punto) para <span class="math inline">\(y=2^x\)</span> es <span class="math inline">\(m\approx 0\text{.}7\)</span> y para <span class="math inline">\(y=3^x\)</span> es <span class="math inline">\(m\approx 1\text{.}1\)</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap1/1.5-pendientes-exponenciales.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%"></p>
+</figure>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Definición (El número $e$)">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definición (El número <span class="math inline">\(e\)</span>)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>El número <span class="math inline">\(e\)</span> es aquella base que se elige de modo que la recta tangente al gráfico de <span class="math inline">\(y=e^x\)</span> en el punto <span class="math inline">\((0,1)\)</span> tenga pendiente <span class="math inline">\(m=1\)</span>.</p>
+</div>
+</div>
+<p>El gráfico de <span class="math inline">\(y=e^x\)</span> se encuentra entre los de <span class="math inline">\(y=2^x\)</span> e <span class="math inline">\(y=3^x\)</span>. El valor exacto hasta cinco cifras decimales de <span class="math inline">\(e\)</span> es</p>
+<p><span class="math display">\[
+e\approx 2\text{.}71828
+\]</span></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap1/1.5-exponencial-2-e-3.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
+</figure>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Dibujar la función <span class="math inline">\(y=\displaystyle\frac{1}{2}e^{-x}-1\)</span>. Determinar su dominio y rango.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-30-contents" aria-controls="callout-30" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-30" class="callout-30-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Para graficar la función dada podemos partir de <span class="math inline">\(y=e^x\)</span>. Primero reflejamos la curva con respecto al eje <span class="math inline">\(y\)</span> obteniendo el de <span class="math inline">\(y=e^{-x}\)</span>, y seguidamente realizamos un alargamiento horizontal en un factor 2 y finalmente un desplazamiento vertical de una unidad hacia abajo. De esta manera, el gráfico resultante es</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap1/1.5-ejemplo-exponenciales.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
+</figure>
+</div>
+<p>Tenemos que el dominio es <span class="math inline">\(\mathbb{R}\)</span> y, como <span class="math inline">\(e^{-x}&gt;0\)</span>, al multiplicar por <span class="math inline">\(1/2\)</span> y restar <span class="math inline">\(1\)</span> obtenemos <span class="math inline">\(\displaystyle \frac{1}{2}e^{-x}-1&gt;-1\)</span>, con lo cual el conjunto imagen es <span class="math inline">\((-1,+\infty)\)</span>.</p>
+</div>
+</div>
+</div>
+<p><a href="#seccion_1.5">↑ Volver al inicio de la sección</a></p>
+</section>
+</section>
+<section id="seccion_1.6" class="level2">
+<h2 class="anchored" data-anchor-id="seccion_1.6">1.6: Funciones inversas y logarítmicas</h2>
+<div class="callout callout-style-default callout-note callout-titled" title="Definición (Función uno a uno)">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definición (Función uno a uno)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Una función <span class="math inline">\(f\)</span> se llama <strong>uno a uno</strong> o <strong>inyectiva</strong> si nunca toma el mismo valor dos veces. Es decir, si se cumple que</p>
+<p><span id="eq-inyectiva_no"><span class="math display">\[
+x_1\neq x_2 \Longrightarrow f(x_1)\neq f(x_2)
+\tag{2.1}\]</span></span></p>
+<p>para todos <span class="math inline">\(x_1,x_2\in D_f\)</span>. O, equivalentemente, si</p>
+<p><span id="eq-inyectiva_si"><span class="math display">\[
+f(x_1)=f(x_2) \Longrightarrow x_1=x_2
+\tag{2.2}\]</span></span></p>
+<p>para todos <span class="math inline">\(x_1,x_2\in D_f\)</span>.</p>
+</div>
+</div>
+<p>En el siguiente esquema vemos dos funciones: <span class="math inline">\(f\)</span> es uno a uno, pero <span class="math inline">\(g\)</span> no lo es.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap1/1.6-venns.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
+</figure>
+</div>
+<p>Geométricamente, si <span class="math inline">\(f\)</span> es una función uno a uno, entonces ninguna recta horizontal puede cortar al gráfico más de una vez. Si hay al menos una recta horizontal que corta al gráfico de <span class="math inline">\(f\)</span> más de una vez, entonces <span class="math inline">\(f\)</span> no es uno a uno.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap1/1.6-funcion-no-unouno.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
+</figure>
+</div>
+<div class="theorem">
+<p>Prueba de la línea horizontal</p>
+<p>Una función es uno a uno si y sólo si ninguna recta horizontal corta a su gráfico más de una vez.</p>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>¿Es <span class="math inline">\(f(x)=x^3\)</span> una función uno a uno?</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-32-contents" aria-controls="callout-32" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-32" class="callout-32-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Si dibujamos el gráfico de <span class="math inline">\(f\)</span>, la prueba de la línea horizontal sugiere que <span class="math inline">\(f\)</span> es uno a uno.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap1/1.6-ejemplo-cubica.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:30.0%"></p>
+</figure>
+</div>
+<p>Ahora vamos a utilizar la ecuación (<a href="#eq-inyectiva_si" class="quarto-xref"><span>2.2</span></a>) para demostrarlo analíticamente. Sean <span class="math inline">\(x_1\)</span> y <span class="math inline">\(x_2\)</span> en <span class="math inline">\(\mathbb{R}\)</span> de modo que <span class="math inline">\(f(x_1)=f(x_2)\)</span>. Esto significa que <span class="math inline">\(x_1^3=x_2^3\)</span>, y aplicando raíz cúbica a ambos miembros obtenemos que <span class="math inline">\(x_1=x_2\)</span>. Es decir, la igualdad <span class="math inline">\(f(x_1)=f(x_2)\)</span> implica que <span class="math inline">\(x_1=x_2\)</span>. En consecuencia, <span class="math inline">\(f\)</span> resulta ser uno a uno.</p>
+</div>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>¿Es <span class="math inline">\(f(x)=x^2\)</span> una función uno a uno?</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-33-contents" aria-controls="callout-33" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-33" class="callout-33-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Si graficamos <span class="math inline">\(f(x)=x^2\)</span>, la prueba de la línea horizontal indica que <span class="math inline">\(f\)</span> no es uno a uno, es decir, existen puntos distintos del dominio donde <span class="math inline">\(f\)</span> toma el mismo valor.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap1/1.6-ejemplo-cuadratica.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:30.0%"></p>
+</figure>
+</div>
+<p>Para comprobar esto analíticamente, veamos que la ecuación (<a href="#eq-inyectiva_no" class="quarto-xref"><span>2.1</span></a>) no se satisface. Para ello, basta con encontrar un par de valores <span class="math inline">\(x_1\)</span> y <span class="math inline">\(x_2\)</span> en el dominio tales que <span class="math inline">\(x_1\neq x_2\)</span> pero que <span class="math inline">\(f(x_1)=f(x_2)\)</span>. Si consideramos <span class="math inline">\(x_1=-2\)</span> y <span class="math inline">\(x_2=2\)</span> claramente es <span class="math inline">\(x_1\neq x_2\)</span>. Sin embargo</p>
+<p><span class="math display">\[
+f(x_1)=f(-2)=(-2)^2=4=2^2=f(2)=f(x_2)
+\]</span></p>
+<p>con lo que <span class="math inline">\(f(x_1)=f(x_2)\)</span>. De esta forma, <span class="math inline">\(f\)</span> no puede ser una función uno a uno.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Definición (Función inversa)">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definición (Función inversa)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Sea <span class="math inline">\(f\)</span> una función uno a uno con dominio <span class="math inline">\(A\)</span> y rango <span class="math inline">\(B\)</span>. Entonces su <strong>función inversa</strong> tiene dominio <span class="math inline">\(B\)</span> y rango <span class="math inline">\(A\)</span>, y se define de manera que</p>
+<p><span id="eq-funcion_inversa"><span class="math display">\[
+f^{-1}(y)=x\quad \Longleftrightarrow\quad f(x)=y,
+\tag{2.3}\]</span></span></p>
+<p>para cualquier <span class="math inline">\(y\)</span> en <span class="math inline">\(B\)</span>.</p>
+</div>
+</div>
+<p>Notemos que es importante que <span class="math inline">\(f\)</span> sea uno a uno: de lo contrario, al intentar definir <span class="math inline">\(f^{-1}\)</span> podría ocurrir que esta ley no corresponda a una función (<span class="math inline">\(f^{-1}\)</span> no puede tomar más de un valor en cada <span class="math inline">\(y\)</span> en <span class="math inline">\(B\)</span>).</p>
+<p>Al comparar <span class="math inline">\(f\)</span> con <span class="math inline">\(f^{-1}\)</span> vemos que cada una invierte el efecto de la otra. Notar que</p>
+<p><span class="math display">\[
+\operatorname{Dom}(f^{-1})=\operatorname{Im}(f)
+\]</span></p>
+<p>y también</p>
+<p><span class="math display">\[
+\operatorname{Im}(f^{-1})=\operatorname{Dom}(f).
+\]</span></p>
+<p>Por ejemplo, si <span class="math inline">\(f(x)=x^3\)</span> entonces <span class="math inline">\(f^{-1}(y)=y^{1/3}\)</span>. Pues, si <span class="math inline">\(y=x^3\)</span> entonces</p>
+<p><span class="math display">\[
+f^{-1}(y)=f^{-1}(x^3)=(x^3)^{1/3}=x.
+\]</span></p>
+<p>Recíprocamente, si <span class="math inline">\(x=y^{1/3}\)</span> entonces</p>
+<p><span class="math display">\[
+f(x)=f(y^{1/3})=(y^{1/3})^3=y.
+\]</span></p>
+<p>El siguiente diagrama muestra que <span class="math inline">\(f^{-1}\)</span> invierte el efecto de <span class="math inline">\(f\)</span></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap1/1.6-funcion-inversa.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%"></p>
+</figure>
+</div>
+<p>Si sustituimos <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> en las correspondientes igualdades de (<a href="#eq-funcion_inversa" class="quarto-xref"><span>2.3</span></a>) obtenemos</p>
+<div class="formula-box">
+<p><span id="eq-cancelacion-inversafunc"><span class="math display">\[
+f^{-1}(f(x))=x, \quad \text{ para } \quad  x\in A
+\tag{2.4}\]</span></span></p>
+<p><span id="eq-cancelacion-funcinversa"><span class="math display">\[
+f(f^{-1}(y))=y, \quad \text{ para } \quad y\in B
+\tag{2.5}\]</span></span></p>
+</div>
+<p>llamadas <strong>ecuaciones de cancelación</strong>.</p>
+<div class="callout callout-style-default callout-caution callout-titled" title="Importante">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Importante
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>No confundir el <span class="math inline">\(-1\)</span> de <span class="math inline">\(f^{-1}\)</span> con un exponente. Ésta es simplemente una notación para referirse a la función inversa de <span class="math inline">\(f\)</span>, y no significa <span class="math inline">\(1/f(x)\)</span>.</p>
+</div>
+</div>
+<section id="cómo-encontrar-la-función-inversa-de-una-función-uno-a-uno" class="level3 callout-question">
+<h3 class="anchored" data-anchor-id="cómo-encontrar-la-función-inversa-de-una-función-uno-a-uno">¿Cómo encontrar la función inversa de una función uno a uno?</h3>
+<p>Para ello podemos seguir los siguientes pasos:</p>
+<ol type="1">
+<li>Escribir <span class="math inline">\(y=f(x)\)</span>.</li>
+<li>Resolver la ecuación para <span class="math inline">\(x\)</span>.</li>
+<li>Intercambiar <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span>.</li>
+</ol>
+</section>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Encontrar la función inversa de <span class="math inline">\(f(x)=x^3+2\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-36-contents" aria-controls="callout-36" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-36" class="callout-36-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Primero verifiquemos que <span class="math inline">\(f\)</span> es una función uno a uno. Sean <span class="math inline">\(x_1\)</span> y <span class="math inline">\(x_2\)</span> dos números en el dominio de <span class="math inline">\(f\)</span> (es decir, en <span class="math inline">\(\mathbb{R}\)</span>) tales que <span class="math inline">\(f(x_1)=f(x_2)\)</span>. Entonces tenemos</p>
+<p><span class="math display">\[
+x_1^3+2=x_2^3+2.
+\]</span></p>
+<p>Restando 2 a ambos miembros y luego aplicando raíz cúbica, concluimos que <span class="math inline">\(x_1=x_2\)</span>, y entonces <span class="math inline">\(f\colon \mathbb{R}\to \mathbb{R}\)</span> es un función uno a uno, en virtud de (<a href="#eq-inyectiva_si" class="quarto-xref"><span>2.2</span></a>).</p>
+<p>Ahora procedemos a calcular su función inversa realizando los pasos antes descriptos. Si intercambiamos <span class="math inline">\(y\)</span> con <span class="math inline">\(x\)</span> resulta</p>
+<p><span class="math display">\[
+x=y^3+2
+\]</span></p>
+<p>y a continuación, despejando <span class="math inline">\(y\)</span> obtenemos</p>
+<p><span class="math display">\[
+y=\sqrt[3]{x-2}.
+\]</span></p>
+<p>De esta manera, <span class="math inline">\(f^{-1}\colon \mathbb{R}\to \mathbb{R}\)</span> está dada por</p>
+<p><span class="math display">\[
+f^{-1}(x)=\sqrt[3]{x-2}.
+\]</span></p>
+</div>
+</div>
+</div>
+<p>Al intercambiar <span class="math inline">\(y\)</span> con <span class="math inline">\(x\)</span> podemos hallar el gráfico de <span class="math inline">\(f^{-1}\)</span> a partir del de <span class="math inline">\(f\)</span>. Por definición, sabemos que <span class="math inline">\(f(a)=b\)</span> si y sólo si <span class="math inline">\(f^{-1}(b)=a\)</span>. Entonces</p>
+<p><span class="math display">\[
+(a,b)\in \text{Gráf}\,(f)\quad \text{ si y sólo si }\quad (b,a)\in \text{Gráf}\,(f^{-1}).
+\]</span></p>
+<p>Como los puntos <span class="math inline">\((a,b)\)</span> y <span class="math inline">\((b,a)\)</span> son simétricos respecto de la recta <span class="math inline">\(y=x\)</span>, el gráfico de <span class="math inline">\(f^{-1}\)</span> puede obtenerse reflejando el de <span class="math inline">\(f\)</span> sobre la recta <span class="math inline">\(y=x\)</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap1/1.6-graficas-funcion-e-inversa.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
+</figure>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Trazar el gráfico de <span class="math inline">\(f(x)=\sqrt{-1-x}\)</span> y el de su función inversa en un mismo sistema de ejes.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-37-contents" aria-controls="callout-37" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-37" class="callout-37-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Notemos que <span class="math inline">\(D_f=(-\infty,-1]\)</span> e <span class="math inline">\(\operatorname{Im}(f)=[0,+\infty)\)</span>. Veamos que <span class="math inline">\(f\)</span> es efectivamente una función uno a uno. Usaremos nuevamente la definición (<a href="#eq-inyectiva_si" class="quarto-xref"><span>2.2</span></a>). Si <span class="math inline">\(x_1\)</span> y <span class="math inline">\(x_2\)</span> son dos números en el dominio tales que <span class="math inline">\(f(x_1)=f(x_2)\)</span>, entonces tenemos que</p>
+<p><span class="math display">\[
+\sqrt{-1-x_1}=\sqrt{-1-x_2}.
+\]</span></p>
+<p>Elevando al cuadrado y sumando uno en ambos miembros resulta</p>
+<p><span class="math display">\[
+-x_1=-x_2,
+\]</span></p>
+<p>y al multiplicar ambos lados de la igualdad por <span class="math inline">\(-1\)</span> concluimos que <span class="math inline">\(x_1=x_2\)</span>.</p>
+<p>Ahora calculamos <span class="math inline">\(f^{-1}\)</span> procediendo como en el ejemplo anterior. Intercambiando <span class="math inline">\(y\)</span> con <span class="math inline">\(x\)</span> obtenemos</p>
+<p><span class="math display">\[
+x=\sqrt{-1-y}
+\]</span></p>
+<p>con lo cual</p>
+<p><span class="math display">\[
+f^{-1}(x)=-x^2-1.
+\]</span></p>
+<p>La función obtenida luce, a primera vista, como una parábola. Sin embargo, recordar que <span class="math inline">\(D_{f^{-1}}=[0,+\infty)\)</span> por lo tanto la gráfica de la función inversa corresponde sólamente a la “mitad derecha” de la parábola.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap1/1.6-ejemplo-inversa-raiz.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<section id="funciones-logarítmicas-1" class="level3">
+<h3 class="anchored" data-anchor-id="funciones-logarítmicas-1">Funciones logarítmicas</h3>
+<p>Si <span class="math inline">\(a&gt;0\)</span> y <span class="math inline">\(a\neq 1\)</span> la función exponencial <span class="math inline">\(y=a^x\)</span> es uno a uno. Entonces tiene función inversa, llamada <strong>función logarítmica</strong> de base <span class="math inline">\(a\)</span> y denotada como</p>
+<p><span class="math display">\[
+y=\log_a x.
+\]</span></p>
+<p>Utilizando la <a href="#eq-funcion_inversa">definición de función inversa</a> tenemos que</p>
+<p><span class="math display">\[
+\log_a x=y\quad \Longleftrightarrow \quad a^y=x.
+\]</span></p>
+<p>En definitiva, si <span class="math inline">\(x&gt;0\)</span>, <span class="math inline">\(\log_a x\)</span> es el <strong>exponente</strong> al que debe elevarse a <span class="math inline">\(a\)</span> para obtener <span class="math inline">\(x\)</span>. Por ejemplo, <span class="math inline">\(\log_2 8=3\)</span> ya que <span class="math inline">\(2^3=8\)</span>.</p>
+<p>Las ecuaciones de cancelación en este caso son</p>
+<div class="formula-box">
+<p><span class="math display">\[
+\log_a (a^x)=x, \quad \text{ para } \quad  x\in \mathbb{R}
+\]</span></p>
+<p>y también</p>
+<p><span class="math display">\[
+a^{\log_a x}=x, \quad \text{ para }  \quad x&gt;0.
+\]</span></p>
+</div>
+<p>La función <span class="math inline">\(y=\log_a x\)</span> tiene dominio <span class="math inline">\((0,\infty)\)</span> y rango <span class="math inline">\(\mathbb{R}\)</span>. Su gráfico puede obtenerse al reflejar el de <span class="math inline">\(y=a^x\)</span> respecto de <span class="math inline">\(y=x\)</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap1/1.6-exponencial-logaritmo.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+<p>Como la gráfica de <span class="math inline">\(y=a^x\)</span> pasa por el punto <span class="math inline">\((0,1)\)</span>, la de su inversa <span class="math inline">\(y=\log_a x\)</span> pasa por <span class="math inline">\((1,0)\)</span>.</p>
+<div id="propo-leyes-logaritmos" class="theorem">
+<p><strong>Proposición (Leyes de los logaritmos)</strong></p>
+<p>Sean <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> números reales positivos y <span class="math inline">\(a&gt;0, a\neq 1\)</span>. Entonces</p>
+<p><strong>(1)</strong> <span class="math inline">\(\log_a(xy)=\log_a x+\log_a y\)</span>.</p>
+<p><strong>(2)</strong> <span class="math inline">\(\log_a\!\left(\frac{x}{y}\right)=\log_a x-\log_a y\)</span>.</p>
+<p><strong>(3)</strong> <span class="math inline">\(\log_a(x^r)=r\log_a x,\quad r\in\mathbb{R}\)</span>.</p>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Evalúe <span class="math inline">\(\log_2 80-\log_2 5\)</span> utilizando las leyes de los logaritmos.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-38-contents" aria-controls="callout-38" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-38" class="callout-38-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Si escribimos <span class="math inline">\(80=16\cdot 5=2^4\cdot 5\)</span>, entonces aplicando las <a href="#propo-leyes-logaritmos">leyes de los logaritmos</a> (1) y (3) resulta</p>
+<p><span class="math display">\[
+\log_2 80-\log_2 5=\log_2(2^4\cdot 5)-\log_2 5=\log_2(2^4)+\log_2 5-\log_2 5=4\log_2 2=4\cdot 1=4.
+\]</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="logaritmos-naturales" class="level3">
+<h3 class="anchored" data-anchor-id="logaritmos-naturales">Logaritmos naturales</h3>
+<p>Cuando la base <span class="math inline">\(a\)</span> es el número <span class="math inline">\(e\)</span>, el logaritmo recibe el nombre de <strong>logaritmo natural</strong> o <strong>neperiano</strong> y se denota por <span class="math inline">\(\log_e x=\ln x\)</span>. En este caso, usando la <a href="#eq-funcion_inversa">definición de inversa</a> vemos que</p>
+<p><span id="eq-relacioninv_explog"><span class="math display">\[
+\ln x=y \quad\Longleftrightarrow\quad e^y=x.
+\tag{2.6}\]</span></span></p>
+<p>Las ecuaciones de cancelación son</p>
+<div class="formula-box">
+<p><span id="eq-cancelacion_lnexp"><span class="math display">\[
+\ln (e^x)=x, \quad \text{ para } \quad  x\in \mathbb{R}
+\tag{2.7}\]</span></span></p>
+<p>y también</p>
+<p><span id="eq-cancelacion_expln"><span class="math display">\[
+e^{\ln x}=x, \quad \text{ para } \quad x&gt;0.
+\tag{2.8}\]</span></span></p>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Encuentre <span class="math inline">\(x\)</span> si <span class="math inline">\(\ln x=5\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-39-contents" aria-controls="callout-39" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-39" class="callout-39-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Utilizando la equivalencia (<a href="#eq-relacioninv_explog" class="quarto-xref"><span>2.6</span></a>) obtenemos que</p>
+<p><span class="math display">\[
+\ln x=5 \quad \Longleftrightarrow \quad x=e^5.
+\]</span></p>
+</div>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Resuelva la ecuación <span class="math inline">\(e^{5-3x}=10\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-40-contents" aria-controls="callout-40" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-40" class="callout-40-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Aplicamos logaritmo natural a ambos miembros de la igualdad</p>
+<p><span class="math display">\[
+\ln\left(e^{5-3x}\right)=\ln 10
+\]</span></p>
+<p>y luego utilizamos la <a href="#eq-cancelacion_lnexp">ecuación de cancelación</a>, obteniendo</p>
+<p><span class="math display">\[
+5-3x=\ln 10, \quad \text{ lo que implica que }\quad x=\frac{5-\ln 10}{3}.
+\]</span></p>
+</div>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Expresar a <span class="math inline">\(\ln a+\tfrac{1}{2}\ln b\)</span> como un solo logaritmo.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-41-contents" aria-controls="callout-41" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-41" class="callout-41-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Utilizamos las <a href="#propo-leyes-logaritmos">leyes de los logaritmos</a> (1) y (3) podemos escribir</p>
+<p><span class="math display">\[
+\ln a+\frac{1}{2}\ln b=\ln a+\ln b^{1/2}=\ln\left(ab^{1/2}\right)=\ln\left(a\sqrt{b}\right).
+\]</span></p>
+</div>
+</div>
+</div>
+<p>Si <span class="math inline">\(a&gt;0\)</span>, <span class="math inline">\(a\neq 1\)</span> entonces podemos escribir</p>
+<p><span class="math display">\[
+\log_a x=\frac{\ln x}{\ln a},
+\]</span></p>
+<p>conocida como <strong>fórmula de cambio de base</strong>. Más generalmente, si <span class="math inline">\(a\)</span> y <span class="math inline">\(b\)</span> son positivos y distintos de <span class="math inline">\(1\)</span> entonces</p>
+<div class="formula-box">
+<p><span class="math display">\[
+\log_b x=\frac{\log_a x}{\log_a b}\quad \text{(conversión de base $b$ a base $a$)}
+\]</span></p>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Trazar la gráfica de <span class="math inline">\(y=\ln(x-2)-1\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-42-contents" aria-controls="callout-42" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-42" class="callout-42-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Partiendo del gráfico de <span class="math inline">\(y=\ln x\)</span>, podemos obtener la curva deseada desplazando la anterior dos unidades para la derecha y luego una unidad hacia abajo.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap1/1.6-ejemplo-logaritmo.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="funciones-trigonométricas-inversas" class="level3">
+<h3 class="anchored" data-anchor-id="funciones-trigonométricas-inversas">Funciones trigonométricas inversas</h3>
+<p>Si intentamos calcular las funciones inversas de las trigonométricas nos encontramos con el problema de que no son uno a uno. Entonces debemos restringir sus dominios a un intervalo adecuado donde tomen todos los valores en los respectivos rangos y sean uno a uno.</p>
+<p>Por ejemplo, si restringimos la función <span class="math inline">\(y=f(x)=\operatorname{sen} x\)</span> al intervalo <span class="math inline">\(I=[-\tfrac{\pi}{2},\tfrac{\pi}{2}]\)</span>, entonces <span class="math inline">\(f\)</span> toma todos los valores del intervalo <span class="math inline">\([-1,1]\)</span> (su rango) y resulta uno a uno en <span class="math inline">\(I\)</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap1/1.6-arcoseno.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:65.0%"></p>
+</figure>
+</div>
+<p>La función inversa del seno restringido a este intervalo existe y se denota mediante <span class="math inline">\(\operatorname{sen}^{-1}\)</span> o <span class="math inline">\(\operatorname{arcsen}\)</span>, y se conoce como <strong>función inversa del seno</strong> o <strong>función arco seno</strong>.</p>
+<p>Por la <a href="#eq-funcion_inversa">definición de inversa</a> tenemos que</p>
+<p><span class="math display">\[
+\operatorname{sen}^{-1} x=y\quad \Longleftrightarrow\quad \operatorname{sen} y=x \qquad -\frac{\pi}{2}\leq y\leq \frac{\pi}{2}.
+\]</span></p>
+<p>Si <span class="math inline">\(-1\leq x\leq 1\)</span>, <span class="math inline">\(\operatorname{sen}^{-1} x\)</span> es un número en el intervalo <span class="math inline">\([-\tfrac{\pi}{2},\tfrac{\pi}{2}]\)</span> cuyo seno es <span class="math inline">\(x\)</span>.</p>
+<p>En este caso, las ecuaciones de cancelación resultan</p>
+<div class="formula-box">
+<p><span class="math display">\[
+\operatorname{sen}^{-1}(\operatorname{sen} x)=x, \quad para \quad  -\tfrac{\pi}{2}\leq x\leq \tfrac{\pi}{2}
+\]</span></p>
+<p>y también</p>
+<p><span class="math display">\[
+\operatorname{sen}(\operatorname{sen}^{-1} x)=x, \quad para \quad -1\leq x\leq 1.
+\]</span></p>
+</div>
+<p>Para el caso de la función coseno se procede de forma similar. La función <span class="math inline">\(y=\cos x\)</span> es uno a uno y toma todos los valores del rango si nos restringimos al intervalo <span class="math inline">\([0,\pi]\)</span>. Entonces existe su función inversa, denotada por <span class="math inline">\(\cos^{-1}\)</span> o <span class="math inline">\(\operatorname{arccos}\)</span> y llamada <strong>función inversa del coseno</strong> o <strong>función arco coseno</strong>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap1/1.6-arcocoseno.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:65.0%"></p>
+</figure>
+</div>
+<p>En virtud de la <a href="#eq-funcion_inversa">definición de inversa</a> tenemos que</p>
+<p><span class="math display">\[
+\cos^{-1}x=y\quad\Longleftrightarrow\quad \cos y=x\qquad 0\leq y\leq \pi.
+\]</span></p>
+<p>El dominio de <span class="math inline">\(y=\operatorname{arccos} x\)</span> es el intervalo [-1,1] y el rango el intervalo <span class="math inline">\([0,\pi]\)</span>.</p>
+<p>Las ecuaciones de cancelación son</p>
+<div class="formula-box">
+<p><span class="math display">\[
+\cos^{-1}(\cos x)=x, \quad \text{ para } \quad  0\leq x\leq \pi
+\]</span></p>
+<p>como también</p>
+<p><span class="math display">\[
+\cos(\cos^{-1} x)=x, \quad \text{ para } \quad -1\leq x\leq 1.
+\]</span></p>
+</div>
+<p>Para el caso de la función tangente, resulta uno a uno si nos restringimos al intervalo <span class="math inline">\(\displaystyle\left(-\frac{\pi}{2},\frac{\pi}{2}\right)\)</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap1/1.6-arcotangente.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:65.0%"></p>
+</figure>
+</div>
+<p>En este intervalo <span class="math inline">\(y=\tan x\)</span> posee función inversa, llamada <strong>función tangente inversa</strong> o <strong>arcotangente</strong>, denotada <span class="math inline">\(y=\tan^{-1} x\)</span> o <span class="math inline">\(y=\operatorname{arctan} x\)</span>.</p>
+<p>Usando la <a href="#eq-funcion_inversa">definición de inversa</a> obtenemos la relación</p>
+<p><span class="math display">\[
+\tan^{-1} x=y\quad\Longleftrightarrow\quad x=\tan y\qquad -\frac{\pi}{2}&lt;y&lt;\frac{\pi}{2}.
+\]</span></p>
+<p>Este gráfico presenta dos asíntotas horizontales, cuyas ecuaciones son <span class="math inline">\(y=-\tfrac{\pi}{2}\)</span> e <span class="math inline">\(y=\tfrac{\pi}{2}\)</span>. Esto se corresponde con el hecho de que la función tangente tiene las asíntotas verticales <span class="math inline">\(x=-\tfrac{\pi}{2}\)</span> y <span class="math inline">\(x=-\tfrac{\pi}{2}\)</span>.</p>
+<p>Las ecuaciones de cancelación son</p>
+<div class="formula-box">
+<p><span class="math display">\[
+\tan^{-1}(\tan x)=x, \quad \text{ para }  \quad   -\tfrac{\pi}{2}&lt; x&lt;\tfrac{\pi}{2}
+\]</span></p>
+<p>y</p>
+<p><span class="math display">\[
+\tan(\tan^{-1} x)=x, \quad \text{ para } \quad x\in \mathbb{R}.
+\]</span></p>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Simplificar la expresión <span class="math inline">\(\cos(\operatorname{arctan} x)\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-43-contents" aria-controls="callout-43" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-43" class="callout-43-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Sea <span class="math inline">\(y=\operatorname{arctan} x\)</span>. Entonces <span class="math inline">\(\tan y =x\)</span>. Dado que queremos calcular <span class="math inline">\(\cos y\)</span>, debemos expresar el coseno del número <span class="math inline">\(y\)</span> en términos de la tangente. Es sencillo verificar que</p>
+<p><span class="math display">\[
+1+\tan^2 y = \frac{1}{\cos^2 y}
+\]</span></p>
+<p>y utilizando esa relación, obtenemos</p>
+<p><span class="math display">\[
+\cos^2 y =\frac{1}{1+\tan^2 y}.
+\]</span></p>
+<p>Dado que <span class="math inline">\(y\in \left(-\frac{\pi}{2},\frac{\pi}{2}\right)\)</span>, <span class="math inline">\(\cos y&gt;0\)</span> y despejando deducimos que</p>
+<p><span class="math display">\[
+\cos(\operatorname{arctan} x) = \cos y =\sqrt{\frac{1}{1+\tan^2 y}}=\frac{1}{\sqrt{1+x^2}}.
+\]</span></p>
+</div>
+</div>
+</div>
+<p>Las inversas de las funciones trigonométricas restantes no aparecen con frecuencia. Las enunciamos a continuación.</p>
+<ul>
+<li><strong>Función cosecante inversa</strong> o <strong>arcocosecante</strong>.</li>
+</ul>
+<div class="formula-box">
+<p><span class="math display">\[
+y=\operatorname{csc}^{-1} x \,\, \quad (|x|\geq 1)\quad \Longleftrightarrow \quad\csc y=x, \,\,\,\, y\in (0,\tfrac{\pi}{2}]\cup (\pi,\tfrac{3}{2}\pi].
+\]</span></p>
+</div>
+<ul>
+<li><strong>Función secante inversa</strong> o <strong>arcosecante</strong>.</li>
+</ul>
+<div class="formula-box">
+<p><span class="math display">\[
+y=\operatorname{sec}^{-1} x \,\, \quad (|x|\geq 1)\quad \Longleftrightarrow \quad\sec y=x, \,\,\,\, y\in [0,\tfrac{\pi}{2})\cup [\pi,\tfrac{3}{2}\pi).
+\]</span></p>
+</div>
+<ul>
+<li><strong>Función cotangente inversa</strong> o <strong>arcocotangente</strong>.</li>
+</ul>
+<div class="formula-box">
+<p><span class="math display">\[
+y=\operatorname{cot}^{-1} x \,\, \quad (x\in\mathbb{R})\quad \Longleftrightarrow \quad\cot y=x, \,\,\,\, y\in (0,\pi).
+\]</span></p>
+</div>
+<p><a href="#seccion_1.6">↑ Volver al inicio de la sección</a></p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./index.html" class="pagination-link" aria-label="Cálculo I">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Cálculo I</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./cap2.html" class="pagination-link" aria-label="2. Límites, continuidad y derivadas">
+        <span class="nav-page-text"><span class="chapter-title">2. Límites, continuidad y derivadas</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

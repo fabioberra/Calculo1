@@ -1,0 +1,19 @@
+project:
+  type: book
+
+book:
+  title: "Notas de teoría - Cálculo I"
+
+  chapters:
+    - index.qmd
+    - cap1.qmd
+    - cap2.qmd
+    - cap3.qmd
+    - cap4.qmd
+
+format:
+  html:
+    toc: true
+    toc-title: "Contenidos"
+    toc-depth: 3
+    number-sections: false

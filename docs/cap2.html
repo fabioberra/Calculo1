@@ -1,0 +1,3651 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>2. Límites, continuidad y derivadas – Notas de teoría - Cálculo I</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./cap3.html" rel="next">
+<link href="./cap1.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-d9ea66fcd6c317012447f26e9c021348.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./cap2.html"><span class="chapter-title">2. Límites, continuidad y derivadas</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Notas de teoría - Cálculo I</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Cálculo I</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./cap1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">1. Funciones</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./cap2.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">2. Límites, continuidad y derivadas</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./cap3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">3. Derivadas</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./cap4.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4. Aplicaciones de la derivación</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Contenidos</h2>
+   
+  <ul>
+  <li><a href="#seccion_2.1" id="toc-seccion_2.1" class="nav-link active" data-scroll-target="#seccion_2.1">2.1. La tangente y los problemas de la velocidad</a>
+  <ul class="collapse">
+  <li><a href="#el-problema-de-la-tangente" id="toc-el-problema-de-la-tangente" class="nav-link" data-scroll-target="#el-problema-de-la-tangente">El problema de la tangente</a></li>
+  <li><a href="#el-problema-de-la-velocidad" id="toc-el-problema-de-la-velocidad" class="nav-link" data-scroll-target="#el-problema-de-la-velocidad">El problema de la velocidad</a></li>
+  <li><a href="#seccion_2.2" id="toc-seccion_2.2" class="nav-link" data-scroll-target="#seccion_2.2">2.2. Límite de una función</a></li>
+  <li><a href="#límites-infinitos" id="toc-límites-infinitos" class="nav-link" data-scroll-target="#límites-infinitos">Límites infinitos</a></li>
+  <li><a href="#seccion_2.3" id="toc-seccion_2.3" class="nav-link" data-scroll-target="#seccion_2.3">2.3. Leyes de los límites</a></li>
+  </ul></li>
+  <li><a href="#seccion_2.5" id="toc-seccion_2.5" class="nav-link" data-scroll-target="#seccion_2.5">2.5. Continuidad</a></li>
+  <li><a href="#seccion_2.6" id="toc-seccion_2.6" class="nav-link" data-scroll-target="#seccion_2.6">2.6. Límites al infinito, asíntotas horizontales</a>
+  <ul class="collapse">
+  <li><a href="#límites-infinitos-en-el-infinito" id="toc-límites-infinitos-en-el-infinito" class="nav-link" data-scroll-target="#límites-infinitos-en-el-infinito">Límites infinitos en el infinito</a></li>
+  </ul></li>
+  <li><a href="#seccion_2.7" id="toc-seccion_2.7" class="nav-link" data-scroll-target="#seccion_2.7">2.7. Derivadas y razones de cambio</a>
+  <ul class="collapse">
+  <li><a href="#tangentes" id="toc-tangentes" class="nav-link" data-scroll-target="#tangentes">Tangentes</a></li>
+  <li><a href="#velocidades" id="toc-velocidades" class="nav-link" data-scroll-target="#velocidades">Velocidades</a></li>
+  <li><a href="#derivadas" id="toc-derivadas" class="nav-link" data-scroll-target="#derivadas">Derivadas</a></li>
+  <li><a href="#relaciones-de-cambio" id="toc-relaciones-de-cambio" class="nav-link" data-scroll-target="#relaciones-de-cambio">Relaciones de cambio</a></li>
+  </ul></li>
+  <li><a href="#seccion_2.8" id="toc-seccion_2.8" class="nav-link" data-scroll-target="#seccion_2.8">2.8. La derivada como una función</a>
+  <ul class="collapse">
+  <li><a href="#otras-notaciones" id="toc-otras-notaciones" class="nav-link" data-scroll-target="#otras-notaciones">Otras notaciones</a></li>
+  <li><a href="#cómo-deja-de-ser-derivable-una-función" id="toc-cómo-deja-de-ser-derivable-una-función" class="nav-link" data-scroll-target="#cómo-deja-de-ser-derivable-una-función">¿Cómo deja de ser derivable una función?</a></li>
+  <li><a href="#derivadas-superiores" id="toc-derivadas-superiores" class="nav-link" data-scroll-target="#derivadas-superiores">Derivadas superiores</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-title">2. Límites, continuidad y derivadas</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="seccion_2.1" class="level2">
+<h2 class="anchored" data-anchor-id="seccion_2.1">2.1. La tangente y los problemas de la velocidad</h2>
+<section id="el-problema-de-la-tangente" class="level3">
+<h3 class="anchored" data-anchor-id="el-problema-de-la-tangente">El problema de la tangente</h3>
+<p>La palabra <strong>tangente</strong> deriva del latín <em>tangens</em> que significa “tocar”. Así, podramos decir que una recta tangente a una curva es una recta que toca a la curva.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap2/2.1-tangentes.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%"></p>
+</figure>
+</div>
+<p>Cuando la curva es una circunferencia, la recta tangente es aquella que la interseca en un solo punto. Sin embargo, para curvas más generales esta definición no parece adecuada: la recta <span class="math inline">\(\ell\)</span> corta a la curva una sola vez, pero no se parece a lo que consideramos una tangente. Por otro lado, la recta <span class="math inline">\(t\)</span> se parece a una tangente, pero la interseca más de una vez.</p>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Encontrar la ecuación de la recta tangente a la parbola <span class="math inline">\(y=x^2\)</span> en el punto <span class="math inline">\(P=(1,1)\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Para dar la ecuación de la recta necesitamos conocer su pendiente. Como sólo se cuenta con un punto, tomamos <span class="math inline">\(Q=(x,x^2)\)</span> con <span class="math inline">\(x\neq 1\)</span> y estimamos la pendiente <span class="math inline">\(m\)</span> con la de la recta secante <span class="math inline">\(PQ\)</span>, dada por</p>
+<p><span class="math display">\[
+m_{PQ}=\frac{x^2-1}{x-1}.
+\]</span></p>
+<p>En la siguiente tabla observamos los valores de <span class="math inline">\(m_{PQ}\)</span> para distintos valores de <span class="math inline">\(x\)</span>.</p>
+<div class="math-table">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th><span class="math inline">\(x\)</span></th>
+<th><span class="math inline">\(m_{PQ}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>0.5</td>
+<td>1.5</td>
+</tr>
+<tr class="odd">
+<td>0.9</td>
+<td>1.9</td>
+</tr>
+<tr class="even">
+<td>0.99</td>
+<td>1.99</td>
+</tr>
+<tr class="odd">
+<td>0.999</td>
+<td>1.999</td>
+</tr>
+<tr class="even">
+<td>1.001</td>
+<td>2.001</td>
+</tr>
+<tr class="odd">
+<td>1.01</td>
+<td>2.01</td>
+</tr>
+<tr class="even">
+<td>1.1</td>
+<td>2.1</td>
+</tr>
+<tr class="odd">
+<td>1.5</td>
+<td>2.5</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Podemos ver que, conforme <span class="math inline">\(x\)</span> está más cerca de <span class="math inline">\(1\)</span>, <span class="math inline">\(m_{PQ}\)</span> estará más cerca de 2. Conjeturamos entonces que la pendiente buscada es <span class="math inline">\(2\)</span>. Decimos que la pendiente <span class="math inline">\(m\)</span> es el <strong>límite</strong> de las pendientes de las rectas secantes <span class="math inline">\(m_{PQ}\)</span>, y escribimos</p>
+<p><span class="math display">\[
+m=\lim_{Q\to P} m_{PQ} \quad \text{ y también }\quad    m=\lim_{x\to 1} \frac{x^2-1}{x-1}=2.
+\]</span></p>
+<p>Utilizando este valor de <span class="math inline">\(m\)</span> podemos ver que la recta buscada tiene ecuación</p>
+<p><span class="math display">\[
+y-1=2(x-1) \quad \text{ o equivalentemente }\quad  y=2x-1.
+\]</span></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap2/2.1-parabola.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="el-problema-de-la-velocidad" class="level3">
+<h3 class="anchored" data-anchor-id="el-problema-de-la-velocidad">El problema de la velocidad</h3>
+<p>En física resulta sencillo calcular una velocidad como el cociente entre el espacio recorrido y el tiempo que se tarda en recorrerlo. Sin embargo, en este caso se supone que la velocidad es constante durante el experimento. ¿Qué sucede entonces cuando la velocidad varía? ¿Cómo puede determinarse en cada instante de tiempo?</p>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Se deja caer una pelota desde la plataforma de observación de la Torre CN en Toronto, a 450 metros por encima del nivel del suelo. Encontrar la velocidad de la pelota una vez que transcurren cinco segundos.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Si <span class="math inline">\(s(t)\)</span> representa la distancia en metros recorrida por la pelota, a tiempo <span class="math inline">\(t\)</span> medido en segundos, entonces la <strong>ley de Galileo</strong> establece que</p>
+<p><span class="math display">\[
+s(t)=4.9\, t^2
+\]</span></p>
+<p>Podemos comenzar calculando la velocidad promedio en distintos intervalos de tiempo. Si <span class="math inline">\(h&gt;0\)</span>, la velocidad promedio de la pelota en el intervalo <span class="math inline">\([t, t+h]\)</span> viene dada por</p>
+<p><span class="math display">\[
+\frac{s(t+h)-s(t)}{h}.
+\]</span></p>
+<p>En la siguiente tabla tenemos el cálculo de velocidades promedio para intervalos de diferentes amplitudes.</p>
+<div class="math-table">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Intervalo de tiempo</th>
+<th>velocidad promedio <span class="math inline">\((m/s)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>[5,6]</td>
+<td>53.9</td>
+</tr>
+<tr class="even">
+<td>[5,5.1]</td>
+<td>49.49</td>
+</tr>
+<tr class="odd">
+<td>[5,5.05]</td>
+<td>49.245</td>
+</tr>
+<tr class="even">
+<td>[5,5.01]</td>
+<td>49.049</td>
+</tr>
+<tr class="odd">
+<td>[5,5.001]</td>
+<td>49.0049</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Conforme se achica el intervalo las velocidades promedio se aproximan a 49 <span class="math inline">\(m/s\)</span>. La <strong>velocidad instantánea</strong> se define como el límite de las velocidades promedio cuando la amplitud de los intervalos se achica. Esta idea se precisará mejor más adelante. Con esto, podemos conjeturar que la velocidad instantánea de la pelota después de cinco segundos es de 49 <span class="math inline">\(m/s\)</span>.</p>
+</div>
+</div>
+</div>
+<p>Existe una relación entre los dos problemas presentados. Si dibujamos la función del ejemplo anterior</p>
+<p><span class="math display">\[
+s(t)=4.9\, t^2
+\]</span></p>
+<p>y consideramos los puntos <span class="math inline">\(P=(a, 4.9\,a^2)\)</span> y <span class="math inline">\(Q=(a+h, 4.9\,(a+h)^2)\)</span> entonces la pendiente de la secante <span class="math inline">\(PQ\)</span> está dada por</p>
+<p><span class="math display">\[
+m_{PQ}=\frac{4.9\,(a+h)^2- 4.9\,a^2}{(a+h)-a}=\frac{4.9\,(a+h)^2- 4.9\,a^2}{h}.
+\]</span></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap2/2.1-velocidades.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+<p>Luego, la velocidad instantánea representa la pendiente de la recta tangente en el punto <span class="math inline">\(P\)</span>, que es el límite de las velocidades promedio dadas por las pendientes de las rectas secantes <span class="math inline">\(m_{PQ}\)</span> conforme <span class="math inline">\(Q\)</span> se aproxima a <span class="math inline">\(P\)</span>.</p>
+<p><a href="#seccion_2.1">↑ Volver al inicio de la sección</a></p>
+</section>
+<section id="seccion_2.2" class="level3">
+<h3 class="anchored" data-anchor-id="seccion_2.2">2.2. Límite de una función</h3>
+<p>En esta sección definiremos el concepto de <strong>límite</strong> de una función, surgido al intentar calcular la recta tangente a una curva dada. Consideremos <span class="math inline">\(f(x)=x^2-x+2\)</span> y observemos los valores de <span class="math inline">\(f\)</span> cuando <span class="math inline">\(x\)</span> está cerca de 2.</p>
+<div class="math-table">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th><strong><span class="math inline">\(x\)</span></strong></th>
+<th><strong><span class="math inline">\(f(x)\)</span></strong></th>
+<th><strong><span class="math inline">\(x\)</span></strong></th>
+<th><strong><span class="math inline">\(f(x)\)</span></strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1.0</td>
+<td>2.000000</td>
+<td>3.0</td>
+<td>8.000000</td>
+</tr>
+<tr class="even">
+<td>1.5</td>
+<td>2.750000</td>
+<td>2.5</td>
+<td>5.750000</td>
+</tr>
+<tr class="odd">
+<td>1.8</td>
+<td>3.440000</td>
+<td>2.2</td>
+<td>4.640000</td>
+</tr>
+<tr class="even">
+<td>1.9</td>
+<td>3.710000</td>
+<td>2.1</td>
+<td>4.310000</td>
+</tr>
+<tr class="odd">
+<td>1.95</td>
+<td>3.852500</td>
+<td>2.05</td>
+<td>4.152500</td>
+</tr>
+<tr class="even">
+<td>1.99</td>
+<td>3.970100</td>
+<td>2.01</td>
+<td>4.030100</td>
+</tr>
+<tr class="odd">
+<td>1.995</td>
+<td>3.985025</td>
+<td>2.005</td>
+<td>4.015025</td>
+</tr>
+<tr class="even">
+<td>1.999</td>
+<td>3.997001</td>
+<td>2.001</td>
+<td>4.003001</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>De la tabla anterior podemos deducir que cuando <span class="math inline">\(x\)</span> está cerca de 2 (por la izquierda o la derecha), <span class="math inline">\(f(x)\)</span> está cerca de 4.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap2/2.2-limite-parabola.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:30.0%"></p>
+</figure>
+</div>
+<p>De hecho, se pueden acercar los valores de <span class="math inline">\(f(x)\)</span> tanto a 4 como se desee, conforme se elija <span class="math inline">\(x\)</span> suficientemente cercano a 2.</p>
+<p>Esto se expresa diciendo que: “el límite de la función <span class="math inline">\(f(x)=x^2-x+2\)</span>, cuando <span class="math inline">\(x\)</span> tiende a 2, es igual a 4” y se escribe</p>
+<p><span class="math display">\[
+\lim_{x\to 2} \,(x^2-x+2) =4.
+\]</span></p>
+<div class="callout callout-style-default callout-note callout-titled" title="Definición (Límite de una función)">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definición (Límite de una función)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Decimos que el <strong>límite</strong> cuando <span class="math inline">\(x\)</span> tiende a <span class="math inline">\(a\)</span> de <span class="math inline">\(f(x)\)</span> es <span class="math inline">\(L\)</span>, y lo escribimos</p>
+<p><span class="math display">\[
+\lim_{x\to a} f(x)=L
+\]</span></p>
+<p>si los valores de <span class="math inline">\(f\)</span> pueden acercarse arbitrariamente a <span class="math inline">\(L\)</span> conforme <span class="math inline">\(x\)</span> se elija suficientemente cerca de <span class="math inline">\(a\)</span>, pero <strong><span class="math inline">\(x\neq a\)</span></strong>.</p>
+<p>También podemos decir esto escribiendo <span class="math inline">\(f(x)\to L\)</span> cuando <span class="math inline">\(x\to a\)</span>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution callout-titled" title="Importante">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Importante
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Notar que en la definición consideramos <span class="math inline">\(x\neq a\)</span>. Esto significa que <span class="math inline">\(f\)</span> no necesita estar definida en <span class="math inline">\(x=a\)</span> para calcular su límite para <span class="math inline">\(x\to a\)</span>. Lo importante es que <span class="math inline">\(f\)</span> esté definida <em>cerca</em> de <span class="math inline">\(a\)</span>.</p>
+</div>
+</div>
+<p>En los tres gráficos de abajo se cumple que <span class="math inline">\(\lim_{x\to a}f(x)=L\)</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap2/2.2-limites.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%"></p>
+</figure>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Conjeturar el valor del límite <span class="math inline">\(\displaystyle \lim_{x\to 1} \frac{x-1}{x^2-1}\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Notemos que <span class="math inline">\(f\)</span> no está definida en <span class="math inline">\(x=1\)</span>. Sin embargo, esto no importa pues a los efectos de calcular el límite debemos considerar <span class="math inline">\(x\)</span> cerca de <span class="math inline">\(1\)</span>, pero <span class="math inline">\(x\neq 1\)</span>.</p>
+<p>La siguiente tabla muestra los valores de <span class="math inline">\(f(x)\)</span> cuando <span class="math inline">\(x\)</span> está cerca de <span class="math inline">\(1\)</span>, por izquierda y por derecha.</p>
+<div class="columns">
+<div class="column" style="width:40%;">
+<div class="math-table">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th><strong><span class="math inline">\(x&lt;1\)</span></strong></th>
+<th><strong><span class="math inline">\(f(x)\)</span></strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0.5</td>
+<td>0.666667</td>
+</tr>
+<tr class="even">
+<td>0.9</td>
+<td>0.526316</td>
+</tr>
+<tr class="odd">
+<td>0.99</td>
+<td>0.502513</td>
+</tr>
+<tr class="even">
+<td>0.999</td>
+<td>0.500250</td>
+</tr>
+<tr class="odd">
+<td>0.9999</td>
+<td>0.500025</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div><div class="column" style="width:40%;">
+<div class="math-table">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th><strong><span class="math inline">\(x&gt;1\)</span></strong></th>
+<th><strong><span class="math inline">\(f(x)\)</span></strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1.5</td>
+<td>0.400000</td>
+</tr>
+<tr class="even">
+<td>1.1</td>
+<td>0.476190</td>
+</tr>
+<tr class="odd">
+<td>1.019</td>
+<td>0.497512</td>
+</tr>
+<tr class="even">
+<td>1.001</td>
+<td>0.499750</td>
+</tr>
+<tr class="odd">
+<td>1.0001</td>
+<td>0.499975</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>Esto sugiere que <span class="math inline">\(\operatorname{lím}_{x\to 1}f(x)=\frac{1}{2}\)</span>, como comprobaremos luego.</p>
+<p>Aquí podemos ver el gráfico de <span class="math inline">\(f\)</span> junto al de la función <span class="math display">\[
+g(x)=
+\begin{cases}
+f(x) &amp; \text{ si } x\neq 1,\\
+2 &amp; \text{ si } x=1.
+\end{cases}
+\]</span></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap2/2.2-limite-comparacion.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%"></p>
+</figure>
+</div>
+<p>Ambas tiene el mismo límite para <span class="math inline">\(x\to 1\)</span> ya que sólo difieren en <span class="math inline">\(x=1\)</span>.</p>
+</div>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Estimar el valor de <span class="math inline">\(\displaystyle \lim_{t\to 0} f(t)\)</span>, siendo <span class="math inline">\(\displaystyle f(t)=\frac{\sqrt{t^2+9}-3}{t^2}\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Nuevamente realizamos una tabla evaluando la función en valores de <span class="math inline">\(t\)</span> cercanos a <span class="math inline">\(0\)</span>, <span class="math inline">\(t\neq 0\)</span>.</p>
+<div class="math-table">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th><span class="math inline">\(t\)</span></th>
+<th><span class="math inline">\(f(t)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(\pm\,\)</span> 1.0</td>
+<td>0.16228</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\pm\,\)</span> 0.5</td>
+<td>0.16553</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\pm\,\)</span> 0.1</td>
+<td>0.16662</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\pm\,\)</span> 0.05</td>
+<td>0.16666</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\pm\,\)</span> 0.01</td>
+<td>0.16667</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Conforme <span class="math inline">\(t\)</span> se acerca a <span class="math inline">\(0\)</span>, los valores de la función parecen acercarse a <span class="math inline">\(1/6\)</span>, con lo que conjeturamos que</p>
+<p><span class="math display">\[
+\lim_{t\to 0}\frac{\sqrt{t^2+9}-3}{t^2}=\frac{1}{6}.
+\]</span></p>
+</div>
+</div>
+</div>
+<p>¿Qué sucedería si eligiésemos valores de <span class="math inline">\(t\)</span> más cercanos a <span class="math inline">\(0\)</span>?</p>
+<div class="math-table">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th><span class="math inline">\(t\)</span></th>
+<th><span class="math inline">\(f(t)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(\pm\,\)</span> 0.0005</td>
+<td>0.16800</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\pm\,\)</span> 0.0001</td>
+<td>0.20000</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\pm\,\)</span> 0.00005</td>
+<td>0.00000</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\pm\,\)</span> 0.00001</td>
+<td>0.00000</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>En general, si elegimos valores de <span class="math inline">\(t\)</span> suficientemente chicos, habrá un momento en que la calculadora nos arroje como resultado <span class="math inline">\(0\)</span>. Esto no significa que el límite es cero, sino que la diferencia del numerador es tan pequeña que hace que esta expresión parezca <span class="math inline">\(0\)</span> para la precisión que la calculadora maneja.</p>
+<div class="callout callout-style-default callout-caution callout-titled" title="Importante">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Importante
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Si bien una tabla de valores muchas veces ayuda a entender el comportamiento de una función al analizar límites, <strong>no debe usarse como herramienta formal</strong>.</p>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Investigar el valor de <span class="math inline">\(\displaystyle \lim_{x\to 0}\operatorname{sen}\left(\frac{\pi}{x}\right)\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Nuevamente <span class="math inline">\(f(x)=\operatorname{sen}(\pi/x)\)</span> no está definida en <span class="math inline">\(x=0\)</span>. Si <span class="math inline">\(n\in\mathbb{N}\)</span>, observemos que</p>
+<p><span class="math display">\[
+f\left(\frac{1}{n}\right)=\operatorname{sen}(n\pi)=0.
+\]</span></p>
+<p>Como esto vale para cualquier <span class="math inline">\(n\in\mathbb{N}\)</span> (más aún, es cierto para todo <span class="math inline">\(n\)</span> entero no nulo), podríamos estar tentados a suponer que</p>
+<p><span class="math display">\[
+\lim_{x\to 0} f(x)=0.
+\]</span></p>
+<p>Sin embargo, esto es erróneo pues podemos comprobar que <span class="math display">\[
+f\left(\frac{2}{4n+1}\right)=1 \quad \text { y }\quad f\left(\frac{2}{4n-1}\right)=-1
+\]</span></p>
+<p>para cualquier <span class="math inline">\(n\in\mathbb{N}\)</span>.</p>
+<p>Esto muestra que los valores de <span class="math inline">\(f(x)\)</span> oscilan constantemente cuando se eligen distintos valores de <span class="math inline">\(x\)</span> cercanos a cero. En este caso, el límite <strong>no existe</strong> por oscilación, como lo muestra la gráfica.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap2/2.2-seno-oscilacion.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Encontrar el valor de <span class="math inline">\(\displaystyle \lim_{x\to 0} \left(x^3+\frac{\cos(5x)}{10000}\right)\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Realizando una tabla de valores, tenemos lo siguiente</p>
+<div class="math-table">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th><span class="math inline">\(x\)</span></th>
+<th><span class="math inline">\(f(x)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>1.000028</td>
+</tr>
+<tr class="even">
+<td>0.5</td>
+<td>0.124920</td>
+</tr>
+<tr class="odd">
+<td>0.1</td>
+<td>0.001088</td>
+</tr>
+<tr class="even">
+<td>0.05</td>
+<td>0.000222</td>
+</tr>
+<tr class="odd">
+<td>0.01</td>
+<td>0.000101</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Esto parece indicar que el lmite es cero. Sin embargo, si consideramos valores más pequeños de <span class="math inline">\(x\)</span> obtenemos</p>
+<div class="math-table">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th><span class="math inline">\(x\)</span></th>
+<th><span class="math inline">\(f(x)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0.005</td>
+<td>0.00010009</td>
+</tr>
+<tr class="even">
+<td>0.001</td>
+<td>0.00010000</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>En realidad, veremos más adelante que <span class="math inline">\(\lim_{x\to 0}\cos(5x)=1\)</span>, con lo cual</p>
+<p><span class="math display">\[
+\lim_{x\to 0} \left(x^3+\frac{\cos(5x)}{10000}\right)=\frac{1}{10000}=0.0001.
+\]</span></p>
+</div>
+</div>
+</div>
+<p>La <strong>función de Heaviside</strong> <span class="math inline">\(H\)</span> se define mediante la expresión</p>
+<p><span class="math display">\[
+H(t)=
+\begin{cases}
+0 &amp; \text{ si } t&lt;0,\\
+1 &amp; \text{ si } t\geq 1.
+\end{cases}
+\]</span></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap2/2.2-heaviside.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
+</figure>
+</div>
+<p>Notemos que <span class="math inline">\(H(t)\)</span> se aproxima a 1 cuando <span class="math inline">\(t\)</span> se aproxima a cero por la derecha, y se aproxima a 0 cuando <span class="math inline">\(t\)</span> se acerca a cero por la izquierda. Esto podemos escribirlo como</p>
+<p><span class="math display">\[
+\lim_{t\to 0^+} H(t)=1 \quad \text{ y } \quad \lim_{t\to 0^-} H(t)=1.
+\]</span></p>
+<p>No hay un único valor <span class="math inline">\(L\)</span> al que <span class="math inline">\(H(t)\)</span> se aproxime cuando <span class="math inline">\(t\)</span> tiende a cero, por lo que el límite <span class="math inline">\(\lim_{t\to 0} H(t)\)</span> no existe.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Definición (Límites laterales)">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definición (Límites laterales)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Decimos que el límite de <span class="math inline">\(f(x)\)</span> cuando <span class="math inline">\(x\)</span> se aproxima a <span class="math inline">\(a\)</span> por la <strong>izquierda</strong> es <span class="math inline">\(L\)</span> y lo denotamos</li>
+</ul>
+<p><span class="math display">\[
+\lim_{x\to a^-} f(x)=L
+\]</span></p>
+<p>si los valores <span class="math inline">\(f(x)\)</span> pueden aproximarse al número <span class="math inline">\(L\)</span> tanto como se desee, siempre que se elija <span class="math inline">\(x\)</span> lo suficientemente cerca de <span class="math inline">\(a\)</span>, pero <strong><span class="math inline">\(x&lt;a\)</span></strong>.</p>
+<ul>
+<li>Análogamente, decimos que el límite de <span class="math inline">\(f(x)\)</span> cuando <span class="math inline">\(x\)</span> tiende a <span class="math inline">\(a\)</span> por la <strong>derecha</strong> es <span class="math inline">\(L\)</span> y lo expresamos</li>
+</ul>
+<p><span class="math display">\[
+\lim_{x\to a^+} f(x)=L
+\]</span></p>
+<p>si <span class="math inline">\(f(x)\)</span> puede aproximarse al número <span class="math inline">\(L\)</span> tanto como se quiera, siempre que elijamos <span class="math inline">\(x\)</span> lo suficientemente cercano a <span class="math inline">\(a\)</span>, pero <strong><span class="math inline">\(x&gt;a\)</span></strong>.</p>
+</div>
+</div>
+<p>Al comparar la definición de límite con la de límites laterales, tenemos que</p>
+<div class="formula-box">
+<p><span class="math display">\[
+\lim_{x\to a} f(x)=L \quad \Longleftrightarrow \quad \lim_{x\to a^-} f(x)=L \quad \text{ y } \quad \lim_{x\to a^+} f(x)=L.
+\]</span></p>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Dar los valores de los siguientes límites (si existen) observando la gráfica.</p>
+<div class="columns">
+<div class="column" style="width:40%;">
+<ul>
+<li><span class="math inline">\(\lim_{x\to 2^-}\,g(x)\)</span></li>
+<li><span class="math inline">\(\lim_{x\to 2^+}\,g(x)\)</span></li>
+<li><span class="math inline">\(\lim_{x\to 2}\,g(x)\)</span></li>
+</ul>
+</div><div class="column" style="width:40%;">
+<ul>
+<li><span class="math inline">\(\lim_{x\to 5^-}\, g(x)\)</span></li>
+<li><span class="math inline">\(\lim_{x\to 5^+}\, g(x)\)</span></li>
+<li><span class="math inline">\(\lim_{x\to 5}\, g(x)\)</span></li>
+</ul>
+</div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap2/2.2-ejemplo-limites.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+</section>
+<section id="límites-infinitos" class="level3">
+<h3 class="anchored" data-anchor-id="límites-infinitos">Límites infinitos</h3>
+<p>Vamos a investigar a continuación el comportamiento de la función</p>
+<p><span class="math display">\[
+\displaystyle f(x)=\frac{1}{x^2}
+\]</span></p>
+<p>cuando <span class="math inline">\(x\)</span> se aproxima a cero. Cuando <span class="math inline">\(x\)</span> tiende a cero, tanto por la derecha como por la izquierda, <span class="math inline">\(1/x^2\)</span> se hace cada vez más grande. Más aún, podemos hacer que <span class="math inline">\(1/x^2\)</span> sea tan grande como deseemos, siempre que elijamos <span class="math inline">\(x\)</span> lo suficientemente cerca de cero. En la siguiente tabla se muestran algunos valores de <span class="math inline">\(f\)</span> cuando <span class="math inline">\(x\)</span> toma valores cercanos a cero.</p>
+<div class="math-table">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th><span class="math inline">\(x\)</span></th>
+<th><span class="math inline">\(f(x)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(\pm \,\)</span> 1</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\pm \,\)</span> 0.5</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\pm \,\)</span> 0.2</td>
+<td>25</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\pm \,\)</span> 0.1</td>
+<td>100</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\pm \,\)</span> 0.05</td>
+<td>400</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\pm \,\)</span> 0.01</td>
+<td>10000</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\pm \,\)</span> 0.001</td>
+<td>1000000</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Este comportamiento se puede observar también con el gráfico de la función.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap2/2.2-limite-infinito.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
+</figure>
+</div>
+<p>En este caso, decimos que <span class="math inline">\(\lim_{x\to 0} f(x)\)</span> no existe <strong>por infinitud</strong>. Para indicar este tipo de comportamiento, escribiremos</p>
+<p><span class="math display">\[
+\lim_{x\to 0} \frac{1}{x^2}=\infty.
+\]</span></p>
+<div class="callout callout-style-default callout-important callout-titled" title="Importante">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Importante
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Esto no significa que consideremos a <span class="math inline">\(\infty\)</span> como un número ni que el límite dado exista. La notación sólamente establece de qué manera el límite no existe.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Definición (Límites laterales)">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definición (Límites laterales)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Sea <span class="math inline">\(f\)</span> una función definida en ambos lados de <span class="math inline">\(a\)</span>, excepto quizás en <span class="math inline">\(a\)</span>.</p>
+<ul>
+<li>La expresión</li>
+</ul>
+<p><span class="math display">\[
+\lim_{x\to a} f(x)=\infty
+\]</span></p>
+<p>significa que <span class="math inline">\(f(x)\)</span> puede hacerse arbitrariamente grande conforme <span class="math inline">\(x\)</span> se elija lo suficientemente cerca de <span class="math inline">\(a\)</span>, pero <span class="math inline">\(x\neq a\)</span>.</p>
+<ul>
+<li>Por otro lado</li>
+</ul>
+<p><span class="math display">\[
+\lim_{x\to a} f(x)=-\infty
+\]</span></p>
+<p>quiere decir que <span class="math inline">\(f(x)\)</span> puede hacerse arbitrariamente grande y negativa siempre que <span class="math inline">\(x\)</span> se elija lo suficientemente cerca de <span class="math inline">\(a\)</span>, pero <span class="math inline">\(x\neq a\)</span>.</p>
+</div>
+</div>
+<p>Otra notación para <span class="math inline">\(\lim_{x\to  a} f(x)=\infty\)</span> es: <span class="math inline">\(f(x)\to \infty\)</span> cuando <span class="math inline">\(x\to a\)</span>, y se lee</p>
+<ul>
+<li>“el límite cuando <span class="math inline">\(x\to a\)</span> de <span class="math inline">\(f(x)\)</span> es infinito”, o</li>
+<li>“<span class="math inline">\(f(x)\)</span> se vuelve infinita cuando <span class="math inline">\(x\)</span> se aproxima a <span class="math inline">\(a\)</span>”, o bien</li>
+<li>“<span class="math inline">\(f(x)\)</span> se incrementa sin límite cuando <span class="math inline">\(x\)</span> tiende a <span class="math inline">\(a\)</span>”.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap2/2.2-limite-infinito2.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
+</figure>
+</div>
+<p>Para <span class="math inline">\(\lim_{x\to a} f(x)=-\infty\)</span> podemos escribir: <span class="math inline">\(f(x)\to -\infty\)</span> cuando <span class="math inline">\(x\to a\)</span>, y leerlo</p>
+<ul>
+<li>“el límite cuando <span class="math inline">\(x\to a\)</span> de <span class="math inline">\(f(x)\)</span> es el infinito negativo”, o</li>
+<li>“<span class="math inline">\(f(x)\)</span> decrece sin cota cuando <span class="math inline">\(x\)</span> se aproxima a <span class="math inline">\(a\)</span>”.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap2/2.2-limite-infinito3.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
+</figure>
+</div>
+<p>Definiciones similares pueden darse para</p>
+<p><span class="math display">\[
+\lim_{x\to a^-} f(x)=\infty \quad \text{ y }\quad \lim_{x\to a^+} f(x)=\infty.
+\]</span></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap2/2.2-limite-infinito4.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+<p>Y también para</p>
+<p><span class="math display">\[
+\lim_{x\to a^-} f(x)=-\infty \quad \text{ y }\quad \lim_{x\to a^+} f(x)=-\infty.
+\]</span></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap2/2.2-limite-infinito5.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Definición (Asíntota vertical)">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definición (Asíntota vertical)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>La recta <span class="math inline">\(x=a\)</span> se llama <strong>asíntota vertical</strong> de la curva <span class="math inline">\(y=f(x)\)</span> si al menos uno de los siguientes enunciados es verdadero</p>
+<div class="columns">
+<div class="column" style="width:40%;">
+<ul>
+<li><span class="math inline">\(\lim_{x\to a}\,f(x)=\infty\)</span></li>
+<li><span class="math inline">\(\lim_{x\to a^-}\,f(x)=\infty\)</span></li>
+<li><span class="math inline">\(\lim_{x\to a^+}\,f(x)=\infty\)</span></li>
+</ul>
+</div><div class="column" style="width:40%;">
+<ul>
+<li><span class="math inline">\(\lim_{x\to a}\,f(x)=-\infty\)</span></li>
+<li><span class="math inline">\(\lim_{x\to a^-}\,f(x)=-\infty\)</span></li>
+<li><span class="math inline">\(\lim_{x\to a^+}\,f(x)=-\infty\)</span></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Determinar</p>
+<p><span class="math display">\[
+\lim_{x\to 3^+} \frac{2x}{x-3} \quad \text{ y } \quad  \lim_{x\to 3^-} \frac{2x}{x-3}.
+\]</span></p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Veamos primero <span class="math inline">\(\lim_{x\to 3^+} \frac{2x}{x-3}\)</span>. Notemos que el denominador se aproxima a cero y el numerador a <span class="math inline">\(6\neq 0\)</span>, con lo que el límite resultará infinito. Para saber si es <span class="math inline">\(\infty\)</span> o <span class="math inline">\(-\infty\)</span>, observemos que <span class="math inline">\(x\to 3^+\)</span> implica que <span class="math inline">\(x&gt;3\)</span>, lo que equivale a que <span class="math inline">\(x-3&gt;0\)</span>. Entonces al ser numerador y denominador positivos para todo <span class="math inline">\(x&gt;3\)</span> resulta</p>
+<p><span class="math display">\[
+\lim_{x\to 3^+} \frac{2x}{x-3}=\infty.
+\]</span></p>
+<p>Para el otro caso, procediendo de forma similar y notando que <span class="math inline">\(x\to 3^-\)</span> implica que <span class="math inline">\(x-3&lt;0\)</span> para todo <span class="math inline">\(x&lt;3\)</span> obtenemos</p>
+<p><span class="math display">\[
+\lim_{x\to 3^-} \frac{2x}{x-3}=-\infty.
+\]</span></p>
+</div>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Hallar las asíntotas verticales de <span class="math inline">\(f(x)=\tan x\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Recordemos que <span class="math inline">\(\tan x=\frac{\operatorname{sen} x}{\cos x}\)</span>, por lo tanto tendremos posibles asíntotas verticales cuando <span class="math inline">\(\cos x=0\)</span>. Esto ocurre, por ejemplo, cuando <span class="math inline">\(x=\pi/2\)</span>. En este caso, si <span class="math inline">\(x\)</span> está cerca de <span class="math inline">\(\pi/2\)</span> y <span class="math inline">\(x&gt;pi/2\)</span>, <span class="math inline">\(\cos x\)</span> se aproxima a cero con valores negativos, mientras que <span class="math inline">\(\operatorname{sen} x\)</span> se aproxima a 1. Con lo cual</p>
+<p><span class="math display">\[
+\lim_{x\to (\pi/2)^+} \tan x=-\infty.
+\]</span></p>
+<p>Por otra parte, si <span class="math inline">\(x\)</span> está cerca de <span class="math inline">\(\pi/2\)</span> y <span class="math inline">\(x&lt;\pi/2\)</span>, <span class="math inline">\(\cos x\)</span> se aproxima a cero con valores negativos, y <span class="math inline">\(\operatorname{sen} x\)</span> sigue aproximándose a 1. Por lo tanto</p>
+<p><span class="math display">\[
+\lim_{x\to (\pi/2)^-} \tan x=\infty.
+\]</span></p>
+<p>Estos cálculos muestran que <span class="math inline">\(x=\pi/2\)</span> es una asíntota vertical de <span class="math inline">\(f\)</span>. De manera similar podemos ver que todas las asíntotas de <span class="math inline">\(f\)</span> son de la forma</p>
+<p><span class="math display">\[
+x=\left(2n+1\right)\frac{\pi}{2} \quad \text{ con }\quad n\in\mathbb{Z}.
+\]</span></p>
+</div>
+</div>
+</div>
+<p><a href="#seccion_2.2">↑ Volver al inicio de la sección</a></p>
+</section>
+<section id="seccion_2.3" class="level3">
+<h3 class="anchored" data-anchor-id="seccion_2.3">2.3. Leyes de los límites</h3>
+<p>Hasta ahora hemos conjeturado el valor de ciertos límites a partir de una tabla o de observar el comportamiento de sus gráficos.</p>
+<p>En esta sección calcularemos los límites utilizando propiedades, lo que nos conducirá a los valores exactos, cuando estos límites existen.</p>
+<div id="thm-leyes-limites" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 3.1</strong></span> Propiedad (Leyes de los límites)</p>
+<p>Sea <span class="math inline">\(c\)</span> una constante y supongamos que los límites <span class="math display">\[
+\lim_{x\to a} f(x) \quad \text{ y } \quad \lim_{x\to a}g(x)
+\]</span></p>
+<p>existen. Entonces</p>
+<ol type="1">
+<li><p><span class="math inline">\(\lim_{x\to a}\,[f(x)+g(x)]=\lim_{x\to a}f(x)+\lim_{x\to a} g(x)\)</span>.</p></li>
+<li><p><span class="math inline">\(\lim_{x\to a}\, [f(x)-g(x)]=\lim_{x\to a} f(x)-\lim_{x\to a} g(x)\)</span>.</p></li>
+<li><p><span class="math inline">\(\lim_{x\to a} \,[cf(x)]=c\lim_{x\to a} f(x)\)</span>.</p></li>
+<li><p><span class="math inline">\(\lim_{x\to a} [f(x)g(x)]=\lim_{x\to a} f(x) \lim_{x\to a} g(x)\)</span>.</p></li>
+<li><p><span class="math inline">\(\displaystyle \lim_{x\to a} \frac{f(x)}{g(x)}= \frac{\lim_{x\to a} f(x)}{\lim_{x\to a} g(x)}\)</span>, siempre que <span class="math inline">\(\lim_{x\to a} g(x)\neq 0\)</span>.</p></li>
+</ol>
+</div>
+<p>Aplicando la ley <strong>(4)</strong> con <span class="math inline">\(f=g\)</span> repetidas veces, obtenemos</p>
+<div class="theorem">
+<ol start="6" type="1">
+<li><span class="math inline">\(\lim_{x\to a}\,(f(x))^n=\left(\lim_{x\to a}f(x)\right)^n\)</span>, con <span class="math inline">\(n\)</span> entero positivo.</li>
+</ol>
+</div>
+<p>Dos límites especiales que vale la pena mencionar son</p>
+<div class="theorem">
+<ol start="7" type="1">
+<li><p><span class="math inline">\(\lim_{x\to a}\, c=c\)</span>.</p></li>
+<li><p><span class="math inline">\(\lim_{x\to a}\, x=a\)</span>.</p></li>
+</ol>
+</div>
+<p>Combinando las leyes <strong>(6)</strong> y <strong>(8)</strong> obtenemos</p>
+<div class="theorem">
+<ol start="9" type="1">
+<li><span class="math inline">\(\lim_{x\to a}\, x^n=a^n\)</span>.</li>
+</ol>
+</div>
+<p>Para el caso de races, si <span class="math inline">\(n\in\mathbb{N}\)</span> tenemos que</p>
+<div class="theorem">
+<ol start="10" type="1">
+<li><p><span class="math inline">\(\lim_{x\to a}\, \sqrt[n]{x}=\sqrt[n]{a}\quad\)</span> (<span class="math inline">\(a&gt;0\)</span> si <span class="math inline">\(n\)</span> es par).</p></li>
+<li><p><span class="math inline">\(\lim_{x\to a}\, \sqrt[n]{f(x)}=\sqrt[n]{\lim_{x\to a}f(x)}\quad\)</span> (<span class="math inline">\(\lim_{x\to a} f(x)&gt;0\)</span> si <span class="math inline">\(n\)</span> es par).</p></li>
+</ol>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Evaluar los siguientes lmites y justificar cada paso.</p>
+<ol type="1">
+<li><p><span class="math inline">\(\lim_{x\to 5}\, (2x^2-3x+4)\)</span>.</p></li>
+<li><p><span class="math inline">\(\displaystyle \lim_{x\to -2}\, \frac{x^3+2x^2-1}{5-3x}\)</span>.</p></li>
+</ol>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-16" class="callout-16-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Comencemos con el primer límite. Utilizando la ley <strong>(6)</strong> con <span class="math inline">\(n=2\)</span> junto a la ley <strong>(8)</strong> obtenemos que</p>
+<p><span class="math display">\[
+\lim_{x\to 5} x^2 = 5^2 =25,
+\]</span></p>
+<p>y por la ley <strong>(3)</strong></p>
+<p><span class="math display">\[
+\lim_{x\to 5} 2x^2 = 2\left(\lim_{x\to 5} x^2\right) =2\cdot 25=50.
+\]</span></p>
+<p>Por otra parte, combinando las leyes <strong>(3)</strong> y <strong>(8)</strong></p>
+<p><span class="math display">\[
+\lim_{x\to 5} 3x = 3\left(\lim_{x\to 5} x\right) =3\cdot 5=15.
+\]</span></p>
+<p>Finalmente, por las leyes <strong>(1)</strong>, <strong>(2)</strong> y <strong>(7)</strong></p>
+<p><span class="math display">\[
+\lim_{x\to 5}\, (2x^2-3x+4)=\lim_{x\to 5}\, 2x^2 - \lim_{x\to 5}\, 3x+ \lim_{x\to 5} 4 = 50-15+4=39.
+\]</span></p>
+<p>Para calcular el segundo límite, notemos que se trata de una función racional, es decir, cociente de polinomios. Procediendo como en el caso anterior podemos ver que</p>
+<p><span class="math display">\[
+\lim_{x\to -2}\, (x^3+2x^2-1) = (-2)^3+2(-2)^2-1=-1
+\]</span></p>
+<p>y también</p>
+<p><span class="math display">\[
+\lim_{x\to -2}\, (5-3x) = 5-3(-2)=11.
+\]</span></p>
+<p>Entonces, utilizando la ley <strong>(5)</strong> concluimos que</p>
+<p><span class="math display">\[
+\lim_{x\to -2}\, \frac{x^3+2x^2-1}{5-3x}=\frac{\lim_{x\to -2}\, (x^3+2x^2-1)}{\lim_{x\to -2}\, (5-3x)}=-\frac{1}{11}.
+\]</span></p>
+</div>
+</div>
+</div>
+<p>El procedimiento utilizado en el ejemplo anterior puede repetirse para cualquier función polinómica o racional, lo que nos conduce a la siguiente propiedad.</p>
+<div id="teo-sust-directa" class="theorem">
+<p>Propiedad de sustitución directa</p>
+<p>Si <span class="math inline">\(f\)</span> es un <strong>polinomio</strong> o una <strong>función racional</strong> y <span class="math inline">\(a\)</span> está en el dominio de <span class="math inline">\(f\)</span>, entonces</p>
+<p><span class="math display">\[
+\lim_{x\to a}\, f(x)=f(a).
+\]</span></p>
+<p>Las funciones que cumplen la igualdad de arriba se dicen <strong>continuas</strong> en <span class="math inline">\(a\)</span>. Este concepto lo trataremos más adelante.</p>
+</div>
+<div id="ejemplo-cuadratica-lineal" class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Hallar <span class="math inline">\(\displaystyle \lim_{x\to 1} \frac{x^2-1}{x-1}\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-17" class="callout-17-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Recordemos que a los efectos de operar con límites importan los valores de <span class="math inline">\(f(x)\)</span> para <span class="math inline">\(x\)</span> cerca de <span class="math inline">\(1\)</span>, pero <span class="math inline">\(x\neq 1\)</span>. Si tomamos <span class="math inline">\(x\neq 1\)</span> entonces podemos escribir</p>
+<p><span class="math display">\[
+\frac{x^2-1}{x-1}=\frac{(x-1)(x+1)}{x-1}=x+1.
+\]</span></p>
+<p>La igualdad de arriba es cierta siempre que <span class="math inline">\(x\neq 1\)</span>, por lo tanto</p>
+<p><span class="math display">\[
+\lim_{x\to 1} \frac{x^2-1}{x-1}=\lim_{x\to 1}\, (x+1)
+\]</span></p>
+<p>pero como <span class="math inline">\(x+1\)</span> es un polinomio, la <a href="#teo-sust-directa">propiedad de sustitución directa</a> nos da</p>
+<p><span class="math display">\[
+\lim_{x\to 1}\, (x+1) =2,
+\]</span></p>
+<p>con lo cual</p>
+<p><span class="math display">\[
+\lim_{x\to 1} \frac{x^2-1}{x-1}=2.
+\]</span></p>
+</div>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Encontrar <span class="math inline">\(\displaystyle \lim_{x\to 1} g(x)\)</span>, siendo</p>
+<p><span class="math display">\[
+g(x)=
+\begin{cases}
+x+1 &amp; \text{ si } x\neq 1,\\
+\pi &amp; \text{ si } x=1.
+\end{cases}
+\]</span></p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-18" class="callout-18-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>En este caso sabemos que <span class="math inline">\(g(x)=x+1\)</span> para todo <span class="math inline">\(x\neq 1\)</span>. Por lo tanto</p>
+<p><span class="math display">\[
+\lim_{x\to 1} g(x)=\lim_{x\to 1}\, (x+1)=2,
+\]</span></p>
+<p>por la propíedad de sustitución directa.</p>
+</div>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Calcular <span class="math inline">\(\displaystyle \lim_{h\to 0} \frac{(3+h)^2-9}{h}\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-19" class="callout-19-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Procedemos como antes. Primero consideramos <span class="math inline">\(h\neq 0\)</span> y escribimos</p>
+<p><span class="math display">\[
+\frac{(3+h)^2-9}{h}=\frac{9+6h+h^2-9}{h}=\frac{h(6+h)}{h}=6+h.
+\]</span></p>
+<p>Entonces</p>
+<p><span class="math display">\[
+\lim_{h\to 0} \frac{(3+h)^2-9}{h} =\lim_{h\to 0}\, (6+h) = 6.
+\]</span></p>
+</div>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Encontrar <span class="math inline">\(\displaystyle \lim_{t\to 0} \frac{\sqrt{t^2+9}-3}{t^2}\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-20-contents" aria-controls="callout-20" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-20" class="callout-20-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Consideremos <span class="math inline">\(t\neq 0\)</span>. Multiplicando y dividiendo por <span class="math inline">\(\sqrt{t^2+9}+3\)</span> obtenemos</p>
+<p><span class="math display">\[
+\frac{\sqrt{t^2+9}-3}{t^2}=\frac{\sqrt{t^2+9}-3}{t^2}\frac{\sqrt{t^2+9}+3}{\sqrt{t^2+9}+3}=\frac{\left(\sqrt{t^2+9}\right)^2-3^2}{t^2(\sqrt{t^2+9}+3)}=\frac{t^2}{t^2(\sqrt{t^2+9}+3)}=\frac{1}{\sqrt{t^2+9}+3}.
+\]</span></p>
+<p>Con esto</p>
+<p><span class="math display">\[
+\lim_{t\to 0} \frac{\sqrt{t^2+9}-3}{t^2} =\lim_{t\to 0} \frac{1}{\sqrt{t^2+9}+3},
+\]</span></p>
+<p>por lo que es suficiente con calcular este último límite. Para ello, por la <a href="#teo-sust-directa">propiedad de sustitución directa</a> observemos primero que</p>
+<p><span class="math display">\[
+\lim_{t\to 0} (t^2+9)=9&gt;0
+\]</span></p>
+<p>y utilizando la ley <strong>(11)</strong></p>
+<p><span class="math display">\[
+\lim_{t\to 0} \sqrt{t^2+9}=\sqrt{9}=3.
+\]</span></p>
+<p>Esto nos indica que</p>
+<p><span class="math display">\[
+\lim_{t\to 0} \left(\sqrt{t^2+9}+3\right)=3+3=6.
+\]</span></p>
+<p>Finalmente, utilizando la ley <strong>(5)</strong></p>
+<p><span class="math display">\[
+\lim_{t\to 0} \frac{1}{\sqrt{t^2+9}+3}=\frac{\lim_{t\to 0} 1}{\lim_{t\to 0}\left(\sqrt{t^2+9}+3\right)}=\frac{1}{6}.
+\]</span></p>
+</div>
+</div>
+</div>
+<p>A veces resulta útil estudiar un límite a partir de los correspondientes límites laterales. Recordemos el siguiente resultado de la <a href="#seccion_2.2">Sección 2.2</a>.</p>
+<div class="theorem">
+<p>Relación entre límite y límites laterales</p>
+<p><span class="math display">\[
+\lim_{x\to a} f(x) = L \quad \Longleftrightarrow \quad \lim_{x\to a^-} f(x) = L\quad \text{ y } \quad  \lim_{x\to a^+} f(x) = L.
+\]</span></p>
+</div>
+<p>Las leyes de los límites vistas anteriormente <strong>también valen</strong> cambiando <span class="math inline">\(x\to a\)</span> por <span class="math inline">\(x\to a^+\)</span> o <span class="math inline">\(x\to a^-\)</span>.</p>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Demostrar que <span class="math inline">\(\displaystyle \lim_{x\to 0} |x|=0\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-21-contents" aria-controls="callout-21" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-21" class="callout-21-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Vale la pena recordar la definición de valor absoluto vista en la Sección 1.1</p>
+<p><span class="math display">\[
+|x|=
+\begin{cases}
+x &amp; \text{ si } x\geq 0,\\
+-x &amp; \text{ si } x&lt;0.
+\end{cases}
+\]</span></p>
+<p>Como la definición de <span class="math inline">\(|x|\)</span> depende de si nos encontramos a la derecha o a la izquierda de cero, debemos analizar los límites laterales.</p>
+<p><span class="math display">\[
+\lim_{x\to 0^+} |x|=\lim_{x\to 0^+} x = 0
+\]</span></p>
+<p>y también</p>
+<p><span class="math display">\[
+\lim_{x\to 0^-} |x|=\lim_{x\to 0^-} (-x) = 0.
+\]</span></p>
+<p>Como los límites laterales existen y coinciden, concluimos que</p>
+<p><span class="math display">\[
+\lim_{x\to 0} |x|=0.
+\]</span></p>
+</div>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Comprobar que el límite <span class="math inline">\(\displaystyle \lim_{x\to 0} \frac{|x|}{x}\)</span> no existe.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-22-contents" aria-controls="callout-22" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-22" class="callout-22-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Nuevamente estudiamos los límites laterales, ya que aparece <span class="math inline">\(|x|\)</span> en la expresión de la función.</p>
+<p><span class="math display">\[
+\lim_{x\to 0^+} \frac{|x|}{x}=\lim_{x\to 0^+} \frac{x}{x} = \lim_{x\to 0^+} 1=1.
+\]</span></p>
+<p>Por otro lado,</p>
+<p><span class="math display">\[
+\lim_{x\to 0^-} \frac{|x|}{x}=\lim_{x\to 0^-} \frac{-x}{x} = \lim_{x\to 0^-} -1=-1.
+\]</span></p>
+<p>Es decir, los límites laterales existen pero son distintos. Entonces concluimos que el límite dado no existe.</p>
+</div>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Sea <span class="math inline">\(f\)</span> la función definida por <span class="math display">\[
+f(x)=
+\begin{cases}
+\sqrt{x-4} &amp; \text{ si } x&gt;4,\\
+8-2x &amp; \text{ si } x&lt;4.
+\end{cases}
+\]</span></p>
+<p>Determinar, si existe, <span class="math inline">\(\lim_{x\to 4} f(x)\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-23-contents" aria-controls="callout-23" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-23" class="callout-23-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>La función <span class="math inline">\(f\)</span> está definida de formas distintas a la derecha e izquierda de <span class="math inline">\(x=4\)</span>, con lo cual analizamos los límites laterales.</p>
+<p><span class="math display">\[
+\lim_{x\to 4^-} f(x)=\lim_{x\to 4^-} (8-2x) = 8-2\cdot 4=0
+\]</span></p>
+<p>y, por la ley <strong>(11)</strong></p>
+<p><span class="math display">\[
+\lim_{x\to 4^+} f(x)=\lim_{x\to 4^+} \sqrt{x-4}= 8-2\cdot 4=0.
+\]</span></p>
+<p>Como los límites laterales existen y son iguales, concluímos que <span class="math inline">\(\displaystyle \lim_{x\to 4} f(x)=0\)</span>.</p>
+</div>
+</div>
+</div>
+<div class="theorem">
+<p>Teorema</p>
+<p>Sean <span class="math inline">\(f\)</span> y <span class="math inline">\(g\)</span> dos funciones tales que <span class="math inline">\(f(x)\leq g(x)\)</span> cuando <span class="math inline">\(x\)</span> está cerca de <span class="math inline">\(a\)</span> (excepto quizás en <span class="math inline">\(a\)</span>) y los límites <span class="math display">\[
+\lim_{x\to a} f(x) \quad \text{ y } \quad \lim_{x\to a} g(x)
+\]</span></p>
+<p>existen, entonces se cumple que</p>
+<p><span class="math display">\[
+\lim_{x\to a} f(x)\leq \lim_{x\to a} g(x).
+\]</span></p>
+</div>
+<div id="teo-compresion" class="theorem">
+<p>Teorema de la compresión</p>
+<p>Sean <span class="math inline">\(f\)</span>, <span class="math inline">\(g\)</span> y <span class="math inline">\(h\)</span> tres funciones tales que <span class="math display">\[
+f(x)\leq  g(x)\leq h(x)
+\]</span></p>
+<p>para <span class="math inline">\(x\)</span> cerca de <span class="math inline">\(a\)</span> (excepto, quizás en <span class="math inline">\(x=a\)</span>) y además</p>
+<p><span class="math display">\[
+\lim_{x\to a} f(x)=\lim_{x\to a} h(x)=L.
+\]</span> Entonces <span class="math display">\[
+\lim_{x\to a} g(x)=L.
+\]</span></p>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap2/2.3-teo-sandwich.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Demostrar que <span class="math inline">\(\displaystyle \lim_{x\to 0} x^2\operatorname{sen}\left(\frac{1}{x}\right)=0\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-24-contents" aria-controls="callout-24" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-24" class="callout-24-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Sea <span class="math inline">\(x\neq 0\)</span>. Observemos primero que</p>
+<p><span class="math display">\[
+-1\leq \operatorname{sen}\left(\frac{1}{x}\right)\leq 1
+\]</span></p>
+<p>dado que la función seno toma valores entre <span class="math inline">\(-1\)</span> y <span class="math inline">\(1\)</span>. Multiplicando cada miembro por <span class="math inline">\(x^2\geq 0\)</span> resulta</p>
+<p><span class="math display">\[
+-x^2\leq x^2\operatorname{sen}\left(\frac{1}{x}\right)\leq x^2
+\]</span></p>
+<p>para cualquier <span class="math inline">\(x\neq 0\)</span>. Como</p>
+<p><span class="math display">\[
+\lim_{x\to 0} x^2=0 \quad \text{ y }\quad \lim_{x\to 0} (-x^2)=0
+\]</span></p>
+<p>utilizando el <a href="#teo-compresion">teorema de la compresión</a> podemos concluir que</p>
+<p><span class="math display">\[
+\lim_{x\to 0} x^2\operatorname{sen}\left(\frac{1}{x}\right)=0.
+\]</span></p>
+</div>
+</div>
+</div>
+<p><a href="#seccion_2.3">↑ Volver al inicio de la sección</a></p>
+</section>
+</section>
+<section id="seccion_2.5" class="level2">
+<h2 class="anchored" data-anchor-id="seccion_2.5">2.5. Continuidad</h2>
+<div class="callout callout-style-default callout-note callout-titled" title="Definición (continuidad)">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definición (continuidad)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Una función <span class="math inline">\(f\)</span> es <strong>continua</strong> en <span class="math inline">\(a\)</span> si se cumple que</p>
+<p><span class="math display">\[
+\lim_{x\to a} f(x)=f(a).
+\]</span></p>
+<p>Esta definición involucra implícitamente tres cosas:</p>
+<ul>
+<li><span class="math inline">\(f(a)\)</span> existe (es decir, <span class="math inline">\(a\)</span> está en el dominio de <span class="math inline">\(f\)</span>).</li>
+<li><span class="math inline">\(\lim_{x\to a} f(x)\)</span> existe.</li>
+<li><span class="math inline">\(\lim_{x\to a} f(x)=f(a)\)</span>.</li>
+</ul>
+<p>Esta condición implica que <span class="math inline">\(f(x)\)</span> está cerca de <span class="math inline">\(f(a)\)</span> cuando <span class="math inline">\(x\)</span> está cerca de <span class="math inline">\(a\)</span>. Es decir, un cambio pequeño en <span class="math inline">\(x\)</span> sólo produce una alteración pequeña en <span class="math inline">\(f(x)\)</span>.</p>
+<p>Si <span class="math inline">\(f\)</span> está definida cerca de <span class="math inline">\(a\)</span> (excepto quizás en <span class="math inline">\(a\)</span>), decimos que <span class="math inline">\(f\)</span> es <strong>discontinua</strong> en <span class="math inline">\(a\)</span> si <span class="math inline">\(f\)</span> no es continua en <span class="math inline">\(a\)</span>.</p>
+</div>
+</div>
+<p>El gráfico de una función continua no presenta saltos ni interrupciones abruptas.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap2/2.5-continuidad.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>En la figura se muestra el gráfico de <span class="math inline">\(y=f(x)\)</span>. ¿En qué puntos es <span class="math inline">\(f\)</span> discontinua? ¿Por qué?</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap2/2.5-ejemplo-continuidad.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-26-contents" aria-controls="callout-26" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-26" class="callout-26-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Observando el gráfico podemos decir que <span class="math inline">\(f\)</span> es discontinua en <span class="math inline">\(x=1\)</span> dado que <span class="math inline">\(f(1)\)</span> no existe.</p>
+<p>Por otro lado, notemos que <span class="math inline">\(f(3)\)</span> existe pero <span class="math inline">\(\displaystyle \lim_{x\to 3} f(x)\)</span> no, con lo cual <span class="math inline">\(f\)</span> también es discontinua en <span class="math inline">\(x=3\)</span>.</p>
+<p>Por último <span class="math inline">\(f\)</span> resulta discontinua en <span class="math inline">\(x=5\)</span> ya que, si bien existen <span class="math inline">\(f(5)\)</span> y <span class="math inline">\(\lim_{x\to 5} f(x)\)</span>, no coinciden. En los demás puntos <span class="math inline">\(f\)</span> resulta continua.</p>
+</div>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>¿En qué puntos son continuas cada una de las siguientes funciones?</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ol type="1">
+<li><p><span class="math inline">\(\displaystyle f_1(x)=\frac{x^2-x-2}{x-2}\)</span>.</p></li>
+<li><p><span class="math inline">\(\displaystyle f_2(x)=\begin{cases}
+\frac{1}{x^2} &amp; \text{ si } x\neq 0,\\
+1 &amp; \text{ si } x=0.
+\end{cases}\)</span></p></li>
+</ol>
+</div><div class="column" style="width:50%;">
+<ol start="3" type="1">
+<li><p><span class="math inline">\(\displaystyle f_3(x)=\begin{cases}
+\frac{x^2-x-2}{x-2} &amp; \text{ si } x\neq 2,\\
+1 &amp; \text{ si } x=2.
+\end{cases}\)</span></p></li>
+<li><p><span class="math inline">\(\displaystyle f_4(x)=\frac{|x|}{x}\)</span>.</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-27-contents" aria-controls="callout-27" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-27" class="callout-27-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Comencemos con <span class="math inline">\(f_1\)</span>. Si factorizamos el polinomio del numerador obtenemos</p>
+<p><span class="math display">\[
+f_1(x)=\frac{(x-2)(x+1)}{x-2}=x+1
+\]</span></p>
+<p>para todo <span class="math inline">\(x\neq 2\)</span>. Como <span class="math inline">\(f(2)\)</span> no existe, <span class="math inline">\(f\)</span> es discontinua en <span class="math inline">\(x=2\)</span>. Si <span class="math inline">\(a\neq 2\)</span> entonces por la <a href="#teo-sust-directa">propiedad de sustitución directa</a></p>
+<p><span class="math display">\[
+\lim_{x\to a} f_1(x)=\lim_{x\to a} (x+1)=a+1=f_1(a),
+\]</span></p>
+<p>con lo que <span class="math inline">\(f_1\)</span> resulta continua en <span class="math inline">\(a\)</span>. De hecho, notar que la función <span class="math inline">\(f_1\)</span> resulta ser la recta <span class="math inline">\(y=x+1\)</span>, con la excepción de que en <span class="math inline">\(x=2\)</span> tenemos un punto faltante, ya que <span class="math inline">\(f_1(2)\)</span> no existe.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap2/2.5-ejemplo-f1.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
+</figure>
+</div>
+<p>Ahora analicemos <span class="math inline">\(f_2\)</span>. Si bien <span class="math inline">\(f_2(0)=1\)</span>, tenemos que <span class="math inline">\(\lim_{x\to 0} f(x)\)</span> no existe por infinitud, con lo cual <span class="math inline">\(f_2\)</span> es discontinua en <span class="math inline">\(x=0\)</span>. Si <span class="math inline">\(a\neq 0\)</span>, entonces nuevamente por la <a href="#teo-sust-directa">propiedad de sustitución directa</a></p>
+<p><span class="math display">\[
+\lim_{x\to a} f_2(x)=\lim_{x\to a} \frac{1}{x^2}=\frac{1}{a^2}=f_2(a),
+\]</span></p>
+<p>con lo cual <span class="math inline">\(f_2\)</span> es continua en <span class="math inline">\(a\)</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap2/2.5-ejemplo-f2.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+<p>Para el caso de <span class="math inline">\(f_3\)</span>, notar que se trata de la misma función que <span class="math inline">\(f_1\)</span>, excepto que ahora sí tenemos definido su valor en <span class="math inline">\(x=2\)</span>. Como vimos que <span class="math inline">\(f_1\)</span> era continua en todo <span class="math inline">\(x\neq 2\)</span>, lo mismo ocurrirá con <span class="math inline">\(f_3\)</span>. Veamos si ésta es continua en <span class="math inline">\(x=2\)</span>. Factorizando como antes obtenemos</p>
+<p><span class="math display">\[
+\lim_{x\to 2} f_3(x)=\lim_{x\to 2}\frac{(x-2)(x+1)}{x-2}=\lim_{x\to 2} (x+1)=3,
+\]</span></p>
+<p>sin embargo <span class="math inline">\(f_3(2)=1\neq 3\)</span>, con lo que <span class="math inline">\(f_3\)</span> es discontinua en <span class="math inline">\(x=2\)</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap2/2.5-ejemplo-f3.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:35.0%"></p>
+</figure>
+</div>
+<p>Por último, para <span class="math inline">\(f_4\)</span> observemos que esta función puede ser reescrita como</p>
+<p><span class="math display">\[
+f_4(x)=\begin{cases}
+1 &amp; \text{ si } x&gt; 0,\\
+-1 &amp; \text{ si } x&lt;0.
+\end{cases}
+\]</span></p>
+<p>Como <span class="math inline">\(y=x\)</span> e <span class="math inline">\(y=-x\)</span> son funciones continuas, <span class="math inline">\(f_4\)</span> resulta continua en todo <span class="math inline">\(x\neq 0\)</span>. Como <span class="math inline">\(f_4(0)\)</span> no existe, <span class="math inline">\(f_4\)</span> es discontinua en <span class="math inline">\(x=0\)</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap2/2.5-ejemplo-f4.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:35.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>El tipo de discontinuidad que aparece en <span class="math inline">\(f_1\)</span> y <span class="math inline">\(f_3\)</span> del ejemplo anterior se conoce como discontinuidad <strong>removible</strong> o <strong>evitable</strong>, pues podría eliminarse al cambiar (redefinir) el valor de la función en ese punto por su límite en ese punto.</p>
+<p>La función <span class="math inline">\(f_2\)</span> presenta una discontinuidad <strong>de salto infinito</strong> y <span class="math inline">\(f_4\)</span> una discontinuidad de <strong>salto finito</strong>.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Definición (continuidad lateral)">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definición (continuidad lateral)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Una función <span class="math inline">\(f\)</span> es <strong>continua por derecha</strong> en <span class="math inline">\(a\)</span> si se cumple que</p>
+<p><span class="math display">\[
+\lim_{x\to a^+}f(x)=f(a).
+\]</span></p>
+<p>De manera similar, <span class="math inline">\(f\)</span> es <strong>continua por izquierda</strong> en <span class="math inline">\(a\)</span> si se verifica que</p>
+<p><span class="math display">\[
+\lim_{x\to a^-}f(x)=f(a).
+\]</span></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Definición (continuidad en un intervalo)">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definición (continuidad en un intervalo)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Una función <span class="math inline">\(f\)</span> es <strong>continua sobre el intervalo <span class="math inline">\((a,b)\)</span></strong> si es continua en <span class="math inline">\(x\)</span>, para todo <span class="math inline">\(a&lt;x&lt;b\)</span>.</p>
+<p>Decimos que <span class="math inline">\(f\)</span> es <strong>continua sobre <span class="math inline">\([a,b]\)</span></strong> si es continua en <span class="math inline">\((a,b)\)</span>, y además resulta continua por la derecha en <span class="math inline">\(a\)</span> y por la izquierda en <span class="math inline">\(b\)</span>.</p>
+</div>
+</div>
+<p>Una definición análoga puede darse para los intervalos <span class="math inline">\([a,b)\)</span> y <span class="math inline">\((a,b]\)</span>.</p>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Mostrar que <span class="math inline">\(f(x)=1-\sqrt{1-x^2}\)</span> es continua sobre el intervalo <span class="math inline">\([-1,1]\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-30-contents" aria-controls="callout-30" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-30" class="callout-30-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Consideremos primero <span class="math inline">\(-1&lt;a&lt;1\)</span>. Dado que <span class="math inline">\(1-a^2&gt;0\)</span>, por la ley <strong>(11)</strong> de límites obtenemos que</p>
+<p><span class="math display">\[
+\lim_{x\to a} \sqrt{1-x^2}=\sqrt{1-a^2},
+\]</span></p>
+<p>y de esta manera, por la ley <strong>(2)</strong></p>
+<p><span class="math display">\[
+\lim_{x\to a} f(x)=\lim_{x\to a}\,1 -\lim_{x\to a} \sqrt{1-x^2}=1-\sqrt{1-a^2}=f(a),
+\]</span></p>
+<p>lo que nos indica que <span class="math inline">\(f\)</span> es continua en <span class="math inline">\(a\)</span>. Para terminar, veamos que <span class="math inline">\(f\)</span> es continua por derecha en <span class="math inline">\(x=-1\)</span> y por izquierda en <span class="math inline">\(x=1\)</span>.</p>
+<p>Si <span class="math inline">\(-1&lt;x&lt;0\)</span>, entonces <span class="math inline">\(x^2&lt;1\)</span> y <span class="math inline">\(1-x^2&gt;0\)</span>. Utilizando las leyes <strong>(11)</strong> y <strong>(2)</strong> resulta</p>
+<p><span class="math display">\[
+\lim_{x\to -1^+} f(x)=\lim_{x\to -1^+} \,\left(1-\sqrt{1-x^2}\right)=1-0=1=f(-1).
+\]</span></p>
+<p>Si <span class="math inline">\(0&lt;x&lt;1\)</span>, entonces también es cierto que <span class="math inline">\(x^2&lt;1\)</span>, o equivalentemente <span class="math inline">\(1-x^2&gt;0\)</span>. La ley <strong>(11)</strong> combinada con la <strong>(2)</strong> en este caso nos da</p>
+<p><span class="math display">\[
+\lim_{x\to 1^-} f(x)=\lim_{x\to 1^-} \,\left(1-\sqrt{1-x^2}\right)=1-0=1=f(1).
+\]</span></p>
+<p>Por lo tanto, <span class="math inline">\(f\)</span> es continua en todo el intervalo <span class="math inline">\([-1,1]\)</span>.</p>
+</div>
+</div>
+</div>
+<div id="teo-continuas" class="theorem">
+<p>Teorema</p>
+<p>Sean <span class="math inline">\(f\)</span> y <span class="math inline">\(g\)</span> funciones continuas en <span class="math inline">\(a\)</span> y <span class="math inline">\(c\)</span> una constante real. Entonces las siguientes funciones también son continuas en <span class="math inline">\(a\)</span></p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li><p><span class="math inline">\(f+g\)</span>.</p></li>
+<li><p><span class="math inline">\(f-g\)</span>.</p></li>
+<li><p><span class="math inline">\(cf\)</span>.</p></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<ul>
+<li><p><span class="math inline">\(fg\)</span>.</p></li>
+<li><p><span class="math inline">\(\displaystyle \frac{1}{g}\)</span>, si <span class="math inline">\(g(a)\neq  0\)</span>.</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="theorem">
+<p>Teorema</p>
+<ul>
+<li><p>Cualquier polinomio es continuo en su dominio, es decir, es continuo sobre <span class="math inline">\(\mathbb{R}\)</span>.</p></li>
+<li><p>Cualquier función racional es continua siempre que esté definida, es decir, es continua en su dominio.</p></li>
+</ul>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Encontrar <span class="math inline">\(\lim_{x\to -2} f(x)\)</span>, siendo</p>
+<p><span class="math display">\[
+f(x)=\frac{x^3+2x^2-1}{5-3x}.
+\]</span></p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-31-contents" aria-controls="callout-31" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-31" class="callout-31-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Notemos que <span class="math inline">\(f\)</span> es racional y <span class="math inline">\(-2\in D_f\)</span>, por lo que usando la <a href="#teo-sust-directa">propiedad de sustitución directa</a> obtenemos</p>
+<p><span class="math display">\[
+\lim_{x\to -2} f(x)=f(-2)=\frac{(-2)^3+2(-2)^2-1}{5-3(-2)}=-\frac{1}{11}.
+\]</span></p>
+</div>
+</div>
+</div>
+<p>La mayor parte de las funciones estudiadas hasta aquí son continuas, como establece el siguiente teorema.</p>
+<div class="theorem">
+<p>Teorema</p>
+<p>Los siguientes tipos de funciones son continuas en sus respectivos dominios.</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li><p>Polinomios.</p></li>
+<li><p>Funciones racionales.</p></li>
+<li><p>Funciones raíz.</p></li>
+<li><p>Trigonométricas.</p></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<ul>
+<li><p>Trigonométricas inversas.</p></li>
+<li><p>Exponenciales.</p></li>
+<li><p>Logarítmicas.</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>¿Dónde es continua la función <span class="math inline">\(\displaystyle f(x)=\frac{\ln x+\arctan x}{x^2-1}\)</span>?</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-32-contents" aria-controls="callout-32" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-32" class="callout-32-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Notemos que <span class="math inline">\(y=\ln x\)</span> e <span class="math inline">\(y=\arctan x\)</span> son continuas en sus respectivos dominios, es decir, en <span class="math inline">\((0,\infty)\)</span> y <span class="math inline">\(\mathbb{R}\)</span>. Por lo tanto el numerador de <span class="math inline">\(f\)</span> es continuo en <span class="math inline">\((0,\infty)\)</span>.</p>
+<p>Por otro lado, <span class="math inline">\(y=x^2-1\)</span> es continua en <span class="math inline">\(\mathbb{R}\)</span> por ser un polinomio, y el cociente será continuo en todos los puntos de <span class="math inline">\((0,\infty)\)</span> tales que <span class="math inline">\(x^2-1\neq 0\)</span>. Por lo tanto, <span class="math inline">\(f\)</span> es continua en <span class="math inline">\((0,1)\cup (1,\infty)\)</span>.</p>
+</div>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Hallar <span class="math inline">\(\displaystyle \lim_{x\to \pi} \frac{\operatorname{sen} x}{2+\cos x}\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-33-contents" aria-controls="callout-33" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-33" class="callout-33-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Como <span class="math inline">\(y=\operatorname{sen} x\)</span> e <span class="math inline">\(y=2+\cos x\)</span> son funciones continuas en <span class="math inline">\(x=\pi\)</span> y <span class="math inline">\(2+\cos \pi =1\neq 0\)</span>, el cociente es continuo y por lo tanto</p>
+<p><span class="math display">\[
+\lim_{x\to \pi} \frac{\operatorname{sen} x}{2+\cos x}=\frac{\operatorname{sen} \pi}{2+\cos \pi}=\frac{1}{2-1}=1.
+\]</span></p>
+</div>
+</div>
+</div>
+<div id="teo-limite-composicion" class="theorem">
+<p>Teorema (límite de la composición de funciones)</p>
+<p>Si <span class="math inline">\(f\)</span> es continua en <span class="math inline">\(b\)</span> y <span class="math inline">\(\lim_{x\to a} g(x)=b\)</span> entonces</p>
+<p><span class="math display">\[
+\lim_{x\to a}f(g(x))=f(b).
+\]</span></p>
+<p>Esto también puede reformularse como sigue</p>
+<p><span class="math display">\[
+\lim_{x\to a}f(g(x))=f\left(\lim_{x\to a}g(x)\right).
+\]</span></p>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Calcular <span class="math inline">\(\displaystyle \lim_{x\to 1} \operatorname{arcsen}\left(\frac{1-\sqrt{x}}{1-x}\right)\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-34-contents" aria-controls="callout-34" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-34" class="callout-34-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Sean <span class="math inline">\(f(x)=\operatorname{arcsen} x\)</span> y <span class="math inline">\(g(x)=\displaystyle \frac{1-\sqrt{x}}{1-x}\)</span>. Calculamos primero <span class="math inline">\(\lim_{x\to 1} g(x)\)</span>. En efecto, si <span class="math inline">\(x\neq 1\)</span> escribimos</p>
+<p><span class="math display">\[
+\frac{1-\sqrt{x}}{1-x}=\frac{1-\sqrt{x}}{1-x}\,\frac{1+\sqrt{x}}{1+\sqrt{x}}=\frac{1^2-(\sqrt{x})^2}{(1-x)(1+\sqrt{x})}=\frac{1-x}{(1-x)(1+\sqrt{x})}=\frac{1}{1+\sqrt{x}}.
+\]</span></p>
+<p>Luego</p>
+<p><span class="math display">\[
+\lim_{x\to 1} \frac{1-\sqrt{x}}{1-x} =\lim_{x\to 1} \frac{1}{1+\sqrt{x}}=\frac{1}{1+\sqrt{1}}=\frac{1}{2},
+\]</span> dado que <span class="math inline">\(y_1=1\)</span> e <span class="math inline">\(y_2=1+\sqrt{x}\)</span> son continuas en <span class="math inline">\(x=1\)</span> e <span class="math inline">\(y_2(1)\neq 0\)</span>.</p>
+<p>Ahora bien, como <span class="math inline">\(y=\operatorname{arcsen} x\)</span> es continua en <span class="math inline">\(x=1/2\)</span>, por el <a href="#teo-limite-composicion">teorema del límite de la composición de funciones</a> obtenemos</p>
+<p><span class="math display">\[
+\lim_{x\to 1} \operatorname{arcsen}\left(\frac{1-\sqrt{x}}{1-x}\right)= \operatorname{arcsen}\left(\lim_{x\to 1} \frac{1-\sqrt{x}}{1-x}\right)=\operatorname{arcsen}\left(\frac{1}{2}\right)=\frac{\pi}{6}.
+\]</span></p>
+</div>
+</div>
+</div>
+<div id="teo-continuidad-composicion" class="theorem">
+<p>Teorema (continuidad de la composición de funciones)</p>
+<p>Si <span class="math inline">\(g\)</span> es continua en <span class="math inline">\(a\)</span> y <span class="math inline">\(f\)</span> es continua en <span class="math inline">\(g(a)\)</span>, entonces la composición <span class="math inline">\((f\circ g)(x)=f(g(x))\)</span> es continua en <span class="math inline">\(a\)</span>.</p>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>¿Dónde son continuas las siguientes funciones?</p>
+<ul>
+<li><span class="math inline">\(h(x)=\operatorname{sen}(x^2)\)</span>.</li>
+<li><span class="math inline">\(F(x)=\ln(1+\cos x)\)</span>.</li>
+</ul>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-35-contents" aria-controls="callout-35" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-35" class="callout-35-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Podemos expresar <span class="math inline">\(h(x)=f(g(x))\)</span>, donde <span class="math inline">\(f(x)=\operatorname{sen} x\)</span> y <span class="math inline">\(g(x)=x^2\)</span>. Si <span class="math inline">\(x\in \mathbb{R}\)</span>, entonces <span class="math inline">\(g\)</span> es continua en <span class="math inline">\(x\)</span> por ser un polinomio y además <span class="math inline">\(g(x)\in [0,+\infty)\)</span>. Como <span class="math inline">\(f\)</span> es continua en <span class="math inline">\(\mathbb{R}\)</span>, en particular es continua en <span class="math inline">\([0,+\infty)\)</span>. Por lo tanto, el <a href="#teo-continuidad-composicion">teorema de la continuidad de la composición</a> establece que <span class="math inline">\(h\)</span> es continua en <span class="math inline">\(\mathbb{R}\)</span>.</p>
+<p>Para el segundo caso, escribimos <span class="math inline">\(F(x)=f(g(x))\)</span> siendo <span class="math inline">\(f(x)=\ln x\)</span> y <span class="math inline">\(g(x)=1+\cos x\)</span>. Notemos que <span class="math inline">\(g\)</span> es continua en <span class="math inline">\(\mathbb{R}\)</span> y <span class="math inline">\(f\)</span> es continua en <span class="math inline">\((0,+\infty)\)</span>, por lo tanto la composición <span class="math inline">\(F\)</span> será continua en todos los puntos <span class="math inline">\(x\)</span> tales que <span class="math inline">\(1+\cos x&gt;0\)</span>. Dado que <span class="math inline">\(\cos x\geq -1\)</span>, la desigualdad anterior se cumple siempre y cuando <span class="math inline">\(1+\cos x\neq 0\)</span>, es decir, cuando <span class="math inline">\(\cos x \neq -1\)</span>.</p>
+<p>Observar que</p>
+<p><span class="math display">\[
+\cos x=-1 \quad \Longleftrightarrow \quad x=(2n+1)\pi, n\in\mathbb{Z}.
+\]</span></p>
+<p>Entonces <span class="math inline">\(f\)</span> es continua en <span class="math inline">\((0,+\infty)\setminus \{x: x=(2n+1)\pi, n\in\mathbb{Z}\}\)</span>.</p>
+</div>
+</div>
+</div>
+<div id="teo-valor-intermedio" class="theorem">
+<p>Teorema (teorema del valor intermedio)</p>
+<p>Sea <span class="math inline">\(f\)</span> una función continua en el intervalo cerrado <span class="math inline">\([a,b]\)</span> y sea <span class="math inline">\(N\)</span> un número entre <span class="math inline">\(f(a)\)</span> y <span class="math inline">\(f(b)\)</span> (suponemos que <span class="math inline">\(f(a)\neq f(b)\)</span>). Entonces existe un número <span class="math inline">\(c \in(a,b)\)</span> tal que <span class="math inline">\(f(c)=N\)</span>.</p>
+</div>
+<p>Este teorema nos dice que una función continua en <span class="math inline">\([a,b]\)</span> toma todos los valores intermedios comprendidos entre <span class="math inline">\(f(a)\)</span> y <span class="math inline">\(f(b)\)</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap2/2.5-continuidad-intermedio.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Demostrar que existe una raíz <span class="math inline">\(r\)</span> de la ecuación <span class="math inline">\(4x^3-6x^2+3x-2=0\)</span> que cumple <span class="math inline">\(1&lt;r&lt;2\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-36-contents" aria-controls="callout-36" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-36" class="callout-36-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Definimos <span class="math inline">\(f(x)=4x^3-6x^2+3x-2\)</span>. Entonces <span class="math inline">\(f\)</span> es continua por ser un polinomio. En particular, <span class="math inline">\(f\)</span> es continua en el intervalo <span class="math inline">\([1,2]\)</span>. Además <span class="math inline">\(f(1)=-1&lt;0\)</span> y <span class="math inline">\(f(2)=12&gt;0\)</span>, es decir, <span class="math inline">\(f(1)&lt;0&lt;f(2)\)</span>. Por el <a href="#teo-valor-intermedio">teorema del valor intermedio</a> existe un número <span class="math inline">\(c\in (1,2)\)</span> tal que <span class="math inline">\(f(c)=0\)</span> y esto nos dice que <span class="math inline">\(c\)</span> es una raíz de la ecuación dada.</p>
+</div>
+</div>
+</div>
+<p><a href="#seccion_2.5">↑ Volver al inicio de la sección</a></p>
+</section>
+<section id="seccion_2.6" class="level2">
+<h2 class="anchored" data-anchor-id="seccion_2.6">2.6. Límites al infinito, asíntotas horizontales</h2>
+<p>Consideremos la función</p>
+<p><span class="math display">\[
+f(x)= \frac{x^2-1}{x^2+1}
+\]</span></p>
+<p>cuya gráfica se muestra a continuación.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap2/2.6-racional.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:45.0%"></p>
+</figure>
+</div>
+<p>Si le damos distintos valores a <span class="math inline">\(x\)</span> podemos ver que los valores de la función se estacionan conforme <span class="math inline">\(x\)</span> se hace grande en magnitud, como se observa en la siguiente tabla.</p>
+<div class="math-table">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th><span class="math inline">\(x\)</span></th>
+<th><span class="math inline">\(f(x)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\pm\,\)</span> 1</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\pm\,\)</span> 2</td>
+<td>0.600000</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\pm\,\)</span> 3</td>
+<td>0.800000</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\pm\,\)</span> 4</td>
+<td>0.882353</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\pm\,\)</span> 5</td>
+<td>0.923077</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\pm\,\)</span> 10</td>
+<td>0.980198</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\pm\,\)</span> 50</td>
+<td>0.999200</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\pm\,\)</span> 100</td>
+<td>0.999800</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\pm\,\)</span> 1000</td>
+<td>0.999998</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Parece que podemos acercar <span class="math inline">\(f(x)\)</span> tanto a <span class="math inline">\(1\)</span> como deseemos, siempre que elijamos <span class="math inline">\(x\)</span> lo suficientemente grande en magnitud. Esto lo expresamos escribiendo</p>
+<p><span class="math display">\[
+\lim_{x\to\infty} \frac{x^2-1}{x^2+1}=1.
+\]</span></p>
+<div class="callout callout-style-default callout-note callout-titled" title="Definición (límite en el infinito)">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definición (límite en el infinito)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Sea <span class="math inline">\(f\)</span> una función definida en algún intervalo de la forma <span class="math inline">\((a,\infty)\)</span>. Entonces <span class="math display">\[
+\lim_{x\to \infty} f(x)=L
+\]</span></p>
+<p>significa que <span class="math inline">\(f(x)\)</span> puede aproximarse a <span class="math inline">\(L\)</span> tanto como se quiera, siempre que se elija <span class="math inline">\(x\)</span> suficientemente grande.</p>
+<p>También escribiremos: <span class="math inline">\(f(x)\to L\)</span> cuando $x$. La expresión de arriba se lee</p>
+<ul>
+<li>“el límite de <span class="math inline">\(f(x)\)</span> cuando <span class="math inline">\(x\)</span> tiende a infinito es <span class="math inline">\(L\)</span>”, o</li>
+<li>“el límite de <span class="math inline">\(f(x)\)</span> cuando <span class="math inline">\(x\)</span> se hace infinito es <span class="math inline">\(L\)</span>”“, o</li>
+<li>“<span class="math inline">\(f(x)\)</span> tiende a <span class="math inline">\(L\)</span> cuando <span class="math inline">\(x\)</span> crece sin cota”.</li>
+</ul>
+</div>
+</div>
+<p>Vemos que <span class="math inline">\(f\)</span> puede aproximarse a <span class="math inline">\(L\)</span> de diferentes maneras, como muestra la siguiente figura.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap2/2.6-asintotas-horizontales.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Definición (límite en el infinito negativo)">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definición (límite en el infinito negativo)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Sea <span class="math inline">\(f\)</span> una función definida en algún intervalo de la forma <span class="math inline">\((-\infty,a)\)</span>. Entonces</p>
+<p><span class="math display">\[
+\lim_{x\to -\infty} f(x)=L
+\]</span></p>
+<p>significa que <span class="math inline">\(f(x)\)</span> puede aproximarse a <span class="math inline">\(L\)</span> tanto como se quiera, siempre que se elija <span class="math inline">\(x\)</span> negativo y suficientemente grande en magnitud.</p>
+<p>También escribiremos: <span class="math inline">\(f(x)\to L\)</span> cuando <span class="math inline">\(x \to -\infty\)</span> y se lee “el límite de <span class="math inline">\(f(x)\)</span> cuando <span class="math inline">\(x\)</span> tiende a infinito negativo es <span class="math inline">\(L\)</span>”.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Definición (asíntota horizontal)">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definición (asíntota horizontal)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>La recta <span class="math inline">\(y=L\)</span> se llama <strong>asíntota horizontal</strong> de la curva <span class="math inline">\(y=f(x)\)</span> si <span class="math display">\[
+\lim_{x\to\infty} f(x)=L \quad \text{ o bien si } \quad \lim_{x\to -\infty} f(x)=L.
+\]</span></p>
+</div>
+</div>
+<p>Un ejemplo de función con dos asíntotas horizontales es <span class="math inline">\(y= \arctan x\)</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap2/2.6-arcotangente.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+<p>En este caso tenemos que</p>
+<p><span class="math display">\[
+\lim_{x\to \infty } \arctan x=\frac{\pi}{2} \quad \text{ y }\quad  \lim_{x\to -\infty } \arctan x=-\frac{\pi}{2}.
+\]</span></p>
+<p>La mayor parte de las <a href="#thm-leyes-limites">leyes de los límites</a> que estudiamos en la <a href="#seccion_2.3">Sección 2.3</a> también se cumple para límites en el infinito. Las leyes vistas (con excepción de la <strong>(9)</strong> y la <strong>(10)</strong>) siguen siendo válidas reemplazando <span class="math inline">\(x\to a\)</span> por <span class="math inline">\(x \to \infty\)</span> o <span class="math inline">\(x\to -\infty\)</span>.</p>
+<div class="theorem">
+<p>Teorema</p>
+<p>Sea <span class="math inline">\(r&gt;0\)</span> un número racional. Entonces</p>
+<ul>
+<li><p><span class="math inline">\(\displaystyle\lim_{x\to \infty} \frac{1}{x^r}=0\)</span>.</p></li>
+<li><p>Si <span class="math inline">\(x^r\)</span> está definido para todo <span class="math inline">\(x\)</span>, entonces <span class="math inline">\(\displaystyle\lim_{x\to -\infty} \frac{1}{x^r}=0\)</span>.</p></li>
+</ul>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Calcular <span class="math display">\[
+\lim_{x\to \infty}\frac{3x^2-x-2}{5x^2+4x+1}
+\]</span></p>
+<p>e indicar las propiedades que se utilizan en cada paso.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-40-contents" aria-controls="callout-40" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-40" class="callout-40-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Para <span class="math inline">\(x&gt;0\)</span> podemos escribir</p>
+<p><span class="math display">\[
+\frac{3x^2-x-2}{5x^2+4x+1}=\frac{x^2\left(3-\frac{x}{x^2}-\frac{2}{x^2}\right)}{x^2\left(5+\frac{4x}{x^2}+\frac{1}{x^2}\right)}=\frac{3-\frac{1}{x}-\frac{2}{x^2}}{5+\frac{4}{x}+\frac{1}{x^2}}.
+\]</span></p>
+<p>Por el teorema anterior tenemos que</p>
+<p><span class="math display">\[
+\lim_{x\to \infty} \frac{1}{x}=0 \quad \text{ y }\quad \lim_{x\to \infty} \frac{1}{x^2}=0.
+\]</span></p>
+<p>Por las leyes <strong>(2)</strong> y <strong>(3)</strong></p>
+<p><span class="math display">\[
+\lim_{x\to \infty} \left(3-\frac{1}{x}-\frac{2}{x^2}\right)=\lim_{x\to \infty} 3-\lim_{x\to \infty} \frac{1}{x}-2\lim_{x\to \infty} \frac{1}{x^2}=3-0-0=3.
+\]</span></p>
+<p>De la misma forma</p>
+<p><span class="math display">\[
+\lim_{x\to \infty} \left(5+\frac{4}{x}+\frac{1}{x^2}\right)=\lim_{x\to \infty} 5+4\lim_{x\to \infty} \frac{1}{x}+\lim_{x\to \infty} \frac{1}{x^2}=5-0-0=5.
+\]</span></p>
+<p>Finalmente, usando la ley <strong>(5)</strong> del cociente obtenemos</p>
+<p><span class="math display">\[
+\lim_{x\to \infty} \frac{3-\frac{1}{x}-\frac{2}{x^2}}{5+\frac{4}{x}+\frac{1}{x^2}}=\frac{\lim_{x\to\infty}\left(3-\frac{1}{x}-\frac{2}{x^2}\right)}{\lim_{x\to\infty} \left(5+\frac{4}{x}+\frac{1}{x^2}\right)}=\frac{3}{5}.
+\]</span></p>
+</div>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Determinar las asíntotas horizontales y verticales de la gráfica de la función <span class="math display">\[
+f(x)=\frac{\sqrt{2x^2+1}}{3x-5}.
+\]</span></p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-41-contents" aria-controls="callout-41" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-41" class="callout-41-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Observemos que el denominador se anula cuando <span class="math inline">\(x=5/3\)</span>. Si <span class="math inline">\(x\)</span> se aproxima a <span class="math inline">\(5/3\)</span> por la derecha, entonces el numerador se aproxima a <span class="math inline">\(\sqrt{59}/3&gt;0\)</span> y <span class="math inline">\(3x-5\)</span> se aproxima a cero con valores positivos, con lo cual</p>
+<p><span class="math display">\[
+\lim_{x\to (5/3)^+} f(x)=+\infty,
+\]</span></p>
+<p>y un análisis similar muestra que</p>
+<p><span class="math display">\[
+\lim_{x\to (5/3)^-} f(x)=-\infty.
+\]</span></p>
+<p>Por lo tanto <span class="math inline">\(\displaystyle x=\frac{5}{3}\)</span> es una asíntota vertical de <span class="math inline">\(f\)</span>. Dado que <span class="math inline">\(f\)</span> es continua en todo <span class="math inline">\(x\neq 5/3\)</span>, ésta es la única asíntota vertical de la función.</p>
+<p>Para calcular las asíntotas horizontales, debemos hacer <span class="math inline">\(x\to \pm \infty\)</span>. Primero notemos que, si <span class="math inline">\(x&gt;0\)</span></p>
+<p><span class="math display">\[
+\frac{\sqrt{2x^2+1}}{3x-5}=\frac{\sqrt{x^2\left(2+\frac{1}{x^2}\right)}}{x\left(3-\frac{5}{x}\right)}=\frac{|x|\sqrt{2+\frac{1}{x^2}}}{x\left(3-\frac{5}{x}\right)}=\frac{\sqrt{2+\frac{1}{x^2}}}{3-\frac{5}{x}}.
+\]</span></p>
+<p>Por las leyes <strong>(1)</strong> y <strong>(11)</strong> tenemos que</p>
+<p><span class="math display">\[
+\lim_{x\to \infty} \sqrt{2+\frac{1}{x^2}}=\sqrt{\lim_{x\to \infty} \left(2+\frac{1}{x^2}\right)}=\sqrt{2}.
+\]</span></p>
+<p>Además, por la ley <strong>(2)</strong></p>
+<p><span class="math display">\[
+\lim_{x\to \infty} \left(3-\frac{5}{x}\right)=\lim_{x\to \infty} 3- \lim_{x\to \infty} \frac{5}{x}=3-0=3.
+\]</span></p>
+<p>Finalmente, por la ley <strong>(5)</strong> del cociente</p>
+<p><span class="math display">\[
+\lim_{x\to \infty} \frac{\sqrt{2x^2+1}}{3x-5}=\lim_{x\to\infty}\frac{\sqrt{2+\frac{1}{x^2}}}{3-\frac{5}{x}}=\frac{\lim_{x\to\infty} \sqrt{2+\frac{1}{x^2}}}{\lim_{x\to\infty}\left(3-\frac{5}{x}\right)}=\frac{\sqrt{2}}{3}.
+\]</span></p>
+<p>Con esto, <span class="math inline">\(y=\sqrt{2}/3\)</span> es asíntota horizontal de <span class="math inline">\(f\)</span>. Para <span class="math inline">\(x\to-\infty\)</span> consideramos <span class="math inline">\(x&lt;0\)</span> y escribimos</p>
+<p><span class="math display">\[
+\frac{\sqrt{2x^2+1}}{3x-5}=\frac{\sqrt{x^2\left(2+\frac{1}{x^2}\right)}}{x\left(3-\frac{5}{x}\right)}=\frac{|x|\sqrt{2+\frac{1}{x^2}}}{x\left(3-\frac{5}{x}\right)}=-\frac{\sqrt{2+\frac{1}{x^2}}}{3-\frac{5}{x}}.
+\]</span></p>
+<p>Repitiendo el proceso anterior podemos concluir que</p>
+<p><span class="math display">\[
+\lim_{x\to -\infty} \frac{\sqrt{2x^2+1}}{3x-5}=\lim_{x\to-\infty}-\frac{\sqrt{2+\frac{1}{x^2}}}{3-\frac{5}{x}}=-\frac{\sqrt{2}}{3},
+\]</span></p>
+<p>por lo que <span class="math inline">\(y=-\sqrt{2}/3\)</span> es otra asíntota horizontal de <span class="math inline">\(f\)</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap2/2.6-ejemplo-asintotas.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Calcular <span class="math inline">\(\displaystyle \lim_{x\to \infty} \left(\sqrt{x^2+1}-x\right)\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-42-contents" aria-controls="callout-42" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-42" class="callout-42-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Considerando <span class="math inline">\(x&gt;0\)</span>, multiplicamos y dividimos por <span class="math inline">\(\sqrt{x^2+1}+x\)</span></p>
+<p><span class="math display">\[
+\sqrt{x^2+1}-x=\left(\sqrt{x^2+1}-x\right)\frac{\sqrt{x^2+1}+x}{\sqrt{x^2+1}+x}=\frac{\left(\sqrt{x^2+1}\right)^2-x^2}{\sqrt{x^2+1}+x}=\frac{1}{\sqrt{x^2+1}+x}.
+\]</span></p>
+<p>Factorizando el denominador de la expresión resultante, tenemos que</p>
+<p><span class="math display">\[
+\frac{1}{\sqrt{x^2+1}+x}=\frac{1}{\sqrt{x^2\left(1+\frac{1}{x^2}\right)}+x}=\frac{1}{\sqrt{x^2}\sqrt{1+\frac{1}{x^2}}+x}=\frac{1}{x}\,\frac{1}{\sqrt{1+\frac{1}{x^2}}}.
+\]</span></p>
+<p>Ahora, sabiendo que</p>
+<p><span class="math display">\[
+\lim_{x\to \infty} \frac{1}{x}=0 \quad \text{ y } \quad \lim_{x\to\infty} \frac{1}{\sqrt{1+\frac{1}{x^2}}}=1
+\]</span></p>
+<p>por la ley <strong>(3)</strong> del producto concluímos que</p>
+<p><span class="math display">\[
+\lim_{x\to \infty} \left(\sqrt{x^2+1}-x\right) = \left(\lim_{x\to \infty} \frac{1}{x}\right) \left(\lim_{x\to\infty} \frac{1}{\sqrt{1+\frac{1}{x^2}}}\right)=0\cdot 1=0.
+\]</span></p>
+</div>
+</div>
+</div>
+<p>En base al gráfico de <span class="math inline">\(y=e^x\)</span>, podemos ver que la recta <span class="math inline">\(y=0\)</span> es asíntota horizontal de su gráfico.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap2/2.6-exponencial.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
+</figure>
+</div>
+<p>Esto nos dice que</p>
+<div id="form-limite-exp" class="formula-box">
+<p><span class="math display">\[
+\lim_{x\to -\infty} e^{x}=0.
+\]</span></p>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Evaluar <span class="math inline">\(\lim_{x\to 0-} e^{1/x}\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-43-contents" aria-controls="callout-43" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-43" class="callout-43-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Sea <span class="math inline">\(t=1/x\)</span>. Dado que</p>
+<p><span class="math display">\[
+\lim_{x\to 0^-} \frac{1}{x} = -\infty,
+\]</span></p>
+<p>tenemos que <span class="math inline">\(t\to -\infty\)</span> cuando <span class="math inline">\(x\to 0^-\)</span>. Expresando el límite en términos de la variable <span class="math inline">\(t\)</span> resulta</p>
+<p><span class="math display">\[
+\lim_{x\to 0-} e^{1/x}=\lim_{t\to -\infty} e^{t}=0,
+\]</span></p>
+<p>de acuerdo a la <a href="#form-limite-exp">fórmula</a> anterior.</p>
+</div>
+</div>
+</div>
+<section id="límites-infinitos-en-el-infinito" class="level3">
+<h3 class="anchored" data-anchor-id="límites-infinitos-en-el-infinito">Límites infinitos en el infinito</h3>
+<div class="callout callout-style-default callout-note callout-titled" title="Definición (límite infinito en infinito)">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definición (límite infinito en infinito)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Al escribir</p>
+<p><span class="math display">\[
+\lim_{x\to \infty} f(x)=\infty
+\]</span></p>
+<p>indicamos que <span class="math inline">\(f(x)\)</span> crece sin cota cuando <span class="math inline">\(x\)</span> se hace grande.</p>
+<p>De manera similar se definen las expresiones</p>
+<p><span class="math display">\[
+\lim_{x\to -\infty}f(x)=\infty, \quad \lim_{x\to\infty }f(x)=-\infty \quad  \text{ y } \quad \lim_{x\to -\infty}f(x)=-\infty.
+\]</span></p>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Determinar <span class="math inline">\(\lim_{x\to \infty } x^3\)</span> y <span class="math inline">\(\lim_{x\to -\infty} x^3\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-45-contents" aria-controls="callout-45" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-45" class="callout-45-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Si <span class="math inline">\(x\)</span> crece sin cota, entonces su cubo también (de hecho, <span class="math inline">\(x^3&gt;x\)</span> para <span class="math inline">\(x&gt;1\)</span>), por lo tanto <span class="math inline">\(\lim_{x\to \infty } x^3=\infty\)</span>.</p>
+<p>Cuando <span class="math inline">\(x\)</span> se hace grande y negativo, su cubo también es negativo y grande en magnitud, por lo tanto <span class="math inline">\(\lim_{x\to -\infty } x^3=-\infty\)</span>.</p>
+</div>
+</div>
+</div>
+<p>Si observamos nuevamente el gráfico de <span class="math inline">\(y=e^x\)</span>, también podemos concluir que</p>
+<div class="formula-box">
+<p><span class="math display">\[
+\lim_{x\to \infty} e^{x}=\infty.
+\]</span></p>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Calcular <span class="math inline">\(\lim_{x\to \infty} \left(x^2-x\right)\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-46-contents" aria-controls="callout-46" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-46" class="callout-46-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>En este caso conviene factorizar de la siguiente manera</p>
+<p><span class="math display">\[
+x^2-x=x(x-1).
+\]</span></p>
+<p>Cuando <span class="math inline">\(x\)</span> se hace grande, <span class="math inline">\(x-1\)</span> también. Por lo tanto el producto crecerá sin cota. Así</p>
+<p><span class="math display">\[
+\lim_{x\to \infty} \left(x^2-x\right)=\lim_{x\to \infty} x(x-1)=\infty.
+\]</span></p>
+</div>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Calcular <span class="math inline">\(\lim_{x\to \infty} \displaystyle \frac{x^2+x}{3-x}\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-47-contents" aria-controls="callout-47" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-47" class="callout-47-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Extrayendo la potencia de mayor orden de factor común en el numerador y el denominador, para <span class="math inline">\(x&gt;0\)</span> resulta</p>
+<p><span class="math display">\[
+\frac{x^2\left(1+\frac{1}{x}\right)}{x\left(\frac{3}{x}-1\right)}=x\,\frac{1+\frac{1}{x}}{\frac{3}{x}-1}.
+\]</span></p>
+<p>Ahora bien, <span class="math display">\[
+\lim_{x\to \infty} \frac{1+\frac{1}{x}}{\frac{3}{x}-1}=-1
+\]</span></p>
+<p>y <span class="math inline">\(\lim_{x\to \infty} x=\infty\)</span>, por lo tanto el límite del producto es <span class="math inline">\(-\infty\)</span>.</p>
+</div>
+</div>
+</div>
+<p><a href="#seccion_2.6">↑ Volver al inicio de la sección</a></p>
+</section>
+</section>
+<section id="seccion_2.7" class="level2">
+<h2 class="anchored" data-anchor-id="seccion_2.7">2.7. Derivadas y razones de cambio</h2>
+<section id="tangentes" class="level3">
+<h3 class="anchored" data-anchor-id="tangentes">Tangentes</h3>
+<p>Consideremos el problema de encontrar la recta tangente a una curva <span class="math inline">\(C\)</span> que es el gráfico de la función <span class="math inline">\(y=f(x)\)</span> en el punto <span class="math inline">\(P=(a,f(a))\)</span>.</p>
+<p>Para ello, consideramos un punto cercano <span class="math inline">\(Q=(x,f(x))\)</span> con <span class="math inline">\(x\neq a\)</span> y calculamos la pendiente de la recta secante <span class="math inline">\(PQ\)</span> <span class="math display">\[
+m_{PQ}=\frac{f(x)-f(a)}{x-a}.
+\]</span></p>
+<p>Si dejamos que <span class="math inline">\(x\)</span> se aproxime a <span class="math inline">\(a\)</span>, la recta secante se aproxima a la recta tangente buscada. Si <span class="math inline">\(m_{PQ}\)</span> se aproxima a un número <span class="math inline">\(m\)</span>, definimos la <strong>recta tangente</strong> como la recta que pasa por <span class="math inline">\(P\)</span> y tiene pendiente <span class="math inline">\(m\)</span>.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Definición (recta tangente)">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definición (recta tangente)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>La <strong>recta tangente</strong> a la curva <span class="math inline">\(y=f(x)\)</span> en el punto <span class="math inline">\(P=(a,f(a))\)</span> es la recta que pasa por <span class="math inline">\(P\)</span> con pendiente</p>
+<p><span class="math display">\[
+m=\lim_{x\to a}\frac{f(x)-f(a)}{x-a}
+\]</span> siempre y cuando este límite exista.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap2/2.7-derivada.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Encontrar una ecuación de la recta tangente a la parábola <span class="math inline">\(y=f(x)=x^2\)</span> en el punto <span class="math inline">\(P=(1,1)\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-50-contents" aria-controls="callout-50" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-50" class="callout-50-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>La recta buscada tiene pendiente</p>
+<p><span class="math display">\[
+m=\lim_{x\to 1} \frac{f(x)-f(1)}{x-1}=\lim_{x\to 1}\frac{x^2-1}{x-1}=2,
+\]</span></p>
+<p>según vimos en el <a href="#ejemplo-cuadratica-lineal">Ejemplo 11</a>. Como además pasa por el punto <span class="math inline">\((1,1)\)</span> utilizando la <a href="#recta-punto-pendiente">ecuación punto-pendiente de la recta</a> que pasa por <span class="math inline">\((x_1,y_1)\)</span> con pendiente <span class="math inline">\(m\)</span> obtenemos</p>
+<div id="recta-punto-pendiente" class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-49-contents" aria-controls="callout-49" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>📐 Ecuación punto - pendiente de la recta
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-49" class="callout-49-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math display">\[
+y-y_1=m(x-x_1)
+\]</span></p>
+</div>
+</div>
+</div>
+<p><span class="math display">\[
+y-1=2(x-1) \quad \text{ o de forma equivalente }\quad y=2x-1.
+\]</span></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap2/2.1-parabola.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>A menudo se hace referencia a la pendiente de la recta tangente a una curva en un punto como la <strong>pendiente de la curva</strong> en ese punto. La idea es que, acercándonos lo suficiente al punto, la curva se parece mucho a su recta tangente.</p>
+<p>Podemos escribir la pendiente de la recta tangente de una forma equivalente: si <span class="math inline">\(x\to a\)</span>, entonces <span class="math inline">\(h=x-a\to 0\)</span>. Con este cambio, <span class="math inline">\(x=a+h\)</span> y cuando <span class="math inline">\(x\)</span> se aproxima a <span class="math inline">\(a\)</span>, <span class="math inline">\(h\)</span> se aproxima a 0. De esta manera tenemos</p>
+<p><span class="math display">\[
+m_{PQ}=\frac{f(a+h)-f(a)}{h} \quad \text{ y }\quad m=\lim_{h\to 0} \frac{f(a+h)-f(a)}{h}.
+\]</span></p>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Encontrar una ecuación de la recta tangente a <span class="math inline">\(\displaystyle y=f(x)=\frac{3}{x}\)</span> en el punto <span class="math inline">\(P=(3,1)\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-51-contents" aria-controls="callout-51" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-51" class="callout-51-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>La recta buscada tiene pendiente</p>
+<p><span class="math display">\[
+m=\lim_{h\to 0} \frac{f(3+h)-f(3)}{h}=\lim_{h\to 0} \frac{\frac{3}{(3+h)}-1}{h}=\lim_{h\to 0} \frac{\frac{3-(3+h)}{(3+h)}}{h}=\lim_{h\to 0} -\frac{h}{h(3+h)}=\lim_{h\to 0} -\frac{1}{3+h}=-\frac{1}{3}.
+\]</span></p>
+<p>Como además la recta pasa por <span class="math inline">\((3,1)\)</span>, usando nuevamente la <a href="#recta-punto-pendiente">ecuación punto-pendiente de la recta</a> resulta</p>
+<p><span class="math display">\[
+y-1=-\frac{1}{3}(x-3) \quad \text{ o bien } \quad y=-\frac{1}{3}x+2.
+\]</span></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap2/2.7-ejemplo-reciprocaa.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="velocidades" class="level3">
+<h3 class="anchored" data-anchor-id="velocidades">Velocidades</h3>
+<p>Supongamos que un objeto se mueve a lo largo de una línea recta y su <strong>función de posición</strong> es <span class="math inline">\(s=f(t)\)</span>, donde <span class="math inline">\(s\)</span> es el desplazamiento respecto del origen en el instante <span class="math inline">\(t\)</span>. El cambio de posición en el intervalo de tiempo desde <span class="math inline">\(t=a\)</span> hasta <span class="math inline">\(t=a+h\)</span> es <span class="math inline">\(f(a+h)-f(a)\)</span>. La velocidad promedio es</p>
+<p><span class="math display">\[
+\text{vel. promedio} =\frac{\text{desplazamiento}}{\text{tiempo}}=\frac{f(a+h)-f(a)}{(a+h)-a}=\frac{f(a+h)-f(a)}{h},
+\]</span></p>
+<p>que podemos interpretar como la pendiente de la recta secante que une los puntos <span class="math inline">\(P=(a,f(a))\)</span> y <span class="math inline">\(Q=(a+h,f(a+h))\)</span>. Al hacer la amplitud de los intervalos más y más chica, se puede definir la <strong>velocidad</strong> o <strong>velocidad instantánea</strong> como el límite de estas velocidades promedio</p>
+<p><span class="math display">\[
+v(a)=\lim_{h\to 0} \frac{f(a+h)-f(a)}{h}.
+\]</span></p>
+<p>La velocidad instantánea puede interpretarse como la pendiente de la recta tangente en el punto <span class="math inline">\(P\)</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap2/2.7-velocidades.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Se deja caer una pelota desde la plataforma superior de observación de la Torre CN, a 450 <span class="math inline">\(m\)</span> sobre el nivel del suelo.</p>
+<ul>
+<li>¿Cuál es la velocidad de la pelota después de 5 segundos?</li>
+<li>¿Con qué velocidad viaja cuando choca contra el suelo?</li>
+</ul>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-52-contents" aria-controls="callout-52" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-52" class="callout-52-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Podemos modelar el movimiento de la pelota con la función de posición <span class="math inline">\(f(t)=4.9\,t^2\)</span>. Calculemos <span class="math inline">\(v(a)\)</span>, la velocidad en un instante de tiempo genérico <span class="math inline">\(a\)</span>. Es decir, escribimos</p>
+<p><span class="math display">\[
+v(a)=\lim_{h\to 0} \frac{f(a+h)-f(a)}{h}=\lim_{h\to 0} \frac{4.9\,(a+h)^2-4.9\,a^2}{h}
+\]</span></p>
+<p>Si <span class="math inline">\(h\neq 0\)</span> entonces</p>
+<p><span class="math display">\[
+\frac{4.9\,(a+h)^2-4.9\,a^2}{h}=\frac{4.9\, a^2+9.8\,ah+4.9\,h^2-4.9\,a^2}{h}=\frac{h(9.8\,a+4.9\,h)}{h}=9.8\,a+4.9\,h.
+\]</span></p>
+<p>Con esto, obtenemos que</p>
+<p><span class="math display">\[
+\lim_{h\to 0} \frac{4.9\,(a+h)^2-4.9\,a^2}{h}=\lim_{h\to 0} (9.8\,a+4.9\,h)=9.8\,a.
+\]</span></p>
+<p>Es decir, <span class="math inline">\(v(a)=9.8\, a\)</span>. En particular, si <span class="math inline">\(a=5\)</span>, la velocidad después de 5 segundos es <span class="math inline">\(v(5)=9.8\cdot 5 =49\)</span>.</p>
+<p>Para la segunda pregunta, primero debemos determinar <span class="math inline">\(t_0\)</span> el instante de tiempo en que la pelota toca el suelo. Para ello, debe ocurrir que el espacio recorrido coincida con la altura de la torre, es decir <span class="math inline">\(f(t_0)=450\)</span>, con lo cual</p>
+<p><span class="math display">\[
+450=4.9\, t_0^2,
+\]</span></p>
+<p>y despejando obtenemos <span class="math inline">\(t_0\approx 9.58\)</span>, con lo cual la velocidad de la pelota en ese instante es <span class="math inline">\(v(t_0)\approx v(9.58)\approx 46.9\)</span> m/seg.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="derivadas" class="level3">
+<h3 class="anchored" data-anchor-id="derivadas">Derivadas</h3>
+<p>Con las motivaciones vistas hasta ahora, estamos en condiciones de definir el concepto de <strong>derivada</strong>.</p>
+<div id="definicion-derivada" class="callout callout-style-default callout-note callout-titled" title="Definición (derivada)">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definición (derivada)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>La <strong>derivada de una función <span class="math inline">\(f\)</span> en un número <span class="math inline">\(a\)</span></strong> se denota <span class="math inline">\(f'(a)\)</span> y se define por <span class="math display">\[
+f'(a)=\lim_{h\to 0}\frac{f(a+h)-f(a)}{h},
+\]</span></p>
+<p>siempre que este límite exista. De manera equivalente, podemos escribir</p>
+<p><span class="math display">\[
+f'(a)=\lim_{x\to a}\frac{f(x)-f(a)}{x-a}.
+\]</span></p>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Hallar <span class="math inline">\(f'(a)\)</span> si <span class="math inline">\(f(x)=x^2-8x+9\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-54-contents" aria-controls="callout-54" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-54" class="callout-54-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Por definición es</p>
+<p><span class="math display">\[
+f'(a)=\lim_{h\to 0} \frac{f(a+h)-f(a)}{h}.
+\]</span></p>
+<p>Si <span class="math inline">\(h\neq 0\)</span>, entonces</p>
+<p><span class="math display">\[
+\frac{f(a+h)-f(a)}{h}=\frac{(a+h)^2-8(a+h)+9-[a^2-8a+9]}{h}=\frac{2ah+h^2-8h}{h}=2a+h-8.
+\]</span></p>
+<p>Entonces</p>
+<p><span class="math display">\[
+\lim_{h\to 0} \frac{f(a+h)-f(a)}{h}=\lim_{h\to 0}\,(2a+h-8)=2a-8.
+\]</span></p>
+</div>
+</div>
+</div>
+<p>La <strong>recta tangente</strong> a la curva <span class="math inline">\(y=f(x)\)</span> en el punto <span class="math inline">\(P=(a,f(a))\)</span> es la recta que pasa por <span class="math inline">\(P\)</span> y cuya pendiente es <span class="math inline">\(f'(a)\)</span>, es decir, la derivada de <span class="math inline">\(f\)</span> en <span class="math inline">\(a\)</span>.</p>
+<p>Usando la <a href="#recta-punto-pendiente">ecuación punto-pendiente</a> podemos encontrar la ecuación de esta recta.</p>
+<div id="form-recta-tangente" class="formula-box">
+<p>Ecuación de la recta tangente al gráfico de <span class="math inline">\(y=f(x)\)</span> en el punto <span class="math inline">\((a,f(a))\)</span></p>
+<p><span class="math display">\[
+y=f(a)+f'(a)(x-a).
+\]</span></p>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap2/2.7-recta-tangente.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Hallar la ecuación de la recta tangente al gráfico de <span class="math inline">\(y=x^2-8x+9\)</span> en <span class="math inline">\((3,-6)\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-55-contents" aria-controls="callout-55" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-55" class="callout-55-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>En el ejemplo anterior vimos que <span class="math inline">\(f'(a)=2a-8\)</span>. Usando la <a href="#form-recta-tangente">ecuación de la recta tangente</a> con <span class="math inline">\(a=3\)</span> obtenemos</p>
+<p><span class="math display">\[
+y=f(3)+f'(3)(x-3)
+\]</span></p>
+<p>y como <span class="math inline">\(f'(3)=2\cdot 3-8=-2\)</span>, resulta <span class="math display">\[
+y=-6-2(x-3) \quad \text{o bien}\quad y=-2x.
+\]</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="relaciones-de-cambio" class="level3">
+<h3 class="anchored" data-anchor-id="relaciones-de-cambio">Relaciones de cambio</h3>
+<p>Supongamos que <span class="math inline">\(y\)</span> depende de <span class="math inline">\(x\)</span> mediante la relación <span class="math inline">\(y=f(x)\)</span>. Si <span class="math inline">\(x\)</span> cambia de <span class="math inline">\(x_1\)</span> a <span class="math inline">\(x_2\)</span>, el <strong>incremento en <span class="math inline">\(x\)</span></strong> está dado por</p>
+<p><span class="math display">\[
+\Delta x=x_2-x_1
+\]</span></p>
+<p>mientras que el correspondiente <strong>incremento en <span class="math inline">\(y\)</span></strong> es</p>
+<p><span class="math display">\[
+\Delta y=f(x_2)-f(x_1).
+\]</span></p>
+<p>El cociente de diferencias</p>
+<p><span class="math display">\[
+\frac{\Delta y}{\Delta x}=\frac{f(x_2)-f(x_1)}{x_2-x_1}
+\]</span></p>
+<p>se llama <strong>razón de cambio promedio</strong> de <span class="math inline">\(y\)</span> con respecto a <span class="math inline">\(x\)</span> en el intervalo <span class="math inline">\([x_1,x_2]\)</span>. Ésta puede interpretarse como la pendiente de la recta secante <span class="math inline">\(PQ\)</span> del siguiente gráfico</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap2/2.7-relaciones-cambio.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+<p>Si consideramos intervalos <span class="math inline">\([x_1,x_2]\)</span> cada vez más pequeños (esto es, hacemos <span class="math inline">\(x_2\)</span> acercarse a <span class="math inline">\(x_1\)</span>) el límite de estas razones de cambio promedio (si existe) se llama <strong>razón de cambio instantánea</strong> de <span class="math inline">\(y\)</span> con respecto a <span class="math inline">\(x\)</span> en <span class="math inline">\(x=x_1\)</span>, y puede interpretarse como la pendiente de la recta tangente a la curva en el punto <span class="math inline">\(P\)</span>.</p>
+<p><span class="math display">\[
+\text{Razón de cambio instantánea} =\lim_{\Delta x\to  0}\frac{\Delta y}{\Delta x}=\lim_{x_2\to x_1}\frac{f(x_2)-f(x_1)}{x_2-x_1}.
+\]</span></p>
+<p>El límite de arriba resulta ser <span class="math inline">\(f'(x_1)\)</span>. Esto nos da otra interpretación para la derivada:</p>
+<div class="formula-box">
+<p>La derivada <span class="math inline">\(f'(a)\)</span> es la razón de cambio instantánea de <span class="math inline">\(y=f(x)\)</span> con respecto a <span class="math inline">\(x\)</span>, cuando <span class="math inline">\(x=a\)</span>.</p>
+</div>
+<p>Si dibujamos la curva <span class="math inline">\(y=f(x)\)</span>, la razón de cambio instantánea es la pendiente de la tangente a esta curva en el punto <span class="math inline">\((a,f(a))\)</span>. Cuando la derivada es grande, los valores de <span class="math inline">\(y\)</span> cambian rápidamente respecto de los de <span class="math inline">\(x\)</span> y en consecuencia la curva es escarpada, como sucede en el punto <span class="math inline">\(P\)</span>. Cuando la derivada es pequeña, los valores de <span class="math inline">\(y\)</span> cambian lentamente en relación a <span class="math inline">\(x\)</span> y la curva es relativamente plana, como en el punto <span class="math inline">\(Q\)</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap2/2.7-relaciones-cambio2.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
+</figure>
+</div>
+<p>Cuando <span class="math inline">\(s=f(t)\)</span> es la función posición de una partícula a tiempo <span class="math inline">\(t\)</span> que se mueve a lo largo de una línea recta, <span class="math inline">\(f'(a)\)</span> es la <strong>velocidad</strong> de la partícula en <span class="math inline">\(t=a\)</span>.</p>
+<p>La <strong>rapidez</strong> de la partícula es el valor absoluto de la velocidad, es decir <span class="math inline">\(|f'(a)|\)</span>.</p>
+<p>Esto muestra que la velocidad de una partícula puede ser positiva, negativa o cero, mientras que la rapidez siempre es no negativa.</p>
+<p><a href="#seccion_2.7">↑ Volver al inicio de la sección</a></p>
+</section>
+</section>
+<section id="seccion_2.8" class="level2">
+<h2 class="anchored" data-anchor-id="seccion_2.8">2.8. La derivada como una función</h2>
+<p>Hemos definido la derivada de <span class="math inline">\(f\)</span> en <span class="math inline">\(a\)</span> como el límite</p>
+<p><span class="math display">\[
+f'(a)=\lim_{h\to 0}\frac{f(a+h)-f(a)}{h}
+\]</span></p>
+<p>siempre que este límite exista. Si dejamos que el número <span class="math inline">\(a\)</span> varíe, podemos escribir</p>
+<p><span class="math display">\[
+f'(x)=\lim_{h\to 0}\frac{f(x+h)-f(x)}{h}.
+\]</span></p>
+<p>De modo que <span class="math inline">\(f'(x)\)</span> está bien definida para todo número <span class="math inline">\(x\)</span> tal que el límite anterior existe. Entonces podemos considerar a <span class="math inline">\(f'\)</span> como una nueva función, definida como el límite de arriba, y llamada <strong>derivada</strong> de <span class="math inline">\(f\)</span>.</p>
+<p>El valor que toma <span class="math inline">\(f'\)</span> en <span class="math inline">\(x\)</span>, denotado <span class="math inline">\(f'(x)\)</span> representa la pendiente de la recta tangente al gráfico de <span class="math inline">\(y=f(x)\)</span> en el punto <span class="math inline">\((x,f(x))\)</span>.</p>
+<p>Observemos que</p>
+<p><span class="math display">\[
+D_{f'}=\{x\in D_f: f'(x) \text{ existe}\}.
+\]</span></p>
+<p>En general, <span class="math inline">\(D_{f'}\subseteq D_{f}\)</span>, pudiendo esta contención ser estricta.</p>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>En la siguiente figura se muestra el gráfico de una función <span class="math inline">\(f\)</span>. Usarla para dibujar el gráfico de <span class="math inline">\(f'\)</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap2/2.8-ejemplo-derivada.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-56-contents" aria-controls="callout-56" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-56" class="callout-56-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Para realizar el gráfico de <span class="math inline">\(f'\)</span> podemos seleccionar distintos puntos <span class="math inline">\((x,f(x))\)</span> en el gráfico de <span class="math inline">\(f\)</span> e intentar estimar la pendiente de la recta tangente allí. Este método, si bien nos ayuda a visualizar el gráfico de <span class="math inline">\(f'\)</span> de manera aproximada, no es exacto y la técnica es un poco engorrosa.</p>
+<p>Más adelante veremos herramientas que nos permitirán dar un esbozo más preciso del gráfico de una función.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap2/2.8-ejemplo-derivada2.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="ejemplo-derivada-cubica" class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Si <span class="math inline">\(f(x)=x^3-x\)</span>, encontrar una fórmula para <span class="math inline">\(f'(x)\)</span> e ilustrarla comparando las gráficas de <span class="math inline">\(f\)</span> y <span class="math inline">\(f'\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-57-contents" aria-controls="callout-57" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-57" class="callout-57-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Por definición, debemos calcular</p>
+<p><span class="math display">\[
+\lim_{h\to 0} \frac{f(x+h)-f(x)}{h}
+\]</span></p>
+<p>para cualquier <span class="math inline">\(x\in\mathbb{R}\)</span>.</p>
+<p>Fijado <span class="math inline">\(x\)</span>, si <span class="math inline">\(h\neq 0\)</span>, entonces tenemos que</p>
+<p><span class="math display">\[ \small
+\frac{f(x+h)-f(x)}{h}=\frac{(x+h)^3-(x+h)-[x^3-x]}{h}=\frac{3x^2h+3xh^2+h^3-h}{h}=3x^2+3xh+h^2-1.
+\]</span></p>
+<p>Entonces</p>
+<p><span class="math display">\[
+\lim_{h\to 0} \frac{f(x+h)-f(x)}{h}=\lim_{h\to 0} (3x^2+3xh+h^2-1)=3x^2-1.
+\]</span></p>
+<p>Por lo tanto, <span class="math inline">\(f'(x)=3x^2-1\)</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap2/2.8-ejemplo-funcyder.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Si <span class="math inline">\(f(x)=\sqrt{x}\)</span>, calcular <span class="math inline">\(f'(x)\)</span> y dar su dominio.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-58-contents" aria-controls="callout-58" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-58" class="callout-58-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Vamos a calcular</p>
+<p><span class="math display">\[
+\lim_{h\to 0} \frac{f(x+h)-f(x)}{h}
+\]</span></p>
+<p>para <span class="math inline">\(x\geq 0\)</span>.</p>
+<p>Fijado <span class="math inline">\(x\)</span>, tomando <span class="math inline">\(h\neq 0\)</span> escribimos</p>
+<p><span class="math display">\[
+\frac{f(x+h)-f(x)}{h}=\frac{\sqrt{x+h}-\sqrt{x}}{h}=\frac{\sqrt{x+h}-\sqrt{x}}{h}\,\frac{\sqrt{x+h}+\sqrt{x}}{\sqrt{x+h}+\sqrt{x}}=\frac{1}{\sqrt{x+h}+\sqrt{x}}.
+\]</span></p>
+<p>Utilizando las leyes <strong>(11)</strong> y <strong>(1)</strong> obtenemos</p>
+<p><span class="math display">\[
+\lim_{h\to 0} \frac{f(x+h)-f(x)}{h}=\lim_{h\to 0} \frac{1}{\sqrt{x+h}+\sqrt{x}}=\frac{1}{2\sqrt{x}},
+\]</span></p>
+<p>por lo tanto <span class="math inline">\(f'(x)=\displaystyle \frac{1}{2\sqrt{x}}\)</span>, siempre que <span class="math inline">\(x&gt;0\)</span>.</p>
+<p>¿Es <span class="math inline">\(f\)</span> derivable en <span class="math inline">\(x=0\)</span>? Para responder esta pregunta, analizamos</p>
+<p><span class="math display">\[
+\lim_{h\to 0^+} \frac{f(0+h)-f(0)}{h}=\lim_{h\to 0^+} \frac{\sqrt{h}-0}{h}=\lim_{h\to 0^+} \frac{1}{\sqrt{h}}=\infty,
+\]</span></p>
+<p>con lo cual el límite no existe por infinitud y <span class="math inline">\(f\)</span> no es derivable en <span class="math inline">\(x=0\)</span>. Entonces <span class="math inline">\(D_{f'}=(0,\infty)\)</span>.</p>
+</div>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Encontrar <span class="math inline">\(f'(x)\)</span> si <span class="math inline">\(\displaystyle f(x)=\frac{1-x}{2+x}\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-59-contents" aria-controls="callout-59" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-59" class="callout-59-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Notemos que <span class="math inline">\(D_f=\mathbb{R}\backslash {-2}\)</span>. Para <span class="math inline">\(x\neq -2\)</span>, calculamos</p>
+<p><span class="math display">\[
+\lim_{h\to 0} \frac{f(x+h)-f(x)}{h}.
+\]</span></p>
+<p>Fijemos <span class="math inline">\(x\)</span> y <span class="math inline">\(h\neq 0\)</span>. Entonces</p>
+<p><span class="math display">\[ \small
+\frac{f(x+h)-f(x)}{h}=\frac{\frac{1-(x+h)}{2+(x+h)}-\frac{1-x}{2+x}}{h}=\frac{1}{h}\, \frac{(2+x)(1-x-h)-(2+x+h)(1-x)}{(2+x+h)(2+x)}=-\frac{3}{(2+x+h)(2+x)}.
+\]</span></p>
+<p>Por la <a href="#teo-sust-directa">propiedad de sustitución directa</a> y las leyes <strong>(4)</strong> y <strong>(5)</strong> del producto y del cociente resulta</p>
+<p><span class="math display">\[
+\lim_{h\to 0} \frac{f(x+h)-f(x)}{h}=\lim_{h\to 0} -\frac{3}{(2+x+h)(2+x)}=-\frac{3}{(2+x)^2}.
+\]</span></p>
+</div>
+</div>
+</div>
+<section id="otras-notaciones" class="level3">
+<h3 class="anchored" data-anchor-id="otras-notaciones">Otras notaciones</h3>
+<p>Si escribimos <span class="math inline">\(y=f(x)\)</span>, donde <span class="math inline">\(x\)</span> es la variable independiente e <span class="math inline">\(y\)</span> la dependiente, otras formas de representar a la derivada de <span class="math inline">\(f\)</span> en <span class="math inline">\(x\)</span> son</p>
+<p><span class="math display">\[
+f'(x)=y'={dx}={dx}={dx}f(x)=Df(x)=D_xf(x).
+\]</span></p>
+<p>Los símbolos <span class="math inline">\(D\)</span> y <span class="math inline">\(d/dx\)</span> se llaman <strong>operadores de derivación</strong>. El símbolo <span class="math inline">\(dy/dx\)</span> introducido por Leibniz es otra forma de escribir <span class="math inline">\(f'(x)\)</span>. En término de incrementos, tenemos que</p>
+<p><span class="math display">\[
+\frac{dy}{dx}=\lim_{\Delta x\to 0} \frac{\Delta y}{\Delta x}.
+\]</span></p>
+<div class="callout callout-style-default callout-note callout-titled" title="Definición (Función derivable)">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definición (Función derivable)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Una función <span class="math inline">\(f\)</span> es <strong>derivable en <span class="math inline">\(a\)</span></strong> si <span class="math inline">\(f'(a)\)</span> existe.</p>
+<p>Si $-a&lt;b$, decimos que <span class="math inline">\(f\)</span> es <strong>derivable en <span class="math inline">\((a,b)\)</span></strong> si <span class="math inline">\(f\)</span> es derivable en todo punto del intervalo.</p>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>¿Dónde es derivable la función <span class="math inline">\(f(x)=|x|\)</span>?</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-61-contents" aria-controls="callout-61" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-61" class="callout-61-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Consideremos diferentes casos. Supongamos primero que <span class="math inline">\(x&gt;0\)</span> y <span class="math inline">\(h\neq 0\)</span> es suficientemente pequeño como para que <span class="math inline">\(x+h&gt;0\)</span>, esto es, elegimos <span class="math inline">\(h&gt;-x\)</span>. Entonces</p>
+<p><span class="math display">\[
+\frac{f(x+h)-f(x)}{h}=\frac{|x+h|-|x|}{h}=\frac{x+h-x}{h}=1,
+\]</span> dado que tanto <span class="math inline">\(x\)</span> como <span class="math inline">\(x+h\)</span> son positivos.</p>
+<p>Luego</p>
+<p><span class="math display">\[
+\lim_{h\to 0} \frac{f(x+h)-f(x)}{h} = \lim_{h\to 0} 1=1.
+\]</span></p>
+<p>Con esto concluimos que <span class="math inline">\(f'(x)=1\)</span> para cualquier <span class="math inline">\(x&gt;0\)</span>.</p>
+<p>Ahora consideremos <span class="math inline">\(x&lt;0\)</span> y <span class="math inline">\(h\neq 0\)</span> suficientemente pequeño en magnitud como para que <span class="math inline">\(x+h&lt;0\)</span>. Entonces</p>
+<p><span class="math display">\[
+\frac{f(x+h)-f(x)}{h}=\frac{|x+h|-|x|}{h}=\frac{-x-h+x}{h}=-1,
+\]</span> pues ambos <span class="math inline">\(x\)</span> y <span class="math inline">\(x+h\)</span> son negativos. Así,</p>
+<p><span class="math display">\[
+\lim_{h\to 0} \frac{f(x+h)-f(x)}{h} = \lim_{h\to 0} -1=-1.
+\]</span></p>
+<p>Por lo tanto, <span class="math inline">\(f'(x)=-1\)</span> para todo <span class="math inline">\(x&lt;0\)</span>.</p>
+<p>Finalmente, estudiamos el caso <span class="math inline">\(x=0\)</span>. Como <span class="math inline">\(f\)</span> cambia su definición en <span class="math inline">\(x=0\)</span>, estudiamos los límites laterales</p>
+<p><span class="math display">\[
+\lim_{h\to 0^+} \frac{f(0+h)-f(0)}{h}=\lim_{h\to 0^+} \frac{h-0}{h}= 1
+\]</span></p>
+<p>y</p>
+<p><span class="math display">\[
+\lim_{h\to 0^-} \frac{f(0+h)-f(0)}{h}=\lim_{h\to 0^+} \frac{-h-0}{h}= -1.
+\]</span></p>
+<p>Como los límites laterales no coinciden, el límite</p>
+<p><span class="math display">\[
+\lim_{h\to 0} \frac{f(0+h)-f(0)}{h}
+\]</span></p>
+<p>no existe y por lo tanto <span class="math inline">\(f\)</span> no es derivable en <span class="math inline">\(x=0\)</span>. Es decir, <span class="math inline">\(f(x)=|x|\)</span> es derivable en todo <span class="math inline">\(x\neq 0\)</span> y</p>
+<p><span class="math display">\[
+f'(x)=
+\begin{cases}
+1 &amp; \text{ si } x&gt;0,\\
+-1 &amp; \text{ si } x&lt;0.
+\end{cases}
+\]</span></p>
+</div>
+</div>
+</div>
+<div id="teo-derivable-continua" class="theorem">
+<p>Teorema</p>
+<p>Si <span class="math inline">\(f\)</span> es derivable en <span class="math inline">\(a\)</span>, entonces <span class="math inline">\(f\)</span> es continua en <span class="math inline">\(a\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-caution callout-titled" title="Importante">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Importante
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>El recíproco del <a href="#teo-derivable-continua">teorema</a> anterior es <strong>falso</strong>. En efecto, la función <span class="math inline">\(f(x)=|x|\)</span> es continua en <span class="math inline">\(x=0\)</span> pero no es derivable en este punto.</p>
+</div>
+</div>
+</section>
+<section id="cómo-deja-de-ser-derivable-una-función" class="level3">
+<h3 class="anchored" data-anchor-id="cómo-deja-de-ser-derivable-una-función">¿Cómo deja de ser derivable una función?</h3>
+<p>Si la gráfica de una función presenta “esquinas” o “rizos” en ciertos puntos, <span class="math inline">\(f\)</span> no tiene recta tangente allí y resulta no derivable. Esto se debe a que al intentar calcular <span class="math inline">\(f'(a)\)</span>, los límites laterales son distintos.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap2/2.8-esquina.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
+</figure>
+</div>
+<p>El <a href="#teo-derivable-continua">teorema</a> anterior da otra forma en que una función no es derivable en un punto: si <span class="math inline">\(f\)</span> no es continua en <span class="math inline">\(a\)</span>, entonces no puede ser derivable en este punto. Si <span class="math inline">\(f\)</span> tiene una discontinuidad en <span class="math inline">\(a\)</span> (como por ejemplo un salto) entonces <span class="math inline">\(f'(a)\)</span> no existe.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap2/2.8-discontinuidad.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
+</figure>
+</div>
+<p>Una tercera posibilidad es que <span class="math inline">\(f\)</span> presente una <strong>recta tangente vertical</strong> en <span class="math inline">\(x=a\)</span>, es decir, <span class="math inline">\(f\)</span> es continua en <span class="math inline">\(a\)</span> y se cumple que</p>
+<p><span class="math display">\[
+\lim_{x\to a}|f'(x)|=\infty.
+\]</span></p>
+<p>Esto significa que las tangentes se vuelven más empinadas conforme <span class="math inline">\(x\to a\)</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap2/2.8-pendienteinf.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
+</figure>
+</div>
+</section>
+<section id="derivadas-superiores" class="level3">
+<h3 class="anchored" data-anchor-id="derivadas-superiores">Derivadas superiores</h3>
+<p>Si <span class="math inline">\(f\)</span> es una función derivable, <span class="math inline">\(f'\)</span> también es una función y podemos derivarla. La derivada de la derivada de <span class="math inline">\(f\)</span> (<span class="math inline">\((f')'=f''\)</span>) se denomina <strong>derivada segunda</strong> de <span class="math inline">\(f\)</span>. En la notación de Leibniz, si <span class="math inline">\(y=f(x)\)</span> podemos escribir</p>
+<p><span class="math display">\[
+f''(x)=\frac{d}{dx}\left(\frac{df}{dx}\right)=\frac{d^2f}{dx^2}.
+\]</span></p>
+<div id="ejemplo-derivada-segunda" class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Si <span class="math inline">\(f(x)=x^3-x\)</span>, hallar e interpretar <span class="math inline">\(f''(x)\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-63-contents" aria-controls="callout-63" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-63" class="callout-63-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>En el <a href="#ejemplo-derivada-cubica">Ejemplo 41</a> vimos que <span class="math inline">\(f'(x)=3x^2-1\)</span>. Usando la <a href="#definicion-derivada">definición de derivada</a>, tenemos que</p>
+<p><span class="math display">\[
+f''(x)=\lim_{h\to 0} \frac{f'(x+h)-f'(x)}{h}.
+\]</span></p>
+<p>Para <span class="math inline">\(x\)</span> fijo y <span class="math inline">\(h\neq 0\)</span>, calculamos</p>
+<p><span class="math display">\[
+\frac{f'(x+h)-f'(x)}{h}=\frac{3(x+h)^2-1-(3x^2-1)}{h}=\frac{6xh+3h^2}{h}=\frac{h(6x+3h)}{h}=6x+3h.
+\]</span></p>
+<p>Luego</p>
+<p><span class="math display">\[
+\lim_{h\to 0} \frac{f'(x+h)-f'(x)}{h}=\lim_{h\to 0} (6x+3h)=6x.
+\]</span></p>
+<p>Por lo tanto, <span class="math inline">\(f''(x)=6x\)</span>. Como <span class="math inline">\(f''\)</span> resulta ser la derivada de <span class="math inline">\(f'\)</span>, <span class="math inline">\(f''(x)\)</span> nos da la pendiente de la recta tangente al gráfico de <span class="math inline">\(f'\)</span> en el punto <span class="math inline">\((x,f'(x))\)</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap2/2.8-ejemplo-derivadas.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>En general podemos interpretar a la segunda derivada como una razón de cambio de una razón de cambio. Si <span class="math inline">\(s=s(t)\)</span> es la función de posición de un objeto que se mueve en línea recta, entonces</p>
+<p><span class="math display">\[
+v(t)=s'(t)=\frac{ds}{dt}
+\]</span></p>
+<p>es la velocidad del objeto. La razón de cambio de la velocidad con respecto al tiempo es la <strong>aceleración</strong> del objeto. Ésta es la derivada de la velocidad y, en consecuencia, la derivada segunda de la posición</p>
+<p><span class="math display">\[
+a(t)=\frac{d}{dt}\left(\frac{ds}{dt}\right)=\frac{d^2s}{dt^2}
+\]</span> en la notación de Leibniz.</p>
+<p>La <strong>tercera derivada</strong> <span class="math inline">\(f'''\)</span> es la derivada de la derivada segunda de <span class="math inline">\(f\)</span>, es decir</p>
+<p><span class="math display">\[
+y'''=f'''=\frac{d}{dx}\left(\frac{d^2y}{dx^2}\right)=\frac{d^3y}{dx^3}.
+\]</span></p>
+<p>Este proceso puede continuar siempre y cuando el límite del cociente de diferencias exista. En general, la <strong>derivada <span class="math inline">\(n-\)</span>ésima</strong> se denota por <span class="math inline">\(f^{(n)}\)</span>, o bien</p>
+<p><span class="math display">\[
+y^{(n)}=f^{(n)}(x)=\frac{d^nf}{dx^n}.
+\]</span></p>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Si <span class="math inline">\(f(x)=x^3-x\)</span>, hallar <span class="math inline">\(f'''(x)\)</span> e interpretar <span class="math inline">\(f^{(4)}(x)\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-64-contents" aria-controls="callout-64" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-64" class="callout-64-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>En el <a href="#ejemplo-derivada-segunda">Ejemplo 45</a> obtuvimos que <span class="math inline">\(f''(x)=6x\)</span>. Usando la <a href="#definicion-derivada">definición de derivada</a> con <span class="math inline">\(f''\)</span>, obtenemos</p>
+<p><span class="math display">\[
+f'''(x)=\lim_{h\to 0} \frac{f''(x+h)-f''(x)}{h}.
+\]</span></p>
+<p>Si <span class="math inline">\(x\in\mathbb{R}\)</span> está fijo y <span class="math inline">\(h\neq 0\)</span> tenemos que</p>
+<p><span class="math display">\[
+\frac{f''(x+h)-f''(x)}{h}=\frac{6(x+h)-6x}{h}=\frac{6h}{h}=6,
+\]</span></p>
+<p>con lo cual</p>
+<p><span class="math display">\[
+\lim_{h\to 0} \frac{f''(x+h)-f''(x)}{h}=\lim_{h\to 0} 6= 6
+\]</span></p>
+<p>y en consecuencia <span class="math inline">\(f'''(x)=6\)</span>, es decir, <span class="math inline">\(f'''\)</span> es una función constante. Si calculamos la derivada de ésta última función, obtenemos</p>
+<p><span class="math display">\[
+f^{(4)}(x)=\lim_{h\to 0} \frac{f'''(x+h)-f'''(x)}{h}=\lim_{h\to 0} \frac{6-6}{h}=0.
+\]</span></p>
+<p>Por lo tanto, <span class="math inline">\(f^{(4)}(x)=0\)</span>. En el siguiente gráfico se muestra <span class="math inline">\(f''\)</span> junto a <span class="math inline">\(f'''\)</span> y <span class="math inline">\(f^{(4)}\)</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap2/2.8-ejemplo-derivadas2.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>Para el caso de la función posición de un objeto, la tercera derivada <span class="math inline">\(s'''\)</span> se denomina <strong>jerk</strong> (impulso) y es la derivada de la aceleración. Tenemos que</p>
+<p><span class="math display">\[
+j=\frac{da}{dt}=\frac{d^3s}{dt^3}.
+\]</span></p>
+<p><a href="#seccion_2.8">↑ Volver al inicio de la sección</a></p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./cap1.html" class="pagination-link" aria-label="1. Funciones">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">1. Funciones</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./cap3.html" class="pagination-link" aria-label="3. Derivadas">
+        <span class="nav-page-text"><span class="chapter-title">3. Derivadas</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

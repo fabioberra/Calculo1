@@ -1,0 +1,2714 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>3. Derivadas – Notas de teoría - Cálculo I</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./cap4.html" rel="next">
+<link href="./cap2.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-d9ea66fcd6c317012447f26e9c021348.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./cap3.html"><span class="chapter-title">3. Derivadas</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Notas de teoría - Cálculo I</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Cálculo I</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./cap1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">1. Funciones</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./cap2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">2. Límites, continuidad y derivadas</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./cap3.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">3. Derivadas</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./cap4.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4. Aplicaciones de la derivación</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Contenidos</h2>
+   
+  <ul>
+  <li><a href="#seccion_3.1" id="toc-seccion_3.1" class="nav-link active" data-scroll-target="#seccion_3.1">3.1. Derivadas de polinomios y funciones exponenciales</a>
+  <ul class="collapse">
+  <li><a href="#funciones-potencia" id="toc-funciones-potencia" class="nav-link" data-scroll-target="#funciones-potencia">Funciones potencia</a></li>
+  <li><a href="#qué-ocurre-cuando-n-es-entero-negativo" id="toc-qué-ocurre-cuando-n-es-entero-negativo" class="nav-link" data-scroll-target="#qué-ocurre-cuando-n-es-entero-negativo">¿Qué ocurre cuando <span class="math inline">\(n\)</span> es entero negativo?</a></li>
+  <li><a href="#rectas-tangente-y-normal" id="toc-rectas-tangente-y-normal" class="nav-link" data-scroll-target="#rectas-tangente-y-normal">Rectas tangente y normal</a></li>
+  <li><a href="#nuevas-derivadas-a-partir-de-otras-conocidas" id="toc-nuevas-derivadas-a-partir-de-otras-conocidas" class="nav-link" data-scroll-target="#nuevas-derivadas-a-partir-de-otras-conocidas">Nuevas derivadas a partir de otras conocidas</a></li>
+  <li><a href="#función-exponencial" id="toc-función-exponencial" class="nav-link" data-scroll-target="#función-exponencial">Función exponencial</a></li>
+  </ul></li>
+  <li><a href="#seccion_3.2" id="toc-seccion_3.2" class="nav-link" data-scroll-target="#seccion_3.2">3.2. Regla del producto y del cociente</a>
+  <ul class="collapse">
+  <li><a href="#derivada-del-producto" id="toc-derivada-del-producto" class="nav-link" data-scroll-target="#derivada-del-producto">Derivada del producto</a></li>
+  <li><a href="#derivada-del-cociente" id="toc-derivada-del-cociente" class="nav-link" data-scroll-target="#derivada-del-cociente">Derivada del cociente</a></li>
+  </ul></li>
+  <li><a href="#seccion_3.3" id="toc-seccion_3.3" class="nav-link" data-scroll-target="#seccion_3.3">3.3. Derivadas de las funciones trigonométricas</a>
+  <ul class="collapse">
+  <li><a href="#derivada-de-la-función-seno" id="toc-derivada-de-la-función-seno" class="nav-link" data-scroll-target="#derivada-de-la-función-seno">Derivada de la función seno</a></li>
+  <li><a href="#derivada-de-las-funciones-coseno-y-tangente" id="toc-derivada-de-las-funciones-coseno-y-tangente" class="nav-link" data-scroll-target="#derivada-de-las-funciones-coseno-y-tangente">Derivada de las funciones coseno y tangente</a></li>
+  </ul></li>
+  <li><a href="#seccion_3.4" id="toc-seccion_3.4" class="nav-link" data-scroll-target="#seccion_3.4">3.4. La regla de la cadena</a>
+  <ul class="collapse">
+  <li><a href="#derivadas-de-funciones-exponenciales-generales" id="toc-derivadas-de-funciones-exponenciales-generales" class="nav-link" data-scroll-target="#derivadas-de-funciones-exponenciales-generales">Derivadas de funciones exponenciales generales</a></li>
+  </ul></li>
+  <li><a href="#seccion_3.5" id="toc-seccion_3.5" class="nav-link" data-scroll-target="#seccion_3.5">3.5. Derivación implícita</a>
+  <ul class="collapse">
+  <li><a href="#derivadas-de-funciones-trigonométricas-inversas" id="toc-derivadas-de-funciones-trigonométricas-inversas" class="nav-link" data-scroll-target="#derivadas-de-funciones-trigonométricas-inversas">Derivadas de funciones trigonométricas inversas</a></li>
+  </ul></li>
+  <li><a href="#seccion_3.6" id="toc-seccion_3.6" class="nav-link" data-scroll-target="#seccion_3.6">3.6. Derivadas de funciones logarítmicas</a></li>
+  <li><a href="#seccion_3.7" id="toc-seccion_3.7" class="nav-link" data-scroll-target="#seccion_3.7">3.7. Razones de cambio en las ciencias</a>
+  <ul class="collapse">
+  <li><a href="#razones-de-cambio-en-física" id="toc-razones-de-cambio-en-física" class="nav-link" data-scroll-target="#razones-de-cambio-en-física">Razones de cambio en física</a></li>
+  <li><a href="#razones-de-cambio-en-química" id="toc-razones-de-cambio-en-química" class="nav-link" data-scroll-target="#razones-de-cambio-en-química">Razones de cambio en química</a></li>
+  </ul></li>
+  <li><a href="#seccion_3.9" id="toc-seccion_3.9" class="nav-link" data-scroll-target="#seccion_3.9">3.9. Relaciones afines</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-title">3. Derivadas</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="seccion_3.1" class="level2">
+<h2 class="anchored" data-anchor-id="seccion_3.1">3.1. Derivadas de polinomios y funciones exponenciales</h2>
+<p>Comenzamos considerando la función constante <span class="math inline">\(f(x)=c\)</span>, donde <span class="math inline">\(c\)</span> es un número real.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap3/3.1-constante.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:25.0%"></p>
+</figure>
+</div>
+<p>El gráfico de <span class="math inline">\(f\)</span> es simplemente una recta horizontal, cuya pendiente es cero. Entonces debería ocurrir que <span class="math inline">\(f'(x)=0\)</span>. En efecto,</p>
+<p><span class="math display">\[
+f'(x)=\lim_{h\to 0} \frac{f(x+h)-f(x)}{h}=\lim_{h\to 0} \frac{c-c}{h}=\lim_{h\to 0}0=0.
+\]</span></p>
+<div class="formula-box">
+<p><span class="math display">\[
+\frac{d}{dx}(c)=0.
+\]</span></p>
+</div>
+<section id="funciones-potencia" class="level3">
+<h3 class="anchored" data-anchor-id="funciones-potencia">Funciones potencia</h3>
+<p>Si consideramos <span class="math inline">\(f(x)=x\)</span>, el gráfico es la recta identidad, que tiene pendiente uno.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap3/3.1-lineal.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:30.0%"></p>
+</figure>
+</div>
+<p>Entonces</p>
+<p><span class="math display">\[
+f'(x)=\lim_{h\to 0} \frac{f(x+h)-f(x)}{h}=\lim_{h\to 0} \frac{x+h-x}{h}=\lim_{h\to 0}\frac{h}{h}=1.
+\]</span></p>
+<p>Por lo tanto</p>
+<div class="formula-box">
+<p><span class="math display">\[
+\frac{d}{dx}(x)=1.
+\]</span></p>
+</div>
+<p>Se puede comprobar fácilmente que</p>
+<div class="formula-box">
+<p><span class="math display">\[
+\frac{d}{dx}\left(x^2\right)=2x \quad \text { y } \quad \frac{d}{dx}\left(x^3\right)=3x^2.
+\]</span></p>
+</div>
+<p>Para el caso <span class="math inline">\(f(x)=x^4\)</span> podemos comprobar que</p>
+<p><span class="math display">\[
+f'(x)=\lim_{h\to 0} \frac{f(x+h)-f(x)}{h}=\lim_{h\to 0} \frac{(x+h)^4-x^4}{h}=\lim_{h\to 0}\left(4x^3+6x^2h+4xh^2+h^3\right)=4x^3.
+\]</span></p>
+<p>Por lo tanto</p>
+<div class="formula-box">
+<p><span class="math display">\[
+\frac{d}{dx}\left(x^4\right)=4x^3.
+\]</span></p>
+</div>
+<p>En general, tenemos la siguiente <strong>regla de la potencia</strong>: si <span class="math inline">\(n\)</span> es un entero positivo, entonces</p>
+<div class="formula-box">
+<p><span id="eq-regla-potencia"><span class="math display">\[
+\frac{d}{dx}\left(x^n\right)=nx^{n-1}.
+\tag{4.1}\]</span></span></p>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Utilizar la regla de la potencia para hallar la derivada en cada caso.</p>
+<div class="columns">
+<div class="column" style="width:40%;">
+<ul>
+<li><p><span class="math inline">\(f(x)=x^6\)</span>.</p></li>
+<li><p><span class="math inline">\(y=x^{1000}\)</span>.</p></li>
+</ul>
+</div><div class="column" style="width:40%;">
+<ul>
+<li><p><span class="math inline">\(y=t^4\)</span>.</p></li>
+<li><p><span class="math inline">\(g(r)=r^3\)</span>.</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Aplicando la <a href="#eq-regla-potencia">regla de la potencia</a> en cada caso, obtenemos</p>
+<ul>
+<li><p><span class="math inline">\(\,\,\displaystyle \frac{df}{dx}(x)=\frac{d}{dx}(x^6)=6x^{6-1}=6x^5\)</span>.</p></li>
+<li><p><span class="math inline">\(\,\,\displaystyle \frac{dy}{dx}(x)=\frac{d}{dx}(x^1000)=1000x^{1000-1}=1000x^999\)</span>.</p></li>
+<li><p><span class="math inline">\(\,\,\displaystyle \frac{dy}{dt}(t)=\frac{d}{dt}(t^4)=4t^{4-1}=4t^3\)</span>.</p></li>
+<li><p><span class="math inline">\(\,\,\displaystyle \frac{dg}{dr}(r)=\frac{d}{dr}(r^3)=3r^{3-1}=3r^2\)</span>.</p></li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="qué-ocurre-cuando-n-es-entero-negativo" class="level3 callout-question">
+<h3 class="anchored" data-anchor-id="qué-ocurre-cuando-n-es-entero-negativo">¿Qué ocurre cuando <span class="math inline">\(n\)</span> es entero negativo?</h3>
+<ul>
+<li>Consideremos primero <span class="math inline">\(f(x)=1/x\)</span>. Podemos ver que</li>
+</ul>
+<p><span class="math display">\[
+\frac{f(x+h)-f(x)}{h}=\frac{\frac{1}{x+h}-\frac{1}{x}}{h}=-\frac{1}{x(x+h)},
+\]</span></p>
+<p>para todo <span class="math inline">\(h\neq 0\)</span>. Entonces</p>
+<p><span class="math display">\[
+\lim_{h\to 0}\frac{f(x+h)-f(x)}{h}=\lim_{h\to 0}\left(-\frac{1}{x(x+h)}\right)=-\frac{1}{x^2}=(-1)x^{-1-1}.
+\]</span></p>
+<ul>
+<li>En la Sección 2.8 vimos que</li>
+</ul>
+<p><span class="math display">\[
+\frac{d}{dx}\left(\sqrt{x}\right)=\frac{1}{2\sqrt{x}}=\frac{1}{2}x^{1/2-1}.
+\]</span></p>
+<p>Esto parece indicar que la regla de la potencia vale para cualquier <span class="math inline">\(n\in\mathbb{R}\)</span>. Es decir, si <span class="math inline">\(f(x)=x^n\)</span> con <span class="math inline">\(n\in\mathbb{R}\)</span>, entonces</p>
+<p><span id="eq-potencia-general"><span class="math display">\[
+\frac{d}{dx}\left(x^n\right)=nx^{n-1}.
+\tag{4.2}\]</span></span></p>
+<p>Esto lo comprobaremos más adelante.</p>
+</section>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Derivar las funciones</p>
+<ul>
+<li><span class="math inline">\(f(x)=1/x^2\)</span></li>
+<li><span class="math inline">\(y=\sqrt[3]{x^2}\)</span></li>
+</ul>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Utilizando la <a href="#eq-potencia-general">regla general de la potencia</a>, obtenemos</p>
+<p><span class="math display">\[
+\frac{df}{dx}(x)=\frac{d}{dx}\left(x^{-2}\right)=(-2)x^{-2-1}=-2x^{-3}=-\frac{2}{x^3}
+\]</span></p>
+<p>y también</p>
+<p><span class="math display">\[
+\frac{dy}{dx}(x)=\frac{d}{dx}\left(\sqrt[3]{x^2}\right)=\frac{d}{dx}\left(x^{2/3}\right)=\frac{2}{3}x^{2/3-1}=\frac{2}{3}x^{-1/3}=\frac{2}{3 \sqrt[3]{x}}.
+\]</span></p>
+</div>
+</div>
+</div>
+<section id="rectas-tangente-y-normal" class="level3">
+<h3 class="anchored" data-anchor-id="rectas-tangente-y-normal">Rectas tangente y normal</h3>
+<p>A partir de la derivada de una función podemos encontrar también rectas normales a una curva en un punto dado. La <strong>recta normal</strong> a una curva <span class="math inline">\(C\)</span> en un punto <span class="math inline">\(P\)</span> es aquella que pasa por <span class="math inline">\(P\)</span> y es ortogonal a la tangente por <span class="math inline">\(C\)</span> en ese punto.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap3/3.1-tangente-normal.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
+</figure>
+</div>
+<p>Supongamos que la curva <span class="math inline">\(C\)</span> está dada por el gráfico de <span class="math inline">\(y=f(x)\)</span> y <span class="math inline">\(f\)</span> es derivable en <span class="math inline">\(a\)</span>. Recordemos que la ecuación de la recta tangente a <span class="math inline">\(C\)</span> en el punto <span class="math inline">\((a,f(a))\)</span> es</p>
+<p><span class="math display">\[
+y=f(a)+f'(a)(x-a).
+\]</span></p>
+<p>La recta normal es aquella perpendicular a la tangente y que pasa por <span class="math inline">\((a,f(a))\)</span>. Su ecuación es</p>
+<div class="formula-box">
+<p><span class="math display">\[
+y=f(a)-\frac{1}{f'(a)}(x-a)
+\]</span></p>
+</div>
+<p>siempre que <span class="math inline">\(f'(a)\neq 0\)</span>. Cuando <span class="math inline">\(f'(a)=0\)</span>, la recta normal será simplemente <span class="math inline">\(x=a\)</span>.</p>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Hallar la ecuación de la recta tangente y de la recta normal a la curva <span class="math inline">\(y=x\sqrt{x}\)</span> en el punto <span class="math inline">\((1,1)\)</span>. Dibujar ambas rectas junto al gráfico de la función.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Para encontrar las rectas deseadas necesitamos calcular <span class="math inline">\(y'(1)\)</span>. Utilizando la <a href="#eq-regla-potencia">regla general de la potencia</a> resulta</p>
+<p><span class="math display">\[
+y'(x)=(x\sqrt{x})'=\left(x^{3/2}\right)'=\frac{3}{2} x^{1/2}.
+\]</span></p>
+<p>La recta tangente tiene pendiente <span class="math inline">\(y'(1)=\frac{3}{2}\)</span> y pasa por <span class="math inline">\((1,1)\)</span>. Su ecuación es</p>
+<p><span class="math display">\[
+y-1=\frac{3}{2}(x-1) \quad \text{ o equivalentemente } \quad y=\frac{3}{2}x-\frac{1}{2}.
+\]</span></p>
+<p>La recta normal en <span class="math inline">\(P\)</span> tiene pendiente <span class="math inline">\(m=-\frac{1}{y'(1)}=-\frac{2}{3}\)</span> y pasa también por <span class="math inline">\((1,1)\)</span>. Su ecuación es</p>
+<p><span class="math display">\[
+y-1=-\frac{2}{3}(x-1) \quad \text{ o también } \quad y=-\frac{2}{3}x+\frac{5}{3}.
+\]</span></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap3/3.1-tangente-normal-ejemplo.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="nuevas-derivadas-a-partir-de-otras-conocidas" class="level3">
+<h3 class="anchored" data-anchor-id="nuevas-derivadas-a-partir-de-otras-conocidas">Nuevas derivadas a partir de otras conocidas</h3>
+<div id="teo-propiedades-derivada" class="theorem">
+<p>Propiedad</p>
+<p>Sean <span class="math inline">\(f\)</span> y <span class="math inline">\(g\)</span> dos funciones derivables y <span class="math inline">\(c\)</span> un número real. Entonces valen las siguientes propiedades</p>
+<ul>
+<li><p><span class="math inline">\(\displaystyle \frac{d}{dx}(cf(x))=c\frac{df}{dx}(x)\quad\)</span> <strong>(regla del múltiplo constante)</strong></p></li>
+<li><p><span class="math inline">\(\displaystyle \frac{d}{dx}(f(x)+g(x))=\frac{df}{dx}(x)+\frac{dg}{dx}(x)\quad\)</span><strong>(regla de la suma)</strong></p></li>
+<li><p><span class="math inline">\(\displaystyle \frac{d}{dx}(f(x)-g(x))=\frac{df}{dx}(x)-\frac{dg}{dx}(x)\quad\)</span><strong>(regla de la resta)</strong></p></li>
+</ul>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Calcular <span class="math inline">\(f'\)</span> si <span class="math inline">\(f(x)=x^8+12x^5-4x^4+10x^3-8x+5\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Utilizamos las reglas de la <a href="#teo-propiedades-derivada">propiedad</a> anterior para escribir</p>
+<p><span class="math display">\[
+f'(x)=(x^8+12x^5-4x^4+10x^3-8x+5)'=\left(x^8\right)'+12\left(x^5\right)'-4\left(x^4\right)'+10\left(x^3\right)'-8x'+5'.
+\]</span></p>
+<p>Ahora, por la <a href="#eq-regla-potencia">regla de la potencia</a> obtenemos</p>
+<p><span class="math display">\[
+f'(x)=8x^7+60x^4-16x^3+30x^2-8.
+\]</span></p>
+</div>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Encontrar los puntos de la curva <span class="math inline">\(y=x^4-6x^2+4\)</span> donde la recta tangente es horizontal.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Una recta tangente horizontal tiene pendiente cero, es decir, queremos encontrar los puntos <span class="math inline">\(x_0\)</span> tales que <span class="math inline">\(y'(x_0)=0\)</span>. Combinando las <a href="#teo-propiedades-derivada">reglas de derivación</a> para la suma, resta y múltiplo constante con la <a href="#eq-regla-potencia">regla de la potencia</a> obtenemos</p>
+<p><span class="math display">\[
+y'(x)=4x^3-12x.
+\]</span></p>
+<p>Entonces <span class="math inline">\(y'(x)=0\)</span> si y sólo si <span class="math inline">\(4x(x^2-3)=0\)</span>, de donde deducimos que <span class="math inline">\(x=-\sqrt{3}\)</span>, <span class="math inline">\(x=0\)</span> y <span class="math inline">\(x=\sqrt{3}\)</span>. Luego, los puntos buscados son <span class="math inline">\((-\sqrt{3},y(-\sqrt{3}))=(-\sqrt{3},-5)\)</span>, <span class="math inline">\((0,y(0))=(0,4)\)</span> y <span class="math inline">\((\sqrt{3},y(\sqrt{3}))=(\sqrt{3},-5)\)</span>.</p>
+</div>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>La ecuación del movimiento de una partícula es <span class="math inline">\(s=2t^3-5t^2+3t+4\)</span>, donde <span class="math inline">\(s\)</span> se mide en centímetros y <span class="math inline">\(t\)</span> en segundos. Hallar la aceleración como una función del tiempo. ¿Cuál es la aceleración después de dos segundos?</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Recordemos que la aceleración es la derivada de la velocidad, es decir, la derivada segunda de la posición. Entonces</p>
+<p><span class="math display">\[
+a(t)=\frac{d^2 s}{dt^2}(t)=\frac{d}{dt}\left(\frac{ds}{dt}(t)\right)=\frac{d}{dt}\left(6t^2-10t+3\right)=12t-10.
+\]</span></p>
+<p>La aceleración después de dos segundos es <span class="math inline">\(a(2)=12\cdot 2-10=14\, cm/s^2\)</span>.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="función-exponencial" class="level3">
+<h3 class="anchored" data-anchor-id="función-exponencial">Función exponencial</h3>
+<p>Si <span class="math inline">\(f(x)=a^x\)</span>, al calcular <span class="math inline">\(f'\)</span> por definición tenemos que</p>
+<p><span class="math display">\[
+f'(x)=\lim_{h\to 0} \frac{f(x+h)-f(x)}{h}=\lim_{h\to 0} \frac{a^{x+h}-a^x}{h}=\lim_{h\to 0} a^x\left(\frac{a^h-1}{h}\right).
+\]</span></p>
+<p>Notemos que si el límite</p>
+<p><span class="math display">\[
+\lim_{h\to 0} \frac{a^h-1}{h}
+\]</span></p>
+<p>existe, entonces es <span class="math inline">\(f'(0)\)</span> y en consecuencia</p>
+<p><span class="math display">\[
+f'(x)=f'(0) \,a^x=f'(0)\,f(x).
+\]</span></p>
+<p>Esto nos dice que si una función exponencial es derivable en cero, entonces es derivable en todo <span class="math inline">\(x\)</span> y la derivada es proporcional a la misma función.</p>
+<p>Recordando el desarrollo de la Sección 1.5, hemos definido al número <span class="math inline">\(e\)</span> como aquella base que hace que el gráfico de <span class="math inline">\(y=e^x\)</span> en el punto <span class="math inline">\((0,1)\)</span> tenga recta tangente con pendiente <span class="math inline">\(1\)</span>. En otras palabras, el número <span class="math inline">\(e\)</span> verifica que</p>
+<p><span class="math display">\[
+\lim_{h\to 0}\frac{e^h-1}{h}=1.
+\]</span></p>
+<p>Usando este resultado, podemos concluir que</p>
+<div class="formula-box">
+<p><span class="math display">\[
+\frac{d}{dx}\left(e^x\right)=e^x.
+\]</span></p>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Si <span class="math inline">\(f(x)=e^x-x\)</span>, encontrar <span class="math inline">\(f'\)</span> y <span class="math inline">\(f''\)</span>. Comparar el gráfico de <span class="math inline">\(f\)</span> con el de <span class="math inline">\(f'\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Utilizando la derivada de <span class="math inline">\(y=e^x\)</span> y de <span class="math inline">\(y=x\)</span> escribimos</p>
+<p><span class="math display">\[
+f'(x)=\left(e^x-x\right)'=\left(e^x\right)'-x'=e^x-1
+\]</span></p>
+<p>y también</p>
+<p><span class="math display">\[
+f''(x)=\left(f'(x)\right)'=\left(e^x-1\right)'=\left(e^x\right)'-1'=e^x.
+\]</span></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap3/3.1-exp-y-derivada.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:35.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>¿En qué punto de la curva <span class="math inline">\(y=e^x\)</span> la recta tangente es paralela a <span class="math inline">\(y=2x\)</span>?</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>La recta tangente en <span class="math inline">\((x_0, y(x_0))\)</span> será paralela a <span class="math inline">\(y=2x\)</span> si tiene la misma pendiente que esta recta. Como la pendiente es la derivada, estamos buscando los puntos <span class="math inline">\(x_0\)</span> tales que <span class="math inline">\(y'(x_0)=2\)</span>. Como <span class="math inline">\(y'(x)=e^x\)</span>, entonces buscamos <span class="math inline">\(x_0\)</span> tal que</p>
+<p><span class="math display">\[
+e^{x_0}=2,
+\]</span></p>
+<p>lo que nos da <span class="math inline">\(x_0=\ln 2\)</span>. El punto de la curva buscado es <span class="math inline">\(P=(\ln 2, y(\ln 2))=(\ln 2,2)\)</span>.</p>
+</div>
+</div>
+</div>
+<p><a href="#seccion_3.1">↑ Volver al inicio de la sección</a></p>
+</section>
+</section>
+<section id="seccion_3.2" class="level2">
+<h2 class="anchored" data-anchor-id="seccion_3.2">3.2. Regla del producto y del cociente</h2>
+<section id="derivada-del-producto" class="level3">
+<h3 class="anchored" data-anchor-id="derivada-del-producto">Derivada del producto</h3>
+<p>Las propiedades vistas hasta ahora podrían sugerir que la derivada de un producto de funciones es el producto de las derivadas de cada una. Sin embargo, esto es <strong>erróneo</strong>: si <span class="math inline">\(f(x)=x\)</span> y <span class="math inline">\(g(x)=x^2\)</span>, entonces <span class="math inline">\((fg)(x)=x^3\)</span> y</p>
+<p><span class="math display">\[
+\frac{d}{dx}(fg)=\frac{d}{dx}(x^3)=3x^2
+\]</span></p>
+<p>mientras que</p>
+<p><span class="math display">\[
+\left(\frac{df}{dx}(x)\right)\left(\frac{dg}{dx}(x)\right)=1\cdot 2x=2x.
+\]</span></p>
+<p>Consideremos dos funciones <span class="math inline">\(f\)</span> y <span class="math inline">\(g\)</span>, derivables en <span class="math inline">\(x\)</span>. Entonces</p>
+<p><span id="eq-derivada-producto"><span class="math display">\[
+\begin{aligned}
+(fg)'(x)&amp;=\lim_{h\to 0}\frac{(fg)(x+h)-(fg)(x)}{h} \\
+\\
+&amp;=\lim_{h\to 0}
+\left(\frac{f(x+h)g(x+h)-\color{red}{f(x+h)g(x)}}{h}
++\frac{{\color{red}{f(x+h)g(x)}}-f(x)g(x)}{h}\right)\\
+\\
+&amp;=\lim_{h\to 0}
+\left(f(x+h)\,\frac{g(x+h)-g(x)}{h}
++g(x)\,\frac{f(x+h)-f(x)}{h}\right).
+\end{aligned}
+\tag{4.3}\]</span></span></p>
+<p>Como tanto <span class="math inline">\(f\)</span> como <span class="math inline">\(g\)</span> son derivables en <span class="math inline">\(x\)</span>, tenemos que</p>
+<p><span class="math display">\[
+\lim_{h\to 0}\frac{f(x+h)-f(x)}{h}=f'(x)\quad\text{ y }\quad \lim_{h\to 0}\frac{g(x+h)-g(x)}{h}=g'(x).
+\]</span></p>
+<p>Por otra parte, como <span class="math inline">\(f\)</span> es derivable en <span class="math inline">\(x\)</span> también es continua en <span class="math inline">\(x\)</span>. Por lo tanto</p>
+<p><span class="math display">\[
+\lim_{h\to 0} f(x+h)=f\left(\lim_{h\to 0}[x+h]\right)=f(x).
+\]</span></p>
+<p>Combinando estos resultados con las leyes de los límites para el producto y la suma, volviendo a (<a href="#eq-derivada-producto" class="quarto-xref"><span>4.3</span></a>) resulta</p>
+<p><span class="math display">\[
+(fg)'(x)=f(x)g'(x)+g(x)f'(x).
+\]</span></p>
+<p>En conclusión, la <strong>regla del producto</strong> establece que si <span class="math inline">\(f\)</span> y <span class="math inline">\(g\)</span> son derivables en <span class="math inline">\(x\)</span>, entonces</p>
+<div class="formula-box">
+<p><span id="eq-regla-producto"><span class="math display">\[
+\frac{d}{dx}(fg)(x)=f(x)\frac{dg}{dx}(x)+g(x)\frac{df}{dx}(x).
+\tag{4.4}\]</span></span></p>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Si <span class="math inline">\(f(x)=x\,e^x\)</span> hallar <span class="math inline">\(f'(x)\)</span>. Encontrar también la <span class="math inline">\(n\)</span>-ésima derivada de <span class="math inline">\(f\)</span>, <span class="math inline">\(f^{(n)}(x)\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Por la <a href="#eq-regla-producto">regla del producto</a> obtenemos</p>
+<p><span class="math display">\[
+f'(x)=x'e^x+x\left(e^x\right)'=e^x+xe^x=(1+x)e^x.
+\]</span></p>
+<p>Aplicando nuevamente esta regla</p>
+<p><span class="math display">\[
+f''(x)=(1+x)'e^x+(1+x)\left(e^x\right)'=e^x+(1+x)e^x=(2+x)e^x.
+\]</span></p>
+<p>Repitiendo este procedimiento para más derivadas, en general tendremos que</p>
+<p><span class="math display">\[
+f^{(n)}(x)=(n+x)e^x.
+\]</span></p>
+</div>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Derivar la función <span class="math inline">\(f(t)=\sqrt{t}\,(a+tb)\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Utilizando la <a href="#eq-regla-producto">regla del producto</a> escribimos</p>
+<p><span class="math display">\[
+\frac{df}{dt}(t)=\frac{d}{dt}\left(\sqrt{t}\right)(a+tb)+\sqrt{t}\frac{d}{dt}(a+tb)=\frac{1}{2}t^{-1/2}(a+tb)+t^{1/2}b=\frac{1}{2}t^{-1/2}a+\frac{3}{2}t^{1/2}b.
+\]</span></p>
+</div>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Si <span class="math inline">\(f(x)=\sqrt{x}\,g(x)\)</span>, donde <span class="math inline">\(g(4)=2\)</span> y <span class="math inline">\(g'(4)=3\)</span>, hallar <span class="math inline">\(f'(4)\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Primero calculamos <span class="math inline">\(f'(x)\)</span> usando la <a href="#eq-regla-producto">regla del producto</a>. Tenemos que</p>
+<p><span class="math display">\[
+f'(x)=\left(\sqrt{x}\right)'g(x)+\sqrt{x}g'(x)=\frac{1}{2}x^{-1/2}\,g(x)+\sqrt{x}\,g'(x).
+\]</span></p>
+<p>Ahora evaluamos en <span class="math inline">\(x=4\)</span> utilizando la información dada</p>
+<p><span class="math display">\[
+f'(4)=\frac{1}{2} 4^{-1/2}\,g(4)+\sqrt{4}\,g'(4)=\frac{1}{4}\cdot 2+2\cdot 3=\frac{13}{2}.
+\]</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="derivada-del-cociente" class="level3">
+<h3 class="anchored" data-anchor-id="derivada-del-cociente">Derivada del cociente</h3>
+<p>De manera similar a lo que ocurre con el producto, podemos verificar que <span class="math inline">\((f/g)'\neq f'/g'\)</span>, es decir, la derivada de un cociente de funciones <strong>no es</strong> el cociente de las derivadas de cada una. Para encontrar una fórmula procederemos nuevamente por definición.</p>
+<p>Si <span class="math inline">\(f\)</span> y <span class="math inline">\(g\)</span> son funciones derivables en <span class="math inline">\(x\)</span>, y además <span class="math inline">\(g(x)\neq 0\)</span>, entonces</p>
+<p><span id="eq-derivada-cociente"><span class="math display">\[
+\begin{aligned}
+\left(\frac{f}{g}\right)'(x)&amp;=\lim_{h\to 0}\frac{\left(\frac{f}{g}\right)(x+h)-\left(\frac{f}{g}\right)(x)}{h}\\
+\\
+&amp;=\lim_{h\to 0} \frac{1}{h}\left(\frac{f(x+h)}{g(x+h)}{\color{red}{-\frac{f(x)}{g(x+h)}}+\frac{f(x)}{g(x+h)}}-\frac{f(x)}{g(x)}\right)\\
+\\
+&amp;=\lim_{h\to 0} \left[\frac{1}{g(x+h)}\left(\frac{f(x+h)-f(x)}{h}\right)-\frac{f(x)}{g(x+h)g(x)}\frac{g(x+h)-g(x)}{h}\right].
+\end{aligned}
+\tag{4.5}\]</span></span></p>
+<p>Como <span class="math inline">\(f\)</span> y <span class="math inline">\(g\)</span> son derivables en <span class="math inline">\(x\)</span>, por definición de derivada sabemos que</p>
+<p><span class="math display">\[
+\lim_{h\to 0}\frac{f(x+h)-f(x)}{h}=f'(x)\quad\text{ y }\quad \lim_{h\to 0}\frac{g(x+h)-g(x)}{h}=g'(x).
+\]</span></p>
+<p>Además, <span class="math inline">\(g\)</span> es derivable en <span class="math inline">\(x\)</span> y por lo tanto también es continua en <span class="math inline">\(x\)</span>. De esta manera</p>
+<p><span class="math display">\[
+\lim_{h\to 0}\frac{1}{g(x+h)}=\frac{1}{g(x)},
+\]</span></p>
+<p>dado que el denominador tiene como límite <span class="math inline">\(g(x)\neq 0\)</span> por hipótesis. Volviendo a la expresión calculada en (<a href="#eq-derivada-cociente" class="quarto-xref"><span>4.5</span></a>) resulta</p>
+<p><span class="math display">\[
+\left(\frac{f}{g}\right)'(x)=\frac{f'(x)}{g(x)}-\frac{f(x)g'(x)}{(g(x))^2}=\frac{f'(x)g(x)-f(x)g'(x)}{(g(x))^2}.
+\]</span></p>
+<p>En conclusión, la <strong>regla del cociente</strong> establece que si <span class="math inline">\(f\)</span> y <span class="math inline">\(g\)</span> son derivables en <span class="math inline">\(x\)</span> y <span class="math inline">\(g(x)\neq 0\)</span>, entonces</p>
+<div class="formula-box">
+<p><span id="eq-regla-cociente"><span class="math display">\[
+\frac{d}{dx}\left(\frac{f}{g}\right)(x)=\frac{\frac{df}{dx}(x)g(x)-f(x)\frac{dg}{dx}(x)}{g^2(x)}.
+\tag{4.6}\]</span></span></p>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Sea <span class="math inline">\(\displaystyle y=\frac{x^2+x-2}{x^3+6}\)</span>. Calcular <span class="math inline">\(y'\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Aplicando la <a href="#eq-regla-cociente">regla del cociente</a> podemos escribir</p>
+<p><span class="math display">\[
+\begin{aligned}
+y'=\frac{(x^2+x-2)'(x^3+6)-(x^2+x-2)(x^3+6)'}{(x^3+6)^2}&amp;=\frac{(2x+1)(x^3+6)-(x^2+x-2)(3x^2)}{(x^3+6)^2}\\
+\\
+&amp;=\frac{-x^4-2x^3+6x^2+12x+6}{(x^3+6)^2}.
+\end{aligned}
+\]</span></p>
+</div>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Encontrar una ecuación de la recta tangente a</p>
+<p><span class="math display">\[
+\displaystyle y=\frac{e^x}{1+x^2}
+\]</span></p>
+<p>en el punto <span class="math inline">\((1,e/2)\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Primero calculamos <span class="math inline">\(y'(x)\)</span> usando la <a href="#eq-regla-cociente">regla del cociente</a></p>
+<p><span class="math display">\[
+y'(x)=\frac{\left(e^x\right)'(1+x^2)-e^x(1+x^2)'}{(1+x^2)^2}=\frac{e^x(1+x^2)-2x\,e^x}{(1+x^2)^2}=\frac{e^x(x-1)^2}{(1+x^2)^2}.
+\]</span></p>
+<p>La recta tangente buscada pasa por <span class="math inline">\((1,e/2)\)</span> y tiene pendiente <span class="math inline">\(y'(1)=0\)</span>. Por lo tanto, su ecuación es</p>
+<p><span class="math display">\[
+y-\frac{e}{2}=0(x-1) \quad \text{ o equivalentemente } \quad y=\frac{e}{2}.
+\]</span></p>
+</div>
+</div>
+</div>
+<p><a href="#seccion_3.2">↑ Volver al inicio de la sección</a></p>
+</section>
+</section>
+<section id="seccion_3.3" class="level2">
+<h2 class="anchored" data-anchor-id="seccion_3.3">3.3. Derivadas de las funciones trigonométricas</h2>
+<section id="derivada-de-la-función-seno" class="level3">
+<h3 class="anchored" data-anchor-id="derivada-de-la-función-seno">Derivada de la función seno</h3>
+<p>Comencemos considerando la función <span class="math inline">\(f(x)=\operatorname{sen} x\)</span>. Esta función nos da el seno de un ángulo cuya medida en radianes es <span class="math inline">\(x\)</span>. Queremos calcular</p>
+<p><span class="math display">\[
+f'(x)=\lim_{h\to 0}\frac{f(x+h)-f(x)}{h}.
+\]</span></p>
+<p>Considerando <span class="math inline">\(h\neq 0\)</span> y aplicando la identidad</p>
+<p><span class="math display">\[
+\operatorname{sen}(\alpha+\beta)=\operatorname{sen} \alpha\cos \beta+\cos\alpha \operatorname{sen} \beta
+\]</span></p>
+<p>escribimos</p>
+<p><span id="eq-derivada-seno"><span class="math display">\[
+\begin{aligned}
+\frac{f(x+h)-f(x)}{h}=\frac{\operatorname{sen}(x+h)-\operatorname{sen} x}{h}&amp;=
+\frac{\operatorname{sen} x\cos h+\cos x\operatorname{sen} h-\operatorname{sen} x}{h}\\
+\\
+&amp;=\operatorname{sen} x\left(\frac{\cos h-1}{h}\right)+\cos x\left(\frac{\operatorname{sen} h}{h}\right).
+\end{aligned}
+\tag{4.7}\]</span></span></p>
+<p>Demostraremos que</p>
+<div class="formula-box">
+<p><span id="eq-limite-seno"><span class="math display">\[
+\lim_{h\to 0}\frac{\operatorname{sen} h}{h}=1.
+\tag{4.8}\]</span></span></p>
+</div>
+<p>y también que</p>
+<div class="formula-box">
+<p><span id="eq-limite-coseno"><span class="math display">\[
+\lim_{h\to 0}\frac{\cos h-1}{h}=0.
+\tag{4.9}\]</span></span></p>
+</div>
+<p>Utilizando estos límites en (<a href="#eq-derivada-seno" class="quarto-xref"><span>4.7</span></a>) resulta que</p>
+<p><span class="math display">\[
+\begin{aligned}
+\lim_{h\to 0}   \frac{f(x+h)-f(x)}{h}&amp;=\lim_{h\to 0} \left[\operatorname{sen} x\left(\frac{\cos h-1}{h}\right)+\cos x\left(\frac{\operatorname{sen} h}{h}\right)\right]\\
+\\
+&amp;=\operatorname{sen} x\left(\lim_{h\to 0}\frac{\cos h-1}{h}\right)+\cos x\left(\lim_{h\to 0}\frac{\operatorname{sen} h }{h}\right)\\
+\\
+&amp;=\operatorname{sen} x \cdot 0+\cos x\cdot 1\\
+\\
+&amp;=\cos x.
+\end{aligned}
+\]</span></p>
+<p>Concluimos que</p>
+<div id="form-derivada-seno" class="formula-box">
+<p><span class="math display">\[
+\frac{d}{dx}(\operatorname{sen} x)=\cos x.
+\]</span></p>
+</div>
+<p>Ahora procedemos a demostrar la validez del límite (<a href="#eq-limite-seno" class="quarto-xref"><span>4.8</span></a>). Consideremos <span class="math inline">\(0&lt;\theta&lt;\pi/2\)</span> y un sector circular con centro <span class="math inline">\(O\)</span>, radio 1 y ángulo central <span class="math inline">\(\theta\)</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap3/3.3-limite-seno.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:45.0%"></p>
+</figure>
+</div>
+<ul>
+<li><p>Si prolongamos el segmento que va desde el origen al punto <span class="math inline">\(B\)</span>, éste corta a la tangente a la circunferencia por <span class="math inline">\(C\)</span> en un punto <span class="math inline">\(D\)</span>.</p></li>
+<li><p>Trazamos la tangente a la circunferencia por el punto <span class="math inline">\(B\)</span>, que corta al segmento <span class="math inline">\(\overline{CD}\)</span> en un punto <span class="math inline">\(E\)</span>.</p></li>
+<li><p>Observemos también que <span class="math inline">\(|\overline{AB}|=\operatorname{sen} \theta\)</span> y <span class="math inline">\(|\overline{CD}|=\tan \theta\)</span>.</p></li>
+</ul>
+<p>Entonces resulta que</p>
+<p><span class="math display">\[
+\operatorname{sen}\theta =|\overline{AB}|\leq \text{longitud arco}(BC)=\theta
+\]</span></p>
+<p>y adem’as</p>
+<p><span class="math display">\[
+\theta = \text{longitud arco}(BC)\leq |\overline{CE}|+|\overline{EB}|\leq |\overline{CE}|+|\overline{ED}|=|\overline{CD}|=\tan \theta.
+\]</span></p>
+<p>Es decir, hemos probado que</p>
+<p><span class="math display">\[
+\operatorname{sen}{\theta} \leq \theta \leq \tan\theta,
+\]</span></p>
+<p>de donde podemos deducir que</p>
+<p><span class="math display">\[
+\cos \theta \leq \frac{\operatorname{sen} \theta}{\theta}\leq 1
+\]</span></p>
+<p>para <span class="math inline">\(0&lt;\theta&lt;\pi/2\)</span>.</p>
+<p>Si <span class="math inline">\(-\pi/2&lt;\theta&lt;0\)</span>, entonces <span class="math inline">\(0&lt;-\theta&lt;\pi/2\)</span>. Aplicando la desigualdad de arriba para <span class="math inline">\(-\theta\)</span> resulta</p>
+<p><span class="math display">\[
+\cos (-\theta) \leq \frac{\operatorname{sen} (-\theta)}{-\theta}\leq 1.
+\]</span></p>
+<p>Sabiendo que el seno es una función impar y el coseno es par, lo reescribimos como</p>
+<p><span class="math display">\[
+\cos \theta \leq \frac{\operatorname{sen} (\theta)}{\theta}\leq 1.
+\]</span></p>
+<p>Por lo tanto, la desigualdad de arriba es válida para todo <span class="math inline">\(\theta\in (-\pi/2,\pi/2)\)</span>, <span class="math inline">\(\theta\neq 0\)</span>.</p>
+<p>Dado que</p>
+<p><span class="math display">\[
+\lim_{\theta\to 0} \cos \theta=1 \quad\text{ y }\quad\lim_{\theta \to 0}1=1
+\]</span></p>
+<p>el <a href="#teo-compresion">teorema de la compresión</a> nos permite deducir que</p>
+<p><span class="math display">\[
+\lim_{\theta\to 0} \frac{\operatorname{sen}\theta}{\theta}=1,
+\]</span></p>
+<p>lo que nos da la validez de la fórmula (<a href="#eq-limite-seno" class="quarto-xref"><span>4.8</span></a>). Ahora, la fórmula (<a href="#eq-limite-coseno" class="quarto-xref"><span>4.9</span></a>) es consecuencia directa de ésta última. En efecto, para <span class="math inline">\(h\neq 0\)</span> tenemos que</p>
+<p><span class="math display">\[
+\frac{\cos h-1}{h}=\frac{\cos h-1}{h}\,\,\frac{\cos h+1}{\cos h+1}=-\frac{\operatorname{sen}^2 h}{h(\cos h+1)}=-\frac{\operatorname{sen} h}{h}\frac{\operatorname{sen} h}{\cos h +1}.
+\]</span></p>
+<p>Y usando el límite anterior junto a las leyes de los límites</p>
+<p><span class="math display">\[
+\lim_{h\to 0} \frac{\cos h-1}{h}=\left(\lim_{h\to 0}-\frac{\operatorname{sen} h}{h}\right)\left(\lim_{h\to 0}\frac{\operatorname{sen} h}{\cos h+1}\right)=(-1)\cdot 0=0,
+\]</span></p>
+<p>lo que muestra la validez de la fórmula (<a href="#eq-limite-coseno" class="quarto-xref"><span>4.9</span></a>).</p>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Derivar <span class="math inline">\(y=x^2\operatorname{sen} x\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Calculamos <span class="math inline">\(\displaystyle\frac{dy}{dx}\)</span> combinando la <a href="#eq-regla-producto">regla del producto</a> con la <a href="#form-derivada-seno">fórmula para la derivada del seno</a></p>
+<p><span class="math display">\[
+\frac{dy}{dx}(x)=\frac{d}{dx}\left(x^2\right) \operatorname{sen} x + x^2 \frac{d}{dx}\left(\operatorname{sen} x\right)= 2x\operatorname{sen} x+x^2\cos x=x(2\operatorname{sen} x+x\cos x).
+\]</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="derivada-de-las-funciones-coseno-y-tangente" class="level3">
+<h3 class="anchored" data-anchor-id="derivada-de-las-funciones-coseno-y-tangente">Derivada de las funciones coseno y tangente</h3>
+<p>Consideremos ahora <span class="math inline">\(f(x)=\cos x\)</span>. Si <span class="math inline">\(h\neq 0\)</span>, aplicamos la identidad</p>
+<p><span class="math display">\[
+\cos(\alpha+\beta)=\cos \alpha \cos \beta -\operatorname{sen} \alpha \operatorname{sen} \beta
+\]</span></p>
+<p>para escribir</p>
+<p><span class="math display">\[
+\frac{\cos(x+h)-\cos(x)}{h}=\frac{\cos x\cos h-\operatorname{sen} x\operatorname{sen} h-\cos x}{h}
+    =\cos x\left(\frac{\cos h-1}{h}\right)-\operatorname{sen} x\frac{\operatorname{sen} h}{h}.
+\]</span></p>
+<p>Utilizando los límites dados por las fórmulas (<a href="#eq-limite-seno" class="quarto-xref"><span>4.8</span></a>) y (<a href="#eq-limite-coseno" class="quarto-xref"><span>4.9</span></a>) tenemos que <span class="math display">\[
+\begin{aligned}
+\lim_{h\to 0}\frac{\cos(x+h)-\cos(x)}{h}
+    &amp;=\lim_{h\to 0}\left[\cos x\left(\frac{\cos h-1}{h}\right)-\operatorname{sen} x\frac{\operatorname{sen} h}{h}\right]\\
+    \\
+    &amp;=\cos x\lim_{h\to 0}\frac{\cos h-1}{h}-\operatorname{sen} x\lim_{h\to 0}\frac{\operatorname{sen} h}{h}\\
+    \\
+    &amp;=\cos x\cdot 0-\operatorname{sen} x\cdot 1\\
+    \\
+    &amp;=-\operatorname{sen} x.
+\end{aligned}
+\]</span></p>
+<p>Como conclusión, obtenemos que</p>
+<div class="formula-box">
+<p><span class="math display">\[
+\frac{d}{dx}(\cos x)=-\operatorname{sen} x.
+\]</span></p>
+</div>
+<p>Para <span class="math inline">\(f(x)=\tan x\)</span>, como <span class="math inline">\(\tan x=\operatorname{sen} x/\cos x\)</span>, podemos utilizar la <a href="#eq-regla-cociente">regla del cociente</a>. Así</p>
+<p><span class="math display">\[
+f'(x)=\frac{(\operatorname{sen} x)'\cos x-\operatorname{sen} x(\cos x)'}{\cos^2 x}=\frac{\cos^2 x+\operatorname{sen}^2 x}{\cos^2 x}=\frac{1}{\cos^2 x}=\sec^2 x.
+\]</span></p>
+<p>En definitiva</p>
+<div class="formula-box">
+<p><span class="math display">\[
+\frac{d}{dx}(\tan x)=\sec^2 x.
+\]</span></p>
+</div>
+<p>Como aplicación de la regla del cociente podemos deducir también las siguientes fórmulas</p>
+<div class="formula-box">
+<p><span class="math display">\[
+\frac{d}{dx}(\csc x)=-\csc x\cot x.
+\]</span></p>
+<p><span class="math display">\[
+\frac{d}{dx}(\sec x)=\sec x\tan x.
+\]</span></p>
+<p><span class="math display">\[
+\frac{d}{dx}(\cot x)=-\csc^2 x.
+\]</span></p>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Derivar la función <span class="math inline">\(\displaystyle f(x)=\frac{\sec x}{1+\tan x}\)</span>. ¿Para qué valores de <span class="math inline">\(x\)</span> la gráfica de <span class="math inline">\(f\)</span> tiene una tangente horizontal?</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Utilizamos las reglas de <span class="math inline">\(\sec x\)</span> y <span class="math inline">\(\tan x\)</span> junto a la del cociente, es decir</p>
+<p><span class="math display">\[
+f'(x)=\frac{(\sec x)'(1+\tan x)-\sec x (1+\tan x)'}{(1+\tan x)^2}=\frac{\sec x\tan x (1+\tan x)-\sec x \sec^2 x}{(1+\tan x)^2}=\frac{\operatorname{sen} x-\cos x}{1+2\operatorname{sen}\cos x}.
+\]</span></p>
+<p>Ahora, <span class="math inline">\(f'(x)=0\)</span> si y sólo si <span class="math inline">\(\operatorname{sen} x=\cos x\)</span>, es decir, cuando <span class="math inline">\(\tan x=1\)</span>. Los valores de <span class="math inline">\(x\)</span> buscados son de la forma</p>
+<p><span class="math display">\[
+x=\frac{\pi}{4}+k\pi, \quad \text{ para } k \text{ entero}.
+\]</span></p>
+</div>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Un objeto que se encuentra en el extremo de un resorte vertical se desplaza hacia abajo 4 <span class="math inline">\(cm\)</span> más allá de su posición de reposo, para estirar el resorte, y se libera en el instante <span class="math inline">\(t=0\)</span>. Su posición <span class="math inline">\(s\)</span> en el instante <span class="math inline">\(t\)</span> es <span class="math inline">\(s=f(t)=4\cos t\)</span>. Hallar la velocidad y la aceleración en el instante <span class="math inline">\(t\)</span> y usarlas para analizar el movimiento del objeto.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap3/3.3-resorte.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-16" class="callout-16-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Recordemos que la velocidad y la aceleración son las derivadas primera y segunda de la posición, respectivamente. Entonces resulta</p>
+<p><span class="math display">\[
+v(t)=\frac{ds}{dt}(t)=-4\operatorname{sen} t
+\]</span></p>
+<p>y</p>
+<p><span class="math display">\[
+a(t)=\frac{d^2 s}{dt^2}(t)=\frac{dv}{dt}(t)=-4\cos t.
+\]</span></p>
+<p>En la siguiente figura podemos observar los gráficos de la posición, la velocidad y la aceleración. Notemos que cuando el resorte alcanza las posiciones extremas (4 <span class="math inline">\(cm\)</span> arriba o abajo de la posición de equilibrio) la velocidad es cero, ya que en ese instante la masa está cambiando el sentido de recorrido. Por otra parte, al cruzar la posición de equilibrio, correspondiente a <span class="math inline">\(s=0\)</span>, la <em>rapidez</em> <span class="math inline">\(|v(t)|\)</span> resulta ser máxima.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap3/3.3-curvas-resorte.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:45.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p><a href="#seccion_3.2">↑ Volver al inicio de la sección</a></p>
+</section>
+</section>
+<section id="seccion_3.4" class="level2">
+<h2 class="anchored" data-anchor-id="seccion_3.4">3.4. La regla de la cadena</h2>
+<p>En esta sección veremos cómo derivar funciones compuestas.</p>
+<div id="teo-regla-cadena" class="theorem">
+<p>Regla de la cadena</p>
+<p>Si <span class="math inline">\(g\)</span> es derivable en <span class="math inline">\(x\)</span> y <span class="math inline">\(f\)</span> es derivable en <span class="math inline">\(g(x)\)</span>, entonces la función compuesta <span class="math inline">\(F=f\circ g\)</span> dada por <span class="math inline">\(F(x)=f(g(x))\)</span> es derivable en <span class="math inline">\(x\)</span> y además <span class="math display">\[
+F'(x)=f'(g(x))g'(x).
+\]</span></p>
+<p>En la notación de Leibniz, si <span class="math inline">\(y=f(u)\)</span> y <span class="math inline">\(u=g(x)\)</span> son diferenciables, entonces</p>
+<p><span class="math display">\[
+\frac{dy}{dx}=\frac{dy}{du}\frac{du}{dx}.
+\]</span></p>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Encontrar <span class="math inline">\(F'(x)\)</span> si <span class="math inline">\(F(x)=\sqrt{x^2+1}\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-17" class="callout-17-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Observemos que podemos escribir <span class="math inline">\(F(x)=f(g(x))\)</span>, donde <span class="math inline">\(f(x)=\sqrt{x}\)</span> y <span class="math inline">\(g(x)=x^2+1\)</span>. En este caso <span class="math inline">\(f'(x)=\frac{1}{2\sqrt{x}}\)</span> y <span class="math inline">\(g'(x)=2x\)</span>. Luego, utilizando la <a href="#teo-regla-cadena">regla de la cadena</a> obtenemos</p>
+<p><span class="math display">\[
+F'(x)=f'(g(x))g'(x)=\frac{1}{2\sqrt{x^2+1}} 2x =\frac{x}{\sqrt{x^2+1}}.
+\]</span></p>
+</div>
+</div>
+</div>
+<p>La regla de la cadena establece que la derivada de <span class="math inline">\(f(g(x))\)</span> puede calcularse derivando la función externa <span class="math inline">\(f\)</span> (evaluada en <span class="math inline">\(g(x)\)</span>) y multiplicándola por la derivada de <span class="math inline">\(g\)</span>, evaluada en <span class="math inline">\(x\)</span>.</p>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Derivar <span class="math inline">\(y=\operatorname{sen}(x^2)\)</span> e <span class="math inline">\(y=\operatorname{sen}^2x\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-18" class="callout-18-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Para la primer función tenemos que <span class="math inline">\(y=f(g(x))\)</span>, donde <span class="math inline">\(f(x)=\operatorname{sen} x\)</span> y <span class="math inline">\(g(x)=x^2\)</span>. Entonces</p>
+<p><span class="math display">\[
+y'=f'(g(x))g'(x)=\cos(x^2)2x=2x\cos(x^2).
+\]</span></p>
+<p>La segunda función puede expresarse como <span class="math inline">\(y=g(f(x))\)</span>. En este caso resulta</p>
+<p><span class="math display">\[
+y'=g'(f(x))f'(x)=2\operatorname{sen} x \cos x.
+\]</span></p>
+</div>
+</div>
+</div>
+<p>Veamos un caso especial de aplicación de la regla de la cadena.</p>
+<div id="form-potencia-general" class="formula-box">
+<p>Regla de la potencia combinada con regla de la cadena</p>
+<p>Si <span class="math inline">\(n\in\mathbb{R}\)</span> y <span class="math inline">\(u=g(x)\)</span> es derivable, entonces <span class="math display">\[
+\frac{d}{dx}\left(u^n\right)=nu^{n-1}\frac{du}{dx}\quad \text{ o bien} \quad \frac{d}{dx}\left(g(x)\right)^n=ng(x)^{n-1}g'(x).
+\]</span></p>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Derivar <span class="math inline">\(y=(x^3-1)^{100}\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-19" class="callout-19-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Aplicando la <a href="#form-potencia-general">formula anterior</a> resulta</p>
+<p><span class="math display">\[
+y'=100(x^3-1)^{99}(x^3-1)'=300(x^3-1)^{99}x^2.
+\]</span></p>
+</div>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Encontrar <span class="math inline">\(f'(x)\)</span> si <span class="math inline">\(\displaystyle f(x)=\frac{1}{\sqrt[3]{x^2+x+1}}\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-20-contents" aria-controls="callout-20" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-20" class="callout-20-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Escribimos <span class="math inline">\(f(x)=(x^2+x+1)^{-1/3}\)</span>, con lo cual</p>
+<p><span class="math display">\[
+\frac{df}{dx}(x)=-\frac{1}{3}(x^2+x+1)^{-4/3}\frac{d}{dx}(x^2+x+1)=-\frac{1}{3}(2x+1)(x^2+x+1)^{-4/3}.
+\]</span></p>
+</div>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Calcular la derivada de <span class="math inline">\(\displaystyle g(t)=\left(\frac{t-2}{2t+1}\right)^9\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-21-contents" aria-controls="callout-21" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-21" class="callout-21-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Aplicando nuevamente la <a href="#form-potencia-general">formula de la potencia</a> resulta</p>
+<p><span class="math display">\[
+g'(t)=9\left(\frac{t-2}{2t+1}\right)^8\left(\frac{t-2}{2t+1}\right)'=9\left(\frac{t-2}{2t+1}\right)^8\left(\frac{2t+1-(t-2)2}{(2t+1)^2}\right)=45\frac{(t-2)^8}{(2t+1)^{10}}.
+\]</span></p>
+</div>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Derivar <span class="math inline">\(y=(2x+1)^5(x^3-x+1)^4\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-22-contents" aria-controls="callout-22" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-22" class="callout-22-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Combinando la <a href="#regla-producto">regla del producto</a> con la <a href="#form-potencia-general">formula de la potencia</a> resulta</p>
+<p><span class="math display">\[
+\begin{aligned}
+y'&amp;=5(2x+1)^4\, 2(x^3-x+1)^4+(2x+1)^5\, 4(x^3-x+1)^3(3x^2-1)\\
+\\
+&amp;=2(2x+1)^4(x^3-x+1)^3(5(x^3-x+1)+2(2x+1)(3x^2-1))\\
+\\
+&amp;=2(2x+1)^4(x^3-x+1)^3(17x^3+6x^2-9x+3).
+\end{aligned}
+\]</span></p>
+</div>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Derivar <span class="math inline">\(y=e^{\operatorname{sen} x}\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-23-contents" aria-controls="callout-23" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-23" class="callout-23-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>En este caso tenemos que</p>
+<p><span class="math display">\[
+\frac{dy}{dx}(x)=e^{\operatorname{sen}x}\cos x.
+\]</span></p>
+</div>
+</div>
+</div>
+<section id="derivadas-de-funciones-exponenciales-generales" class="level3">
+<h3 class="anchored" data-anchor-id="derivadas-de-funciones-exponenciales-generales">Derivadas de funciones exponenciales generales</h3>
+<p>La regla de la cadena nos permite ahora encontrar la derivada de <span class="math inline">\(y=a^x\)</span>, para cualquier <span class="math inline">\(a&gt;0\)</span>, <span class="math inline">\(a\neq 1\)</span>. Recordando que <span class="math inline">\(a=e^{\ln a}\)</span>, tenemos que</p>
+<p><span class="math display">\[
+a^x=\left(e^{\ln a}\right)^x=e^{(\ln a) x }.
+\]</span></p>
+<p>Aplicando la regla de la cadena y la derivada de la función <span class="math inline">\(f(x)=e^x\)</span> obtenemos</p>
+<p><span class="math display">\[
+\frac{d}{dx}(a^x)=\frac{d}{dx}\left(e^{(\ln a) x }\right)=e^{(\ln a) x }\frac{d}{dx}\left((\ln a)x\right)=a^x\ln a.
+\]</span></p>
+<p>En conclusión</p>
+<div class="formula-box">
+<p><span class="math display">\[
+\frac{d}{dx}(a^x)=a^x\ln a.
+\]</span></p>
+</div>
+<p>La regla de la cadena puede extenderse a composiciones con más funciones: si <span class="math inline">\(y=f(u)\)</span>, <span class="math inline">\(u=g(x)\)</span> y <span class="math inline">\(x=h(t)\)</span> son funciones tales que <span class="math inline">\(f\)</span> es derivable en <span class="math inline">\(g(h(t))\)</span>, <span class="math inline">\(g\)</span> es derivable en <span class="math inline">\(h(t)\)</span> y <span class="math inline">\(h\)</span> es derivable en <span class="math inline">\(t\)</span>, entonces</p>
+<p><span class="math display">\[
+\frac{dy}{dt}=\frac{dy}{du}\frac{du}{dx}\frac{dx}{dt}=f'(g(h(t)))\,g'(h(t))\,h'(t).
+\]</span></p>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Si <span class="math inline">\(f(x)=\operatorname{sen}(\cos(\tan x))\)</span>, calcular <span class="math inline">\(f'(x)\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-24-contents" aria-controls="callout-24" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-24" class="callout-24-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Aplicamos la regla de la cadena dos veces</p>
+<p><span class="math display">\[
+\begin{aligned}
+f'(x)=\cos(\cos(\tan x))(\cos(\tan x))'&amp;=\cos(\cos(\tan x))(-\operatorname{sen}(\tan x))(\tan x)'\\
+\\
+&amp;=-\cos(\cos(\tan x))\operatorname{sen}(\tan x)\sec^2 x.
+\end{aligned}
+\]</span></p>
+</div>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Derivar <span class="math inline">\(y=e^{\sec(3\theta)}\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-25-contents" aria-controls="callout-25" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-25" class="callout-25-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Aplicando dos veces la regla de la cadena resulta</p>
+<p><span class="math display">\[
+\frac{dy}{d\theta}(\theta)=e^{\sec(3\theta)}\frac{d}{d\theta}(\sec(3\theta))=e^{\sec(3\theta)}\sec(3\theta)\tan(3\theta)(3\theta)'=3\sec(3\theta)\tan(3\theta)e^{\sec(3\theta)}.
+\]</span></p>
+</div>
+</div>
+</div>
+<p><a href="#seccion_3.4">↑ Volver al inicio de la sección</a></p>
+</section>
+</section>
+<section id="seccion_3.5" class="level2">
+<h2 class="anchored" data-anchor-id="seccion_3.5">3.5. Derivación implícita</h2>
+<p>Hasta ahora hemos visto funciones de la forma <span class="math inline">\(y=f(x)\)</span>, donde <span class="math inline">\(y\)</span> se expresa explícitamente en términos de <span class="math inline">\(x\)</span>. Sin embargo, muchas veces <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> se relacionan de forma implícita, tal como en las expresiones</p>
+<p><span class="math display">\[
+x^2+y^2=25\quad \text{o también }\quad x^3+y^3=6xy.
+\]</span></p>
+<p>En algunos casos es posible despejar <span class="math inline">\(y\)</span> en términos de <span class="math inline">\(x\)</span>, obteniendo una (o varias) funciones de <span class="math inline">\(x\)</span>. Por ejemplo, la ecuación</p>
+<p><span class="math display">\[
+x^2+y^2=25
+\]</span></p>
+<p>describe una circunferencia de radio 5 y centrada en el origen de coordenadas.</p>
+<p>Despejando <span class="math inline">\(y\)</span> obtenemos <span class="math inline">\(y^2=25-x^2\)</span>, con lo cual</p>
+<p><span class="math display">\[
+|y|=\sqrt{25-x^2} \quad \text{ o bien }\quad y=\pm\sqrt{25-x^2},
+\]</span></p>
+<p>que se corresponden con la mitad superior e inferior de la circunferencia.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap3/3.5-circunferencia.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%"></p>
+</figure>
+</div>
+<p>En general, no es necesario despejar <span class="math inline">\(y\)</span> en términos de <span class="math inline">\(x\)</span> para hallar la derivada de <span class="math inline">\(y\)</span>. En su lugar, podemos aplicar el <strong>método de derivación implícita</strong>, que consiste en derivar ambos miembros de una ecuación con respecto a <span class="math inline">\(x\)</span> y luego resolver para <span class="math inline">\(y'\)</span>.</p>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Considerar la ecuación <span class="math inline">\(x^2+y^2=25\)</span>.</p>
+<ul>
+<li>Calcular <span class="math inline">\(\displaystyle\frac{dy}{dx}\)</span>.</li>
+<li>Encontrar la ecuación de la recta tangente a la circunferencia en el punto <span class="math inline">\((3,4)\)</span>.</li>
+</ul>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-26-contents" aria-controls="callout-26" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-26" class="callout-26-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Si derivamos miembro a miembro la ecuación <span class="math inline">\(x^2+y^2=25\)</span>, recordando que <span class="math inline">\(y\)</span> es implícitamente una función de <span class="math inline">\(x\)</span>, por la regla de la cadena obtenemos</p>
+<p><span class="math display">\[
+2x+2y\frac{dy}{dx}=0,
+\]</span></p>
+<p>y despejando la derivada de <span class="math inline">\(y\)</span></p>
+<p><span class="math display">\[
+\frac{dy}{dx}=-\frac{x}{y},
+\]</span></p>
+<p>para todo <span class="math inline">\((x,y)\)</span> tal que <span class="math inline">\(y\neq 0\)</span>. En particular, en el punto <span class="math inline">\((3,4)\)</span> obtenemos</p>
+<p><span class="math display">\[
+\frac{dy}{dx}=-\frac{3}{4}.
+\]</span></p>
+<p>La recta tangente tiene pendiente <span class="math inline">\(m=-3/4\)</span> y pasa por <span class="math inline">\((3,4)\)</span>, con lo que su ecuación es</p>
+<p><span class="math display">\[
+y-4=-\frac{3}{4}(x-3) \quad \text{ o, equivalentemente, } \quad y=-\frac{3}{4}x+\frac{25}{4}.
+\]</span></p>
+</div>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Considerar la curva <span class="math inline">\(x^3+y^3=6xy\)</span>, conocida como <strong>folio de Descartes</strong>.</p>
+<ul>
+<li>Encontrar <span class="math inline">\(y'\)</span>.</li>
+<li>Hallar la recta tangente al folio de Descartes en <span class="math inline">\((3,3)\)</span>.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap3/3.5-folio-Descartes.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:35.0%"></p>
+</figure>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-27-contents" aria-controls="callout-27" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-27" class="callout-27-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Primero calculamos <span class="math inline">\(y'\)</span> derivando implícitamente</p>
+<p><span class="math display">\[
+3x^2+3y^2y'=6y+6xy'
+\]</span></p>
+<p>con lo cual</p>
+<p><span class="math display">\[
+y'=\frac{2y-x^2}{y^2-2x}.
+\]</span></p>
+<p>Al evaluar en el punto <span class="math inline">\((3,3)\)</span>, la pendiente de la recta tangente es</p>
+<p><span class="math display">\[
+m=\frac{2\cdot 3-3^2}{3^2-2\cdot 3}=-1
+\]</span></p>
+<p>y la ecuación de la recta es</p>
+<p><span class="math display">\[
+y-3=-1(x-3) \quad \text{ o también }\quad y=-x+6.
+\]</span></p>
+</div>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Encontrar <span class="math inline">\(y'\)</span> si <span class="math inline">\(\operatorname{sen}(x+y)=y^2\cos x\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-28-contents" aria-controls="callout-28" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-28" class="callout-28-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Derivando implícitamente resulta</p>
+<p><span class="math display">\[
+\cos(x+y)(1+y')=2yy'\cos x-y^2\operatorname{sen}x.
+\]</span></p>
+<p>Reacomodando términos y despejando <span class="math inline">\(y'\)</span> obtenemos</p>
+<p><span class="math display">\[
+y'=\frac{y^2\operatorname{sen} x+\cos(x+y)}{2y\cos x-\cos(x+y)}.
+\]</span></p>
+</div>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Hallar <span class="math inline">\(y''\)</span> si <span class="math inline">\(x^4+y^4=16\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-29-contents" aria-controls="callout-29" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-29" class="callout-29-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Primero calculamos <span class="math inline">\(y'\)</span></p>
+<p><span class="math display">\[
+4x^3+4y^3y'=0 \quad \text{ o también } \quad y'=-\left(\frac{x}{y}\right)^3.
+\]</span></p>
+<p>Luego</p>
+<p><span class="math display">\[
+y''=-3\left(\frac{x}{y}\right)^{2}\left(\frac{y-xy'}{y^2}\right)=-3\frac{x^2}{y^4}\left(y+\frac{x^4}{y^3}\right)=-3\frac{x^2}{y^4}\frac{16}{y^3}=-48 \frac{x^2}{y^7}.
+\]</span></p>
+</div>
+</div>
+</div>
+<section id="derivadas-de-funciones-trigonométricas-inversas" class="level3">
+<h3 class="anchored" data-anchor-id="derivadas-de-funciones-trigonométricas-inversas">Derivadas de funciones trigonométricas inversas</h3>
+<p>Investigaremos las derivadas de las funciones trigonométricas inversas. Es razonable suponer que éstas son derivables, pues sus funciones inversas son derivables (de hecho, si <span class="math inline">\(f\)</span> es una función derivable y uno a uno, puede mostrarse que su inversa <span class="math inline">\(f^{-1}\)</span> es derivable en todo punto excepto donde sus tangentes son verticales).</p>
+<p>Consideremos primero la función arcoseno. Tenemos que</p>
+<p><span class="math display">\[
+y=\text{arcsen } x \quad\Longleftrightarrow\quad \operatorname{sen} y=x,\quad -\frac{\pi}{2}\leq y\leq \frac{\pi}{2}.
+\]</span></p>
+<p>Derivando implícitamente, obtenemos</p>
+<p><span class="math display">\[
+(\cos y)\, y'=1\quad \text{ o bien }\quad y'=\frac{1}{\cos y}.
+\]</span></p>
+<p>Como <span class="math inline">\(\cos^2y+\operatorname{sen}^2y=1\)</span>, obtenemos <span class="math inline">\(|\cos y|=\sqrt{1-\operatorname{sen}^2 y}\)</span>. Luego, como <span class="math inline">\(y\in[-\pi/2,\pi/2]\)</span>, tenemos que <span class="math inline">\(\cos y\geq 0\)</span> y entonces</p>
+<p><span class="math display">\[
+y'=\frac{1}{\cos y}=\frac{1}{\sqrt{1-\operatorname{sen}^2 y}}=\frac{1}{\sqrt{1-x^2 }}.
+\]</span></p>
+<p>Como conclusión obtenemos la fórmula para la derivada del arcoseno</p>
+<div id="form-derivada-arcoseno" class="formula-box">
+<p><span class="math display">\[
+\frac{d}{dx}(\text{arcsen }x)=\frac{1}{\sqrt{1-x^2}}.
+\]</span></p>
+</div>
+<p>Para las demás funciones trigonométricas inversas podemos proceder de manera similar. En el caso de la función arcocoseno tenemos</p>
+<p><span class="math display">\[
+y=\arccos x \quad\Longleftrightarrow\quad \cos y=x,\quad 0\leq y\leq \pi.
+\]</span></p>
+<p>Derivando implícitamente obtenemos</p>
+<p><span class="math display">\[
+(-\operatorname{sen} y)y'=1.
+\]</span></p>
+<p>En consecuencia, como <span class="math inline">\(\operatorname{sen} y\geq 0\)</span> en el intervalo <span class="math inline">\([0,\pi]\)</span></p>
+<p><span class="math display">\[
+y'=-\frac{1}{\operatorname{sen} y}=-\frac{1}{\sqrt{1-\cos^2 y}}=-\frac{1}{\sqrt{1-x^2}}.
+\]</span></p>
+<p>Obtenemos así la fórmula para la derivada del arcocoseno</p>
+<div id="form-derivada-arcocoseno" class="formula-box">
+<p><span class="math display">\[
+\frac{d}{dx}(\arccos x)=-\frac{1}{\sqrt{1-x^2}}.
+\]</span></p>
+</div>
+<p>Para el caso de la función arcotangente, recordemos que</p>
+<p><span class="math display">\[
+y=\arctan x \quad \Longleftrightarrow\quad \tan y=x,\quad -\frac{\pi}{2}&lt;y&lt;\frac{\pi}{2}.
+\]</span></p>
+<p>Derivando implícitamente resulta <span class="math inline">\((\sec^2 y)y'=1\)</span>, o bien</p>
+<p><span class="math display">\[
+y'=-\frac{1}{\sec^2 y}=\frac{1}{1+\tan^2y}=\frac{1}{1+x^2}.
+\]</span></p>
+<p>En conclusión</p>
+<blockquote class="blockquote">
+<p>[Gráfico tikz omitido]</p>
+</blockquote>
+<div id="form-derivada-arcotangente" class="formula-box">
+<p><span class="math display">\[
+\frac{d}{dx}(\arctan x)=\frac{1}{1+x^2}.
+\]</span></p>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Derivar las funciones:</p>
+<ul>
+<li><span class="math inline">\(y=\displaystyle (\operatorname{arcsen} x)^{-1}\)</span></li>
+<li><span class="math inline">\(f(x)=x\,\arctan(\sqrt{x})\)</span></li>
+</ul>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-30-contents" aria-controls="callout-30" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-30" class="callout-30-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Para la primera función utilizamos la <a href="#form-derivada-arcoseno">derivada del arcoseno</a></p>
+<p><span class="math display">\[
+y'=(-1)(\operatorname{arcsen} x)^{-2} (\operatorname{arcsen} x)'=-\frac{1}{(\operatorname{arcsen} x)^{2}}\frac{1}{\sqrt{1-x^2}}.
+\]</span></p>
+<p>En el segundo caso aplicamos la <a href="#form-derivada-arcotangente">derivada del arcotangente</a></p>
+<p><span class="math display">\[
+f'(x)=\arctan(\sqrt{x})+x\frac{1}{1+(\sqrt{x})^2}\frac{1}{2\sqrt{x}}=\arctan(\sqrt{x})+\frac{\sqrt{x}}{2(1+x)}.
+\]</span></p>
+</div>
+</div>
+</div>
+<p>Las derivadas de las funciones trigonométricas inversas restantes pueden deducirse de forma similar.</p>
+<div class="formula-box">
+<p><span class="math display">\[
+\frac{d}{dx}(\text{arccsc } x)=-\frac{1}{x\sqrt{x^2-1}}.            
+\]</span></p>
+<p><span class="math display">\[
+\frac{d}{dx}(\text{arcsec } x)=\frac{1}{x\sqrt{x^2-1}}.
+\]</span></p>
+<p><span class="math display">\[
+\frac{d}{dx}(\text{arccot } x)=-\frac{1}{1+x^2}.
+\]</span></p>
+</div>
+<p><a href="#seccion_3.5">↑ Volver al inicio de la sección</a></p>
+</section>
+</section>
+<section id="seccion_3.6" class="level2">
+<h2 class="anchored" data-anchor-id="seccion_3.6">3.6. Derivadas de funciones logarítmicas</h2>
+<p>En esta sección utilizaremos el método de derivación implícita para deducir la derivada de funciones logarítmicas. El hecho de que estas funciones resultan derivables es razonable por la forma que presentan sus gráficas.</p>
+<p>Dado <span class="math inline">\(a&gt;0\)</span>, <span class="math inline">\(a\neq 1\)</span> consideramos <span class="math inline">\(y=\log_a x\)</span>. Por definición de función inversa tenemos que</p>
+<p><span class="math display">\[
+y=\log_a x\quad\Longleftrightarrow\quad a^y=x.
+\]</span></p>
+<p>Derivando implícitamente, obtenemos <span class="math inline">\(a^y\,(\ln a)\, y'=1\)</span>, de donde</p>
+<p><span class="math display">\[
+y'=\frac{1}{\ln a}\frac{1}{a^y}=\frac{1}{(\ln a)x}.
+\]</span></p>
+<p>En conclusión</p>
+<div id="form-derivada-log" class="formula-box">
+<p><span class="math display">\[
+\frac{d}{dx}(\log_a x)=\frac{1}{x\,\ln a}.
+\]</span></p>
+</div>
+<p>En particular, si <span class="math inline">\(a=e\)</span> tenemos que <span class="math inline">\(\ln e=1\)</span> y <span class="math inline">\(\log_a x=\ln x\)</span>, con lo cual</p>
+<div id="form-derivada-ln" class="formula-box">
+<p><span class="math display">\[
+\frac{d}{dx}(\ln x)=\frac{1}{x}.
+\]</span></p>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Derivar la función <span class="math inline">\(y=\ln(x^3+1)\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-31-contents" aria-controls="callout-31" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-31" class="callout-31-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Aplicamos la <a href="#form-derivada-ln">fórmula de la derivada del logaritmo</a> junto a la regla de la cadena para obtener</p>
+<p><span class="math display">\[
+y'=\frac{1}{x^3+1}(x^3+1)'=\frac{3x^2}{x^3+1}.
+\]</span></p>
+</div>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Encontrar <span class="math inline">\(\displaystyle\frac{d}{dx}\big(\ln(\operatorname{sen} x)\big)\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-32-contents" aria-controls="callout-32" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-32" class="callout-32-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Aplicamos nuevamente la <a href="#form-derivada-ln">fórmula de la derivada del logaritmo</a> combinada con la regla de la cadena</p>
+<p><span class="math display">\[
+\frac{d}{dx}\big(\ln(\operatorname{sen} x)\big)=\frac{1}{\operatorname{sen} x}\frac{d}{dx}(\operatorname{sen} x)=\frac{\cos x}{\operatorname{sen} x}=\cot x.
+\]</span></p>
+</div>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Derivar <span class="math inline">\(f(x)=\sqrt{\ln x}\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-33-contents" aria-controls="callout-33" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-33" class="callout-33-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math display">\[
+f'(x)=\frac{1}{2\sqrt{\ln x}}\frac{1}{x}=\frac{1}{2x\sqrt{\ln x}}.
+\]</span></p>
+</div>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Calcular la derivada de <span class="math inline">\(f(x)=\log_{10} (2+\operatorname{sen} x)\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-34-contents" aria-controls="callout-34" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-34" class="callout-34-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Utilizando la <a href="#form-derivada-log">fórmula de la derivada del logaritmo</a> junto a la regla de la cadena resulta</p>
+<p><span class="math display">\[
+\frac{df}{dx}(x)=\frac{1}{(2+\operatorname{sen} x)\ln 10}\frac{d}{dx}(2+\operatorname{sen}x)=\frac{\cos x}{(2+\operatorname{sen} x)\ln 10}.
+\]</span></p>
+</div>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Hallar <span class="math inline">\(\displaystyle \frac{d}{dx}\ln\left(\frac{x+1}{\sqrt{x-2}}\right)\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-35-contents" aria-controls="callout-35" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-35" class="callout-35-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>En este caso resulta de utilidad aplicar primero las propiedades del logaritmo para reescribir a la función como sigue</p>
+<p><span class="math display">\[
+f(x)=\ln\left(\frac{x+1}{\sqrt{x-2}}\right)=\ln(x+1)-\ln(\sqrt{x-2})=\ln(x+1)-\frac{1}{2}\ln(x-2).
+\]</span></p>
+<p>Ahora derivamos utilizando la <a href="#form-derivada-ln">fórmula de la derivada del logaritmo</a></p>
+<p><span class="math display">\[
+f'(x)=\frac{1}{x+1}(x+1)'-\frac{1}{2}\frac{1}{(x-2)}(x-2)'=\frac{1}{x+1}-\frac{1}{2(x-2)}=\frac{x-5}{2(x+1)(x-2)}.
+\]</span></p>
+</div>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Encontrar <span class="math inline">\(f'(x)\)</span> si <span class="math inline">\(f(x)=\ln|x|\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-36-contents" aria-controls="callout-36" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-36" class="callout-36-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Primero observemos que <span class="math inline">\(f\)</span> no está definida en <span class="math inline">\(x=0\)</span>, con lo cual <span class="math inline">\(f'(0)\)</span> no existe. Si <span class="math inline">\(x&gt;0\)</span>, entonces <span class="math inline">\(f(x)=\ln x\)</span> y en consecuencia <span class="math inline">\(\displaystyle f'(x)=\frac{1}{x}\)</span>.</p>
+<p>Si <span class="math inline">\(x&lt;0\)</span>, <span class="math inline">\(f(x)=\ln(-x)\)</span> y por la regla de la cadena obtenemos <span class="math inline">\(\displaystyle f'(x)=\frac{1}{-x}(-x)'=\frac{1}{x}\)</span>.</p>
+<p>Por lo tanto</p>
+<p><span class="math display">\[
+\frac{d}{dx}\left(\ln |x|\right)=\frac{1}{x}, \quad \text{ para todo }\quad x\neq 0.
+\]</span></p>
+</div>
+</div>
+</div>
+<p><a href="#seccion_3.6">↑ Volver al inicio de la sección</a></p>
+</section>
+<section id="seccion_3.7" class="level2">
+<h2 class="anchored" data-anchor-id="seccion_3.7">3.7. Razones de cambio en las ciencias</h2>
+<p>Si <span class="math inline">\(y\)</span> depende de <span class="math inline">\(x\)</span> mediante la relación <span class="math inline">\(y=f(x)\)</span>, entonces la derivada <span class="math inline">\(\displaystyle \frac{dy}{dx}\)</span> representa la razón de cambio instantánea de <span class="math inline">\(y\)</span> con respecto a <span class="math inline">\(x\)</span>.</p>
+<p>Recordando lo estudiado en la <a href="cap2.html#seccion_2.7">Sección 2.7</a>, si <span class="math inline">\(x\)</span> cambia de <span class="math inline">\(x_1\)</span> a <span class="math inline">\(x_2\)</span>, el incremento en <span class="math inline">\(x\)</span> es</p>
+<p><span class="math display">\[
+\Delta x=x_2-x_1,
+\]</span></p>
+<p>mientras que el correspondiente incremento en <span class="math inline">\(y\)</span> es</p>
+<p><span class="math display">\[
+\Delta y=f(x_2)-f(x_1).
+\]</span></p>
+<p>El cociente de diferencias</p>
+<p><span class="math display">\[
+\frac{\Delta y}{\Delta x}=\frac{f(x_2)-f(x_1)}{x_2-x_1}
+\]</span></p>
+<p>es la razón de cambio promedio de <span class="math inline">\(y\)</span> con respecto a <span class="math inline">\(x\)</span> en el intervalo <span class="math inline">\([x_1,x_2]\)</span>. Esta razón de cambio promedio puede interpretarse como la pendiente de la recta secante <span class="math inline">\(PQ\)</span> del siguiente gráfico</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap3/3.7-tangente-y-secante.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+<p>El límite de estas razones de cambio promedio (si existe) es la razón de cambio instantánea de <span class="math inline">\(y\)</span> con respecto a <span class="math inline">\(x\)</span> en <span class="math inline">\(x=x_1\)</span>, y puede interpretarse como la pendiente de la recta tangente a la curva en el punto <span class="math inline">\(P\)</span>.</p>
+<p>Utilizando la notación de Leibniz, podemos escribir</p>
+<p><span class="math display">\[
+\frac{dy}{dx}= \lim_{\Delta x\to 0} \frac{\Delta y}{\Delta x}.
+\]</span></p>
+<p>Si <span class="math inline">\(y=f(x)\)</span> tiene alguna interpretación específica modelando una situación particular de alguna ciencia, su derivada tendrá la correspondiente interpretación como razón de cambio. Veamos algunos ejemplos concretos.</p>
+<section id="razones-de-cambio-en-física" class="level3">
+<h3 class="anchored" data-anchor-id="razones-de-cambio-en-física">Razones de cambio en física</h3>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Una partícula se desplaza en línea recta. Su posición en función del tiempo transcurrido está dada por la expresión</p>
+<p><span class="math display">\[
+s=f(t)=t^3-6t^2+9t,
+\]</span></p>
+<p>donde <span class="math inline">\(t\)</span> se mide en segundos y <span class="math inline">\(s\)</span> en metros.</p>
+<ol type="1">
+<li><p>Encontrar la velocidad de la partícula en el instante <span class="math inline">\(t\)</span>.</p></li>
+<li><p>¿Cuál es la velocidad luego de 2 y de 4 segundos?</p></li>
+<li><p>¿Cuándo está en reposo la partícula?</p></li>
+<li><p>¿Cuándo se mueve hacia adelante, es decir, en la dirección positiva?</p></li>
+<li><p>Dibujar un diagrama que represente el movimiento de la partícula.</p></li>
+<li><p>Encontrar la distancia total recorrida por la partícula durante los primero cinco segundos.</p></li>
+<li><p>Hallar la aceleración a tiempo <span class="math inline">\(t\)</span> y luego de cuatro segundos.</p></li>
+<li><p>Graficar las funciones posición, velocidad y aceleración para <span class="math inline">\(0\leq t\leq 5\)</span>.</p></li>
+<li><p>¿Cuándo incrementa su rapidez la partícula? ¿Cuándo la disminuye?</p></li>
+</ol>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-37-contents" aria-controls="callout-37" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-37" class="callout-37-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>La velocidad de la partícula es la derivada de la posición. Entonces</li>
+</ol>
+<p><span class="math display">\[
+v(t)=\frac{ds}{dt}(t)=3t^2-12t+9,
+\]</span></p>
+<p>para cada instante de tiempo <span class="math inline">\(t\)</span>.</p>
+<ol start="2" type="1">
+<li>Simplemente evaluamos <span class="math inline">\(v\)</span> para <span class="math inline">\(t=2\)</span> y <span class="math inline">\(t=4\)</span>. Es decir</li>
+</ol>
+<p><span class="math display">\[
+v(2)=3\cdot 2^2-12\cdot 2+9=-3 \quad \text{ y }\quad v(4)=3\cdot 4^2-12\cdot 4+9=9.
+\]</span></p>
+<p>La velocidad a los dos segundos es de <span class="math inline">\(-3\)</span> m/seg y a los cuatro segundos es de <span class="math inline">\(9\)</span> m/seg.</p>
+<ol start="3" type="1">
+<li>La partícula estará en reposo en los instantes <span class="math inline">\(t\)</span> tales que <span class="math inline">\(v(t)=0\)</span>. Dado que</li>
+</ol>
+<p><span class="math display">\[
+3t^2-12t+9=0 \quad \text{ si y sólo si }\quad t=1 \text{ o }  t=3
+\]</span></p>
+<p>la partícula estará en reposo al transcurrir uno o tres segundos del inicio de su movimiento.</p>
+<ol start="4" type="1">
+<li>Se mueve hacia adelante cuando el cambio en la posición respecto del tiempo es positivo, esto es, cuando <span class="math inline">\(f'(t)&gt;0\)</span>. Notar que</li>
+</ol>
+<p><span class="math display">\[
+3t^2-12t+9=3(t-1)(t-3) &gt; 0 \quad \text{ si y sólo si }\quad t\in [0,1)\cup(3,+\infty).
+\]</span></p>
+<p>Es decir, la partícula se mueve hacia adelante durante el primer segundo, y luego a partir de los tres segundos de recorrido.</p>
+<ol start="5" type="1">
+<li>En la siguiente figura representamos el movimiento de la partícula. El movimiento hacia adelante o hacia atrás se simboliza con la dirección de las flechas.</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap3/3.7-ejemplo-fisica.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
+</figure>
+</div>
+<ol start="6" type="1">
+<li>Para calcular la distancia total es preciso tener en cuenta si el movimiento es hacia adelante (derecha) o hacia atrás (izquierda). Como los cambios de sentido de recorrido se dan cuando <span class="math inline">\(t=1\)</span> y <span class="math inline">\(t=3\)</span>, podemos calcular la distancia total de la siguiente manera</li>
+</ol>
+<p><span class="math display">\[
+d=|s(1)-s(0)|+|s(3)-s(1)|+|s(5)-s(3)|=|4-0|+|0-4|+|20-0|=4+4+20=28.
+\]</span></p>
+<p>Durante los primeros cinco segundos la partícula recorre 28 m.</p>
+<ol start="7" type="1">
+<li>La aceleración es la derivada de la velocidad, con lo cual</li>
+</ol>
+<p><span class="math display">\[
+a(t)=\frac{dv}{dt}(t)=\frac{d^2s}{dt^2}(t)=6t-12.
+\]</span></p>
+<p>Después de cuatro segundos, la aceleración es de <span class="math inline">\(a(4)=6\cdot 4-12=12\)</span> m/seg<sup>2</sup>.</p>
+<ol start="8" type="1">
+<li>Las gráficas de la posición, velocidad y aceleración se muestran a continuación</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap3/3.7-ejemplo-funciones.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:35.0%"></p>
+</figure>
+</div>
+<ol start="9" type="1">
+<li>Recordemos que la rapidez es el módulo de la velocidad, esto es <span class="math inline">\(|v(t)|\)</span>. Si partimos de la igualdad trivial</li>
+</ol>
+<p><span class="math display">\[
+|v(t)|^2=v^2(t)
+\]</span></p>
+<p>y derivamos implícitamente, resulta</p>
+<p><span class="math display">\[
+2|v(t)|\frac{d}{dt}\left(|v(t)|\right)=2v(t)v'(t)
+\]</span></p>
+<p>de donde</p>
+<p><span class="math display">\[
+\frac{d}{dt}\left(|v(t)|\right) = \frac{v(t)v'(t)}{|v(t)|}=\frac{v(t)\,a(t)}{|v(t)|},
+\]</span></p>
+<p>siempre que <span class="math inline">\(|v(t)|\neq 0\)</span>.</p>
+<p>Ahora bien, la rapidez se incrementa cuando su derivada es positiva, es decir, cuando <span class="math inline">\(v\)</span> y <span class="math inline">\(a\)</span> tienen el mismo signo. Esto nos dice también que la rapidez disminuye cuando <span class="math inline">\(v\)</span> y <span class="math inline">\(a\)</span> tienen signos opuestos.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="razones-de-cambio-en-química" class="level3">
+<h3 class="anchored" data-anchor-id="razones-de-cambio-en-química">Razones de cambio en química</h3>
+<p>Consideremos una reacción química donde se forman una o más sustancias (llamadas <strong>productos</strong>) a partir de otras sustancias (llamadas <strong>reactivos</strong>). Esta reacción puede representarse con la ecuación química</p>
+<p><span class="math display">\[
+A+B \rightarrow C
+\]</span></p>
+<p>donde <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> son los reactivos y <span class="math inline">\(C\)</span> es el producto.</p>
+<p>La <strong>concentración</strong> de una sustancia <span class="math inline">\(S\)</span> es la cantidad de moles (donde 1 mol equivale aproximadamente a <span class="math inline">\(6\text{.}022\times 10^{23}\)</span> moléculas) por cada litro y la denotaremos como <span class="math inline">\([S]\)</span>.</p>
+<p>Como la concentración de los elementos varía durante la reacción, tenemos que <span class="math inline">\([A], [B]\)</span> y <span class="math inline">\([C]\)</span> son funciones del tiempo de reacción.</p>
+<p>La <strong>velocidad de reacción promedio</strong> del producto <span class="math inline">\(C\)</span> en un intervalo <span class="math inline">\([t_1,t_2]\)</span> está dada por</p>
+<p><span class="math display">\[
+\frac{\Delta[C]}{\Delta t}=\frac{[C](t_2)-[C](t_1)}{t_2-t_1}.
+\]</span></p>
+<p>Es de mayor interés conocer la <strong>velocidad de reacción instantánea</strong>, que se obtiene como el límite de las velocidades de reacción promedio sobre intervalos cuya amplitud <span class="math inline">\(\Delta t\)</span> tiende a cero, es decir</p>
+<p><span class="math display">\[
+\text{velocidad de reacción}=\lim_{\Delta t\to 0}\frac{\Delta [C]}{\Delta t}=\frac{d[C]}{dt}.
+\]</span></p>
+<p>En una reacción, la concentración del producto aumenta conforme la de los reactivos disminuye. Entonces tenemos que <span class="math inline">\(d[C]/dt\)</span> es positiva mientras que <span class="math inline">\(d[A]/dt\)</span> y <span class="math inline">\(d[B]/dt\)</span> son negativas. Además, <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> disminuyen su concentración a la misma velocidad que <span class="math inline">\(C\)</span> aumenta la suya, con lo cual</p>
+<p><span class="math display">\[
+\frac{d[C]}{dt}=-\frac{d[A]}{dt}=-\frac{d[B]}{dt}.
+\]</span></p>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>En este modelo, supongamos que la concentración del producto <span class="math inline">\(C\)</span> viene dada por la fórmula</p>
+<p><span class="math display">\[
+[C](t)=\frac{a^2kt}{akt+1},
+\]</span></p>
+<p>donde <span class="math inline">\(k\)</span> es una constante positiva, <span class="math inline">\(a\)</span> es la concentración inicial de los reactivos <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span>, y <span class="math inline">\(t\)</span> es el tiempo de reacción medido en segundos.</p>
+<ol type="1">
+<li><p>Hallar la velocidad de reacción en cada instante <span class="math inline">\(t\)</span>.</p></li>
+<li><p>Mostrar que <span class="math inline">\(\displaystyle \frac{d[C]}{dt}=k(a-[C])^2\)</span>.</p></li>
+<li><p>¿Qué sucede con la concentración cuando el tiempo tiende a infinito?</p></li>
+<li><p>¿Qué ocurre con la velocidad de reacción cuando el tiempo tiende a infinito?</p></li>
+</ol>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-38-contents" aria-controls="callout-38" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-38" class="callout-38-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>Calculamos la derivada de <span class="math inline">\([C]\)</span> utilizando la regla del cociente</li>
+</ol>
+<p><span class="math display">\[
+\frac{d[C]}{dt}(t)=\frac{a^2k(akt+1)-a^2kt(ak)}{(akt+1)^2}=\frac{a^2k}{(akt+1)^2}.
+\]</span></p>
+<ol start="2" type="1">
+<li>Notemos que</li>
+</ol>
+<p><span class="math display">\[
+k(a-[C](t))^2=k\left(a-\frac{a^2kt}{akt+1}\right)^2=k\left(\frac{a^2kt+a-a^2kt}{akt+1}\right)=\frac{a^2k}{(akt+1)^2}=\frac{d[C]}{dt}(t).
+\]</span></p>
+<ol start="3" type="1">
+<li>Calculamos</li>
+</ol>
+<p><span class="math display">\[
+\lim_{t\to \infty} [C](t)=\lim_{t\to \infty} \frac{a^2k}{ak+\frac{1}{t}}=\frac{a^2k}{ak}=a.
+\]</span></p>
+<p>Es decir, la concentración del producto tiende a ser la concentración inicial de los reactivos.</p>
+<ol start="4" type="1">
+<li>En este caso debemos hallar el límite de <span class="math inline">\(d[C]/dt\)</span> para <span class="math inline">\(t\to\infty\)</span>. En efecto,</li>
+</ol>
+<p><span class="math display">\[
+\lim_{t\to \infty} \frac{d[C]}{dt}(t)=\lim_{t\to \infty} \frac{a^2k}{(akt+1)^2}=\lim_{t\to \infty} \frac{a^2k}{t^2(ak+\frac{1}{t})^2}=\lim_{t\to \infty} \frac{1}{t^2}\,\frac{a^2k}{(ak+\frac{1}{t})^2}=0\cdot a=0.
+\]</span></p>
+</div>
+</div>
+</div>
+<p><a href="#seccion_3.7">↑ Volver al inicio de la sección</a></p>
+</section>
+</section>
+<section id="seccion_3.9" class="level2">
+<h2 class="anchored" data-anchor-id="seccion_3.9">3.9. Relaciones afines</h2>
+<p>En esta sección estudiaremos problemas en los que tenemos ciertas cantidades relacionadas entre sí y que varían con el tiempo. La idea es determinar la rapidez de cambio (o razón de cambio) de alguna de estas cantidades conociendo la de otras que se relacionan con ésta. Veremos diferentes ejemplos para ilustrar este tipo de situaciones.</p>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Se infla un globo esférico y su volumen se incrementa a razón de 100 cm<sup>3</sup>/seg. ¿Qué tan rápido aumenta el radio del globo cuando el diámetro es de 50 cm?</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-39-contents" aria-controls="callout-39" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-39" class="callout-39-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>El globo tiene forma esférica, con lo cual el volumen <span class="math inline">\(V\)</span> a tiempo <span class="math inline">\(t\)</span> viene dado por la fórmula</p>
+<p><span class="math display">\[
+V(t)=\frac{4}{3}\pi (r(t))^3,
+\]</span></p>
+<p>siendo <span class="math inline">\(r(t)\)</span> el radio del globo a tiempo <span class="math inline">\(t\)</span>. Si derivamos a ambos miembros con respecto a <span class="math inline">\(t\)</span> y utilizamos la regla de la cadena (recordar que tanto <span class="math inline">\(V\)</span> como <span class="math inline">\(r\)</span> son funciones de <span class="math inline">\(t\)</span>) obtenemos</p>
+<p><span class="math display">\[
+\frac{dV}{dt}(t)=\frac{4}{3}\pi\,\, 3(r(t))^2\,\frac{dr}{dt}(t)=4\pi\,\, (r(t))^2\,\frac{dr}{dt}(t).
+\]</span></p>
+<p>Queremos conocer <span class="math inline">\(\displaystyle \frac{dr}{dt}(t_0)\)</span>, siendo <span class="math inline">\(t_0\)</span> un instante de tiempo para el cual se cumple que</p>
+<p><span class="math display">\[
+\frac{dV}{dt}(t_0)=100\, \mathrm{cm^3/seg} \quad \text{ y } \quad r(t_0)=25\, \mathrm{cm}.
+\]</span></p>
+<p>Reemplazando estos datos en la fórmula anterior resulta</p>
+<p><span class="math display">\[
+100\, \mathrm{cm^3/seg}=\frac{4}{3}\pi\,\, 3(25 \mathrm{cm})^2\,\frac{dr}{dt}(t_0),
+\]</span></p>
+<p>de donde despejando obtenemos</p>
+<p><span class="math display">\[
+\frac{dr}{dt}(t_0)=\frac{1}{25 \pi}\, \mathrm{cm/seg} \approx 0.0127\, \mathrm{cm/seg}.
+\]</span></p>
+</div>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Una escalera de 10 pies de largo está apoyada contra un muro vertical. Si la parte inferior de la escalera se desliza alejándose de la pared en una proporción de 1 pie/seg, ¿qué tan rápido la parte superior de la escalera resbala hacia abajo por la pared cuando la parte inferior de la escalera está a 6 pies del muro?</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap3/3.9-escalera.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:35.0%"></p>
+</figure>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-40-contents" aria-controls="callout-40" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-40" class="callout-40-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Sean <span class="math inline">\(y(t)\)</span> y <span class="math inline">\(x(t)\)</span> la altura del extremo de la escalera apoyado sobre el muro y la distancia desde la pared al pie de la escalera expresada en pies, respectivamente. Como la escalera mide 10 pies, para todo instante de tiempo <span class="math inline">\(t\)</span> se verifica que</p>
+<p><span id="eq-ejemplo-escalera1"><span class="math display">\[
+(x(t))^2+(y(t))^2=100
+\tag{4.10}\]</span></span></p>
+<p>y derivando implícitamente resulta</p>
+<p><span id="eq-ejemplo-escalera2"><span class="math display">\[
+2 x(t) \frac{dx}{dt}(t) + 2y(t)\frac{dy}{dt}(t)=0 \quad \text{o también} \quad   x(t) \frac{dx}{dt}(t) + y(t)\frac{dy}{dt}(t)=0.
+\tag{4.11}\]</span></span></p>
+<p>Ahora nos interesa encontrar <span class="math inline">\(\displaystyle \frac{dy}{dt}(t_0)\)</span>, siendo <span class="math inline">\(t_0\)</span> un instante de tiempo en el cual</p>
+<p><span class="math display">\[
+x(t_0)= 6\, \mathrm{pies} \quad \text{ y } \quad \frac{dx}{dt}(t_0)= 1 \, \mathrm{pie/seg}.
+\]</span></p>
+<p>Para calcular <span class="math inline">\(y(t_0)\)</span> utilizamos la fórmula (<a href="#eq-ejemplo-escalera1" class="quarto-xref"><span>4.10</span></a>), obteniendo</p>
+<p><span class="math display">\[
+y(t_0)=\sqrt{100-(x(t_0))^2}=8\, \mathrm{pies}.
+\]</span></p>
+<p>Ahora despejamos <span class="math inline">\(\displaystyle \frac{dy}{dt}\)</span> de (<a href="#eq-ejemplo-escalera2" class="quarto-xref"><span>4.11</span></a>), con lo cual</p>
+<p><span class="math display">\[
+\frac{dy}{dt}(t_0)=-\frac{x(t_0)}{y(t_0)}\frac{dx}{dt}(t_0)=-\frac{6\,\mathrm{pies}}{8\,\mathrm{pies}} \cdot 1 \,\mathrm{pies/seg} = -\frac{3}{4}\,\mathrm{pies/seg}.
+\]</span></p>
+<p>La parte superior de la escalera está descendiendo a <span class="math inline">\(0.75\)</span> pies/seg.</p>
+</div>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Un depósito para agua tiene la forma de un cono circular invertido. El radio de la base es de 2 m y la altura es de 4 m. Si el agua se bombea hacia el depósito a una razón de 2 m<sup>3</sup>/min, determine la rapidez a la cual el nivel del agua sube cuando el agua tiene 3 m de profundidad.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap3/3.9-cono.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:35.0%"></p>
+</figure>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-41-contents" aria-controls="callout-41" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-41" class="callout-41-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Si denotamos con <span class="math inline">\(r(t)\)</span> y <span class="math inline">\(h(t)\)</span> al radio de la base y la altura de la columna de líquido en el tanque a tiempo <span class="math inline">\(t\)</span> y expresados en metros, respectivamente, entonces el volumen de agua dentro del recipiente a tiempo <span class="math inline">\(t\)</span> es</p>
+<p><span id="eq-ejemplo-tanque1"><span class="math display">\[
+V(t)= \frac{\pi}{3}(r(t))^2h(t).
+\tag{4.12}\]</span></span></p>
+<p>Por semejanza de triángulos, podemos observar también que</p>
+<p><span class="math display">\[
+\frac{r(t)}{h(t)}=\frac{2}{4}=\frac{1}{2},
+\]</span></p>
+<p>de donde resulta que <span class="math inline">\(\displaystyle r(t)=\frac{h(t)}{2}\)</span>. Sustituyendo en (<a href="#eq-ejemplo-tanque1" class="quarto-xref"><span>4.12</span></a>) obtenemos</p>
+<p><span class="math display">\[
+V(t)=\frac{\pi}{12}(h(t))^3.
+\]</span></p>
+<p>Derivando con respecto a <span class="math inline">\(t\)</span></p>
+<p><span class="math display">\[
+\frac{dV}{dt}(t)=\frac{\pi}{4}(h(t))^2 \frac{dh}{dt}(t).
+\]</span></p>
+<p>Ahora determinamos <span class="math inline">\(\displaystyle \frac{dh}{dt}(t_0)\)</span>, sabiendo que <span class="math inline">\(h(t_0)=3\, \mathrm{m}\)</span> y <span class="math inline">\(\displaystyle \frac{dV}{dt}(t_0)=2\, \mathrm {m^3/min}\)</span>. En efecto,</p>
+<p><span class="math display">\[
+\frac{dh}{dt}(t_0)=\frac{4}{\pi} \frac{2\, \mathrm {m^3/min}}{(3\, \mathrm{m})^2}=\frac{8}{9\pi}\, \mathrm{m/min} \approx 0.283\, \mathrm{m/min}.
+\]</span></p>
+</div>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Dos automóviles se dirigen de forma perpendicular a la intersección de dos caminos. El automóvil <span class="math inline">\(A\)</span> se dirige hacia el oeste a 50 millas/h y el vehículo <span class="math inline">\(B\)</span> viaja hacia el norte a 60 millas/h. ¿Con qué rapidez se aproximan los vehículos entre sí cuando el automóvil <span class="math inline">\(A\)</span> está a 0.3 millas y el vehículo <span class="math inline">\(B\)</span> está a 0.4 millas de la intersección?</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap3/3.9-vehiculos.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:35.0%"></p>
+</figure>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-42-contents" aria-controls="callout-42" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-42" class="callout-42-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Sean <span class="math inline">\(x(t)\)</span> e <span class="math inline">\(y(t)\)</span> las distancias de los vehículos <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> al punto de intersección de los caminos expresadas en millas, respectivamente. Sea también <span class="math inline">\(z(t)\)</span> la distancia en millas entre ambos vehículos. En todo instante de tiempo <span class="math inline">\(t\)</span> tenemos que</p>
+<p><span id="eq-ejemplo-automoviles1"><span class="math display">\[
+x^2(t)+y^2(t)=z^2(t),
+\tag{4.13}\]</span></span></p>
+<p>y al derivar de forma implícita</p>
+<p><span id="eq-ejemplo-automoviles2"><span class="math display">\[
+2x(t)x'(t)+2y(t)y'(t)=2z(t)z'(t) \quad \text{ o bien } \quad x(t)x'(t)+y(t)y'(t)=z(t)z'(t).
+\tag{4.14}\]</span></span></p>
+<p>Queremos encontrar <span class="math inline">\(z'(t_0)\)</span>, sabiendo que <span class="math inline">\(x(t_0)=0.3\)</span>, <span class="math inline">\(y(t_0)=0.4\)</span>, <span class="math inline">\(x'(t_0)=-50\)</span> e <span class="math inline">\(y'(t_0)=-60\)</span>. Para determinar <span class="math inline">\(z(t_0)\)</span> usamos la ecuación (<a href="#eq-ejemplo-automoviles1" class="quarto-xref"><span>4.13</span></a>)</p>
+<p><span class="math display">\[
+z(t_0)=\sqrt{x^2(t_0)+y^2(t_0)}=\sqrt{(0.3\, \mathrm{millas})^2+(0.4\, \mathrm{millas})^2}=0.5\, \mathrm{millas}.
+\]</span></p>
+<p>Despejando de (<a href="#eq-ejemplo-automoviles2" class="quarto-xref"><span>4.14</span></a>) obtenemos</p>
+<p><span class="math display">\[
+\begin{aligned}
+z'(t_0)=\frac{x(t_0)x'(t_0)+y(t_0)y'(t_0)}{z(t_0)}&amp;=\frac{0.3\, \mathrm{millas} \cdot (-50 \, \mathrm{millas/h})+0.4\, \mathrm{millas} \cdot (-60 \, \mathrm{millas/h})}{0.5\, \mathrm{millas}}\\
+\\
+&amp;=-78\, \mathrm{millas/h}.
+\end{aligned}
+\]</span></p>
+<p>Es decir, los vehículos se están acercando con una rapidez de 78 millas/h.</p>
+</div>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Un hombre camina a lo largo de una trayectoria recta a una rapidez de 4 pies/seg. Un faro está situado sobre el nivel de la tierra a 20 pies de la trayectoria y se mantiene enfocado hacia el hombre. ¿Con qué rapidez el faro gira cuando el hombre está a 15 pies del punto sobre la trayectoria más cercana a la fuente de luz?</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap3/3.9-faro.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:35.0%"></p>
+</figure>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-43-contents" aria-controls="callout-43" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-43" class="callout-43-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Sea <span class="math inline">\(x(t)\)</span> la distancia en pies desde el hombre al punto de la trayectoria más cercano a la fuente de luz a tiempo <span class="math inline">\(t\)</span>, expresado en segundos. Sea también <span class="math inline">\(\theta(t)\)</span> el ángulo en radianes que se forma entre la perpendicular a la trayectoria desde el faro y el rayo que apunta al hombre, a tiempo <span class="math inline">\(t\)</span>. Observando el triángulo rectángulo que se forma, podemos inferir que</p>
+<p><span class="math display">\[
+\tan(\theta(t))=\frac{x(t)}{20}.
+\]</span></p>
+<p>Derivando respecto del tiempo obtenemos</p>
+<p><span id="eq-ejemplo-faro"><span class="math display">\[
+\sec^2(\theta(t))\frac{d\theta}{dt}(t)=\frac{1}{20}\frac{dx}{dt}(t).
+\tag{4.15}\]</span></span></p>
+<p>Si <span class="math inline">\(x(t_0)=15\)</span>, la distancia del faro al hombre es de 25 pies, con lo cual</p>
+<p><span class="math display">\[
+\cos(\theta(t_0))=\frac{4}{5}
+\]</span></p>
+<p>y despejando de (<a href="#eq-ejemplo-faro" class="quarto-xref"><span>4.15</span></a>) resulta</p>
+<p><span class="math display">\[
+\frac{d\theta}{dt}(t_0)=\frac{1}{20}\cos^2(\theta(t_0))\frac{dx}{dt}(t_0)=\frac{1}{20}\left(\frac{4}{5}\right)^2\cdot 4\, \mathrm{ rad/seg}=0.128\, \mathrm{ rad/seg}.
+\]</span></p>
+</div>
+</div>
+</div>
+<p><a href="#seccion_3.9">↑ Volver al inicio de la sección</a></p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./cap2.html" class="pagination-link" aria-label="2. Límites, continuidad y derivadas">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">2. Límites, continuidad y derivadas</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./cap4.html" class="pagination-link" aria-label="4. Aplicaciones de la derivación">
+        <span class="nav-page-text"><span class="chapter-title">4. Aplicaciones de la derivación</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

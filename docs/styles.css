@@ -1,0 +1,202 @@
+/* Caja para teoremas */
+.theorem > p:first-child {
+  font-weight: bold;
+  color: #1d4ed8;
+  margin-bottom: 0.6em;
+}
+
+.theorem {
+  border: 2px solid #2563eb;      /* azul */
+  background-color: #eff6ff;     /* celeste claro */
+  padding: 1em;
+  border-radius: 8px;
+  margin: 1.5em 0;
+}
+
+/* Título del teorema */
+.theorem > .theorem-title {
+  font-weight: bold;
+  color: #49609e;
+  margin-bottom: 0.5em;
+}
+
+/* Lemas */
+.lemma {
+  border: 2px solid #16a34a;
+  background-color: #ecfdf5;
+}
+
+.lemma > .theorem-title {
+  color: #15803d;
+}
+
+.formula-box {
+  border-left: 5px solid #f59e0b;   /* naranja */
+  background-color: #fffbeb;      /* amarillo claro */
+  padding: 0.8em 1em;
+  margin: 1.2em 0;
+  border-radius: 6px;
+  font-size: 1.05em;
+}
+
+/* ESTILO SECCION y SUBSECCION */
+
+h2 {
+  border-bottom: 2px solid #2563eb;
+  padding-bottom: 0.3em;
+  margin-top: 2em;
+  color: #1e3a8a;
+}
+
+h3 {
+  color: #334155;
+  margin-top: 1.5em;
+}
+
+/* ESTILO EJEMPLOS */
+
+.example-box {
+  border-left: 5px solid #22c55e;   /* verde */
+  background: #f0fdf4;
+  padding: 1em;
+  margin: 1.5em 0;
+  border-radius: 6px;
+}
+
+.example-title {
+  font-weight: bold;
+  color: #166534;
+  margin-bottom: 0.5em;
+}
+
+/* =========================
+   Contador de ejemplos
+   ========================= */
+
+body {
+  counter-reset: example;
+}
+
+.example-box {
+  counter-increment: example;
+}
+
+.example-title::after {
+  content: " " counter(example);
+}
+
+/* TOOLTIPS */
+
+/* Tooltip para fórmulas */
+
+/* Tooltip compatible con Quarto */
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  color: #2563eb;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.tooltip-box {
+  visibility: hidden;
+
+  background: #1e293b;
+  color: white;
+
+  padding: 8px 12px;
+  border-radius: 6px;
+
+  position: fixed;   /* CLAVE */
+  z-index: 99999;    /* CLAVE */
+
+  max-width: 300px;
+  text-align: center;
+
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+
+  transform: translate(-50%, -120%);
+}
+
+.tooltip:hover .tooltip-box {
+  visibility: visible;
+}
+
+/* FORMATO PARA TABLAS */
+
+.math-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1.5em 0;
+  font-size: 0.95em;
+}
+
+.math-table th {
+  background-color: #c997eb;
+  color: white;
+  padding: 8px;
+  text-align: center;
+}
+
+.math-table td {
+  border: 1px solid #cbd5e1;
+  padding: 8px;
+  text-align: center;
+}
+
+.math-table tr:nth-child(even) {
+  background-color: #f1f5f9;
+}
+
+/* QUESTIONS */
+
+
+/* Contenedor principal */
+.callout-question {
+  border-left: 4px solid #d05eec;
+  background-color: #e1dbe7 !important;
+  padding: 1em;
+  margin: 1.2em 0;
+  border-radius: 6px;
+}
+
+/* Título */
+.callout-question > h1,
+.callout-question > h2,
+.callout-question > h3,
+.callout-question > h4,
+.callout-question > h5,
+.callout-question > h6 {
+  margin-top: 0;
+  font-weight: 600;
+  color: #7a2ea0;
+  border-bottom: 1px solid #d05eec66;
+  padding-bottom: 0.25em;
+  font-size: 0.95em;
+
+  /* 🔽 Evita que tape el fondo */
+  background: transparent;
+}
+
+/* Ícono */
+.callout-question > h1::before,
+.callout-question > h2::before,
+.callout-question > h3::before,
+.callout-question > h4::before,
+.callout-question > h5::before,
+.callout-question > h6::before {
+  content: "❓ ";
+  font-size: 0.85em;
+}
+
+
+
+
+
+
+
+
+
+
+
