@@ -1,0 +1,7 @@
+git branch -M main
+git remote add origin https://github.com/fabioberra/Calculo1.git
+git push -u origin main
+
+
+git config --global user.name "Fabio Berra"
+git config --global user.email "fabiomb08@gmail.com"

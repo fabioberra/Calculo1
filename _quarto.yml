@@ -1,5 +1,6 @@
 project:
   type: book
+  output-dir: docs
 
 book:
   title: "Notas de teoría - Cálculo I"
@@ -10,6 +11,8 @@ book:
     - cap2.qmd
     - cap3.qmd
     - cap4.qmd
+    - cap5.qmd
+    - cap6.qmd
 
 format:
   html:

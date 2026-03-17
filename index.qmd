@@ -14,3 +14,4 @@ El enfoque adoptado combina el desarrollo teórico con ejemplos resueltos paso a
 Este libro está pensado como un complemento al trabajo en clase y al estudio personal, y pretende servir como una guía de consulta permanente a lo largo del cursado.
 
 Se recomienda al lector trabajar activamente con los ejemplos y ejercicios, y utilizar este material como apoyo para afianzar los contenidos vistos en cada unidad.
+

@@ -1,0 +1,2172 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>5. Integrales – Notas de teoría - Cálculo I</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./cap6.html" rel="next">
+<link href="./cap4.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-d9ea66fcd6c317012447f26e9c021348.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./cap5.html"><span class="chapter-title">5. Integrales</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Notas de teoría - Cálculo I</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Cálculo I</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./cap1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">1. Funciones</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./cap2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">2. Límites, continuidad y derivadas</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./cap3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">3. Derivadas</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./cap4.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4. Aplicaciones de la derivación</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./cap5.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">5. Integrales</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./cap6.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">6. Aplicaciones de la integración</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Contenidos</h2>
+   
+  <ul>
+  <li><a href="#seccion_5.1" id="toc-seccion_5.1" class="nav-link active" data-scroll-target="#seccion_5.1">5.1. Áreas y distancias</a>
+  <ul class="collapse">
+  <li><a href="#área-bajo-la-curva" id="toc-área-bajo-la-curva" class="nav-link" data-scroll-target="#área-bajo-la-curva">Área bajo la curva</a></li>
+  <li><a href="#el-problema-de-la-distancia" id="toc-el-problema-de-la-distancia" class="nav-link" data-scroll-target="#el-problema-de-la-distancia">El problema de la distancia</a></li>
+  </ul></li>
+  <li><a href="#seccion_5.2" id="toc-seccion_5.2" class="nav-link" data-scroll-target="#seccion_5.2">5.2. La integral definida</a>
+  <ul class="collapse">
+  <li><a href="#propiedades-de-la-integral-definida" id="toc-propiedades-de-la-integral-definida" class="nav-link" data-scroll-target="#propiedades-de-la-integral-definida">Propiedades de la integral definida</a></li>
+  </ul></li>
+  <li><a href="#seccion_5.3" id="toc-seccion_5.3" class="nav-link" data-scroll-target="#seccion_5.3">5.3. El teorema fundamental del cálculo</a></li>
+  <li><a href="#seccion_5.4" id="toc-seccion_5.4" class="nav-link" data-scroll-target="#seccion_5.4">5.4. Integrales indefinidas y el teorema del cambio total</a>
+  <ul class="collapse">
+  <li><a href="#integrales-indefinidas" id="toc-integrales-indefinidas" class="nav-link" data-scroll-target="#integrales-indefinidas">Integrales indefinidas</a></li>
+  <li><a href="#aplicaciones" id="toc-aplicaciones" class="nav-link" data-scroll-target="#aplicaciones">Aplicaciones</a></li>
+  </ul></li>
+  <li><a href="#seccion_5.5" id="toc-seccion_5.5" class="nav-link" data-scroll-target="#seccion_5.5">5.5. La regla de la sustitución</a>
+  <ul class="collapse">
+  <li><a href="#sustitución-para-integrales-definidas" id="toc-sustitución-para-integrales-definidas" class="nav-link" data-scroll-target="#sustitución-para-integrales-definidas">Sustitución para integrales definidas</a></li>
+  </ul></li>
+  <li><a href="#seccion_7.1" id="toc-seccion_7.1" class="nav-link" data-scroll-target="#seccion_7.1">7.1. Integración por partes</a>
+  <ul class="collapse">
+  <li><a href="#integración-por-partes-en-integrales-definidas" id="toc-integración-por-partes-en-integrales-definidas" class="nav-link" data-scroll-target="#integración-por-partes-en-integrales-definidas">Integración por partes en integrales definidas</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-title">5. Integrales</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="seccion_5.1" class="level2">
+<h2 class="anchored" data-anchor-id="seccion_5.1">5.1. Áreas y distancias</h2>
+<p>Comenzaremos este capítulo motivando la definición del concepto de integral. Con la derivada, le dábamos sentido al cociente de cantidades infinitesimales, y para ello calculábamos el límite de cocientes incrementales. Con la integral daremos sentido formal a “sumar” cantidades infinitesimales.</p>
+<section id="área-bajo-la-curva" class="level3">
+<h3 class="anchored" data-anchor-id="área-bajo-la-curva">Área bajo la curva</h3>
+<p>Supongamos que queremos calcular el área de una región plana. Muchas veces disponemos de una fórmula para el cálculo en término de sus dimensiones, sobre todo cuando la región es de una forma sencilla.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap5/5.1-area-figuras.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:65.0%"></p>
+</figure>
+</div>
+<p>Ahora quisiéramos calcular el área de una figura plana un poco más general. Supongamos que dicha región <span class="math inline">\(S\)</span> está comprendida entre el eje <span class="math inline">\(x\)</span> y el gráfico de una función no negativa y continua <span class="math inline">\(y = f(x)\)</span>, entre <span class="math inline">\(x = a\)</span> y <span class="math inline">\(x = b\)</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap5/5.1-area-de-S.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+<p><span id="eq-regionS"><span class="math display">\[
+S=\{x\in\mathbb{R}^2: 0\leq y\leq f(x), \quad a\leq x\leq b\}.
+\tag{6.1}\]</span></span></p>
+<p>Sin embargo, como no tenemos definido qué es el área de una región de este tipo, comenzaremos obteniendo una aproximación del área de <span class="math inline">\(S\)</span> utilizando rectángulos, cuyas áreas conocemos y podemos calcular con facilidad.</p>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Utilizar rectángulos para estimar el área debajo de la parábola <span class="math inline">\(y = x^2\)</span>, desde <span class="math inline">\(x=0\)</span> hasta <span class="math inline">\(x=1\)</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap5/5.1-parabola.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:45.0%"></p>
+</figure>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Si <span class="math inline">\(A\)</span> denota el área de <span class="math inline">\(S\)</span>, entonces es claro que <span class="math inline">\(0&lt;A&lt;1\)</span>, dado que la región <span class="math inline">\(S\)</span> puede encerrarse en un cuadrado de lados de longitud <span class="math inline">\(1\)</span> cuya área es, por supuesto, <span class="math inline">\(1\)</span>. Ahora dividimos <span class="math inline">\(S\)</span> en cuatro franjas <span class="math inline">\(S_1\)</span>, <span class="math inline">\(S_2\)</span>, <span class="math inline">\(S_3\)</span> y <span class="math inline">\(S_4\)</span>, trazando cuatro líneas verticales en <span class="math inline">\(x=1/4\)</span>, <span class="math inline">\(x=1/2\)</span> y <span class="math inline">\(x=3/4\)</span>, respectivamente.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap5/5.1-parabola-franjas.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:45.0%"></p>
+</figure>
+</div>
+<p>Ahora bien, podemos aproximar el área de cada franja por la del rectángulo que tiene la misma base que la franja, y la altura es la misma que la del lado derecho de la correspondiente franja. Es decir, las alturas de los rectángulos son los valores que toma la función en los extremos derechos de cada subintervalo en los que quedó dividido el <span class="math inline">\([0,1]\)</span>. Si denotamos con <span class="math inline">\(R_4\)</span> a la suma de las áreas de estos rectángulos, resulta</p>
+<p><span class="math display">\[
+R_4=\frac{1}{4} \left(\frac{1}{4}\right)^2 + \frac{1}{4} \left(\frac{1}{2}\right)^2 + \frac{1}{4} \left(\frac{3}{4}\right)^2 + \frac{1}{4} 1^2= \frac{15}{32} = 0.46875.
+\]</span></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap5/5.1-parabola-izqder.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%"></p>
+</figure>
+</div>
+<p>Como vemos en el dibujo, ésto nos da una aproximación de <span class="math inline">\(A\)</span> por exceso. Otra manera posible para aproximar <span class="math inline">\(A\)</span> es sumar las áreas de los rectángulos que tienen la misma base que cada franja, pero la altura igual a la del lado izquierdo de cada una. En este caso las alturas corresponden a los valores de <span class="math inline">\(f\)</span> en los extremos izquierdos de cada subintervalo en los que dividimos a <span class="math inline">\([0,1]\)</span>. SI denotamos con <span class="math inline">\(L_4\)</span> a la suma de éstas áreas, entonces</p>
+<p><span class="math display">\[
+L_4=\frac{1}{4} 0^2 + \frac{1}{4} \left(\frac{1}{4}\right)^2 + \frac{1}{4} \left(\frac{1}{2}\right)^2 + \frac{1}{4} \left(\frac{3}{4}\right)^2 = \frac{7}{32} = 0.21875,
+\]</span></p>
+<p>resultando en este caso una aproximación por defecto. Es decir</p>
+<p><span class="math display">\[
+0.21875&lt;A&lt;0.46875.
+\]</span></p>
+<p>Este procedimiento puede repetirse considerando una mayor cantidad de franjas. En la siguiente tabla se muestran los valores calculados en distintos casos.</p>
+<div class="math-table">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th><span class="math inline">\(n\)</span> franjas</th>
+<th><span class="math inline">\(L_n\)</span></th>
+<th><span class="math inline">\(R_n\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>10</td>
+<td>0.2850000</td>
+<td>0.3850000</td>
+</tr>
+<tr class="even">
+<td>20</td>
+<td>0.3087500</td>
+<td>0.3587500</td>
+</tr>
+<tr class="odd">
+<td>30</td>
+<td>0.3168519</td>
+<td>0.3501852</td>
+</tr>
+<tr class="even">
+<td>50</td>
+<td>0.3234000</td>
+<td>0.3434000</td>
+</tr>
+<tr class="odd">
+<td>100</td>
+<td>0.3283500</td>
+<td>0.3383500</td>
+</tr>
+<tr class="even">
+<td>1000</td>
+<td>0.3328335</td>
+<td>0.3338335</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap5/5.1-parabola-rectangulos.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+<p>Todo parece indicar que los valores de <span class="math inline">\(L_n\)</span> y <span class="math inline">\(R_n\)</span> se aproximan a <span class="math inline">\(1/3\)</span> cuando <span class="math inline">\(n\)</span> crece.</p>
+</div>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Para la región <span class="math inline">\(S\)</span> del ejemplo anterior, demostrar que la suma de las áreas de los rectángulos superiores de aproximación tiende a <span class="math inline">\(1/3\)</span>. Es decir, comprobar que <span class="math inline">\(\displaystyle \lim_{n\to \infty} R_n=\frac{1}{3}\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Fijado un número <span class="math inline">\(n\in \mathbb{N}\)</span>, dividimos el intervalo <span class="math inline">\([0,1]\)</span> en <span class="math inline">\(n\)</span> subintervalos de longitud <span class="math inline">\(\frac{1}{n}\)</span>. Cada rectángulo de aproximación tiene entonces base <span class="math inline">\(1/n\)</span> y altura <span class="math inline">\(f(k/n)\)</span>, donde <span class="math inline">\(1\leq k\leq n\)</span>. De esta manera</p>
+<p><span class="math display">\[
+\begin{aligned}
+R_n
+&amp;= \frac{1}{n}\!\left(\frac{1}{n}\right)^2
+   + \frac{1}{n}\!\left(\frac{2}{n}\right)^2
+   + \frac{1}{n}\!\left(\frac{3}{n}\right)^2
+   + \ldots
+   + \frac{1}{n}\!\left(\frac{n-1}{n}\right)^2
+   + \frac{1}{n}1^2 \\
+   \\
+&amp;= \sum_{k=1}^n \frac{1}{n}\!\left(\frac{k}{n}\right)^2\\
+\\
+&amp;=\frac{1}{n^3}\sum_{k=1}^n k^2.
+\end{aligned}
+\]</span></p>
+<p>Teniendo en cuenta que</p>
+<p><span class="math display">\[
+\sum_{k=1}^{n} k^2 = \frac{n(n+1)(2n+1)}{6}
+\]</span></p>
+<p>resulta</p>
+<p><span class="math display">\[
+R_n = \frac{1}{n^3} \sum_{k=1}^{n} k^2 =  \frac{(n+1)(2n+1)}{6n^2}.
+\]</span></p>
+<p>Por lo tanto</p>
+<p><span class="math display">\[
+\begin{aligned}
+\lim_{n\rightarrow \infty} R_n &amp;= \lim_{n\rightarrow \infty} \frac{(n+1)(2n+1)}{6n^2}\\
+&amp;= \lim_{n\rightarrow \infty} \frac{1}{6}\frac{(n+1)}{n}\frac{(2n+1)}{n}\\
+\\
+&amp;= \frac{1}{6}\cdot 1 \cdot 2 = \frac{1}{3}.
+\end{aligned}
+\]</span></p>
+<p>Si repetimos el proceso considerando los rectángulos a la izquierda, obtenemos que</p>
+<p><span class="math display">\[
+\begin{aligned}
+L_n &amp;= \frac{1}{n} 0^2 + \frac{1}{n}\left(\frac{1}{n}\right)^2 + \frac{1}{n}\left(\frac{2}{n}\right)^2 + \frac{1}{n}\left(\frac{3}{n}\right)^2 + \ldots + \frac{1}{n}\left(\frac{n-1}{n}\right)^2 \\
+\\
+&amp;= \sum_{k=1}^{n-1} \frac{1}{n}\!\left(\frac{k}{n}\right)^2=\frac{(n-1)n(2n-1)}{6n^3}=\frac{1}{6}\frac{n-1}{n}\frac{2n-1}{n}.
+\end{aligned}
+\]</span></p>
+<p>Y entonces</p>
+<p><span class="math display">\[
+\begin{aligned}
+\lim_{n\rightarrow \infty} L_n &amp;= \lim_{n\rightarrow \infty} \frac{1}{6}\frac{n-1}{n}\frac{2n-1}{n}\\
+&amp;= \frac{1}{6}\cdot 1 \cdot 2 = \frac{1}{3}.
+\end{aligned}
+\]</span></p>
+<p>Con lo cual <span class="math inline">\(\lim_{n\to \infty} L_n=1/3\)</span>.</p>
+</div>
+</div>
+</div>
+<p>Los ejemplos anteriores nos dan una idea de cómo definir el área de una region general como la dada en (<a href="#eq-regionS" class="quarto-xref"><span>6.1</span></a>).</p>
+<p>En efecto, dividimos la región <span class="math inline">\(S\)</span> en <span class="math inline">\(n\)</span> franjas de igual ancho <span class="math inline">\(S_i\)</span>, <span class="math inline">\(1\leq i\leq n\)</span>. Como el ancho del intervalo es <span class="math inline">\(b-a\)</span>, cada franja tendrá ancho <span class="math inline">\(\displaystyle\Delta x= \frac{b-a}{n}\)</span>. Estas franjas dividen al intervalos en los subintervalos</p>
+<p><span class="math display">\[
+[x_0, x_1], \quad [x_1, x_2], \quad \dots \quad [x_{n-1}, x_n],
+\]</span></p>
+<p>donde <span class="math inline">\(x_0=a\)</span>, <span class="math inline">\(x_n=b\)</span> y, en general</p>
+<p><span class="math display">\[
+x_i=a+i\Delta x=a+i\frac{b-a}{n}, \quad 0\leq i\leq n.
+\]</span></p>
+<p>Podemos aproximar el área de cada franja <span class="math inline">\(S_i\)</span> por la del rectángulo con base <span class="math inline">\(\Delta x\)</span> y altura igual a la imagen por <span class="math inline">\(f\)</span> del extremo derecho del intervalo <span class="math inline">\([x_{i-1}, x_i]\)</span>. Sumando todas las áreas de estas figuras obtenemos la aproximación dada por rectángulos superiores como</p>
+<p><span class="math display">\[
+R_n=f(x_1)\Delta x+f(x_2)\Delta x+\dots+f(x_n)\Delta x=\sum_{i=1}^n f(x_i)\Delta x.
+\]</span></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap5/5.1-rectangulos-der.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%"></p>
+</figure>
+</div>
+<p>Esta aproximación parece mejorar conforme tomamos <span class="math inline">\(n\)</span> cada vez más grande, como vemos en la siguiente figura.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap5/5.1-rectangulos-der2.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Definición (Área)">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definición (Área)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>El <strong>área</strong> <span class="math inline">\(A\)</span> de la región <span class="math inline">\(S\)</span> dada por la expresión</p>
+<p><span class="math display">\[
+S=\{x\in\mathbb{R}^2: 0\leq y\leq f(x),\quad a\leq x\leq b\},
+\]</span></p>
+<p>donde <span class="math inline">\(f\)</span> es continua y no negativa en <span class="math inline">\([a,b]\)</span>, se define como</p>
+<p><span class="math display">\[
+A=\lim_{n\to \infty} R_n=\lim_{n\to \infty} \sum_{i=1}^n f(x_i)\Delta x,
+\]</span></p>
+<p>siendo <span class="math inline">\(\Delta x=(b-a)/n\)</span> y <span class="math inline">\(x_i=a+i\Delta x\)</span> para <span class="math inline">\(0\leq i\leq n\)</span>.</p>
+</div>
+</div>
+<p>Es posible demostrar que el límite de arriba siempre existe cuando <span class="math inline">\(f\)</span> es continua en <span class="math inline">\([a,b]\)</span>. Más aún, si consideramos rectángulos cuyas alturas sean las imágenes por <span class="math inline">\(f\)</span> de los extremos izquierdos de cada intervalo obtenemos el mismo resultado. Es decir</p>
+<p><span class="math display">\[
+A=\lim_{n\to \infty} L_n=\lim_{n\to \infty} \sum_{i=0}^{n-1} f(x_i)\Delta x.
+\]</span></p>
+<p>Más aún, el valor del límite no cambia si en cada subintervalo <span class="math inline">\([x_{i-1},x_i]\)</span> elegimos un punto cualquiera <span class="math inline">\(x_i^*\)</span> del intervalo. Estos puntos se llaman <strong>puntos muestra</strong> y la expresión del área en este caso se escribe</p>
+<p><span class="math display">\[
+A=\lim_{n\to \infty} \sum_{i=1}^{n} f(x_i^*)\Delta x.
+\]</span></p>
+</section>
+<section id="el-problema-de-la-distancia" class="level3">
+<h3 class="anchored" data-anchor-id="el-problema-de-la-distancia">El problema de la distancia</h3>
+<p>Supongamos que intentamos conocer la distancia recorrida por un objeto que se mueve con una velocidad <span class="math inline">\(v\)</span> dada. Por ejemplo, si un automóvil viaja a <span class="math inline">\(30\)</span> km/h durante media hora, en este período recorre</p>
+<p><span class="math display">\[
+30 \,\frac{\mathrm{km}}{\mathrm{h}} \cdot 0.5\, \mathrm{h}  = 15\,\mathrm{km}.
+\]</span></p>
+<p>Observar que si graficamos la velocidad en función del tiempo, esto equivale a calcular el área debajo del gráfico de <span class="math inline">\(v\)</span> entre <span class="math inline">\(t=0\)</span> y <span class="math inline">\(t=0.5\)</span>.</p>
+<p>En general, supongamos que el objeto se mueve con velocidad <span class="math inline">\(v=f(t)\)</span>, donde <span class="math inline">\(a\leq t\leq b\)</span> y <span class="math inline">\(f(t)\geq 0\)</span>, de modo que el objeto siempre se mueve en la dirección positiva.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap5/5.1-velocidad.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+<p>Dado <span class="math inline">\(n\in\mathbb{N}\)</span>, subdividimos el intervalo <span class="math inline">\([a,b]\)</span> en <span class="math inline">\(n\)</span> subintervalos <span class="math inline">\([t_{i-1},t_i]\)</span>, con <span class="math inline">\(1\leq i\leq n\)</span> de igual longitud <span class="math inline">\(\Delta t=(b-a)/n\)</span> y aproximamos la distancia recorrida en cada subintervalo por el producto <span class="math inline">\(f(t_{i-1})\Delta t\)</span>. La distancia total recorrida aproximada en el intervalo <span class="math inline">\([a,b]\)</span> será</p>
+<p><span class="math display">\[
+f(t_0)\Delta t+f(t_1)\Delta t+\dots+f(t_{n-1})\Delta t=\sum_{i=0}^{n-1}f(t_{i})\Delta t.
+\]</span></p>
+<p>Si en lugar de estimar la velocidad en los extremos izquierdos de cada subintervalo lo hacemos con los derechos, obtenemos la aproximación</p>
+<p><span class="math display">\[
+f(t_1)\Delta t+f(t_2)\Delta t+\dots+f(t_{n})\Delta t=\sum_{i=1}^{n}f(t_{i})\Delta t.
+\]</span></p>
+<p>La distancia recorrida <strong>exacta</strong> <span class="math inline">\(d\)</span> la encontramos tomando el límite de cualquiera de las expresiones anteriores cuando <span class="math inline">\(n\to\infty\)</span>, es decir</p>
+<p><span class="math display">\[
+d=\lim_{n\to \infty} \sum_{i=0}^{n-1}f(t_{i})\Delta t=\lim_{n\to \infty} \sum_{i=1}^{n}f(t_{i})\Delta t.
+\]</span></p>
+<p>Es decir, podemos interpretar la distancia total recorrida por el objeto en el intervalo de tiempo <span class="math inline">\([a,b]\)</span> como el área debajo del gráfico de la función velocidad del mismo, entre <span class="math inline">\(t=a\)</span> y <span class="math inline">\(t=b\)</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap5/5.1-velocidad-area.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%"></p>
+</figure>
+</div>
+<p><a href="#seccion_5.1">↑ Volver al inicio de la sección</a></p>
+</section>
+</section>
+<section id="seccion_5.2" class="level2">
+<h2 class="anchored" data-anchor-id="seccion_5.2">5.2. La integral definida</h2>
+<p>Hemos visto que cuando intentamos calcular el área de una región como la (<a href="#eq-regionS" class="quarto-xref"><span>6.1</span></a>) o la distancia recorrida por un objeto sabiendo su función velocidad, aparece naturalmente un límite de la forma</p>
+<p><span class="math display">\[
+\lim_{n\to \infty} \sum_{i=1}^{n} f(x_i^*)\Delta x.
+\]</span></p>
+<div class="callout callout-style-default callout-note callout-titled" title="Definición (Integral definida)">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definición (Integral definida)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Si <span class="math inline">\(f\)</span> es una función continua definida para <span class="math inline">\(a\leq x\leq b\)</span>, dividimos el intervalo <span class="math inline">\([a,b]\)</span> en <span class="math inline">\(n\)</span> subintervalos de igual ancho <span class="math inline">\(\Delta x=(b-a)/n\)</span>. Si <span class="math inline">\(x_i=a+i\Delta x\)</span>, para <span class="math inline">\(0\leq i\leq n\)</span> y elegimos un punto muestra <span class="math inline">\(x_i^*\)</span> en cada subintervalo <span class="math inline">\([x_{i-1},x_i]\)</span> para <span class="math inline">\(1\leq i\leq n\)</span>, entonces la <strong>integral definida de <span class="math inline">\(f\)</span> desde <span class="math inline">\(a\)</span> hasta <span class="math inline">\(b\)</span></strong>, es</p>
+<p><span class="math display">\[
+\int_a^b f(x)\,dx=\lim_{n\to \infty} \sum_{i=1}^n f(x_i^*)\Delta x,
+\]</span></p>
+<p>siempre que este límite exista. Cuando es el caso, decimos que <span class="math inline">\(f\)</span> es <strong>integrable</strong> sobre <span class="math inline">\([a,b]\)</span>.</p>
+</div>
+</div>
+<p>Algunas observaciones:</p>
+<ul>
+<li><p>El símbolo <span class="math inline">\(\int\)</span> se llama <strong>símbolo integral</strong>, y fue introducido por Leibniz. El mismo recuerda a una “S” alargada, dado que la integral es un límite de sumas.</p></li>
+<li><p>En la expresión <span class="math inline">\(\displaystyle \int_a^b f(x)\,dx\)</span>, <span class="math inline">\(f(x)\)</span> se llama <strong>integrando</strong>, <span class="math inline">\(a\)</span> y <span class="math inline">\(b\)</span> son los <strong>límites superior</strong> e <strong>inferior</strong> de integración, respectivamente. El símbolo <span class="math inline">\(dx\)</span> no representa nada por sí mismo, sino que indica que la variable respecto a la que integramos es <span class="math inline">\(x\)</span>.</p></li>
+<li><p>Si existe la integral definida <span class="math inline">\(\displaystyle \int_a^b f(x)\,dx\)</span>, entonces es un número, que no depende de <span class="math inline">\(x\)</span>. En este sentido, la variable de integración es “muda” y cualquiera de estas expresiones <span class="math display">\[
+\int_a^b f(x)\,dx \qquad \int_a^b f(t)\,dt \qquad \int_a^b f(r)\,dr
+\]</span> puede usarse para denotar a ese número.</p></li>
+<li><p>La suma <span class="math inline">\(\displaystyle \sum_{i=1}^n f(x_i^*)\Delta x\)</span> se conoce como <strong>suma de Riemann</strong>.</p></li>
+</ul>
+<p>Cuando <span class="math inline">\(f\)</span> es una función positiva, la suma de Riemann puede interpretarse como la suma de las áreas de los rectángulos de aproximación.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap5/5.2-rectangulos-medios.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+<p>Al comparar las definiciones de integral definida con la de área dada en la <a href="#seccion_5.1">sección</a> anterior, podemos interpretar la integral definida <span class="math inline">\(\displaystyle \int_a^b f(x)\,dx\)</span> como el área debajo del gráfico de <span class="math inline">\(y=f(x)\)</span>, entre <span class="math inline">\(x=a\)</span> y <span class="math inline">\(x=b\)</span>.</p>
+<p>Si <span class="math inline">\(f\)</span> toma valores tanto positivos como negativos, entonces la suma de Riemann es la suma de las áreas de los rectángulos que se encuentran arriba del eje <span class="math inline">\(x\)</span> y los negativos de las áreas de los rectángulos que están debajo del eje <span class="math inline">\(x\)</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap5/5.2-rectangulos-masmenos.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+<p>Una integral definida puede interpretarse entonces como un <strong>área neta</strong>, es decir, una diferencia de áreas</p>
+<p><span class="math display">\[
+\int_a^b f(x)\,dx=A_1-A_2,
+\]</span></p>
+<p>siendo <span class="math inline">\(A_1\)</span> el área de la región arriba del eje <span class="math inline">\(x\)</span> y debajo de la gráfica de <span class="math inline">\(f\)</span>, y <span class="math inline">\(A_2\)</span> corresponde a la región debajo del eje <span class="math inline">\(x\)</span> y arriba de la gráfica de <span class="math inline">\(f\)</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap5/5.2-grafica-masmenos.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+<div class="theorem">
+<p>Teorema</p>
+<p>Si <span class="math inline">\(f\)</span> es continua en <span class="math inline">\([a, b]\)</span>, o si <span class="math inline">\(f\)</span> tiene únicamente un número finito de saltos discontinuos en el intervalo, entonces <span class="math inline">\(f\)</span> es integrable en <span class="math inline">\([a, b]\)</span>. Es decir, la integral definida</p>
+<p><span class="math display">\[
+\int_a^b f(x)\,dx
+\]</span> existe.</p>
+</div>
+<p>Si <span class="math inline">\(f\)</span> es integrable en <span class="math inline">\([a,b]\)</span>, entonces el límite</p>
+<p><span class="math display">\[
+\lim_{n\to \infty} \sum_{i=1}^n f(x_i*)\Delta x
+\]</span></p>
+<p>existe independientemente de la elección de los puntos muestra <span class="math inline">\(x_i^*\)</span>. En muchas ocasiones solemos considerar <span class="math inline">\(x_i^*=x_i\)</span>, es decir, como el extremo derecho de cada subintervalo, para simplificar los cálculos. Esto nos permite enunciar el siguiente resultado.</p>
+<div id="teo-puntosder" class="theorem">
+<p>Teorema</p>
+<p>Si <span class="math inline">\(f\)</span> es integrable en <span class="math inline">\([a, b]\)</span>, entonces</p>
+<p><span class="math display">\[
+\int_a^b f(x)\,dx=\lim_{n\to \infty} \sum_{i=1}^n f(x_i)\Delta x,
+\]</span></p>
+<p>donde</p>
+<p><span class="math display">\[
+\Delta x = \frac{b-a}{n} \quad \text{ y }\quad x_i=a+i\Delta x, \quad 0\leq i\leq n.
+\]</span></p>
+</div>
+<p>Las siguientes fórmulas resultan de utilidad para el cálculo de integrales por definición.</p>
+<div id="form-sumas" class="formula-box">
+<p><span class="math display">\[
+\begin{aligned}
+\sum_{i=1}^n i &amp;= \frac{n(n+1)}{2} \quad \text{ (suma de números consecutivos) }\\
+\\
+\sum_{i=1}^n i^2 &amp;= \frac{n(n+1)(2n+1)}{6} \quad \text{ (suma de cuadrados de números consecutivos) }\\
+\\
+\sum_{i=1}^n i^3 &amp;= \left[\frac{n(n+1)}{2}\right]^2 \quad \text{ (suma de cubos de números consecutivos) }
+\end{aligned}
+\]</span></p>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Evaluar <span class="math inline">\(\displaystyle \int_0^3 (x^3-6x)\,dx\)</span> utilizando la definición de integral.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Dado <span class="math inline">\(n\in\mathbb{N}\)</span>, definimos <span class="math inline">\(\Delta x=(3-0)/n=3/n\)</span> y <span class="math inline">\(x_i=0+i\Delta x=3i/n\)</span>, para <span class="math inline">\(1\leq i\leq n\)</span>.</p>
+<p>Calculamos primero</p>
+<p><span class="math display">\[
+\begin{aligned}
+R_n=\sum_{i=1}^n f(x_i)\Delta x=\sum_{i=1}^n \left[\left(\frac{3i}{n}\right)^3-6\frac{3i}{n}\right]\frac{3}{n}&amp;=\frac{81}{n^4}\sum_{i=1}^n i^3-\frac{54}{n^2}\sum_{i=1}^n i\\
+\\
+&amp;=\frac{81}{n^4} \left[\frac{n(n+1)}{2}\right]^2-\frac{54}{n^2}\frac{n(n+1)}{2}\\
+\\
+&amp;=\frac{81}{4} \left(\frac{n+1}{n}\right)^2-27\frac{n+1}{n},
+\end{aligned}
+\]</span></p>
+<p>donde hemos usado los resultados de la <a href="#form-sumas">fórmula para las sumas</a> de arriba. Por el <a href="#teo-puntosder">teorema</a> anterior, tenemos que</p>
+<p><span class="math display">\[
+\int_0^3 (x^3-6x)\,dx=\lim_{n\to \infty} \sum_{i=1}^n f(x_i)\Delta x= \lim_{n\to \infty} \left[\frac{81}{4} \left(\frac{n+1}{n}\right)^2-27\frac{n+1}{n}\right]=\frac{81}{4} \cdot 1^2-27\cdot 1=-\frac{81}{12}.
+\]</span></p>
+<blockquote class="blockquote">
+<p>[Gráfico]</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Evaluar las siguientes integrales, interpretándolas como un área.</p>
+<ol type="1">
+<li><p><span class="math inline">\(\displaystyle \int_0^1 \sqrt{1-x^2}\,dx\)</span>.</p></li>
+<li><p><span class="math inline">\(\displaystyle \int_0^3 (x-1)\,dx\)</span>.</p></li>
+</ol>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Para la primera escribimos <span class="math inline">\(y=\sqrt{1-x^2}\)</span>, de donde se tiene la relación <span class="math inline">\(x^2+y^2=1\)</span>. Como <span class="math inline">\(y\geq 0\)</span>, entonces el gráfico de <span class="math inline">\(f\)</span> es la mitad superior de la circunferencia con centro en <span class="math inline">\((0,0)\)</span> y radio 1. Como la integral es entre 0 y 1, el área debajo del gráfico y sobre el eje <span class="math inline">\(x\)</span> corresponde al de un cuarto de la circunferencia. Por lo tanto</p>
+<p><span class="math display">\[
+\int_0^1 \sqrt{1-x^2}\,dx = \frac{1}{4} \pi \cdot 1^2 =\frac{\pi}{4}.
+\]</span></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap5/5.2-ejemplo-circunferencia.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:45.0%"></p>
+</figure>
+</div>
+<p>Para la segunda función, observemos que <span class="math inline">\(y(x)=x-1\)</span> es no positiva para <span class="math inline">\(0\leq x\leq 1\)</span> y no negativa para <span class="math inline">\(1\leq x\leq 3\)</span>. Entonces la integral resulta ser una diferencia de áreas, la del triángulo por arriba del eje <span class="math inline">\(x\)</span> menos la del que se encuentra por debajo. Es decir</p>
+<p><span class="math display">\[
+\int_0^3 (x-1)\,dx = A_1-A_2=\frac{2\cdot 2}{2}-\frac{1\cdot 1}{2}=2-\frac{1}{2}=\frac{3}{2}.
+\]</span></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap5/5.2-ejemplo-recta.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<section id="propiedades-de-la-integral-definida" class="level3">
+<h3 class="anchored" data-anchor-id="propiedades-de-la-integral-definida">Propiedades de la integral definida</h3>
+<p>Al definir la integral <span class="math inline">\(\int_a^b f(x)\,dx\)</span> hemos supuesto que <span class="math inline">\(a&lt;b\)</span>, pues trabajamos con el intervalo <span class="math inline">\([a,b]\)</span>. Sin embargo, las sumas de Riemann pueden calcularse aún cuando <span class="math inline">\(a&gt;b\)</span>, y en tal caso <span class="math inline">\(\Delta x\)</span> cambia de signo. Por este motivo, resulta que</p>
+<div class="formula-box">
+<p><span class="math display">\[
+\int_b^a f(x)\,dx=-\int_a^b f(x)\,dx.
+\]</span></p>
+</div>
+<p>Por otro lado, si <span class="math inline">\(a=b\)</span> entonces <span class="math inline">\(\Delta x=0\)</span> y en consecuencia</p>
+<div class="formula-box">
+<p><span class="math display">\[
+\int_a^a f(x)\,dx=0.
+\]</span></p>
+</div>
+<p>En el siguiente teorema enunciamos otras propiedades adicionales de la integral.</p>
+<div id="teo-propiedades-integraldef" class="theorem">
+<p>Propiedades de la integral definida</p>
+<p>Sean <span class="math inline">\(f\)</span> y <span class="math inline">\(g\)</span> funciones continuas y <span class="math inline">\(c\)</span> un número real. Entonces</p>
+<ol type="1">
+<li><p><span class="math inline">\(\displaystyle \int_a^b c\,dx =c(b-a)\)</span>.</p></li>
+<li><p><span class="math inline">\(\displaystyle \int_a^b (f(x)+g(x))\,dx =\int_a^b f(x)\,dx+\int_a^b g(x)\,dx\)</span>.</p></li>
+<li><p><span class="math inline">\(\displaystyle \int_a^b (cf(x))\,dx=c\int_a^b f(x)\,dx\)</span>.</p></li>
+<li><p><span class="math inline">\(\displaystyle \int_a^b (f(x)-g(x))\,dx =\int_a^b f(x)\,dx-\int_a^b g(x)\,dx\)</span>.</p></li>
+<li><p><span class="math inline">\(\displaystyle \int_a^b f(x)\,dx  =\int_a^c f(x)\,dx+\int_c^b f(x)\,dx\)</span>, para cualesquiera <span class="math inline">\(a,b\)</span> y <span class="math inline">\(c\)</span> en <span class="math inline">\(\mathbb{R}\)</span>.</p></li>
+</ol>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Evaluar la integral <span class="math inline">\(\displaystyle \int_0^1 (4+3x^2)\,dx\)</span> utilizando propiedades.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Utilizando las <a href="#teo-propiedades-integraldef">propiedades</a> (2), (1) y (3) de la integral definida, obtenemos</p>
+<p><span class="math display">\[
+\int_0^1 (4+3x^2)\,dx = \int_0^1 4\,dx+\int_0^1 (3x^2)\,dx=4(1-0)+3\int_0^1 x^2\,dx=3+3\cdot \frac{1}{3}=4,
+\]</span></p>
+<p>donde hemos usado también que <span class="math inline">\(\displaystyle \int_0^1 x^2\,dx=\frac{1}{3}\)</span>, resultado que obtuvimos en el Ejemplo 1 de la <a href="#seccion_5.1">Sección 5.1</a>.</p>
+</div>
+</div>
+</div>
+<p>A continuación veremos algunas propiedades de comparación de integrales definidas.</p>
+<div id="teo-comparacion-integraldef" class="theorem">
+<p>Propiedades de comparación de la integral definida</p>
+<p>Sean <span class="math inline">\(f\)</span> y <span class="math inline">\(g\)</span> funciones integrables en <span class="math inline">\([a,b]\)</span>, con <span class="math inline">\(a\leq b\)</span>.</p>
+<ol type="1">
+<li><p>Si <span class="math inline">\(f(x)\geq 0\)</span> en <span class="math inline">\([a,b]\)</span>, entonces <span class="math inline">\(\displaystyle\int_a^b f(x)\,dx\geq 0\)</span>.</p></li>
+<li><p>Si <span class="math inline">\(f(x)\geq g(x)\)</span> en <span class="math inline">\([a,b]\)</span>, entonces <span class="math inline">\(\displaystyle \int_a^b f(x)\,dx \geq \int_a^b g(x)\,dx\)</span>.</p></li>
+<li><p>Si <span class="math inline">\(m\leq f(x)\leq M\)</span> en <span class="math inline">\([a,b]\)</span>, entonces <span class="math inline">\(\displaystyle m(b-a)\leq \int_a^b f(x)\,dx \leq M(b-a)\)</span>.</p></li>
+</ol>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Estimar el valor de la integral <span class="math inline">\(\displaystyle \int_0^1 e^{-x^2}\,dx\)</span> utilizando propiedades de comparación.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Observemos que <span class="math inline">\(f(x)=e^{-x^2}\)</span> es función decreciente en <span class="math inline">\([0,1]\)</span>. Por lo tanto su máximo absoluto se alcanza en el extremo izquierdo <span class="math inline">\(x=0\)</span> y su mínimo absoluto en el extremo derecho, <span class="math inline">\(x=1\)</span>. De esta manera</p>
+<p><span class="math display">\[
+e^{-1}\leq e^{-x^2}\leq 1 \quad \text{ para todo } x\in [0,1].
+\]</span></p>
+<p>Utilizando la <a href="#teo-comparacion-integraldef">propiedad</a> (3) de comparación resulta</p>
+<p><span class="math display">\[
+e^{-1}(1-0)\leq \int_0^1 e^{-x^2}\,dx\leq 1(1-0).
+\]</span></p>
+<p>Dado que <span class="math inline">\(e^{-1}\approx 0.3679\)</span>, obtenemos la estimación</p>
+<p><span class="math display">\[
+0.367\leq \int_0^1 e^{-x^2}\,dx\leq 1.
+\]</span></p>
+</div>
+</div>
+</div>
+<p><a href="#seccion_5.2">↑ Volver al inicio de la sección</a></p>
+</section>
+</section>
+<section id="seccion_5.3" class="level2">
+<h2 class="anchored" data-anchor-id="seccion_5.3">5.3. El teorema fundamental del cálculo</h2>
+<p>En esta sección veremos cómo se relacionan dos problemas en apariencia muy distintos: el de encontrar la recta tangente a una curva dada y el de calcular el área de cierta región general en el plano.</p>
+<p>Comencemos considerando una función continua <span class="math inline">\(f\)</span> en un intervalo <span class="math inline">\([a,b]\)</span>, y definimos la función</p>
+<p><span class="math display">\[
+g(x)=\int_a^x f(t)\,dt.
+\]</span></p>
+<p>Notemos que si <span class="math inline">\(a\leq x\leq b\)</span> está fijo, entonces <span class="math inline">\(\displaystyle \int_a^x f(t)\,dt\)</span> es un número, que depende del valor que tome <span class="math inline">\(x\)</span>. Si dejamos que <span class="math inline">\(x\)</span> se mueva sobre todo el intervalo, obtenemos la función <span class="math inline">\(g\)</span>. Notemos también que hemos utilizado <span class="math inline">\(t\)</span> como variable de integración, para no confundir con <span class="math inline">\(x\)</span> que es el límite superior en la integral.</p>
+<p>En el caso particular en que <span class="math inline">\(f\)</span> sea no negativa en el intervalo <span class="math inline">\([a,b]\)</span>, <span class="math inline">\(g(x)\)</span> da el área de la región debajo del gráfico de <span class="math inline">\(f\)</span>, entre <span class="math inline">\(a\)</span> y <span class="math inline">\(x\)</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap5/5.3-area-hasta-x.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+<p>Consideremos ahora un ejemplo concreto. Si <span class="math inline">\(f(x)=x\)</span> sobre el intervalo <span class="math inline">\([0,1]\)</span>, entonces podemos verificar usando la definición de integral que</p>
+<p><span class="math display">\[
+g(x)=\int_0^x t\,dt= \frac{x^2-0^2}{2}=\frac{1}{2}x^2.
+\]</span></p>
+<p>Entonces notamos que <span class="math inline">\(g'(x)=x=f(x)\)</span>, es decir, la función <span class="math inline">\(g\)</span> tiene como derivada a la función <span class="math inline">\(f\)</span> de la que partimos. En este caso decimos que <span class="math inline">\(g\)</span> es una <strong>antiderivada</strong> de <span class="math inline">\(f\)</span>.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Definición (Antiderivada o primitiva)">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Definición (Antiderivada o primitiva)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Dada una función <span class="math inline">\(f\)</span>, decimos que la función <span class="math inline">\(F\)</span> es una <strong>antiderivada</strong> o <strong>primitiva</strong> de <span class="math inline">\(f\)</span> en un intervalo <span class="math inline">\(I\)</span> si <span class="math inline">\(F'(x)=f(x)\)</span> para todo <span class="math inline">\(x\)</span> del intervalo.</p>
+</div>
+</div>
+<p>Notemos que si <span class="math inline">\(F\)</span> es una antiderivada de una función <span class="math inline">\(f\)</span>, entonces <span class="math inline">\(G(x)=F(x)+C\)</span> también es una antiderivada de <span class="math inline">\(f\)</span> para cualquier constante <span class="math inline">\(C\)</span>, pues</p>
+<p><span class="math display">\[
+G'(x)=(F(x)+C)'=F'(x)+C'=f(x)+0=f(x).
+\]</span></p>
+<p>Si <span class="math inline">\(F\)</span> es cualquier antiderivada de <span class="math inline">\(f\)</span> en el intervalo <span class="math inline">\(I\)</span>, entonces <span class="math inline">\(F(x)+C\)</span> se denomina <strong>antiderivada general</strong> de <span class="math inline">\(f\)</span> en <span class="math inline">\(I\)</span>.</p>
+<p>Volviendo al ejemplo anterior, ¿es una casualidad que <span class="math inline">\(g'=f\)</span>? La respuesta es no, y esta importante relación forma parte del teorema fundamental del cálculo que enunciaremos a continuación.</p>
+<div id="teo-TFC1" class="theorem">
+<p>Teorema fundamental del cálculo - Parte I</p>
+<p>Si <span class="math inline">\(f\)</span> es continua en <span class="math inline">\([a,b]\)</span>, entonces la función <span class="math inline">\(g\)</span> definida por <span class="math display">\[
+g(x) = \int_a^x f(t) \, dt \quad \text{ para } a \leq x \leq b,
+\]</span> es continua en <span class="math inline">\([a,b]\)</span>, derivable en <span class="math inline">\((a,b)\)</span>, y además <span class="math inline">\(g'(x) = f(x)\)</span> para todo <span class="math inline">\(x\in (a,b)\)</span>.</p>
+</div>
+<p>Con la notación de Leibniz de los diferenciales, podemos reescribir la igualdad <span class="math inline">\(g'(x)=f(x)\)</span> como</p>
+<div class="formula-box">
+<p><span class="math display">\[
+\frac{d}{dx}\left(\int_a^x f(t)\,dt\right)=f(x).
+\]</span></p>
+</div>
+<p>Observar que la primera parte del teorema fundamental del cálculo puede ser reescrita de la siguiente manera: si <span class="math inline">\(f\)</span> es continua en <span class="math inline">\([a,b]\)</span>, entonces la función</p>
+<p><span class="math display">\[
+g(x)=\int_a^x f(t)\,dt
+\]</span></p>
+<p>resulta ser una antiderivada de <span class="math inline">\(f\)</span> en <span class="math inline">\((a,b)\)</span>. Como consecuencia, inferimos que <strong>toda función continua tiene una antiderivada</strong>, hecho que puede resultar útil en muchas ocasiones.</p>
+<p>En la siguiente tabla podemos encontrar las antiderivadas de algunas funciones básicas que aparecen con frecuencia en la práctica.</p>
+<div id="tabla-antiderivadas" class="math-table">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Función <span class="math inline">\(f\)</span></th>
+<th>Antiderivada <span class="math inline">\(F\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(k\)</span></td>
+<td><span class="math inline">\(kx+C\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(x^n\)</span>, <span class="math inline">\(n\neq -1\)</span></td>
+<td><span class="math inline">\(\displaystyle\frac{x^{n+1}}{n+1}+C\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\displaystyle\frac{1}{x}\)</span></td>
+<td><span class="math inline">\(\ln|x|+C\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(e^x\)</span></td>
+<td><span class="math inline">\(e^x+C\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(a^x\)</span>, <span class="math inline">\(a&gt;0\)</span></td>
+<td><span class="math inline">\(\displaystyle\frac{a^x}{\ln a} + C\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\sin x\)</span></td>
+<td><span class="math inline">\(-\cos x + C\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\cos x\)</span></td>
+<td><span class="math inline">\(\sin x + C\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\sec^2 x\)</span></td>
+<td><span class="math inline">\(\tan x + C\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\csc^2 x\)</span></td>
+<td><span class="math inline">\(-\cot x + C\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\sec x \tan x\)</span></td>
+<td><span class="math inline">\(\sec x + C\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\csc x \cot x\)</span></td>
+<td><span class="math inline">\(-\csc x + C\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\displaystyle \frac{1}{\sqrt{1 - x^2}}\)</span></td>
+<td><span class="math inline">\(\arcsin x + C\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\displaystyle\frac{-1}{\sqrt{1 - x^2}}\)</span></td>
+<td><span class="math inline">\(\arccos x + C\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\displaystyle \frac{1}{1 + x^2}\)</span></td>
+<td><span class="math inline">\(\arctan x + C\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Calcular la derivada de la función <span class="math inline">\(\displaystyle g(x)=\int_0^x \sqrt{1+t^2}\,dt\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Dado que <span class="math inline">\(f(t)=\sqrt{1+t^2}\)</span> es continua en <span class="math inline">\(\mathbb{R}\)</span>, en particular lo es en cualquier intervalo cerrado, y utilizando la primera parte del <a href="#teo-TFC1">teorema fundamental del cálculo</a> resulta</p>
+<p><span class="math display">\[
+\frac{dg}{dx}(x)=\frac{d}{dx}\left(\int_0^x \sqrt{1+t^2}\,dt\right)=f(x)=\sqrt{1+x^2}.
+\]</span></p>
+</div>
+</div>
+</div>
+<div id="teo-TFC2" class="theorem">
+<p>Teorema fundamental del cálculo - Parte II</p>
+<p>Si <span class="math inline">\(f\)</span> es continua en <span class="math inline">\([a,b]\)</span>, entonces</p>
+<p><span class="math display">\[
+\int_a^b f(x)\,dx=F(b)-F(a),
+\]</span></p>
+<p>donde <span class="math inline">\(F\)</span> es una antiderivada de <span class="math inline">\(f\)</span> en <span class="math inline">\((a,b)\)</span>, es decir, <span class="math inline">\(F'(x)=f(x)\)</span> para <span class="math inline">\(x\in (a,b)\)</span>.</p>
+</div>
+<p>Esta segunda parte del teorema fundamental del cálculo establece que si se conoce una antiderivada <span class="math inline">\(F\)</span> de <span class="math inline">\(f\)</span> en <span class="math inline">\((a,b)\)</span>, entonces la integral definida <span class="math inline">\(\displaystyle \int_a^b f(x)\,dx\)</span> puede calcularse simplemente calculando la diferencia de los valores de la función <span class="math inline">\(F\)</span> en los extremos del intervalo. A este teorema también se lo conoce comúnmente como <strong>regla de Barrow</strong>. En muchas ocasiones escribiremos</p>
+<p><span class="math display">\[
+F(x)\Big{]}_a^{b}=F(x)\Big{]}_{x=a}^{x=b}
+\]</span></p>
+<p>para denotar a la diferencia <span class="math inline">\(F(b)-F(a)\)</span>.</p>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Evaluar la integral <span class="math inline">\(\displaystyle \int_1^3 e^x\,dx\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Sabemos que <span class="math inline">\(f(x)=e^x\)</span> es continua en <span class="math inline">\(\mathbb{R}\)</span>, con lo cual es continua en <span class="math inline">\([1,3]\)</span>. Además, como <span class="math inline">\((e^x)'=e^x\)</span>, la misma <span class="math inline">\(f\)</span> es una antiderivada de sí misma. Utilizando la segunda parte del <a href="#teo-TFC2">teorema fundamental del cálculo</a> obtenemos</p>
+<p><span class="math display">\[
+\int_1^3 e^x\,dx=e^x \Big{]}_{1}^{3} = e^3-e^1=e^3-e.
+\]</span></p>
+</div>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Encontrar la derivada de la función <span class="math inline">\(\displaystyle \int_1^{x^4} \sec t\,dt\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Observar que <span class="math inline">\(f(t)=\sec t\)</span> es continua en todo <span class="math inline">\(\mathbb{R}\)</span> excepto donde <span class="math inline">\(\cos t=0\)</span>, es decir, <span class="math inline">\(t=(2n+1)\pi/2\)</span>, con <span class="math inline">\(n\in\mathbb{Z}\)</span>. Como <span class="math inline">\(1\in (-\pi/2,\pi/2)\)</span>, vamos a suponer que <span class="math inline">\(x^4\)</span> también se encuentra en este intervalo, para poder integrar una función continua. Es decir, supongamos que <span class="math inline">\(x\in (-\sqrt[4]{\pi/2},\sqrt[4]{\pi/2})\)</span>. Por la primera parte del teorema fundamental del cálculo sabemos que existe <span class="math inline">\(F\)</span> una antiderivada de <span class="math inline">\(f\)</span>. Aplicando la segunda parte</p>
+<p><span class="math display">\[
+\int_1^{x^4} \sec t\,dt=F(t)\Big{]}_{1}^{x^4}=F(x^4)-F(1).
+\]</span></p>
+<p>Ahora bien, como queremos calcular la derivada de esta integral, utilizamos la regla de la cadena y el hecho de que <span class="math inline">\(F'=f\)</span> para escribir</p>
+<p><span class="math display">\[
+\frac{d}{dx}\left(\int_1^{x^4} \sec t\,dt\right)=\frac{d}{dx}\left(F(x^4)-F(1)\right)=F'(x^4) (x^4)'-0=4x^3 \,\sec(x^4).
+\]</span></p>
+</div>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Calcular <span class="math inline">\(\displaystyle \int_3^{6} \frac{1}{x}\,dx\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Dado que <span class="math inline">\(f(x)\)</span> es continua en <span class="math inline">\([3,6]\)</span>, podemos aplicar la segunda parte del <a href="#teo-TFC2">teorema fundamental del cálculo</a>. Según vimos en la <a href="#tabla-antiderivadas">tabla de antiderivadas</a>, una antiderivada para <span class="math inline">\(f\)</span> es <span class="math inline">\(F(x)=\ln |x|\)</span>, con lo cual</p>
+<p><span class="math display">\[
+\int_3^{6} \frac{1}{x}\,dx= \ln x\Big{]}_{3}^{6}=\ln 6-\ln 3=\ln 2.
+\]</span></p>
+</div>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Calcular el área debajo de la curva <span class="math inline">\(f(x)=\cos x\)</span>, desde <span class="math inline">\(x=0\)</span> hasta <span class="math inline">\(x=b\)</span>, con <span class="math inline">\(0\leq b\leq \pi/2\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Sea <span class="math inline">\(0\leq b\leq \pi/2\)</span>. Dado que <span class="math inline">\(f(x)\geq 0\)</span> en <span class="math inline">\([0,\pi/2]\)</span>, el área pedida está dada por la integral definida</p>
+<p><span class="math display">\[
+\int_0^b \cos x\,dx.
+\]</span></p>
+<p>Una <a href="#tabla-antiderivadas">antiderivada</a> para <span class="math inline">\(f\)</span> es <span class="math inline">\(F(x)=\operatorname{sen} x\)</span>, con lo cual</p>
+<p><span class="math display">\[
+\int_0^b \cos x\,dx=\operatorname{sen} x\Big{]}_{0}^b=\operatorname{sen} b-\operatorname{sen} 0=\operatorname{sen} b.
+\]</span></p>
+</div>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>¿Por qué es incorrecto el siguiente cálculo?</p>
+<p><span class="math display">\[
+\int_{-1}^3 \frac{1}{x^2}\,dx = \left(-\frac{1}{x}\right)\Bigg{]}_{-1}^{3}=-\frac{1}{3}-\left(-\frac{1}{-1}\right)=-\frac{4}{3}.
+\]</span></p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Es incorrecto aplicar la segunda parte del <a href="#teo-TFC2">teorema fundamental del cálculo</a>, puesto que la función <span class="math inline">\(f(x)=\frac{1}{x^2}\)</span> no es continua en el intervalo <span class="math inline">\([-1,3]\)</span>, ya que tiene un salto infinito en <span class="math inline">\(x=0\)</span>. En este caso, la integral se llama <strong>impropia</strong> y este tipo de situaciones lo estudiaremos más adelante.</p>
+</div>
+</div>
+</div>
+<p><a href="#seccion_5.3">↑ Volver al inicio de la sección</a></p>
+</section>
+<section id="seccion_5.4" class="level2">
+<h2 class="anchored" data-anchor-id="seccion_5.4">5.4. Integrales indefinidas y el teorema del cambio total</h2>
+<section id="integrales-indefinidas" class="level3">
+<h3 class="anchored" data-anchor-id="integrales-indefinidas">Integrales indefinidas</h3>
+<p>Recordando las dos partes del teorema fundamental del cálculo, la primera de ellas establece que toda función continua <span class="math inline">\(f\)</span> tiene una antiderivada dada por la expresión</p>
+<p><span class="math display">\[
+\int_a^x f(t)\,dt,
+\]</span></p>
+<p>mientras que la segunda asegura que el valor de la integral definida</p>
+<p><span class="math display">\[
+\int_a^b f(x)\,dx
+\]</span></p>
+<p>puede encontrarse haciendo <span class="math inline">\(F(b)-F(a)\)</span>, donde <span class="math inline">\(F\)</span> es una antiderivada de <span class="math inline">\(f\)</span>. Ahora vamos a introducir una notación para las antiderivadas o primitivas de una función dada. Escribiremos <span class="math inline">\(\displaystyle \int f(x)\,dx\)</span> para simbolizar a una antiderivada de <span class="math inline">\(f\)</span>, y la llamaremos <strong>integral indefinida</strong>. Es decir</p>
+<p><span class="math display">\[
+\int f(x)\,dx=F(x) \quad \text{ significa que }\quad F'(x)=f(x).
+\]</span></p>
+<p>Por ejemplo,</p>
+<p><span class="math display">\[
+\int x^2\,dx =\frac{1}{3}x^3+C
+\]</span> siendo <span class="math inline">\(C\)</span> cualquier constante real, dado que al sumar cualquier constante a una antiderivada de <span class="math inline">\(f\)</span> obtenemos otra antiderivada (pues la derivada de las constantes es cero).</p>
+<div class="callout callout-style-default callout-caution callout-titled" title="Importante">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Importante
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>No confundir una integral definida con una indefinida. Por un lado, tenemos que <span class="math inline">\(\int_a^b f(x)\,dx\)</span> es un número, mientras que <span class="math inline">\(\int f(x)\,dx\)</span> es una familia de funciones de la forma <span class="math inline">\(F(x)+C\)</span>, siendo <span class="math inline">\(F'=f\)</span>. La relación entre ambas la da la segunda parte del <a href="#teo-TFC2">teorema fundamental del cálculo</a></p>
+<p><span class="math display">\[
+\int_a^b f(x)\,dx =\left(\int f(x)\,dx\right)\Bigg{]}_a^b.
+\]</span></p>
+</div>
+</div>
+<p>Con esta nueva notación, podemos reescribir la tabla de antiderivadas de la sección anterior como sigue.</p>
+<div id="form-int-indefinidas" class="formula-box">
+<ol type="1">
+<li><p><span class="math inline">\(\displaystyle \int kf(x)\,dx=k\int f(x)\, dx\)</span>.</p></li>
+<li><p><span class="math inline">\(\displaystyle \int (f(x)+g(x))\,dx=\int f(x)\, dx+\int g(x)\,dx\)</span>.</p></li>
+</ol>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ol start="3" type="1">
+<li><p><span class="math inline">\(\displaystyle \int k\,dx=kx+C\)</span>.</p></li>
+<li><p><span class="math inline">\(\displaystyle \int x^n\,dx=\frac{x^{n+1}}{n+1}+C\)</span>, <span class="math inline">\(n\neq -1\)</span>.</p></li>
+<li><p><span class="math inline">\(\displaystyle \int e^x\,dx=e^x+C.\)</span></p></li>
+<li><p><span class="math inline">\(\displaystyle \int a^x\,dx=\frac{a^x}{\ln a}+C\)</span>, <span class="math inline">\(a&gt;0, a\neq 1\)</span>.</p></li>
+<li><p><span class="math inline">\(\displaystyle \int \operatorname{sen} x\,dx=-\cos x+C\)</span>.</p></li>
+<li><p><span class="math inline">\(\displaystyle \int \cos x\,dx=\operatorname{sen} x+C\)</span>.</p></li>
+<li><p><span class="math inline">\(\displaystyle \int \sec^2 x\,dx=\tan x+C\)</span>.</p></li>
+</ol>
+</div><div class="column" style="width:50%;">
+<ol start="10" type="1">
+<li><p><span class="math inline">\(\displaystyle \int \csc^2 x\,dx=-\cot x+C\)</span>.</p></li>
+<li><p><span class="math inline">\(\displaystyle \int \sec x\tan x\,dx=\sec x+C\)</span>.</p></li>
+<li><p><span class="math inline">\(\displaystyle \int \csc x\cot x\,dx=-\csc x+C\)</span>.</p></li>
+<li><p><span class="math inline">\(\displaystyle \int \frac{1}{\sqrt{1-x^2}}\,dx=\operatorname{arcsen} x+C\)</span>.</p></li>
+<li><p><span class="math inline">\(\displaystyle \int \frac{-1}{\sqrt{1-x^2}}\,dx=\arccos x+C\)</span>.</p></li>
+<li><p><span class="math inline">\(\displaystyle \int \frac{1}{1+x^2}\,dx=\arctan x+C\)</span>.</p></li>
+</ol>
+</div>
+</div>
+</div>
+<p>Cuando escribamos la expresión</p>
+<p><span class="math display">\[
+\int f(x)\,dx=F(x)+C
+\]</span></p>
+<p>recordemos que ésta siempre es válida en algún intervalo <span class="math inline">\(I\)</span>, que por lo general omitimos.</p>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Evaluar <span class="math inline">\(\displaystyle \int \frac{\cos \theta}{\operatorname{sen}^2 \theta}\,d\theta\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-17" class="callout-17-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Primero escribimos</p>
+<p><span class="math display">\[
+\frac{\cos \theta}{\operatorname{sen}^2 \theta}=\frac{1}{\operatorname{sen} \theta} \frac{\cos \theta}{\operatorname{sen} \theta}=\csc \theta \cot \theta.
+\]</span></p>
+<p>Aplicando la <a href="#form-int-indefinidas">fórmula</a> (12) de antiderivadas obtenemos</p>
+<p><span class="math display">\[
+\int \csc \theta \cot \theta\,d\theta=-\csc \theta + C.
+\]</span></p>
+</div>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Calcular <span class="math inline">\(\displaystyle \int_0^3 (x^3-6x)\,dx\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-18" class="callout-18-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Aplicamos la segunda parte del <a href="#teo-TFC2">teorema fundamental del cálculo</a> y las fórmulas (2), (3) y (4) de la <a href="#form-int-indefinidas">tabla de antiderivadas</a> para obtener</p>
+<p><span class="math display">\[
+\int_0^3 (x^3-6x)\,dx= \left(\frac{x^4}{4}-6\frac{x^2}{2}\right)\Bigg{]}_0^3=\frac{3^4}{4}-3\cdot 3^2 -\left(\frac{0^4}{4}-3\cdot 0^2\right)=\frac{81}{4}-27=-\frac{81}{12}.
+\]</span></p>
+<p>Notar que a este mismo valor habíamos llegado utilizando la definición de integral, en el Ejemplo 3 de la <a href="#seccion_5.2">Sección 5.2</a>.</p>
+</div>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Evaluar la integral <span class="math inline">\(\displaystyle \int_1^9 \frac{2t^2+t^2\sqrt{t}-1}{t^2}\,dt\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-19" class="callout-19-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Primero notemos que</p>
+<p><span class="math display">\[
+\frac{2t^2+t^2\sqrt{t}-1}{t^2}=2+t^{1/2}-t^{-2}.
+\]</span></p>
+<p>Aplicamos las fórmulas (1), (2), (3) y (4) de la <a href="#form-int-indefinidas">tabla de antiderivadas</a> para obtener</p>
+<p><span class="math display">\[
+\begin{aligned}
+\int_1^9  \frac{2t^2+t^2\sqrt{t}-1}{t^2}\,dt=\int_1^9 (2+t^{1/2}-t^{-2})\,dt &amp;=\left(2t+\frac{2}{3}t^{3/2}+\frac{1}{t}\right)\Bigg{]}_1^9\\
+\\
+&amp;=\left(2\cdot 9+\frac{2}{3}9^{3/2}+\frac{1}{9}\right)-\left(2\cdot 1+\frac{2}{3}1^{3/2}+\frac{1}{1}\right)\\
+\\
+&amp;=\frac{325}{9}-\frac{11}{3}=\frac{292}{9}.
+\end{aligned}
+\]</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="aplicaciones" class="level3">
+<h3 class="anchored" data-anchor-id="aplicaciones">Aplicaciones</h3>
+<p>Recordemos nuevamente que la segunda parte del teorema fundamental del cálculo establece que si <span class="math inline">\(f\)</span> es continua en <span class="math inline">\([a,b]\)</span>, entonces</p>
+<p><span class="math display">\[
+\int_a^bf(x)\,dx=F(b)-F(a),
+\]</span></p>
+<p>siendo <span class="math inline">\(F\)</span> cualquier antiderivada de <span class="math inline">\(f\)</span>, es decir, cualquier función tal que <span class="math inline">\(F'=f\)</span>. Pero entonces la igualdad de arriba puede reescribirse como</p>
+<p><span class="math display">\[
+\int_a^bF'(x)\,dx=F(b)-F(a).
+\]</span></p>
+<p>Sabemos que <span class="math inline">\(F'\)</span> representa la relación de cambio de <span class="math inline">\(y=F(x)\)</span> con respecto a <span class="math inline">\(x\)</span>, mientras que la diferencia <span class="math inline">\(F(b)-F(a)\)</span> representa el cambio total de la función <span class="math inline">\(F\)</span> en el intervalo <span class="math inline">\([a,b]\)</span>. En definitiva, la igualdad de arriba nos está diciendo que si integramos la relación de cambio de una función sobre un intervalo <span class="math inline">\([a,b]\)</span>, obtenemos el cambio total de la misma en el intervalo.</p>
+<p>El siguiente teorema es una reformulación de la segunda parte del teorema fundamental del cálculo en este contexto.</p>
+<div class="theorem">
+<p>Teorema del cambio total</p>
+<p>La integral de la relación de cambio de una función, es el cambio total de la función. Es decir,</p>
+<p><span class="math display">\[
+\int_a^bF'(x)\,dx=F(b)-F(a).
+\]</span></p>
+</div>
+<p>Si un objeto se mueve en línea recta con función de posición <span class="math inline">\(s(t)\)</span>, entonces su velocidad es <span class="math inline">\(v(t)=s'(t)\)</span> y en consecuencia</p>
+<div class="formula-box">
+<p><span class="math display">\[
+\int_{t_1}^{t_2} v(t)\,dt=\int_{t_1}^{t_2} s'(t)\,dt=s(t_2)-s(t_1)
+\]</span></p>
+</div>
+<p>es el <strong>cambio de la posición</strong> o <strong>desplazamiento</strong> del objeto durante el periodo de tiempo desde <span class="math inline">\(t_1\)</span> hasta <span class="math inline">\(t_2\)</span>.</p>
+<p>Si queremos calcular la distancia recorrida durante el intervalo <span class="math inline">\([t_1,t_2]\)</span> hay que considerar los intervalos donde <span class="math inline">\(v(t)\geq 0\)</span> (la partícula se mueve hacia la derecha) y también aquellos donde <span class="math inline">\(v(t)\leq 0\)</span> (la partícula se mueve hacia la izquierda).</p>
+<p>En ambos casos la distancia se calcula al integrar <span class="math inline">\(|v(t)|\)</span>, la magnitud de la rapidez. Por lo tanto, la <strong>distancia total recorrida</strong> es</p>
+<div class="formula-box">
+<p><span class="math display">\[
+d=\int_{t_1}^{t_2} |v(t)|\,dt.
+\]</span></p>
+</div>
+<p>En la siguiente figura vemos cómo interpretar el desplazamiento y la distancia recorrida en términos de las áreas debajo de una curva de velocidad.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./imagenes_cap5/5.4-despl-y-dist.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+<p>El desplazamiento total en el intervalo <span class="math inline">\([t_1,t_2]\)</span> viene dado por <span class="math inline">\(\displaystyle\int_{t_1}^{t_2} f(t)\,dt=-A_1+A_2-A_3\)</span>, y la distancia total recorrida es <span class="math inline">\(\displaystyle \int_{t_1}^{t_2} |f(t)|\,dt=A_1+A_2+A_3\)</span>.</p>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Una partícula se mueve a lo largo de una recta de modo que su velocidad en metros por segundo en el instante <span class="math inline">\(t\)</span> es <span class="math inline">\(v(t)=t^2-t-6\)</span>.</p>
+<ul>
+<li><p>Encontrar el desplazamiento <span class="math inline">\(\Delta\)</span> de la partícula durante el periodo <span class="math inline">\(1\leq t\leq 4\)</span>.</p></li>
+<li><p>Hallar la distancia <span class="math inline">\(d\)</span> recorrida durante este período.</p></li>
+</ul>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-20-contents" aria-controls="callout-20" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-20" class="callout-20-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li>Según vimos, el desplazamiento lo encontramos integrando la función velocidad.</li>
+</ul>
+<p><span class="math display">\[
+\Delta=\int_1^4 v(t)\,dt=\int_1^4 (t^2-t-6)\,dt =\left(\frac{t^3}{3}-\frac{t^2}{2}-6t\right)\Bigg{]}_1^4=-\frac{9}{2}.
+\]</span></p>
+<ul>
+<li>Para hallar la distancia total, primero factorizamos <span class="math inline">\(t^2-t-6=(t-3)(t+2)\)</span>, con lo cual <span class="math inline">\(v\)</span> es negativa para <span class="math inline">\(1\leq t&lt;3\)</span> y <span class="math inline">\(v(t)\geq 0\)</span> en el intervalo <span class="math inline">\([3,4]\)</span>. Por lo tanto</li>
+</ul>
+<p><span class="math display">\[
+d=\int_1^4 |v(t)|\,dt=\int_1^3 (-v(t))\,dt+\int_3^4 v(t)\,dt=\int_1^3 (6+t-t^2)\,dt+\int_3^4 (t^2-t-6)\,dt=\frac{61}{6}.
+\]</span></p>
+<p>Por lo tanto, desde el primer al cuarto segundo de recorrido, la partícula se desplazó 4.5 m hacia la izquierda, y recorrió un total de aproximadamente 10.17 m.</p>
+</div>
+</div>
+</div>
+<p><a href="#seccion_5.4">↑ Volver al inicio de la sección</a></p>
+</section>
+</section>
+<section id="seccion_5.5" class="level2">
+<h2 class="anchored" data-anchor-id="seccion_5.5">5.5. La regla de la sustitución</h2>
+<p>En esta sección veremos una forma de calcular integrales de muchas funciones que se escapan de los casos que aparecen en las tablas vistas hasta el momento.</p>
+<p>Si <span class="math inline">\(F\)</span> es una primitiva o antiderivada de <span class="math inline">\(f\)</span> y <span class="math inline">\(g\)</span> es una función derivable, entonces la composición <span class="math inline">\(F\circ g\)</span> es una primitiva de <span class="math inline">\(f(g(x))g'(x)\)</span>. En efecto, utilizando la regla de la cadena</p>
+<p><span class="math display">\[
+\frac{d}{dx}\left(F(g(x))\right)=\frac{dF}{dx}(g(x))\frac{dg}{dx}(x)=F'(g(x))
+g'(x)=f(g(x))g'(x).
+\]</span></p>
+<p>En términos de integrales indefinidas, la igualdad de arriba puede expresarse como</p>
+<p><span class="math display">\[
+\int f(g(x))g'(x)\,dx=F(g(x))+C.
+\]</span></p>
+<p>Si llamamos <span class="math inline">\(u=g(x)\)</span> entonces tenemos que <span class="math inline">\(\displaystyle \frac{du}{dx}(x)=g'(x)\)</span> y entonces podemos reescribir lo anterior como</p>
+<p><span class="math display">\[
+\int f(u)\frac{du}{dx}\,dx=F(u)+C=\int f(u)\,du.
+\]</span></p>
+<p>En definitiva, si tenemos una integral de la forma <span class="math inline">\(\int f(g(x))g'(x)\,dx\)</span> podemos transformarla en la integral <span class="math inline">\(\int f(u)\,du\)</span> haciendo la <strong>sustitución</strong> o <strong>cambio de variable</strong> <span class="math inline">\(u=g(x)\)</span>.</p>
+<div id="teo-regla-sustitucion" class="theorem">
+<p>Regla de sustitución</p>
+<p>Si <span class="math inline">\(u=g(x)\)</span> es una función derivable con rango <span class="math inline">\(I\)</span> y <span class="math inline">\(f\)</span> es continua sobre <span class="math inline">\(I\)</span>, entonces</p>
+<p><span class="math display">\[
+\int f(g(x))g'(x)\,dx=\int f(u)\,du
+\]</span></p>
+</div>
+<p>Por ejemplo, si queremos calcular</p>
+<p><span class="math display">\[
+\int 2x \sqrt{1+x^2}\, dx
+\]</span></p>
+<p>escribimos <span class="math inline">\(f(x)=\sqrt{x}\)</span> y <span class="math inline">\(g(x)=1+x^2\)</span>, con lo que la integral anterior resulta</p>
+<p><span class="math display">\[
+\int f(g(x))g'(x)\, dx.
+\]</span></p>
+<p>En vistas de la <a href="#teo-regla-sustitucion">regla de sustitución</a>, si <span class="math inline">\(u=g(x)=1+x^2\)</span> podemos escribir</p>
+<p><span class="math display">\[
+\begin{aligned}
+\int 2x \sqrt{1+x^2}\, dx=\int f(g(x))g'(x)\, dx=\int f(u)\,du=\int \sqrt{u}\,du&amp;=\frac{2}{3}u^{3/2}+C\\
+\\
+&amp;=\frac{2}{3}(1+x^2)^{3/2}+C.
+\end{aligned}
+\]</span></p>
+<p>Una manera común de denotar esta sustitución en la práctica es la siguiente: si <span class="math inline">\(u=1+x^2\)</span>, entonces <span class="math inline">\(du=g'(x)\,dx=2x\,dx\)</span>, entonces sustituyendo directamente en la integral definida resulta</p>
+<p><span class="math display">\[
+\int 2x \sqrt{1+x^2}\, dx=\int \sqrt{u}\,du.
+\]</span></p>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Calcular la integral indefinida <span class="math display">\[
+\int x^3 \cos(x^4+2)\, dx.
+\]</span></p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-21-contents" aria-controls="callout-21" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-21" class="callout-21-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Haciendo la sustitución <span class="math inline">\(u = x^4 + 2\)</span> resulta que <span class="math inline">\(du=4x^3\,dx\)</span>, o equivalentemente <span class="math inline">\(\displaystyle  x^3\,dx = \tfrac{1}{4}\,du\)</span>. De esta manera</p>
+<p><span class="math display">\[
+\int x^3 \cos(x^4+2)\, dx = \tfrac{1}{4} \int \cos(u)\,du=\operatorname{sen} u+C=\operatorname{sen}(x^4+2)+C.
+\]</span></p>
+</div>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Calcular <span class="math inline">\(\displaystyle \int \frac{x}{\sqrt{1-4x^2}}\,dx\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-22-contents" aria-controls="callout-22" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-22" class="callout-22-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>En este caso parece razonable sustituir el polinomio dentro de la raíz por una nueva variable, ya que su derivada será de la forma <span class="math inline">\(ax\)</span>, y aparece en el numerador. Escribiendo <span class="math inline">\(u=1-4x^2\)</span> tenemos que <span class="math inline">\(du=-8x\,dx\)</span>. Esta expresión no coincide exactamente con el numerador, pero podemos hacerla aparecer multiplicando y dividiendo por <span class="math inline">\(-8\)</span>. En definitiva</p>
+<p><span class="math display">\[
+\begin{aligned}
+\int \frac{x}{\sqrt{1-4x^2}}\,dx=-\frac{1}{8}\int \frac{-8x}{\sqrt{1-4x^2}}\,dx=-\frac{1}{8}\int \frac{du}{\sqrt{u}}=-\frac{1}{8} \int u^{-1/2}\,du&amp; =-\frac{1}{8} 2u^{1/2}+C\\
+\\
+&amp;=-\frac{1}{4}\sqrt{1-4x^2}+C.
+\end{aligned}
+\]</span></p>
+</div>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Evaluar <span class="math inline">\(\displaystyle \int \sqrt{1+x^2}\,x^5\,dx\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-23-contents" aria-controls="callout-23" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-23" class="callout-23-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Si llamamos <span class="math inline">\(u=1+x^2\)</span>, resulta que <span class="math inline">\(du=2x\,dx\)</span>. Como el factor que acompaña a la raíz es <span class="math inline">\(x^5\)</span>, reescribimos <span class="math inline">\(x^5=x^4\cdot x=(x^2)^2\cdot x\)</span>, con lo cual</p>
+<p><span class="math display">\[
+\begin{aligned}
+\int \sqrt{1+x^2}\,x^5\,dx=\int\sqrt{1+x^2}\,(x^2)^2\cdot x \,dx
+&amp;=\frac{1}{2}\int \sqrt{u} (u-1)^2\,du\\
+\\
+&amp;=\frac{1}{2}\int \sqrt{u}(u^2-2u+1)\,du\\
+\\
+&amp;=\frac{1}{2}\int(u^{5/2}-2u^{3/2}+u^{1/2})\,du\\
+\\
+&amp;=\frac{1}{2}\left(\frac{2}{7}u^{7/2}-\frac{4}{5}u^{5/2}+\frac{2}{3}u^{3/2}\right)+C\\
+\\
+&amp;=\frac{1}{7}(1+x^2)^{7/2}-\frac{2}{5}(1+x^2)^{5/2}+\frac{1}{3}(1+x^2)^{3/2}+C.
+\end{aligned}
+\]</span></p>
+</div>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Calcular <span class="math inline">\(\displaystyle \int \tan x\,dx\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-24-contents" aria-controls="callout-24" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-24" class="callout-24-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Si escribimos <span class="math inline">\(\displaystyle \tan x=\frac{\operatorname{sen} x}{\cos x}\)</span>, entonces podemos hacer la sustitución <span class="math inline">\(u=\cos x\)</span>, con lo cual <span class="math inline">\(du=-\operatorname{sen} x\,dx\)</span>. Por lo tanto</p>
+<p><span class="math display">\[
+\int \tan x\,dx=\int \frac{\operatorname{sen} x}{\cos x}\,dx =-\int \frac{du}{u}=-\ln|u|+C=-\ln|\cos x|+C=\ln|\sec x|+C.
+\]</span></p>
+</div>
+</div>
+</div>
+<section id="sustitución-para-integrales-definidas" class="level3">
+<h3 class="anchored" data-anchor-id="sustitución-para-integrales-definidas">Sustitución para integrales definidas</h3>
+<p>Cuando trabajemos con integrales definidas también es posible aplicar la regla de sustitución. Por ejemplo, si quisiéramos calcular</p>
+<p><span class="math display">\[
+\int_0^1 2x\sqrt{1+x^2}\,dx,
+\]</span></p>
+<p>hemos visto que</p>
+<p><span class="math display">\[
+\int 2x\sqrt{1+x^2}\,dx=\frac{2}{3}(1+x^2)^{3/2}+C
+\]</span></p>
+<p>por lo que utilizando el teorema fundamental del cálculo, resultaría</p>
+<p><span class="math display">\[
+\int_0^1 2x\sqrt{1+x^2}\,dx=\left(\frac{2}{3}(1+x^2)^{3/2}\right)\Bigg{]}_{0}^1=\frac{2}{3}(1+1^2)^{3/2}-\frac{2}{3}(1+0^2)^{3/2}=\frac{2}{3}(2\sqrt{2}-1).
+\]</span></p>
+<p>Sin embargo, si queremos hacer todo en un sólo cálculo, es preciso <strong>cambiar</strong> los extremos de integración en función de la sustitución hecha, como establece la siguiente regla.</p>
+<div id="teo-sustitucion-definida" class="theorem">
+<p>Regla de sustitución para integrales definidas</p>
+<p>Si <span class="math inline">\(g'\)</span> es continua en <span class="math inline">\([a,b]\)</span> y <span class="math inline">\(f\)</span> es continua sobre el rango de <span class="math inline">\(g\)</span>, entonces</p>
+<p><span class="math display">\[
+\int_a^b f(g(x))g'(x)\,dx=\int_{g(a)}^{g(b)} f(u)\,du.
+\]</span></p>
+</div>
+<p>Si calculamos ahora <span class="math inline">\(\displaystyle \int_0^1 2x\sqrt{1+x^2}\,dx\)</span> usando esta regla, como <span class="math inline">\(u=g(x)=1+x^2\)</span>, tenemos que <span class="math inline">\(g(0)=1\)</span> y <span class="math inline">\(g(1)=2\)</span></p>
+<p><span class="math display">\[
+\int_0^1 2x\sqrt{1+x^2}\,dx=\int_1^2 \sqrt{u}\,du =\frac{2}{3}u^{3/2}\Big{]}_1^2=\frac{2}{3}\left(2^{3/2}-1^{3/2}\right)=\frac{2}{3}\left(2\sqrt{2}-1\right).
+\]</span></p>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Evaluar <span class="math inline">\(\displaystyle \int_0^4 \sqrt{2x+1}\,dx\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-25-contents" aria-controls="callout-25" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-25" class="callout-25-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Hacemos el cambio de variable <span class="math inline">\(u=2x+1\)</span>, con lo cual <span class="math inline">\(du=2\,dx\)</span>. Notar también que <span class="math inline">\(u=1\)</span> cuando <span class="math inline">\(x=0\)</span> y <span class="math inline">\(u=9\)</span> cuando <span class="math inline">\(x=4\)</span>. Utilizando la <a href="#teo-sustitucion-definida">regla de sustitución para integrales definidas</a> obtenemos</p>
+<p><span class="math display">\[
+\int_0^4 \sqrt{2x+1}\,dx=\frac{1}{2}\int_1^9\sqrt{u}\,du=\frac{1}{2}\left(\frac{2}{3}u^{3/2}\right)\Bigg{]}_1^9=\frac{1}{3}(27-1)=\frac{26}{3}.
+\]</span></p>
+</div>
+</div>
+</div>
+<p><a href="#seccion_5.5">↑ Volver al inicio de la sección</a></p>
+</section>
+</section>
+<section id="seccion_7.1" class="level2">
+<h2 class="anchored" data-anchor-id="seccion_7.1">7.1. Integración por partes</h2>
+<p>En la sección anterior explotamos la regla de la cadena para calcular integrales utilizando un cambio de variable. En esta sección estudiaremos otro método de integración, basado en la regla del producto para la derivación. Recordar que si <span class="math inline">\(f\)</span> y <span class="math inline">\(g\)</span> son funciones derivables, entonces</p>
+<p><span class="math display">\[
+(f(x)g(x))' = f'(x)g(x) + f(x)g'(x).
+\]</span></p>
+<p>Esta última igualdad nos dice que <span class="math inline">\(f(x)g(x)\)</span> es una antiderivada para la función <span class="math inline">\(f'(x)g(x) + f(x)g'(x)\)</span> o, en término de integrales indefinidas</p>
+<p><span class="math display">\[
+\int (f'(x)g(x) + f(x)g'(x))\,dx =f(x)g(x)+C.
+\]</span></p>
+<p>Como la integral se puede distribuir en la suma, también podemos escribir</p>
+<p><span class="math display">\[
+\int f'(x)g(x)\,dx + \int f(x)g'(x)\,dx =f(x)g(x)+C, \quad \text{ o de forma equivalente }
+\]</span></p>
+<div id="form-partes1" class="formula-box">
+<p><span class="math display">\[
+\int f(x)g'(x)\,dx = f(x)g(x) - \int f'(x)g(x)\,dx.
+\]</span></p>
+</div>
+<p>Esta expresión se conoce como <strong>fórmula de integración por partes</strong>. De manera alternativa, si denotamos <span class="math inline">\(u=f(x)\)</span> y <span class="math inline">\(v=g(x)\)</span> entonces formalmente podemos escribir <span class="math inline">\(du=f'(x)\,dx\)</span>, <span class="math inline">\(dv=g'(x)\,dx\)</span>, y así</p>
+<div id="form-partes2" class="formula-box">
+<p><span class="math display">\[
+\int udv = uv - \int vdu.
+\]</span></p>
+</div>
+<p>Este método de integración resulta útil cuando tenemos un producto de dos funciones, siendo una de ellas la derivada de otra función adecuada.</p>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Calcular <span class="math inline">\(\displaystyle \int x\operatorname{sen} x\,dx\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-26-contents" aria-controls="callout-26" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-26" class="callout-26-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li><p>Vamos a proceder primero utilizando la <a href="#form-partes1">primera fórmula</a> vista de integración por partes. Denotamos <span class="math inline">\(f(x)=x\)</span> y <span class="math inline">\(g'(x)=\operatorname{sen} x\)</span>. Por lo tanto, <span class="math inline">\(f'(x)=1\)</span> y <span class="math inline">\(g(x)=-\cos x\)</span> . De hecho, <span class="math inline">\(g\)</span> será cualquier antiderivada de <span class="math inline">\(g'\)</span>: podemos escribir <span class="math display">\[
+g(x)=\int g'(x)\,dx=\int \operatorname{sen} x\,dx=-\cos x+C,
+\]</span> y cualquier valor fijo de <span class="math inline">\(C\)</span> servirá. Por comodidad, en general tomaremos <span class="math inline">\(C=0\)</span>.</p>
+<p>Aplicando la fórmula de integración por partes obtenemos <span class="math display">\[
+\begin{aligned}
+\int x\operatorname{sen} x\,dx=\int f(x)g'(x)\,dx&amp;=f(x)g(x)-\int f'(x)g(x)\,dx\\
+\\
+&amp;=-x\cos x-\int 1\cdot (-\cos x)\,dx=-x\cos x+\int \cos x\,dx\\
+&amp;=-x\cos x+\operatorname{sen } x + C.
+\end{aligned}
+\]</span></p></li>
+<li><p>Utilicemos ahora la <a href="#form-partes2">segunda fórmula</a> de integración por partes. Si llamamos <span class="math inline">\(u=x\)</span> y <span class="math inline">\(dv=\operatorname{sen} x\,dx\)</span>, entonces tenemos que <span class="math inline">\(du=dx\)</span> y <span class="math inline">\(v=-\cos x\)</span>, con lo cual</p></li>
+</ul>
+<p><span class="math display">\[
+\int u\,dv=uv-\int v\,du=-x\cos x-\int (-\cos x)\,dx=-x\cos x+\operatorname{sen} x+C.
+\]</span></p>
+</div>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Encontrar <span class="math inline">\(\displaystyle \int \ln x\,dx\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-27-contents" aria-controls="callout-27" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-27" class="callout-27-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>En este caso elegimos <span class="math inline">\(u=\ln x\)</span>, con lo que <span class="math inline">\(dv\)</span> será simplemente <span class="math inline">\(dx\)</span>. Con esta elección, <span class="math inline">\(\displaystyle du=\frac{1}{x}\,dx\)</span> y <span class="math inline">\(v=x\)</span>. Por lo tanto</p>
+<p><span class="math display">\[
+\int \ln x\,dx=x\ln x-\int x\frac{1}{x}\,dx=x\ln x-\int\,dx=x\ln x-x+C=x(\ln x-1)+C.
+\]</span></p>
+</div>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Hallar <span class="math inline">\(\displaystyle \int t^2e^t\,dt\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-28-contents" aria-controls="callout-28" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-28" class="callout-28-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>En este caso tenemos un producto de un polinomio por una exponencial. Como las derivadas de un polinomio bajan su grado en uno y la integral lo aumenta en uno, es conveniente elegir <span class="math inline">\(u=t^2\)</span> y <span class="math inline">\(dv=e^t\,dt\)</span>, ya que para el caso de la exponencial la derivada o la integral producirán como resultado la misma función. Entonces obtenemos <span class="math inline">\(du=2t\,dt\)</span> y <span class="math inline">\(v=e^t\)</span>, y usando la <a href="#form-partes2">fórmula de integración por partes</a> <span id="eq-ejemplo-polexp1"><span class="math display">\[
+\int t^2e^t\,dt=t^2e^t-2\int te^t\,dt.
+\tag{6.2}\]</span></span></p>
+<p>Vemos que aplicar el proceso de integrar por partes nos lleva a la integral <span class="math inline">\(\int te^t\,dt\)</span>. Calculémosla antes de continuar. Volviendo a usar la fórmula con <span class="math inline">\(u=t\)</span> y <span class="math inline">\(dv=e^t\,dt\)</span>, de donde <span class="math inline">\(du=dt\)</span> y <span class="math inline">\(v=e^t\)</span> resulta</p>
+<p><span class="math display">\[
+\int t e^t\,dt=te^t-\int e^t\,du=te^t-e^t+C.
+\]</span></p>
+<p>Volviendo a (<a href="#eq-ejemplo-polexp1" class="quarto-xref"><span>6.2</span></a>) obtenemos</p>
+<p><span class="math display">\[
+\int t^2e^t\,dt=t^2e^t-2\left(te^t-e^t+C\right)=t^2e^t-2te^t+2e^t-2C=e^t(t^2-2t+2)+C',
+\]</span></p>
+<p>donde <span class="math inline">\(C'=-2C\)</span>.</p>
+</div>
+</div>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Evaluar la integral <span class="math inline">\(\displaystyle \int e^x\operatorname{sen} x\,dx\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-29-contents" aria-controls="callout-29" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-29" class="callout-29-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>En este caso parece que no hay una elección mejor que otra, ya que tanto <span class="math inline">\(e^x\)</span> como <span class="math inline">\(\operatorname{sen} x\)</span> se pueden derivar e integrar fácilmente, produciendo funciones similares. Elijamos <span class="math inline">\(u=e^x\)</span> y <span class="math inline">\(dv=\operatorname{sen} x\)</span>,dx. Así, <span class="math inline">\(du=e^x\,dx\)</span> y <span class="math inline">\(v=-\cos x\)</span>. Aplicando la fórmula de integración por partes</p>
+<p><span id="eq-ejemplo-exptrig1"><span class="math display">\[
+\int e^x\operatorname{sen} x\,dx=-e^x\cos x+\int \cos x e^x\,dx.
+\tag{6.3}\]</span></span></p>
+<p>Para continuar, debemos calcular la integral <span class="math inline">\(\int \cos x\, e^x\,dx\)</span>. Para ello, volvemos a aplicar la fórmula de partes con <span class="math inline">\(u=e^x\)</span> y <span class="math inline">\(dv=\cos x\,dx\)</span>, resultando <span class="math inline">\(du=e^x\,dx\)</span> y <span class="math inline">\(v=\operatorname{sen} x\)</span>. Entonces</p>
+<p><span id="eq-ejemplo-exptrig2"><span class="math display">\[
+\int \cos x\, e^x\,dx=e^x\operatorname{sen} x-\int \operatorname{sen} x\,e^x\,dx.
+\tag{6.4}\]</span></span></p>
+<p>Pareciera ser que este procedimiento no dará resultado, pues intentando calcular la integral recaemos en otra, que a su vez depende de la primera. Sin embargo, si llamamos <span class="math inline">\(I=\int e^x\operatorname{sen} x\,dx\)</span> reemplazando la ecuación (<a href="#eq-ejemplo-exptrig2" class="quarto-xref"><span>6.4</span></a>) en la (<a href="#eq-ejemplo-exptrig1" class="quarto-xref"><span>6.3</span></a>) obtenemos</p>
+<p><span class="math display">\[
+I=-e^x\cos x+e^x \operatorname{sen} x-I,
+\]</span></p>
+<p>de donde</p>
+<p><span class="math display">\[
+2I=-e^x\cos x+e^x \operatorname{sen} x.
+\]</span></p>
+<p>De esta última expresión podemos despejar <span class="math inline">\(I\)</span>, y agregando la constante arbitraria <span class="math inline">\(C\)</span> resulta</p>
+<p><span class="math display">\[
+I=\frac{1}{2}\left(-e^x\cos x+e^x \operatorname{sen} x\right)+C.
+\]</span></p>
+<p>Por lo tanto</p>
+<p><span class="math display">\[
+\int e^x\operatorname{sen} x\,dx=\frac{1}{2}e^x\left(\operatorname{sen} x-\cos x\right)+C.
+\]</span></p>
+</div>
+</div>
+</div>
+<section id="integración-por-partes-en-integrales-definidas" class="level3">
+<h3 class="anchored" data-anchor-id="integración-por-partes-en-integrales-definidas">Integración por partes en integrales definidas</h3>
+<p>Si combinamos la <a href="#form-partes1">fórmula de integración por partes</a> con la regla de Barrow, obtenemos una manera de calcular integrales definidas con este método.</p>
+<div id="form-partes-definida" class="formula-box">
+<p><span class="math display">\[
+\int_a^b f(x)g'(x)\,dx = f(b)g(b) - f(a)g(a) - \int_a^b f'(x)g(x)\,dx.
+\]</span></p>
+</div>
+<div class="example-box">
+<div class="example-title">
+Ejemplo
+</div>
+<p>Calcular el valor de la integral <span class="math inline">\(\displaystyle \int_0^1 \arctan x\,dx\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-30-contents" aria-controls="callout-30" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-30" class="callout-30-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Como es más dificil integrar la función arcotangente que derivarla, elegimos <span class="math inline">\(u=\arctan x\)</span> y <span class="math inline">\(dv=dx\)</span>. De esta manera resultan</p>
+<p><span class="math display">\[
+du=\frac{1}{1+x^2}\,dx \quad \text{ y }\quad v=x.
+\]</span></p>
+<p>Aplicando la <a href="#form-partes-definida">fórmula de integración por partes para integrales definidas</a> resulta</p>
+<p><span id="eq-ejemplo-arctan"><span class="math display">\[
+\int_0^1 \arctan x\,dx=\left(x\arctan x\right)\Big{]}_{0}^1-\int_0^1 \frac{x}{1+x^2}\,dx.
+\tag{6.5}\]</span></span></p>
+<p>Antes de terminar, calculemos la integral definida resultante utilizando el método de sustitución. Si llamamos <span class="math inline">\(t=1+x^2\)</span>, entonces <span class="math inline">\(dt=2x\,dx\)</span> y los nuevos extremos de integración son <span class="math inline">\(1\)</span> y <span class="math inline">\(2\)</span>, respectivamente. Así</p>
+<p><span class="math display">\[
+\int_0^1 \frac{x}{1+x^2}\,dx=\frac{1}{2}\int_1^2 \frac{du}{u}=\frac{1}{2}\left(\ln |u|\right)\Big{]}_1^2=\frac{1}{2}(\ln 2-\ln 1)=\frac{\ln 2}{2}.
+\]</span></p>
+<p>Volviendo a la ecuación (<a href="#eq-ejemplo-arctan" class="quarto-xref"><span>6.5</span></a>) obtenemos</p>
+<p><span class="math display">\[
+\int_0^1 \arctan x\,dx=1\cdot \arctan 1-0\cdot \arctan 0-\frac{\ln 2}{2}=\frac{\pi}{4}-\frac{\ln 2}{2}=\frac{\pi-\ln 4}{4}.
+\]</span></p>
+</div>
+</div>
+</div>
+<p><a href="#seccion_7.1">↑ Volver al inicio de la sección</a></p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./cap4.html" class="pagination-link" aria-label="4. Aplicaciones de la derivación">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">4. Aplicaciones de la derivación</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./cap6.html" class="pagination-link" aria-label="6. Aplicaciones de la integración">
+        <span class="nav-page-text"><span class="chapter-title">6. Aplicaciones de la integración</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
