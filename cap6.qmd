@@ -153,7 +153,7 @@ $$
 
 :::
 
-### Áreas integrando con respecto a $y$
+### Áreas integrando respecto a $y$
 
 En algunos casos es conveniente expresar a $x$ como una función de $y$. 
 

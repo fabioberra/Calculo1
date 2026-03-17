@@ -191,12 +191,40 @@ body {
 }
 
 
+/* TABLA CON ESTILO */
 
+.styled-table table {
+  border-collapse: collapse;
+  width: 100%;
+  text-align: center;
+}
 
+.styled-table th {
+  background-color: #4F81BD; /* azul encabezado */
+  color: white;
+  padding: 8px;
+}
 
+.styled-table td {
+  padding: 6px;
+  border: 1px solid #ccc;
+}
 
+/* Columna Teoría */
+.styled-table td:nth-child(2),
+.styled-table td:nth-child(3) {
+  background-color: #DCE6F1; /* celeste */
+}
 
+/* Columna Práctica */
+.styled-table td:nth-child(4),
+.styled-table td:nth-child(5) {
+  background-color: #EAF1DD; /* verde claro */
+}
 
-
+/* Filas alternadas */
+.styled-table tr:nth-child(even) td {
+  opacity: 0.95;
+}
 
 

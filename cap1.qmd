@@ -62,7 +62,7 @@ Dado el siguiente gráfico
 ::: {.callout-tip collapse="true"}
 ## Solución
 
-Observando el gráfico de la función podemos ver que $f(1)=0$ y que $f(2)=-1$. El dominio de $f$ es $D=[1,3]$ y el rango corresponde al intervalo $[-1,2]$.
+Observando el gráfico de la función podemos ver que $f(1)=0$ y que $f(2)=-1$. El dominio de $f$ es $D=[0,3]$ y el rango corresponde al intervalo $[-1,2]$.
 :::
 
 ::: {.example-box}
