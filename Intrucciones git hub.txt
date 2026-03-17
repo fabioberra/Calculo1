@@ -5,3 +5,7 @@ git push -u origin main
 
 git config --global user.name "Fabio Berra"
 git config --global user.email "fabiomb08@gmail.com"
+
+git add .
+git commit -m "Versión nueva"
+git push
