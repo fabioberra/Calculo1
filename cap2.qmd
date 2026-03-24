@@ -396,7 +396,7 @@ $$
 Notemos que $H(t)$ se aproxima a 1 cuando $t$ se aproxima a cero por la derecha, y se aproxima a 0 cuando $t$ se acerca a cero por la izquierda. Esto podemos escribirlo como
 
 $$
-\lim_{t\to 0^+} H(t)=1 \quad \text{ y } \quad \lim_{t\to 0^-} H(t)=1.
+\lim_{t\to 0^+} H(t)=1 \quad \text{ y } \quad \lim_{t\to 0^-} H(t)=0.
 $$
 
 No hay un único valor $L$ al que $H(t)$ se aproxime cuando $t$ tiende a cero, por lo que el límite $\lim_{t\to 0} H(t)$ no existe. 
