@@ -187,10 +187,12 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#el-problema-de-la-tangente" id="toc-el-problema-de-la-tangente" class="nav-link" data-scroll-target="#el-problema-de-la-tangente">El problema de la tangente</a></li>
   <li><a href="#el-problema-de-la-velocidad" id="toc-el-problema-de-la-velocidad" class="nav-link" data-scroll-target="#el-problema-de-la-velocidad">El problema de la velocidad</a></li>
-  <li><a href="#seccion_2.2" id="toc-seccion_2.2" class="nav-link" data-scroll-target="#seccion_2.2">2.2. Límite de una función</a></li>
-  <li><a href="#límites-infinitos" id="toc-límites-infinitos" class="nav-link" data-scroll-target="#límites-infinitos">Límites infinitos</a></li>
-  <li><a href="#seccion_2.3" id="toc-seccion_2.3" class="nav-link" data-scroll-target="#seccion_2.3">2.3. Leyes de los límites</a></li>
   </ul></li>
+  <li><a href="#seccion_2.2" id="toc-seccion_2.2" class="nav-link" data-scroll-target="#seccion_2.2">2.2. Límite de una función</a>
+  <ul class="collapse">
+  <li><a href="#límites-infinitos" id="toc-límites-infinitos" class="nav-link" data-scroll-target="#límites-infinitos">Límites infinitos</a></li>
+  </ul></li>
+  <li><a href="#seccion_2.3" id="toc-seccion_2.3" class="nav-link" data-scroll-target="#seccion_2.3">2.3. Leyes de los límites</a></li>
   <li><a href="#seccion_2.5" id="toc-seccion_2.5" class="nav-link" data-scroll-target="#seccion_2.5">2.5. Continuidad</a></li>
   <li><a href="#seccion_2.6" id="toc-seccion_2.6" class="nav-link" data-scroll-target="#seccion_2.6">2.6. Límites al infinito, asíntotas horizontales</a>
   <ul class="collapse">
@@ -419,8 +421,9 @@ m_{PQ}=\frac{4.9\,(a+h)^2- 4.9\,a^2}{(a+h)-a}=\frac{4.9\,(a+h)^2- 4.9\,a^2}{h}.
 <p>Luego, la velocidad instantánea representa la pendiente de la recta tangente en el punto <span class="math inline">\(P\)</span>, que es el límite de las velocidades promedio dadas por las pendientes de las rectas secantes <span class="math inline">\(m_{PQ}\)</span> conforme <span class="math inline">\(Q\)</span> se aproxima a <span class="math inline">\(P\)</span>.</p>
 <p><a href="#seccion_2.1">↑ Volver al inicio de la sección</a></p>
 </section>
-<section id="seccion_2.2" class="level3">
-<h3 class="anchored" data-anchor-id="seccion_2.2">2.2. Límite de una función</h3>
+</section>
+<section id="seccion_2.2" class="level2">
+<h2 class="anchored" data-anchor-id="seccion_2.2">2.2. Límite de una función</h2>
 <p>En esta sección definiremos el concepto de <strong>límite</strong> de una función, surgido al intentar calcular la recta tangente a una curva dada. Consideremos <span class="math inline">\(f(x)=x^2-x+2\)</span> y observemos los valores de <span class="math inline">\(f\)</span> cuando <span class="math inline">\(x\)</span> está cerca de 2.</p>
 <div class="math-table">
 <table class="caption-top table">
@@ -886,7 +889,7 @@ H(t)=
 </div>
 <p>Notemos que <span class="math inline">\(H(t)\)</span> se aproxima a 1 cuando <span class="math inline">\(t\)</span> se aproxima a cero por la derecha, y se aproxima a 0 cuando <span class="math inline">\(t\)</span> se acerca a cero por la izquierda. Esto podemos escribirlo como</p>
 <p><span class="math display">\[
-\lim_{t\to 0^+} H(t)=1 \quad \text{ y } \quad \lim_{t\to 0^-} H(t)=1.
+\lim_{t\to 0^+} H(t)=1 \quad \text{ y } \quad \lim_{t\to 0^-} H(t)=0.
 \]</span></p>
 <p>No hay un único valor <span class="math inline">\(L\)</span> al que <span class="math inline">\(H(t)\)</span> se aproxime cuando <span class="math inline">\(t\)</span> tiende a cero, por lo que el límite <span class="math inline">\(\lim_{t\to 0} H(t)\)</span> no existe.</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Definición (Límites laterales)">
@@ -947,7 +950,31 @@ Ejemplo
 </figure>
 </div>
 </div>
-</section>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solución
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Observando el gráfico vemos que <span class="math inline">\(g\)</span> se aproxima a 3 cuando <span class="math inline">\(x\)</span> se acerca a 2 por la izquierda, y a 1 cuando <span class="math inline">\(x\)</span> se aproxima a 2 por la derecha. En consecuencia</p>
+<p><span class="math display">\[
+\lim_{x\to 2^-}g(x)=3\quad \text{ y } \quad \lim_{x\to 2^+} g(x)=1.
+\]</span></p>
+<p>Como los límites laterales son distintos, concluimos que el límite <span class="math inline">\(\lim_{x\to 2} g(x)\)</span> no existe.</p>
+<p>Por otra parte, también podemos ver que <span class="math inline">\(g\)</span> se aproxima a 2 cuando <span class="math inline">\(x\)</span> se acerca a 5, tanto por la derecha como por la izquierda, con lo cual</p>
+<p><span class="math display">\[
+\lim_{x\to 5^-} g(x)=2=\lim_{x\to 5^+} g(x),
+\]</span></p>
+<p>y en conclusión <span class="math inline">\(\lim_{x\to 5} g(x)=2\)</span>. Notar que <span class="math inline">\(g(5)=1\neq 2\)</span>, sin embargo esto no infliuye en el cálculo del límite pues al hacerlo consideramos <span class="math inline">\(x\neq 5\)</span>.</p>
+</div>
+</div>
+</div>
 <section id="límites-infinitos" class="level3">
 <h3 class="anchored" data-anchor-id="límites-infinitos">Límites infinitos</h3>
 <p>Vamos a investigar a continuación el comportamiento de la función</p>
@@ -1018,13 +1045,13 @@ Ejemplo
 <p>Esto no significa que consideremos a <span class="math inline">\(\infty\)</span> como un número ni que el límite dado exista. La notación sólamente establece de qué manera el límite no existe.</p>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="Definición (Límites laterales)">
+<div class="callout callout-style-default callout-note callout-titled" title="Definición (Límites infinitos)">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Definición (Límites laterales)
+<span class="screen-reader-only">Note</span>Definición (Límites infinitos)
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1122,7 +1149,7 @@ Ejemplo
 \]</span></p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1131,7 +1158,7 @@ Ejemplo
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div id="callout-15" class="callout-15-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Veamos primero <span class="math inline">\(\lim_{x\to 3^+} \frac{2x}{x-3}\)</span>. Notemos que el denominador se aproxima a cero y el numerador a <span class="math inline">\(6\neq 0\)</span>, con lo que el límite resultará infinito. Para saber si es <span class="math inline">\(\infty\)</span> o <span class="math inline">\(-\infty\)</span>, observemos que <span class="math inline">\(x\to 3^+\)</span> implica que <span class="math inline">\(x&gt;3\)</span>, lo que equivale a que <span class="math inline">\(x-3&gt;0\)</span>. Entonces al ser numerador y denominador positivos para todo <span class="math inline">\(x&gt;3\)</span> resulta</p>
 <p><span class="math display">\[
@@ -1151,7 +1178,7 @@ Ejemplo
 <p>Hallar las asíntotas verticales de <span class="math inline">\(f(x)=\tan x\)</span>.</p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1160,9 +1187,9 @@ Ejemplo
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div id="callout-16" class="callout-16-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Recordemos que <span class="math inline">\(\tan x=\frac{\operatorname{sen} x}{\cos x}\)</span>, por lo tanto tendremos posibles asíntotas verticales cuando <span class="math inline">\(\cos x=0\)</span>. Esto ocurre, por ejemplo, cuando <span class="math inline">\(x=\pi/2\)</span>. En este caso, si <span class="math inline">\(x\)</span> está cerca de <span class="math inline">\(\pi/2\)</span> y <span class="math inline">\(x&gt;pi/2\)</span>, <span class="math inline">\(\cos x\)</span> se aproxima a cero con valores negativos, mientras que <span class="math inline">\(\operatorname{sen} x\)</span> se aproxima a 1. Con lo cual</p>
+<p>Recordemos que <span class="math inline">\(\tan x=\frac{\operatorname{sen} x}{\cos x}\)</span>, por lo tanto tendremos posibles asíntotas verticales cuando <span class="math inline">\(\cos x=0\)</span>. Esto ocurre, por ejemplo, cuando <span class="math inline">\(x=\pi/2\)</span>. En este caso, si <span class="math inline">\(x\)</span> está cerca de <span class="math inline">\(\pi/2\)</span> y <span class="math inline">\(x&gt;\pi/2\)</span>, <span class="math inline">\(\cos x\)</span> se aproxima a cero con valores negativos, mientras que <span class="math inline">\(\operatorname{sen} x\)</span> se aproxima a 1. Con lo cual</p>
 <p><span class="math display">\[
 \lim_{x\to (\pi/2)^+} \tan x=-\infty.
 \]</span></p>
@@ -1179,12 +1206,13 @@ x=\left(2n+1\right)\frac{\pi}{2} \quad \text{ con }\quad n\in\mathbb{Z}.
 </div>
 <p><a href="#seccion_2.2">↑ Volver al inicio de la sección</a></p>
 </section>
-<section id="seccion_2.3" class="level3">
-<h3 class="anchored" data-anchor-id="seccion_2.3">2.3. Leyes de los límites</h3>
+</section>
+<section id="seccion_2.3" class="level2">
+<h2 class="anchored" data-anchor-id="seccion_2.3">2.3. Leyes de los límites</h2>
 <p>Hasta ahora hemos conjeturado el valor de ciertos límites a partir de una tabla o de observar el comportamiento de sus gráficos.</p>
 <p>En esta sección calcularemos los límites utilizando propiedades, lo que nos conducirá a los valores exactos, cuando estos límites existen.</p>
-<div id="thm-leyes-limites" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 3.1</strong></span> Propiedad (Leyes de los límites)</p>
+<div id="teo-leyes-limites" class="theorem">
+<p>Propiedad (Leyes de los límites)</p>
 <p>Sea <span class="math inline">\(c\)</span> una constante y supongamos que los límites <span class="math display">\[
 \lim_{x\to a} f(x) \quad \text{ y } \quad \lim_{x\to a}g(x)
 \]</span></p>
@@ -1234,7 +1262,7 @@ Ejemplo
 </ol>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1243,7 +1271,7 @@ Ejemplo
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-16" class="callout-16-contents callout-collapse collapse">
+<div id="callout-17" class="callout-17-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Comencemos con el primer límite. Utilizando la ley <strong>(6)</strong> con <span class="math inline">\(n=2\)</span> junto a la ley <strong>(8)</strong> obtenemos que</p>
 <p><span class="math display">\[
@@ -1292,7 +1320,7 @@ Ejemplo
 <p>Hallar <span class="math inline">\(\displaystyle \lim_{x\to 1} \frac{x^2-1}{x-1}\)</span>.</p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1301,7 +1329,7 @@ Ejemplo
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-17" class="callout-17-contents callout-collapse collapse">
+<div id="callout-18" class="callout-18-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Recordemos que a los efectos de operar con límites importan los valores de <span class="math inline">\(f(x)\)</span> para <span class="math inline">\(x\)</span> cerca de <span class="math inline">\(1\)</span>, pero <span class="math inline">\(x\neq 1\)</span>. Si tomamos <span class="math inline">\(x\neq 1\)</span> entonces podemos escribir</p>
 <p><span class="math display">\[
@@ -1336,7 +1364,7 @@ x+1 &amp; \text{ si } x\neq 1,\\
 \]</span></p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1345,7 +1373,7 @@ x+1 &amp; \text{ si } x\neq 1,\\
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-18" class="callout-18-contents callout-collapse collapse">
+<div id="callout-19" class="callout-19-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>En este caso sabemos que <span class="math inline">\(g(x)=x+1\)</span> para todo <span class="math inline">\(x\neq 1\)</span>. Por lo tanto</p>
 <p><span class="math display">\[
@@ -1362,7 +1390,7 @@ Ejemplo
 <p>Calcular <span class="math inline">\(\displaystyle \lim_{h\to 0} \frac{(3+h)^2-9}{h}\)</span>.</p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-20-contents" aria-controls="callout-20" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1371,7 +1399,7 @@ Ejemplo
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-19" class="callout-19-contents callout-collapse collapse">
+<div id="callout-20" class="callout-20-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Procedemos como antes. Primero consideramos <span class="math inline">\(h\neq 0\)</span> y escribimos</p>
 <p><span class="math display">\[
@@ -1391,7 +1419,7 @@ Ejemplo
 <p>Encontrar <span class="math inline">\(\displaystyle \lim_{t\to 0} \frac{\sqrt{t^2+9}-3}{t^2}\)</span>.</p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-20-contents" aria-controls="callout-20" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-21-contents" aria-controls="callout-21" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1400,7 +1428,7 @@ Ejemplo
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-20" class="callout-20-contents callout-collapse collapse">
+<div id="callout-21" class="callout-21-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Consideremos <span class="math inline">\(t\neq 0\)</span>. Multiplicando y dividiendo por <span class="math inline">\(\sqrt{t^2+9}+3\)</span> obtenemos</p>
 <p><span class="math display">\[
@@ -1444,7 +1472,7 @@ Ejemplo
 <p>Demostrar que <span class="math inline">\(\displaystyle \lim_{x\to 0} |x|=0\)</span>.</p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-21-contents" aria-controls="callout-21" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-22-contents" aria-controls="callout-22" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1453,7 +1481,7 @@ Ejemplo
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-21" class="callout-21-contents callout-collapse collapse">
+<div id="callout-22" class="callout-22-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Vale la pena recordar la definición de valor absoluto vista en la Sección 1.1</p>
 <p><span class="math display">\[
@@ -1485,7 +1513,7 @@ Ejemplo
 <p>Comprobar que el límite <span class="math inline">\(\displaystyle \lim_{x\to 0} \frac{|x|}{x}\)</span> no existe.</p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-22-contents" aria-controls="callout-22" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-23-contents" aria-controls="callout-23" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1494,7 +1522,7 @@ Ejemplo
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-22" class="callout-22-contents callout-collapse collapse">
+<div id="callout-23" class="callout-23-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Nuevamente estudiamos los límites laterales, ya que aparece <span class="math inline">\(|x|\)</span> en la expresión de la función.</p>
 <p><span class="math display">\[
@@ -1522,7 +1550,7 @@ f(x)=
 <p>Determinar, si existe, <span class="math inline">\(\lim_{x\to 4} f(x)\)</span>.</p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-23-contents" aria-controls="callout-23" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-24-contents" aria-controls="callout-24" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1531,7 +1559,7 @@ f(x)=
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-23" class="callout-23-contents callout-collapse collapse">
+<div id="callout-24" class="callout-24-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>La función <span class="math inline">\(f\)</span> está definida de formas distintas a la derecha e izquierda de <span class="math inline">\(x=4\)</span>, con lo cual analizamos los límites laterales.</p>
 <p><span class="math display">\[
@@ -1579,7 +1607,7 @@ Ejemplo
 <p>Demostrar que <span class="math inline">\(\displaystyle \lim_{x\to 0} x^2\operatorname{sen}\left(\frac{1}{x}\right)=0\)</span>.</p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-24-contents" aria-controls="callout-24" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-25-contents" aria-controls="callout-25" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1588,7 +1616,7 @@ Ejemplo
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-24" class="callout-24-contents callout-collapse collapse">
+<div id="callout-25" class="callout-25-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Sea <span class="math inline">\(x\neq 0\)</span>. Observemos primero que</p>
 <p><span class="math display">\[
@@ -1610,7 +1638,6 @@ Ejemplo
 </div>
 </div>
 <p><a href="#seccion_2.3">↑ Volver al inicio de la sección</a></p>
-</section>
 </section>
 <section id="seccion_2.5" class="level2">
 <h2 class="anchored" data-anchor-id="seccion_2.5">2.5. Continuidad</h2>
@@ -1656,7 +1683,7 @@ Ejemplo
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-26-contents" aria-controls="callout-26" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-27-contents" aria-controls="callout-27" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1665,7 +1692,7 @@ Ejemplo
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-26" class="callout-26-contents callout-collapse collapse">
+<div id="callout-27" class="callout-27-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Observando el gráfico podemos decir que <span class="math inline">\(f\)</span> es discontinua en <span class="math inline">\(x=1\)</span> dado que <span class="math inline">\(f(1)\)</span> no existe.</p>
 <p>Por otro lado, notemos que <span class="math inline">\(f(3)\)</span> existe pero <span class="math inline">\(\displaystyle \lim_{x\to 3} f(x)\)</span> no, con lo cual <span class="math inline">\(f\)</span> también es discontinua en <span class="math inline">\(x=3\)</span>.</p>
@@ -1699,7 +1726,7 @@ Ejemplo
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-27-contents" aria-controls="callout-27" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-28-contents" aria-controls="callout-28" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1708,7 +1735,7 @@ Ejemplo
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-27" class="callout-27-contents callout-collapse collapse">
+<div id="callout-28" class="callout-28-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Comencemos con <span class="math inline">\(f_1\)</span>. Si factorizamos el polinomio del numerador obtenemos</p>
 <p><span class="math display">\[
@@ -1804,7 +1831,7 @@ Ejemplo
 <p>Mostrar que <span class="math inline">\(f(x)=1-\sqrt{1-x^2}\)</span> es continua sobre el intervalo <span class="math inline">\([-1,1]\)</span>.</p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-30-contents" aria-controls="callout-30" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-31-contents" aria-controls="callout-31" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1813,7 +1840,7 @@ Ejemplo
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-30" class="callout-30-contents callout-collapse collapse">
+<div id="callout-31" class="callout-31-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Consideremos primero <span class="math inline">\(-1&lt;a&lt;1\)</span>. Dado que <span class="math inline">\(1-a^2&gt;0\)</span>, por la ley <strong>(11)</strong> de límites obtenemos que</p>
 <p><span class="math display">\[
@@ -1871,7 +1898,7 @@ f(x)=\frac{x^3+2x^2-1}{5-3x}.
 \]</span></p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-31-contents" aria-controls="callout-31" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-32-contents" aria-controls="callout-32" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1880,7 +1907,7 @@ f(x)=\frac{x^3+2x^2-1}{5-3x}.
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-31" class="callout-31-contents callout-collapse collapse">
+<div id="callout-32" class="callout-32-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Notemos que <span class="math inline">\(f\)</span> es racional y <span class="math inline">\(-2\in D_f\)</span>, por lo que usando la <a href="#teo-sust-directa">propiedad de sustitución directa</a> obtenemos</p>
 <p><span class="math display">\[
@@ -1917,7 +1944,7 @@ Ejemplo
 <p>¿Dónde es continua la función <span class="math inline">\(\displaystyle f(x)=\frac{\ln x+\arctan x}{x^2-1}\)</span>?</p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-32-contents" aria-controls="callout-32" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-33-contents" aria-controls="callout-33" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1926,7 +1953,7 @@ Ejemplo
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-32" class="callout-32-contents callout-collapse collapse">
+<div id="callout-33" class="callout-33-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Notemos que <span class="math inline">\(y=\ln x\)</span> e <span class="math inline">\(y=\arctan x\)</span> son continuas en sus respectivos dominios, es decir, en <span class="math inline">\((0,\infty)\)</span> y <span class="math inline">\(\mathbb{R}\)</span>. Por lo tanto el numerador de <span class="math inline">\(f\)</span> es continuo en <span class="math inline">\((0,\infty)\)</span>.</p>
 <p>Por otro lado, <span class="math inline">\(y=x^2-1\)</span> es continua en <span class="math inline">\(\mathbb{R}\)</span> por ser un polinomio, y el cociente será continuo en todos los puntos de <span class="math inline">\((0,\infty)\)</span> tales que <span class="math inline">\(x^2-1\neq 0\)</span>. Por lo tanto, <span class="math inline">\(f\)</span> es continua en <span class="math inline">\((0,1)\cup (1,\infty)\)</span>.</p>
@@ -1940,7 +1967,7 @@ Ejemplo
 <p>Hallar <span class="math inline">\(\displaystyle \lim_{x\to \pi} \frac{\operatorname{sen} x}{2+\cos x}\)</span>.</p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-33-contents" aria-controls="callout-33" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-34-contents" aria-controls="callout-34" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1949,7 +1976,7 @@ Ejemplo
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-33" class="callout-33-contents callout-collapse collapse">
+<div id="callout-34" class="callout-34-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Como <span class="math inline">\(y=\operatorname{sen} x\)</span> e <span class="math inline">\(y=2+\cos x\)</span> son funciones continuas en <span class="math inline">\(x=\pi\)</span> y <span class="math inline">\(2+\cos \pi =1\neq 0\)</span>, el cociente es continuo y por lo tanto</p>
 <p><span class="math display">\[
@@ -1976,7 +2003,7 @@ Ejemplo
 <p>Calcular <span class="math inline">\(\displaystyle \lim_{x\to 1} \operatorname{arcsen}\left(\frac{1-\sqrt{x}}{1-x}\right)\)</span>.</p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-34-contents" aria-controls="callout-34" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-35-contents" aria-controls="callout-35" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1985,7 +2012,7 @@ Ejemplo
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-34" class="callout-34-contents callout-collapse collapse">
+<div id="callout-35" class="callout-35-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Sean <span class="math inline">\(f(x)=\operatorname{arcsen} x\)</span> y <span class="math inline">\(g(x)=\displaystyle \frac{1-\sqrt{x}}{1-x}\)</span>. Calculamos primero <span class="math inline">\(\lim_{x\to 1} g(x)\)</span>. En efecto, si <span class="math inline">\(x\neq 1\)</span> escribimos</p>
 <p><span class="math display">\[
@@ -2017,7 +2044,7 @@ Ejemplo
 </ul>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-35-contents" aria-controls="callout-35" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-36-contents" aria-controls="callout-36" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -2026,7 +2053,7 @@ Ejemplo
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-35" class="callout-35-contents callout-collapse collapse">
+<div id="callout-36" class="callout-36-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Podemos expresar <span class="math inline">\(h(x)=f(g(x))\)</span>, donde <span class="math inline">\(f(x)=\operatorname{sen} x\)</span> y <span class="math inline">\(g(x)=x^2\)</span>. Si <span class="math inline">\(x\in \mathbb{R}\)</span>, entonces <span class="math inline">\(g\)</span> es continua en <span class="math inline">\(x\)</span> por ser un polinomio y además <span class="math inline">\(g(x)\in [0,+\infty)\)</span>. Como <span class="math inline">\(f\)</span> es continua en <span class="math inline">\(\mathbb{R}\)</span>, en particular es continua en <span class="math inline">\([0,+\infty)\)</span>. Por lo tanto, el <a href="#teo-continuidad-composicion">teorema de la continuidad de la composición</a> establece que <span class="math inline">\(h\)</span> es continua en <span class="math inline">\(\mathbb{R}\)</span>.</p>
 <p>Para el segundo caso, escribimos <span class="math inline">\(F(x)=f(g(x))\)</span> siendo <span class="math inline">\(f(x)=\ln x\)</span> y <span class="math inline">\(g(x)=1+\cos x\)</span>. Notemos que <span class="math inline">\(g\)</span> es continua en <span class="math inline">\(\mathbb{R}\)</span> y <span class="math inline">\(f\)</span> es continua en <span class="math inline">\((0,+\infty)\)</span>, por lo tanto la composición <span class="math inline">\(F\)</span> será continua en todos los puntos <span class="math inline">\(x\)</span> tales que <span class="math inline">\(1+\cos x&gt;0\)</span>. Dado que <span class="math inline">\(\cos x\geq -1\)</span>, la desigualdad anterior se cumple siempre y cuando <span class="math inline">\(1+\cos x\neq 0\)</span>, es decir, cuando <span class="math inline">\(\cos x \neq -1\)</span>.</p>
@@ -2055,7 +2082,7 @@ Ejemplo
 <p>Demostrar que existe una raíz <span class="math inline">\(r\)</span> de la ecuación <span class="math inline">\(4x^3-6x^2+3x-2=0\)</span> que cumple <span class="math inline">\(1&lt;r&lt;2\)</span>.</p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-36-contents" aria-controls="callout-36" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-37-contents" aria-controls="callout-37" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -2064,7 +2091,7 @@ Ejemplo
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-36" class="callout-36-contents callout-collapse collapse">
+<div id="callout-37" class="callout-37-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Definimos <span class="math inline">\(f(x)=4x^3-6x^2+3x-2\)</span>. Entonces <span class="math inline">\(f\)</span> es continua por ser un polinomio. En particular, <span class="math inline">\(f\)</span> es continua en el intervalo <span class="math inline">\([1,2]\)</span>. Además <span class="math inline">\(f(1)=-1&lt;0\)</span> y <span class="math inline">\(f(2)=12&gt;0\)</span>, es decir, <span class="math inline">\(f(1)&lt;0&lt;f(2)\)</span>. Por el <a href="#teo-valor-intermedio">teorema del valor intermedio</a> existe un número <span class="math inline">\(c\in (1,2)\)</span> tal que <span class="math inline">\(f(c)=0\)</span> y esto nos dice que <span class="math inline">\(c\)</span> es una raíz de la ecuación dada.</p>
 </div>
@@ -2212,7 +2239,7 @@ f(x)= \frac{x^2-1}{x^2+1}
 <p><span class="math display">\[
 \lim_{x\to \infty } \arctan x=\frac{\pi}{2} \quad \text{ y }\quad  \lim_{x\to -\infty } \arctan x=-\frac{\pi}{2}.
 \]</span></p>
-<p>La mayor parte de las <a href="#thm-leyes-limites">leyes de los límites</a> que estudiamos en la <a href="#seccion_2.3">Sección 2.3</a> también se cumple para límites en el infinito. Las leyes vistas (con excepción de la <strong>(9)</strong> y la <strong>(10)</strong>) siguen siendo válidas reemplazando <span class="math inline">\(x\to a\)</span> por <span class="math inline">\(x \to \infty\)</span> o <span class="math inline">\(x\to -\infty\)</span>.</p>
+<p>La mayor parte de las <a href="#teo-leyes-limites">leyes de los límites</a> que estudiamos en la <a href="#seccion_2.3">Sección 2.3</a> también se cumple para límites en el infinito. Las leyes vistas (con excepción de la <strong>(9)</strong> y la <strong>(10)</strong>) siguen siendo válidas reemplazando <span class="math inline">\(x\to a\)</span> por <span class="math inline">\(x \to \infty\)</span> o <span class="math inline">\(x\to -\infty\)</span>.</p>
 <div class="theorem">
 <p>Teorema</p>
 <p>Sea <span class="math inline">\(r&gt;0\)</span> un número racional. Entonces</p>
@@ -2231,7 +2258,7 @@ Ejemplo
 <p>e indicar las propiedades que se utilizan en cada paso.</p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-40-contents" aria-controls="callout-40" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-41-contents" aria-controls="callout-41" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -2240,7 +2267,7 @@ Ejemplo
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-40" class="callout-40-contents callout-collapse collapse">
+<div id="callout-41" class="callout-41-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Para <span class="math inline">\(x&gt;0\)</span> podemos escribir</p>
 <p><span class="math display">\[
@@ -2274,7 +2301,7 @@ f(x)=\frac{\sqrt{2x^2+1}}{3x-5}.
 \]</span></p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-41-contents" aria-controls="callout-41" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-42-contents" aria-controls="callout-42" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -2283,7 +2310,7 @@ f(x)=\frac{\sqrt{2x^2+1}}{3x-5}.
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-41" class="callout-41-contents callout-collapse collapse">
+<div id="callout-42" class="callout-42-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Observemos que el denominador se anula cuando <span class="math inline">\(x=5/3\)</span>. Si <span class="math inline">\(x\)</span> se aproxima a <span class="math inline">\(5/3\)</span> por la derecha, entonces el numerador se aproxima a <span class="math inline">\(\sqrt{59}/3&gt;0\)</span> y <span class="math inline">\(3x-5\)</span> se aproxima a cero con valores positivos, con lo cual</p>
 <p><span class="math display">\[
@@ -2334,7 +2361,7 @@ Ejemplo
 <p>Calcular <span class="math inline">\(\displaystyle \lim_{x\to \infty} \left(\sqrt{x^2+1}-x\right)\)</span>.</p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-42-contents" aria-controls="callout-42" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-43-contents" aria-controls="callout-43" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -2343,7 +2370,7 @@ Ejemplo
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-42" class="callout-42-contents callout-collapse collapse">
+<div id="callout-43" class="callout-43-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Considerando <span class="math inline">\(x&gt;0\)</span>, multiplicamos y dividimos por <span class="math inline">\(\sqrt{x^2+1}+x\)</span></p>
 <p><span class="math display">\[
@@ -2383,7 +2410,7 @@ Ejemplo
 <p>Evaluar <span class="math inline">\(\lim_{x\to 0-} e^{1/x}\)</span>.</p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-43-contents" aria-controls="callout-43" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-44-contents" aria-controls="callout-44" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -2392,7 +2419,7 @@ Ejemplo
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-43" class="callout-43-contents callout-collapse collapse">
+<div id="callout-44" class="callout-44-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Sea <span class="math inline">\(t=1/x\)</span>. Dado que</p>
 <p><span class="math display">\[
@@ -2436,7 +2463,7 @@ Ejemplo
 <p>Determinar <span class="math inline">\(\lim_{x\to \infty } x^3\)</span> y <span class="math inline">\(\lim_{x\to -\infty} x^3\)</span>.</p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-45-contents" aria-controls="callout-45" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-46-contents" aria-controls="callout-46" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -2445,7 +2472,7 @@ Ejemplo
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-45" class="callout-45-contents callout-collapse collapse">
+<div id="callout-46" class="callout-46-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Si <span class="math inline">\(x\)</span> crece sin cota, entonces su cubo también (de hecho, <span class="math inline">\(x^3&gt;x\)</span> para <span class="math inline">\(x&gt;1\)</span>), por lo tanto <span class="math inline">\(\lim_{x\to \infty } x^3=\infty\)</span>.</p>
 <p>Cuando <span class="math inline">\(x\)</span> se hace grande y negativo, su cubo también es negativo y grande en magnitud, por lo tanto <span class="math inline">\(\lim_{x\to -\infty } x^3=-\infty\)</span>.</p>
@@ -2465,7 +2492,7 @@ Ejemplo
 <p>Calcular <span class="math inline">\(\lim_{x\to \infty} \left(x^2-x\right)\)</span>.</p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-46-contents" aria-controls="callout-46" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-47-contents" aria-controls="callout-47" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -2474,7 +2501,7 @@ Ejemplo
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-46" class="callout-46-contents callout-collapse collapse">
+<div id="callout-47" class="callout-47-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>En este caso conviene factorizar de la siguiente manera</p>
 <p><span class="math display">\[
@@ -2494,7 +2521,7 @@ Ejemplo
 <p>Calcular <span class="math inline">\(\lim_{x\to \infty} \displaystyle \frac{x^2+x}{3-x}\)</span>.</p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-47-contents" aria-controls="callout-47" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-48-contents" aria-controls="callout-48" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -2503,7 +2530,7 @@ Ejemplo
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-47" class="callout-47-contents callout-collapse collapse">
+<div id="callout-48" class="callout-48-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Extrayendo la potencia de mayor orden de factor común en el numerador y el denominador, para <span class="math inline">\(x&gt;0\)</span> resulta</p>
 <p><span class="math display">\[
@@ -2556,7 +2583,7 @@ Ejemplo
 <p>Encontrar una ecuación de la recta tangente a la parábola <span class="math inline">\(y=f(x)=x^2\)</span> en el punto <span class="math inline">\(P=(1,1)\)</span>.</p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-50-contents" aria-controls="callout-50" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-51-contents" aria-controls="callout-51" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -2565,7 +2592,7 @@ Ejemplo
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-50" class="callout-50-contents callout-collapse collapse">
+<div id="callout-51" class="callout-51-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>La recta buscada tiene pendiente</p>
 <p><span class="math display">\[
@@ -2573,7 +2600,7 @@ m=\lim_{x\to 1} \frac{f(x)-f(1)}{x-1}=\lim_{x\to 1}\frac{x^2-1}{x-1}=2,
 \]</span></p>
 <p>según vimos en el <a href="#ejemplo-cuadratica-lineal">Ejemplo 11</a>. Como además pasa por el punto <span class="math inline">\((1,1)\)</span> utilizando la <a href="#recta-punto-pendiente">ecuación punto-pendiente de la recta</a> que pasa por <span class="math inline">\((x_1,y_1)\)</span> con pendiente <span class="math inline">\(m\)</span> obtenemos</p>
 <div id="recta-punto-pendiente" class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-49-contents" aria-controls="callout-49" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-50-contents" aria-controls="callout-50" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -2582,7 +2609,7 @@ m=\lim_{x\to 1} \frac{f(x)-f(1)}{x-1}=\lim_{x\to 1}\frac{x^2-1}{x-1}=2,
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-49" class="callout-49-contents callout-collapse collapse">
+<div id="callout-50" class="callout-50-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><span class="math display">\[
 y-y_1=m(x-x_1)
@@ -2613,7 +2640,7 @@ Ejemplo
 <p>Encontrar una ecuación de la recta tangente a <span class="math inline">\(\displaystyle y=f(x)=\frac{3}{x}\)</span> en el punto <span class="math inline">\(P=(3,1)\)</span>.</p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-51-contents" aria-controls="callout-51" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-52-contents" aria-controls="callout-52" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -2622,7 +2649,7 @@ Ejemplo
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-51" class="callout-51-contents callout-collapse collapse">
+<div id="callout-52" class="callout-52-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>La recta buscada tiene pendiente</p>
 <p><span class="math display">\[
@@ -2668,7 +2695,7 @@ Ejemplo
 </ul>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-52-contents" aria-controls="callout-52" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-53-contents" aria-controls="callout-53" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -2677,7 +2704,7 @@ Ejemplo
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-52" class="callout-52-contents callout-collapse collapse">
+<div id="callout-53" class="callout-53-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Podemos modelar el movimiento de la pelota con la función de posición <span class="math inline">\(f(t)=4.9\,t^2\)</span>. Calculemos <span class="math inline">\(v(a)\)</span>, la velocidad en un instante de tiempo genérico <span class="math inline">\(a\)</span>. Es decir, escribimos</p>
 <p><span class="math display">\[
@@ -2730,7 +2757,7 @@ Ejemplo
 <p>Hallar <span class="math inline">\(f'(a)\)</span> si <span class="math inline">\(f(x)=x^2-8x+9\)</span>.</p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-54-contents" aria-controls="callout-54" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-55-contents" aria-controls="callout-55" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -2739,7 +2766,7 @@ Ejemplo
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-54" class="callout-54-contents callout-collapse collapse">
+<div id="callout-55" class="callout-55-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Por definición es</p>
 <p><span class="math display">\[
@@ -2776,7 +2803,7 @@ Ejemplo
 <p>Hallar la ecuación de la recta tangente al gráfico de <span class="math inline">\(y=x^2-8x+9\)</span> en <span class="math inline">\((3,-6)\)</span>.</p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-55-contents" aria-controls="callout-55" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-56-contents" aria-controls="callout-56" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -2785,7 +2812,7 @@ Ejemplo
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-55" class="callout-55-contents callout-collapse collapse">
+<div id="callout-56" class="callout-56-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>En el ejemplo anterior vimos que <span class="math inline">\(f'(a)=2a-8\)</span>. Usando la <a href="#form-recta-tangente">ecuación de la recta tangente</a> con <span class="math inline">\(a=3\)</span> obtenemos</p>
 <p><span class="math display">\[
@@ -2867,7 +2894,7 @@ Ejemplo
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-56-contents" aria-controls="callout-56" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-57-contents" aria-controls="callout-57" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -2876,7 +2903,7 @@ Ejemplo
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-56" class="callout-56-contents callout-collapse collapse">
+<div id="callout-57" class="callout-57-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Para realizar el gráfico de <span class="math inline">\(f'\)</span> podemos seleccionar distintos puntos <span class="math inline">\((x,f(x))\)</span> en el gráfico de <span class="math inline">\(f\)</span> e intentar estimar la pendiente de la recta tangente allí. Este método, si bien nos ayuda a visualizar el gráfico de <span class="math inline">\(f'\)</span> de manera aproximada, no es exacto y la técnica es un poco engorrosa.</p>
 <p>Más adelante veremos herramientas que nos permitirán dar un esbozo más preciso del gráfico de una función.</p>
@@ -2895,7 +2922,7 @@ Ejemplo
 <p>Si <span class="math inline">\(f(x)=x^3-x\)</span>, encontrar una fórmula para <span class="math inline">\(f'(x)\)</span> e ilustrarla comparando las gráficas de <span class="math inline">\(f\)</span> y <span class="math inline">\(f'\)</span>.</p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-57-contents" aria-controls="callout-57" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-58-contents" aria-controls="callout-58" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -2904,7 +2931,7 @@ Ejemplo
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-57" class="callout-57-contents callout-collapse collapse">
+<div id="callout-58" class="callout-58-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Por definición, debemos calcular</p>
 <p><span class="math display">\[
@@ -2935,7 +2962,7 @@ Ejemplo
 <p>Si <span class="math inline">\(f(x)=\sqrt{x}\)</span>, calcular <span class="math inline">\(f'(x)\)</span> y dar su dominio.</p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-58-contents" aria-controls="callout-58" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-59-contents" aria-controls="callout-59" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -2944,7 +2971,7 @@ Ejemplo
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-58" class="callout-58-contents callout-collapse collapse">
+<div id="callout-59" class="callout-59-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Vamos a calcular</p>
 <p><span class="math display">\[
@@ -2975,7 +3002,7 @@ Ejemplo
 <p>Encontrar <span class="math inline">\(f'(x)\)</span> si <span class="math inline">\(\displaystyle f(x)=\frac{1-x}{2+x}\)</span>.</p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-59-contents" aria-controls="callout-59" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-60-contents" aria-controls="callout-60" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -2984,7 +3011,7 @@ Ejemplo
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-59" class="callout-59-contents callout-collapse collapse">
+<div id="callout-60" class="callout-60-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Notemos que <span class="math inline">\(D_f=\mathbb{R}\backslash {-2}\)</span>. Para <span class="math inline">\(x\neq -2\)</span>, calculamos</p>
 <p><span class="math display">\[
@@ -3032,7 +3059,7 @@ Ejemplo
 <p>¿Dónde es derivable la función <span class="math inline">\(f(x)=|x|\)</span>?</p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-61-contents" aria-controls="callout-61" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-62-contents" aria-controls="callout-62" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -3041,7 +3068,7 @@ Ejemplo
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-61" class="callout-61-contents callout-collapse collapse">
+<div id="callout-62" class="callout-62-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Consideremos diferentes casos. Supongamos primero que <span class="math inline">\(x&gt;0\)</span> y <span class="math inline">\(h\neq 0\)</span> es suficientemente pequeño como para que <span class="math inline">\(x+h&gt;0\)</span>, esto es, elegimos <span class="math inline">\(h&gt;-x\)</span>. Entonces</p>
 <p><span class="math display">\[
@@ -3139,7 +3166,7 @@ Ejemplo
 <p>Si <span class="math inline">\(f(x)=x^3-x\)</span>, hallar e interpretar <span class="math inline">\(f''(x)\)</span>.</p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-63-contents" aria-controls="callout-63" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-64-contents" aria-controls="callout-64" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -3148,7 +3175,7 @@ Ejemplo
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-63" class="callout-63-contents callout-collapse collapse">
+<div id="callout-64" class="callout-64-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>En el <a href="#ejemplo-derivada-cubica">Ejemplo 41</a> vimos que <span class="math inline">\(f'(x)=3x^2-1\)</span>. Usando la <a href="#definicion-derivada">definición de derivada</a>, tenemos que</p>
 <p><span class="math display">\[
@@ -3194,7 +3221,7 @@ Ejemplo
 <p>Si <span class="math inline">\(f(x)=x^3-x\)</span>, hallar <span class="math inline">\(f'''(x)\)</span> e interpretar <span class="math inline">\(f^{(4)}(x)\)</span>.</p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-64-contents" aria-controls="callout-64" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-65-contents" aria-controls="callout-65" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -3203,7 +3230,7 @@ Ejemplo
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-64" class="callout-64-contents callout-collapse collapse">
+<div id="callout-65" class="callout-65-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>En el <a href="#ejemplo-derivada-segunda">Ejemplo 45</a> obtuvimos que <span class="math inline">\(f''(x)=6x\)</span>. Usando la <a href="#definicion-derivada">definición de derivada</a> con <span class="math inline">\(f''\)</span>, obtenemos</p>
 <p><span class="math display">\[

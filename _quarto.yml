@@ -4,6 +4,7 @@ project:
 
 book:
   title: "Notas de teoría - Cálculo I"
+  # downloads: [pdf]
 
   chapters:
     - index.qmd
@@ -20,3 +21,15 @@ format:
     toc-title: "Contenidos"
     toc-depth: 3
     number-sections: false
+
+ # pdf:
+  #  documentclass: book
+  #  documentclass-options: openany
+  #  latex-engine: xelatex       # Necesario para UTF-8 y acentos
+  #  keep-latex: true            # Para revisar el .tex si querés
+  #  toc: true
+  #  number-sections: true
+  #  geometry: margin=2cm
+  #  include-in-header: preamble.tex
+  #  svg-converter: "C:/Program Files/Inkscape/inkscape.com"  # Ajustar ruta si es distinta
+  

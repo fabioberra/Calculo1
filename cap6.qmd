@@ -422,7 +422,7 @@ Como la rotación es con respecto a un eje vertical, debemos expresar las funcio
 Las funciones dadas son $x=y$ y $x=\sqrt{y}$, y los radios los calculamos tomando las respectivas distancias desde el eje de rotación a cada curva, es decir
 
 $$
-R(y)=\sqrt{y}-(-1)=\sqrt{y}+1$\quad \text{ y } \quad   r(y)=y-(-1)=y+1.
+R(y)=\sqrt{y}-(-1)=\sqrt{y}+1\quad \text{ y } \quad   r(y)=y-(-1)=y+1.
 $$
 
 De esta manera, para cada $0\leq y\leq 1$ 

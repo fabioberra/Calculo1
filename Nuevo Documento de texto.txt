@@ -1,0 +1,6 @@
+pdf:
+    svg-converter: "C:/Program Files/Inkscape/bin/inkscape.com"
+    documentclass: book     # Esto hace que el PDF se genere como libro
+    toc: true               # Incluir índice
+    number-sections: true   # Numera secciones en PDF
+    geometry: margin=2cm    # Ajusta los márgenes

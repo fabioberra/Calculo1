@@ -1,0 +1,25 @@
+% --- Soporte UTF-8 y español ---
+\usepackage{fontspec}
+\setmainfont{Times New Roman}   % Fuente principal
+\usepackage{polyglossia}
+\setdefaultlanguage{spanish}   % Para acentos y ñ
+
+% --- Capítulos sin "Chapter XX:" ---
+\usepackage{titlesec}
+% 0pt evita que LaTeX genere número basado en el título
+\titleformat{\chapter}[hang]{\huge\bfseries}{}{0pt}{}
+
+% --- Centrar figuras automáticamente ---
+\usepackage[justification=centering]{caption}
+\usepackage{float}
+\restylefloat{figure}
+
+% --- Tablas profesionales ---
+\usepackage{booktabs}
+\usepackage{longtable}
+
+% --- Matemáticas ---
+\usepackage{amsmath, amssymb}
+
+% --- Hipervínculos PDF ---
+\usepackage{hyperref}icables en PDF

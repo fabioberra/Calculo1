@@ -134,7 +134,7 @@ Luego, la velocidad instantánea representa la pendiente de la recta tangente en
 
 [↑ Volver al inicio de la sección](#seccion_2.1)	
 
-### 2.2. Límite de una función {#seccion_2.2}
+## 2.2. Límite de una función {#seccion_2.2}
 
 En esta sección definiremos el concepto de **límite** de una función, surgido al intentar calcular la recta tangente a una curva dada. Consideremos $f(x)=x^2-x+2$ y observemos los valores de $f$ cuando $x$ está cerca de 2.
 	
@@ -458,6 +458,27 @@ Dar los valores de los siguientes límites (si existen) observando la gráfica.
 ![](./imagenes_cap2/2.2-ejemplo-limites.svg){fig-align="center" width=50%}
 
 :::
+
+::: {.callout-tip collapse="true"}
+## Solución
+
+Observando el gráfico vemos que $g$ se aproxima a 3 cuando $x$ se acerca a 2 por la izquierda, y a 1 cuando $x$ se aproxima a 2 por la derecha. En consecuencia 
+
+$$
+\lim_{x\to 2^-}g(x)=3\quad \text{ y } \quad \lim_{x\to 2^+} g(x)=1.
+$$
+
+Como los límites laterales son distintos, concluimos que el límite $\lim_{x\to 2} g(x)$ no existe.
+
+Por otra parte, también podemos ver que $g$ se aproxima a 2 cuando $x$ se acerca a 5, tanto por la derecha como por la izquierda, con lo cual 
+
+$$
+\lim_{x\to 5^-} g(x)=2=\lim_{x\to 5^+} g(x),
+$$
+
+y en conclusión $\lim_{x\to 5} g(x)=2$. Notar que $g(5)=1\neq 2$, sin embargo esto no infliuye en el cálculo del límite pues al hacerlo consideramos $x\neq 5$.
+
+:::
 			
 ### Límites infinitos
 
@@ -496,7 +517,7 @@ $$
  Esto no significa que consideremos a $\infty$ como un número ni que el límite dado exista. La notación sólamente establece de qué manera el límite no existe.	
 :::	
 
-::: {.callout-note title="Definición (Límites laterales)"}
+::: {.callout-note title="Definición (Límites infinitos)"}
 Sea $f$ una función definida en ambos lados de $a$, excepto quizás en $a$. 
 	
 -  La expresión
@@ -608,7 +629,7 @@ Hallar las asíntotas verticales de $f(x)=\tan x$.
 ::: {.callout-tip collapse="true"}
 ## Solución
 
-Recordemos que $\tan x=\frac{\operatorname{sen} x}{\cos x}$, por lo tanto tendremos posibles asíntotas verticales cuando $\cos x=0$. Esto ocurre, por ejemplo, cuando $x=\pi/2$. En este caso, si $x$ está cerca de $\pi/2$ y $x>pi/2$, $\cos x$ se aproxima a cero con valores negativos, mientras que $\operatorname{sen} x$ se aproxima a 1. Con lo cual
+Recordemos que $\tan x=\frac{\operatorname{sen} x}{\cos x}$, por lo tanto tendremos posibles asíntotas verticales cuando $\cos x=0$. Esto ocurre, por ejemplo, cuando $x=\pi/2$. En este caso, si $x$ está cerca de $\pi/2$ y $x>\pi/2$, $\cos x$ se aproxima a cero con valores negativos, mientras que $\operatorname{sen} x$ se aproxima a 1. Con lo cual
 
 $$
 \lim_{x\to (\pi/2)^+} \tan x=-\infty.
@@ -631,13 +652,14 @@ $$
 
 [↑ Volver al inicio de la sección](#seccion_2.2)
 
-### 2.3. Leyes de los límites {#seccion_2.3}
+## 2.3. Leyes de los límites {#seccion_2.3}
 
 Hasta ahora hemos conjeturado el valor de ciertos límites a partir de una tabla o de observar el comportamiento de sus gráficos.
 	
 En esta sección calcularemos los límites utilizando propiedades, lo que nos conducirá a los valores exactos, cuando estos límites existen.
 
-::: {#thm-leyes-limites .theorem}
+::: {#teo-leyes-limites .theorem}
+
 Propiedad (Leyes de los límites)
 
 Sea $c$ una constante y supongamos que los límites
@@ -1617,7 +1639,7 @@ $$
 $$
 
 
-La mayor parte de las [leyes de los límites](#thm-leyes-limites) que estudiamos en la [Sección 2.3](#seccion_2.3) también se cumple para límites en el infinito. Las leyes vistas (con excepción de la **(9)** y la **(10)**) siguen siendo válidas reemplazando $x\to a$ por $x \to \infty$ o $x\to -\infty$.
+La mayor parte de las [leyes de los límites](#teo-leyes-limites) que estudiamos en la [Sección 2.3](#seccion_2.3) también se cumple para límites en el infinito. Las leyes vistas (con excepción de la **(9)** y la **(10)**) siguen siendo válidas reemplazando $x\to a$ por $x \to \infty$ o $x\to -\infty$.
 
 ::: {.theorem}
 
