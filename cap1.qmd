@@ -605,7 +605,7 @@ Las funciones $g$ y $u$ son polinómicas. Por otro lado, $f$ es una función exp
 
 [↑ Volver al inicio de la sección](#seccion_1.2)
 
-## 1.3: Funciones nuevas a partir de funciones antiguas {#seccion_1.3}
+## 1.3. Funciones nuevas a partir de funciones antiguas {#seccion_1.3}
 
 En esta sección veremos cómo obtener el gráfico de ciertas funciones más generales que las aprendidas en la sección previa. Veamos algunos tipos de transformaciones que pueden aplicarse a la gráfica de una función y qué efecto tienen.
 
@@ -954,7 +954,7 @@ Notemos que para calcular $F(x)$ primero tomamos el número $x$ y sumamos 9, a e
 
 [↑ Volver al inicio de la sección](#seccion_1.3)
 
-## 1.5: Funciones exponenciales {#seccion_1.5}
+## 1.5. Funciones exponenciales {#seccion_1.5}
 
 Hemos visto que una función exponencial es de la forma
 
@@ -1155,7 +1155,7 @@ Tenemos que el dominio es $\mathbb{R}$ y, como $e^{-x}>0$, al multiplicar por $1
 [↑ Volver al inicio de la sección](#seccion_1.5)
 
 
-## 1.6: Funciones inversas y logarítmicas {#seccion_1.6}
+## 1.6. Funciones inversas y logarítmicas {#seccion_1.6}
 
 ::: {.callout-note title="Definición (Función uno a uno)"}
 Una función $f$ se llama **uno a uno** o **inyectiva** si nunca toma el mismo valor dos veces. Es decir, si se cumple que

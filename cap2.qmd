@@ -1593,7 +1593,7 @@ $$
 
 significa que $f(x)$ puede aproximarse a $L$ tanto como se quiera, siempre que se elija $x$ suficientemente grande.
 		
-También escribiremos: $f(x)\to L$ cuando $x\to\infty $. La expresión de arriba se lee
+También escribiremos: $f(x)\to L$ cuando $x\to\infty$. La expresión de arriba se lee
 		
 -  "el límite de $f(x)$ cuando $x$ tiende a infinito es $L$", o
 -  "el límite de $f(x)$ cuando $x$ se hace infinito es $L$"", o
@@ -1787,19 +1787,19 @@ $$
 Factorizando el denominador de la expresión resultante, tenemos que 
 
 $$
-\frac{1}{\sqrt{x^2+1}+x}=\frac{1}{\sqrt{x^2\left(1+\frac{1}{x^2}\right)}+x}=\frac{1}{\sqrt{x^2}\sqrt{1+\frac{1}{x^2}}+x}=\frac{1}{x}\,\frac{1}{\sqrt{1+\frac{1}{x^2}}}.
+\frac{1}{\sqrt{x^2+1}+x}=\frac{1}{\sqrt{x^2\left(1+\frac{1}{x^2}\right)}+x}=\frac{1}{\sqrt{x^2}\sqrt{1+\frac{1}{x^2}}+x}=\frac{1}{x}\,\frac{1}{\sqrt{1+\frac{1}{x^2}}+1}.
 $$
 
 Ahora, sabiendo que
 
 $$
-\lim_{x\to \infty} \frac{1}{x}=0 \quad \text{ y } \quad \lim_{x\to\infty} \frac{1}{\sqrt{1+\frac{1}{x^2}}}=1
+\lim_{x\to \infty} \frac{1}{x}=0 \quad \text{ y } \quad \lim_{x\to\infty} \frac{1}{\sqrt{1+\frac{1}{x^2}}+1}=\frac{1}{2}
 $$
 
 por la ley **(3)** del producto concluímos que 
 
 $$
-\lim_{x\to \infty} \left(\sqrt{x^2+1}-x\right) = \left(\lim_{x\to \infty} \frac{1}{x}\right) \left(\lim_{x\to\infty} \frac{1}{\sqrt{1+\frac{1}{x^2}}}\right)=0\cdot 1=0.
+\lim_{x\to \infty} \left(\sqrt{x^2+1}-x\right) = \left(\lim_{x\to \infty} \frac{1}{x}\right) \left(\lim_{x\to\infty} \frac{1}{\sqrt{1+\frac{1}{x^2}}+1}\right)=0\cdot \frac{1}{2}=0.
 $$
 
 :::
@@ -1820,7 +1820,7 @@ $$
 ::: {.example-box}
 <div class="example-title">Ejemplo</div>
 
-Evaluar $\lim_{x\to 0-} e^{1/x}$.
+Evaluar $\lim_{x\to 0^-} e^{1/x}$.
 
 :::
 
@@ -1836,7 +1836,7 @@ $$
 tenemos que $t\to -\infty$ cuando $x\to 0^-$. Expresando el límite en términos de la variable $t$ resulta
 
 $$
-\lim_{x\to 0-} e^{1/x}=\lim_{t\to -\infty} e^{t}=0,
+\lim_{x\to 0^-} e^{1/x}=\lim_{t\to -\infty} e^{t}=0,
 $$
 
 de acuerdo a la [fórmula](#form-limite-exp) anterior.
@@ -2021,7 +2021,13 @@ Encontrar una ecuación de la recta tangente a $\displaystyle y=f(x)=\frac{3}{x}
 La recta buscada tiene pendiente 
 
 $$
-m=\lim_{h\to 0} \frac{f(3+h)-f(3)}{h}=\lim_{h\to 0} \frac{\frac{3}{(3+h)}-1}{h}=\lim_{h\to 0} \frac{\frac{3-(3+h)}{(3+h)}}{h}=\lim_{h\to 0} -\frac{h}{h(3+h)}=\lim_{h\to 0} -\frac{1}{3+h}=-\frac{1}{3}.
+\begin{aligned}
+m=\lim_{h\to 0} \frac{f(3+h)-f(3)}{h}=\lim_{h\to 0} \frac{\frac{3}{(3+h)}-1}{h}=\lim_{h\to 0} \frac{\frac{3-(3+h)}{(3+h)}}{h}&=\lim_{h\to 0} -\frac{h}{h(3+h)}\\
+\\
+&=\lim_{h\to 0} -\frac{1}{3+h}\\
+\\
+&=-\frac{1}{3}.
+\end{aligned}
 $$
 
 Como además la recta pasa por $(3,1)$, usando nuevamente la [ecuación punto-pendiente de la recta](#recta-punto-pendiente) resulta
@@ -2048,14 +2054,14 @@ $$
 v(a)=\lim_{h\to 0} \frac{f(a+h)-f(a)}{h}.
 $$
 
-La velocidad instantánea puede interpretarse como la pendiente de la recta tangente en el punto $P$.
+La velocidad instantánea puede interpretarse como la pendiente de la recta tangente en $P$.
 			
 ![](./imagenes_cap2/2.7-velocidades.svg){fig-align="center" width=50%}
 
 ::: {.example-box}
 <div class="example-title">Ejemplo</div>
 
-Se deja caer una pelota desde la plataforma superior de observación de la Torre CN, a 450 $m$ sobre el nivel del suelo.
+Se deja caer una pelota desde la plataforma superior de observación de la Torre CN, a 450 m sobre el nivel del suelo.
 
 -  ¿Cuál es la velocidad de la pelota después de 5 segundos?
 -   ¿Con qué velocidad viaja cuando choca contra el suelo?
@@ -2110,6 +2116,14 @@ siempre que este límite exista. De manera equivalente, podemos escribir
 $$
 f'(a)=\lim_{x\to a}\frac{f(x)-f(a)}{x-a}.
 $$
+
+:::
+
+De acuerdo con esta definición y la de recta tangente dada anteriormente, podemos hacer la siguiente observación.
+
+::: {.formula-box}
+
+La derivada de la función $y=f(x)$ en el punto $x=a$ representa la **pendiente de la recta tangente** al gráfico de $f$ en el punto $(a,f(a))$.
 
 :::
 
@@ -2392,7 +2406,7 @@ $$
 Si escribimos $y=f(x)$, donde $x$ es la variable independiente e $y$ la dependiente, otras formas de representar a la derivada de $f$ en $x$ son
 
 $$
-f'(x)=y'={dx}={dx}={dx}f(x)=Df(x)=D_xf(x).
+f'(x)=y'(x)=\frac{dy}{dx}(x)=\frac{df}{dx}(x)=Df(x)=D_xf(x).
 $$
 
 Los símbolos $D$ y $d/dx$ se llaman **operadores de derivación**. El símbolo $dy/dx$ introducido por Leibniz es otra forma de escribir $f'(x)$. En término de incrementos, tenemos que
@@ -2405,7 +2419,7 @@ $$
 
 Una función $f$ es **derivable en $a$** si $f'(a)$ existe. 
 		
-Si $-\infty\leq a<b\leq \infty $, decimos que $f$ es **derivable en $(a,b)$** si $f$ es derivable en todo punto del intervalo.
+Si $-\infty\leq a<b\leq \infty$, decimos que $f$ es **derivable en $(a,b)$** si $f$ es derivable en todo punto del intervalo.
 
 :::
 

@@ -5,7 +5,7 @@ format:
     css: styles.css
 ---
 
-## 4.1 Valores máximos y mínimos {#seccion_4.1}
+## 4.1. Valores máximos y mínimos {#seccion_4.1}
 
 ::: {.callout-note title="Definición (Valores máximos y mínimos)"}
 
@@ -652,7 +652,7 @@ La curva cambia de convexidad en $x=6$ y resulta continua allí, con lo cual $P=
 
 [↑ Volver al inicio de la sección](#seccion_4.3)
 
-## 4.4 Formas indeterminadas y la regla de L'Hospital {#seccion_4.4}
+## 4.4. Formas indeterminadas y la regla de L'Hospital {#seccion_4.4}
 	
 Si tenemos un límite de la forma
 $$

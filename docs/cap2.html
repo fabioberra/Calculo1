@@ -2182,7 +2182,7 @@ f(x)= \frac{x^2-1}{x^2+1}
 \lim_{x\to \infty} f(x)=L
 \]</span></p>
 <p>significa que <span class="math inline">\(f(x)\)</span> puede aproximarse a <span class="math inline">\(L\)</span> tanto como se quiera, siempre que se elija <span class="math inline">\(x\)</span> suficientemente grande.</p>
-<p>También escribiremos: <span class="math inline">\(f(x)\to L\)</span> cuando $x$. La expresión de arriba se lee</p>
+<p>También escribiremos: <span class="math inline">\(f(x)\to L\)</span> cuando <span class="math inline">\(x\to\infty\)</span>. La expresión de arriba se lee</p>
 <ul>
 <li>“el límite de <span class="math inline">\(f(x)\)</span> cuando <span class="math inline">\(x\)</span> tiende a infinito es <span class="math inline">\(L\)</span>”, o</li>
 <li>“el límite de <span class="math inline">\(f(x)\)</span> cuando <span class="math inline">\(x\)</span> se hace infinito es <span class="math inline">\(L\)</span>”“, o</li>
@@ -2378,15 +2378,15 @@ Ejemplo
 \]</span></p>
 <p>Factorizando el denominador de la expresión resultante, tenemos que</p>
 <p><span class="math display">\[
-\frac{1}{\sqrt{x^2+1}+x}=\frac{1}{\sqrt{x^2\left(1+\frac{1}{x^2}\right)}+x}=\frac{1}{\sqrt{x^2}\sqrt{1+\frac{1}{x^2}}+x}=\frac{1}{x}\,\frac{1}{\sqrt{1+\frac{1}{x^2}}}.
+\frac{1}{\sqrt{x^2+1}+x}=\frac{1}{\sqrt{x^2\left(1+\frac{1}{x^2}\right)}+x}=\frac{1}{\sqrt{x^2}\sqrt{1+\frac{1}{x^2}}+x}=\frac{1}{x}\,\frac{1}{\sqrt{1+\frac{1}{x^2}}+1}.
 \]</span></p>
 <p>Ahora, sabiendo que</p>
 <p><span class="math display">\[
-\lim_{x\to \infty} \frac{1}{x}=0 \quad \text{ y } \quad \lim_{x\to\infty} \frac{1}{\sqrt{1+\frac{1}{x^2}}}=1
+\lim_{x\to \infty} \frac{1}{x}=0 \quad \text{ y } \quad \lim_{x\to\infty} \frac{1}{\sqrt{1+\frac{1}{x^2}}+1}=\frac{1}{2}
 \]</span></p>
 <p>por la ley <strong>(3)</strong> del producto concluímos que</p>
 <p><span class="math display">\[
-\lim_{x\to \infty} \left(\sqrt{x^2+1}-x\right) = \left(\lim_{x\to \infty} \frac{1}{x}\right) \left(\lim_{x\to\infty} \frac{1}{\sqrt{1+\frac{1}{x^2}}}\right)=0\cdot 1=0.
+\lim_{x\to \infty} \left(\sqrt{x^2+1}-x\right) = \left(\lim_{x\to \infty} \frac{1}{x}\right) \left(\lim_{x\to\infty} \frac{1}{\sqrt{1+\frac{1}{x^2}}+1}\right)=0\cdot \frac{1}{2}=0.
 \]</span></p>
 </div>
 </div>
@@ -2407,7 +2407,7 @@ Ejemplo
 <div class="example-title">
 Ejemplo
 </div>
-<p>Evaluar <span class="math inline">\(\lim_{x\to 0-} e^{1/x}\)</span>.</p>
+<p>Evaluar <span class="math inline">\(\lim_{x\to 0^-} e^{1/x}\)</span>.</p>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-44-contents" aria-controls="callout-44" aria-expanded="false" aria-label="Toggle callout">
@@ -2427,7 +2427,7 @@ Ejemplo
 \]</span></p>
 <p>tenemos que <span class="math inline">\(t\to -\infty\)</span> cuando <span class="math inline">\(x\to 0^-\)</span>. Expresando el límite en términos de la variable <span class="math inline">\(t\)</span> resulta</p>
 <p><span class="math display">\[
-\lim_{x\to 0-} e^{1/x}=\lim_{t\to -\infty} e^{t}=0,
+\lim_{x\to 0^-} e^{1/x}=\lim_{t\to -\infty} e^{t}=0,
 \]</span></p>
 <p>de acuerdo a la <a href="#form-limite-exp">fórmula</a> anterior.</p>
 </div>
@@ -2653,7 +2653,13 @@ Ejemplo
 <div class="callout-body-container callout-body">
 <p>La recta buscada tiene pendiente</p>
 <p><span class="math display">\[
-m=\lim_{h\to 0} \frac{f(3+h)-f(3)}{h}=\lim_{h\to 0} \frac{\frac{3}{(3+h)}-1}{h}=\lim_{h\to 0} \frac{\frac{3-(3+h)}{(3+h)}}{h}=\lim_{h\to 0} -\frac{h}{h(3+h)}=\lim_{h\to 0} -\frac{1}{3+h}=-\frac{1}{3}.
+\begin{aligned}
+m=\lim_{h\to 0} \frac{f(3+h)-f(3)}{h}=\lim_{h\to 0} \frac{\frac{3}{(3+h)}-1}{h}=\lim_{h\to 0} \frac{\frac{3-(3+h)}{(3+h)}}{h}&amp;=\lim_{h\to 0} -\frac{h}{h(3+h)}\\
+\\
+&amp;=\lim_{h\to 0} -\frac{1}{3+h}\\
+\\
+&amp;=-\frac{1}{3}.
+\end{aligned}
 \]</span></p>
 <p>Como además la recta pasa por <span class="math inline">\((3,1)\)</span>, usando nuevamente la <a href="#recta-punto-pendiente">ecuación punto-pendiente de la recta</a> resulta</p>
 <p><span class="math display">\[
@@ -2678,7 +2684,7 @@ y-1=-\frac{1}{3}(x-3) \quad \text{ o bien } \quad y=-\frac{1}{3}x+2.
 <p><span class="math display">\[
 v(a)=\lim_{h\to 0} \frac{f(a+h)-f(a)}{h}.
 \]</span></p>
-<p>La velocidad instantánea puede interpretarse como la pendiente de la recta tangente en el punto <span class="math inline">\(P\)</span>.</p>
+<p>La velocidad instantánea puede interpretarse como la pendiente de la recta tangente en <span class="math inline">\(P\)</span>.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="./imagenes_cap2/2.7-velocidades.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
@@ -2688,7 +2694,7 @@ v(a)=\lim_{h\to 0} \frac{f(a+h)-f(a)}{h}.
 <div class="example-title">
 Ejemplo
 </div>
-<p>Se deja caer una pelota desde la plataforma superior de observación de la Torre CN, a 450 <span class="math inline">\(m\)</span> sobre el nivel del suelo.</p>
+<p>Se deja caer una pelota desde la plataforma superior de observación de la Torre CN, a 450 m sobre el nivel del suelo.</p>
 <ul>
 <li>¿Cuál es la velocidad de la pelota después de 5 segundos?</li>
 <li>¿Con qué velocidad viaja cuando choca contra el suelo?</li>
@@ -2749,6 +2755,10 @@ f'(a)=\lim_{h\to 0}\frac{f(a+h)-f(a)}{h},
 f'(a)=\lim_{x\to a}\frac{f(x)-f(a)}{x-a}.
 \]</span></p>
 </div>
+</div>
+<p>De acuerdo con esta definición y la de recta tangente dada anteriormente, podemos hacer la siguiente observación.</p>
+<div class="formula-box">
+<p>La derivada de la función <span class="math inline">\(y=f(x)\)</span> en el punto <span class="math inline">\(x=a\)</span> representa la <strong>pendiente de la recta tangente</strong> al gráfico de <span class="math inline">\(f\)</span> en el punto <span class="math inline">\((a,f(a))\)</span>.</p>
 </div>
 <div class="example-box">
 <div class="example-title">
@@ -3032,7 +3042,7 @@ Ejemplo
 <h3 class="anchored" data-anchor-id="otras-notaciones">Otras notaciones</h3>
 <p>Si escribimos <span class="math inline">\(y=f(x)\)</span>, donde <span class="math inline">\(x\)</span> es la variable independiente e <span class="math inline">\(y\)</span> la dependiente, otras formas de representar a la derivada de <span class="math inline">\(f\)</span> en <span class="math inline">\(x\)</span> son</p>
 <p><span class="math display">\[
-f'(x)=y'={dx}={dx}={dx}f(x)=Df(x)=D_xf(x).
+f'(x)=y'(x)=\frac{dy}{dx}(x)=\frac{df}{dx}(x)=Df(x)=D_xf(x).
 \]</span></p>
 <p>Los símbolos <span class="math inline">\(D\)</span> y <span class="math inline">\(d/dx\)</span> se llaman <strong>operadores de derivación</strong>. El símbolo <span class="math inline">\(dy/dx\)</span> introducido por Leibniz es otra forma de escribir <span class="math inline">\(f'(x)\)</span>. En término de incrementos, tenemos que</p>
 <p><span class="math display">\[
@@ -3049,7 +3059,7 @@ f'(x)=y'={dx}={dx}={dx}f(x)=Df(x)=D_xf(x).
 </div>
 <div class="callout-body-container callout-body">
 <p>Una función <span class="math inline">\(f\)</span> es <strong>derivable en <span class="math inline">\(a\)</span></strong> si <span class="math inline">\(f'(a)\)</span> existe.</p>
-<p>Si $-a&lt;b$, decimos que <span class="math inline">\(f\)</span> es <strong>derivable en <span class="math inline">\((a,b)\)</span></strong> si <span class="math inline">\(f\)</span> es derivable en todo punto del intervalo.</p>
+<p>Si <span class="math inline">\(-\infty\leq a&lt;b\leq \infty\)</span>, decimos que <span class="math inline">\(f\)</span> es <strong>derivable en <span class="math inline">\((a,b)\)</span></strong> si <span class="math inline">\(f\)</span> es derivable en todo punto del intervalo.</p>
 </div>
 </div>
 <div class="example-box">
