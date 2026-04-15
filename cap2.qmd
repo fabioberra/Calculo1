@@ -1331,7 +1331,7 @@ Sean $f$ y $g$ funciones continuas en $a$ y $c$ una constante real. Entonces las
 ::: {.column width="50%"}
 -  $fg$.
 
--  $\displaystyle \frac{1}{g}$, si $g(a)\neq  0$.
+-  $\displaystyle \frac{f}{g}$, si $g(a)\neq  0$.
 :::
 
 :::		
@@ -1433,7 +1433,7 @@ Hallar $\displaystyle \lim_{x\to \pi} \frac{\operatorname{sen} x}{2+\cos x}$.
 Como $y=\operatorname{sen} x$ e $y=2+\cos x$ son funciones continuas en $x=\pi$ y  $2+\cos \pi =1\neq 0$, el cociente es continuo y por lo tanto
 
 $$
-\lim_{x\to \pi} \frac{\operatorname{sen} x}{2+\cos x}=\frac{\operatorname{sen} \pi}{2+\cos \pi}=\frac{1}{2-1}=1.
+\lim_{x\to \pi} \frac{\operatorname{sen} x}{2+\cos x}=\frac{\operatorname{sen} \pi}{2+\cos \pi}=\frac{0}{2-1}=0.
 $$
 
 :::
