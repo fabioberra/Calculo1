@@ -1411,8 +1411,6 @@ $$
 
 En conclusión
 		
->[Gráfico tikz omitido]	
-
 ::: {#form-derivada-arcotangente .formula-box}		
 
 $$
@@ -1734,7 +1732,13 @@ Es decir, la partícula se mueve hacia adelante durante el primer segundo, y lue
 6. Para calcular la distancia total es preciso tener en cuenta si el movimiento es hacia adelante (derecha) o hacia atrás (izquierda). Como los cambios de sentido de recorrido se dan cuando $t=1$ y $t=3$, podemos calcular la distancia total de la siguiente manera
 
 $$
-d=|s(1)-s(0)|+|s(3)-s(1)|+|s(5)-s(3)|=|4-0|+|0-4|+|20-0|=4+4+20=28.
+\begin{aligned}
+d=|s(1)-s(0)|+|s(3)-s(1)|+|s(5)-s(3)|&=|4-0|+|0-4|+|20-0|\\
+\\
+&=4+4+20\\
+\\
+&=28.
+\end{aligned}
 $$
 
 Durante los primeros cinco segundos la partícula recorre 28 m.

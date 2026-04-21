@@ -76,7 +76,7 @@ Trazar la gráfica y encontrar el dominio y rango de cada función.
 ::: {.callout-tip collapse="true"}
 ## Solución
 
-Observemos que $f$ es una función y lineal y $g$ una cuadrática, por lo que sus gráficos corresponden a una recta y una parábola, respectivamente.
+Observemos que $f$ es una función lineal y $g$ una cuadrática, por lo que sus gráficos corresponden a una recta y una parábola, respectivamente.
 
 ![](./imagenes_cap1/1.1-ejemplo-recta-parabola.svg){fig-align="center" width=55%}
 
@@ -86,7 +86,7 @@ En relación a la función $f$, tenemos que $D=\text{Im}(f)=\mathbb{R}$. Con res
 ::: {.example-box}
 <div class="example-title">Ejemplo</div>
 
-Un recipiente rectangular para almacenamiento, con su parte superior abierta, tiene un volumen de 10 $m^3$. La longitud de su base es el doble de su ancho. Si el material de la base cuesta 10 dólares por $m^2$ y el de los lados 6 dólares por $m^2$, expresar el costo de fabricación en función del ancho de la base.
+Un recipiente rectangular para almacenamiento, con su parte superior abierta, tiene un volumen de 10 m<sup>3</sup>. La longitud de su base es el doble de su ancho. Si el material de la base cuesta 10 dólares por m<sup>2</sup> y el de los lados 6 dólares por m<sup>2</sup>, expresar el costo de fabricación en función del ancho de la base.
 :::
 
 
@@ -98,15 +98,15 @@ Un recipiente rectangular para almacenamiento, con su parte superior abierta, ti
 Si denotamos con $w$ al ancho de la base, entonces su longitud es $2w$. Si además $h$ representa la altura de la caja, entonces podemos calcular el volumen como
 $$ V= (2w) \cdot w\cdot h=2w^2h.$$
 
-Dado que el volumen es de 10 $m^3$, tenemos que $h=\displaystyle \frac{5}{w^2}$. Con esta relación podemos expresar el área de la base $A_b$ de la caja y su área lateral $A_\ell$ en función de $w$.
+Dado que el volumen es de 10 m<sup>3</sup>, tenemos que $h=\displaystyle \frac{5}{w^2}$. Con esta relación podemos expresar el área de la base $A_b$ de la caja y su área lateral $A_\ell$ en función de $w$.
 
 $$A_b=(2w)\cdot w=2w^2 \quad \text{ y }\quad A_\ell=2\cdot (2w)\cdot h+ 2\cdot w\cdot h=6wh=\frac{30}{w}.$$
 
 Ahora calculamos los costos $C_b$ y $C_\ell$ para la base y el lateral, respectivamente.
 
-$$C_b=10\, \frac{\text{dólares}}{m^2}\cdot (2w^2)\, m^2= 20w^2\, \text{dólares}.$$
+$$C_b=10\, \frac{\text{dólares}}{\text{m}^2}\cdot (2w^2)\, \text{m}^2= 20w^2\, \text{dólares}.$$
 
-$$C_\ell=6\, \frac{\text{dólares}}{m^2}\cdot \frac{30}{w}\, m^2= \frac{180}{w}\, \text{dólares}.$$
+$$C_\ell=6\, \frac{\text{dólares}}{\text{m}^2}\cdot \frac{30}{w}\, \text{m}^2= \frac{180}{w}\, \text{dólares}.$$
 
 Finalmente, el costo total es $C=C_b+C_\ell=20w^2+\displaystyle\frac{180}{w}$, expresado en dólares.
 :::
@@ -116,8 +116,8 @@ Finalmente, el costo total es $C=C_b+C_\ell=20w^2+\displaystyle\frac{180}{w}$, e
 
 Encuentre el dominio de cada función.
 
-- $f(x)=\sqrt{x+2}$
-- $g(x)=\displaystyle \frac{1}{x^2-x}$
+- $f(x)=\sqrt{x+2}$.
+- $g(x)=\displaystyle \frac{1}{x^2-x}$.
 :::
 
 ::: {.callout-tip collapse="true"}
@@ -505,16 +505,16 @@ Por convención, siempre utilizaremos el argumento de estas funciones medido en 
 
 El dominio de estas funciones es  $D=\mathbb{R}$ y el rango es el intervalo $[-1,1]$. Es decir, tenemos que
 $$
--1\leq \sin x\leq 1 \quad \text { y }\quad  -1\leq \cos x\leq 1
+-1\leq \operatorname{sen} x\leq 1 \quad \text { y }\quad  -1\leq \cos x\leq 1
 $$
 o, en términos de valor absoluto
 $$
-|\sin x|\leq 1 \quad \text{ y }\quad |\cos x|\leq 1.
+|\operatorname{sen} x|\leq 1 \quad \text{ y }\quad |\cos x|\leq 1.
 $$
 
 Además
 $$
-\sin x = 0 \quad\text{ si y sólo si }\quad x=n\pi, \,\,n\in\mathbb{Z}
+\operatorname{sen} x = 0 \quad\text{ si y sólo si }\quad x=n\pi, \,\,n\in\mathbb{Z}
 $$
 
 y
@@ -525,11 +525,11 @@ $$
 
 Estas dos funciones son periódicas de período $2\pi$. Esto significa que
 $$
-\sin(x+2\pi)=\sin x\quad \text{ y }\quad \cos(x+2\pi)=\cos x
+\operatorname{sen}(x+2\pi)=\operatorname{sen} x\quad \text{ y }\quad \cos(x+2\pi)=\cos x
 $$
 para todo valor de $x$.
 
-La función **tangente** está dada por $\displaystyle\tan x=\frac{\sin x}{\cos x}.$
+La función **tangente** está dada por $\displaystyle\tan x=\frac{\operatorname{sen} x}{\cos x}.$
 
 
 ![](./imagenes_cap1/1.2-tangente.svg){fig-align="center" width=60%}
@@ -584,14 +584,14 @@ Clasificar las siguientes funciones como algunos de los tipos analizados anterio
 ::: {.columns}
 ::: {.column width="50%"}
 
-- $\displaystyle f(x)=5^x\phantom{\frac{x^5}{x^3}}$
-- $g(x)=x^5$
+- $\displaystyle f(x)=5^x$.
+- $g(x)=x^5$.
 
 :::
 ::: {.column width="50%"}
 
-- $\displaystyle h(x)=\frac{1+x}{1-\sqrt{x}}$
-- $u(t)=1-t+5t^4$
+- $\displaystyle h(x)=\frac{1+x}{1-\sqrt{x}}$.
+- $u(t)=1-t+5t^4$.
 
 :::
 :::
@@ -625,7 +625,7 @@ Consideremos $c>0$ y partimos del gráfico de $y=f(x)$. Entonces
 
 ![](./imagenes_cap1/1.3-traslaciones.svg){fig-align="center" width=60%}
 
-### Alargamientos y reflexione verticales y horizontales
+### Alargamientos y reflexiones verticales y horizontales
 
 Consideremos ahora $c>1$ y partimos del gráfico de $y=f(x)$. Entonces
 
@@ -635,10 +635,10 @@ Consideremos ahora $c>1$ y partimos del gráfico de $y=f(x)$. Entonces
 |---------|---------|
 | $y=cf(x)$   | alargarse verticalmente en un factor de $c$  | 
 | $y=(1/c)f(x)$ | comprimirse verticalmente en un factor de $c$ | 
-| $y=f(cx)$| $c$ comprimirse horizontalmente en un factor $c$    | 
-| $y=f(x/c)$| $c$ alargarse horizontalmente en un factor $c$ |
-| $y=-f(x)$| $c$ reflejarse respecto del eje $x$  |
-| $y=f(-x)$| $c$ reflejarse respecto del eje $y$  |
+| $y=f(cx)$|  comprimirse horizontalmente en un factor $c$    | 
+| $y=f(x/c)$|  alargarse horizontalmente en un factor $c$ |
+| $y=-f(x)$|  reflejarse respecto del eje $x$  |
+| $y=f(-x)$|  reflejarse respecto del eje $y$  |
 :::
 
 ![](./imagenes_cap1/1.3-alargamientos-compresiones.svg){fig-align="center" width=60%}
@@ -655,17 +655,17 @@ Dibujamos ahora $y=\cos(cx)$, también para $c=2$ y $c=1/2$.
 ::: {.example-box}
 <div class="example-title">Ejemplo</div>
 
-Partiendo del gráfico de $y=f(x)=\sqrt{x}$ usar transformaciones para dibujar el de las funciones
+Partiendo del gráfico de $y=f(x)=\sqrt{x}$ usar transformaciones para dibujar el de la función dada en cada caso.
 
-- $f_1(x)=\sqrt{x}-2$
+- $f_1(x)=\sqrt{x}-2$.
 
-- $f_2(x)=\sqrt{x-2}$
+- $f_2(x)=\sqrt{x-2}$.
 
-- $f_3(x)=-\sqrt{x}$
+- $f_3(x)=-\sqrt{x}$.
 
-- $f_4(x)=2\sqrt{x}$
+- $f_4(x)=2\sqrt{x}$.
 
-- $f_5(x)=\sqrt{-x}$
+- $f_5(x)=\sqrt{-x}$.
 
 :::
 
@@ -718,8 +718,8 @@ Ahora, partiendo del gráfico de $y=x^2$ podemos obtener el de $f$ realizando un
 
  Trazar el gráfico de las funciones
 
-- $y=\operatorname{sen}(2x)$
-- $y=1-\operatorname{sen} x$
+- $y=\operatorname{sen}(2x)$.
+- $y=1-\operatorname{sen} x$.
 
 :::
 
@@ -864,7 +864,7 @@ $$
 ::: {.example-box}
 <div class="example-title">Ejemplo</div>
 
- Sean $f(x)=\sqrt{x}$ y $g(x)=\sqrt{2-x}$. Hallar las siguientes funciones y sus respectivos dominios
+ Sean $f(x)=\sqrt{x}$ y $g(x)=\sqrt{2-x}$. Hallar las siguientes funciones y sus respectivos dominios.
 
 ::: {.columns}
 ::: {.column width="50%"}
@@ -1045,7 +1045,7 @@ $$
 \left(\frac{1}{a}\right)^x=\frac{1}{a^x}=a^{-x}=f(-x),
 $$
 
-con lo que la gráfica de $y=(1/a)^x$ puede obtenerse de la de $f$ **reflejándola con respecto al eje** $y$.
+con lo que la gráfica de $y=(1/a)^x$ se obtiene de la de $f$ **reflejándola con respecto al eje** $y$.
 
 ::: {.theorem}
 Proposición (Leyes de los exponentes)
@@ -1056,6 +1056,7 @@ Sean $a,b$ positivos y $x,y$ números reales. Entonces
 ::: {.column width="50%"}
 
 1. $a^{x+y}=a^x\,a^y$.
+
 2. $a^{x-y}=\displaystyle \frac{a^x}{a^y}$.
 
 :::
@@ -1063,6 +1064,7 @@ Sean $a,b$ positivos y $x,y$ números reales. Entonces
 
 
 3. $\left(a^x\right)^y=a^{xy}$.
+
 4. $(ab)^x=a^x\,b^x$.
 
 :::
@@ -1446,7 +1448,7 @@ Sean $x$ e $y$ números reales positivos y $a>0, a\neq 1$. Entonces
 
 
 
-**(2)** $\log_a\!\left(\frac{x}{y}\right)=\log_a x-\log_a y$.
+**(2)** $\displaystyle \log_a\left(\frac{x}{y}\right)=\log_a x-\log_a y$.
 
 
 
@@ -1546,7 +1548,7 @@ $$
 ::: {.callout-tip collapse="true"}
 ## Solución
 
-Utilizamos las [leyes de los logaritmos](#propo-leyes-logaritmos) (1) y (3) podemos escribir
+Utilizando las [leyes de los logaritmos](#propo-leyes-logaritmos) (1) y (3) podemos escribir
 
 $$
 \ln a+\frac{1}{2}\ln b=\ln a+\ln b^{1/2}=\ln\left(ab^{1/2}\right)=\ln\left(a\sqrt{b}\right).
@@ -1608,13 +1610,13 @@ En este caso, las ecuaciones de cancelación resultan
 
 :::{.formula-box}
 $$
-\operatorname{sen}^{-1}(\operatorname{sen} x)=x, \quad para \quad  -\tfrac{\pi}{2}\leq x\leq \tfrac{\pi}{2}
+\operatorname{sen}^{-1}(\operatorname{sen} x)=x, \quad \text{ para } \quad  -\tfrac{\pi}{2}\leq x\leq \tfrac{\pi}{2}
 $$
 
 y también
 
 $$
-\operatorname{sen}(\operatorname{sen}^{-1} x)=x, \quad para \quad -1\leq x\leq 1.
+\operatorname{sen}(\operatorname{sen}^{-1} x)=x, \quad \text{ para } \quad -1\leq x\leq 1.
 $$
 
 :::
@@ -1662,7 +1664,7 @@ $$
 \tan^{-1} x=y\quad\Longleftrightarrow\quad x=\tan y\qquad -\frac{\pi}{2}<y<\frac{\pi}{2}.
 $$
 
-Este gráfico presenta dos asíntotas horizontales, cuyas ecuaciones son $y=-\tfrac{\pi}{2}$ e $y=\tfrac{\pi}{2}$. Esto se corresponde con el hecho de que la función tangente tiene las asíntotas verticales $x=-\tfrac{\pi}{2}$ y $x=-\tfrac{\pi}{2}$.
+Este gráfico presenta dos asíntotas horizontales, cuyas ecuaciones son $y=-\tfrac{\pi}{2}$ e $y=\tfrac{\pi}{2}$. Esto se corresponde con el hecho de que la función tangente tiene las asíntotas verticales $x=-\tfrac{\pi}{2}$ y $x=\tfrac{\pi}{2}$.
 
 Las ecuaciones de cancelación son
 
