@@ -13,7 +13,7 @@ callout-appearance: default
 	
 ### El problema de la tangente
 	
-La palabra **tangente** deriva del latín *tangens* que significa "tocar". Así, podramos decir que una recta tangente a una curva es una recta que toca a la curva. 
+La palabra **tangente** deriva del latín *tangens* que significa "tocar". Así, podríamos decir que una recta tangente a una curva es una recta que toca a la curva. 
 	
 ![](./imagenes_cap2/2.1-tangentes.svg){fig-align="center" width=60%}
 	
@@ -52,7 +52,7 @@ En la siguiente tabla observamos los valores de $m_{PQ}$ para distintos valores 
 | 2| 3  |
 :::
 
-Podemos ver que, conforme $x$ está más cerca de $1$, $m_{PQ}$ estará más cerca de 2. Conjeturamos entonces que la pendiente buscada es $2$. Decimos que la pendiente $m$ es el **límite** de las pendientes de las rectas secantes $m_{PQ}$, y escribimos
+Podemos ver que, conforme $x$ está más cerca de 1, $m_{PQ}$ estará más cerca de 2. Conjeturamos entonces que la pendiente buscada es 2. Decimos que la pendiente $m$ es el **límite** de las pendientes de las rectas secantes $m_{PQ}$, y escribimos
 
 $$
 m=\lim_{Q\to P} m_{PQ} \quad \text{ y también }\quad    m=\lim_{x\to 1} \frac{x^2-1}{x-1}=2.
@@ -87,7 +87,7 @@ Se deja caer una pelota desde la plataforma de observación de la Torre CN en To
 Si $s(t)$ representa la distancia en metros recorrida por la pelota, a tiempo $t$ medido en segundos, entonces la **ley de Galileo** establece que
 
 $$
-s(t)=4.9\, t^2
+s(t)=4.9\, t^2.
 $$
 
 Podemos comenzar calculando la velocidad promedio en distintos intervalos de tiempo. Si $h>0$, la velocidad promedio de la pelota en el intervalo $[t, t+h]$ viene dada por
@@ -110,7 +110,7 @@ En la siguiente tabla tenemos el cálculo de velocidades promedio para intervalo
 | [5,5.001] | 49.0049 |
 :::
 
-Conforme se achica el intervalo las velocidades promedio se aproximan a 49 $m/s$. La **velocidad instantánea** se define como el límite de las velocidades promedio cuando la amplitud de los intervalos se achica. Esta idea se precisará mejor más adelante. Con esto, podemos conjeturar que la velocidad instantánea de la pelota después de cinco segundos es de 49 $m/s$.
+Conforme se achica el intervalo las velocidades promedio se aproximan a 49 m/s. La **velocidad instantánea** se define como el límite de las velocidades promedio cuando la amplitud de los intervalos se achica. Esta idea se precisará mejor más adelante. Con esto, podemos conjeturar que la velocidad instantánea de la pelota después de cinco segundos es de 49 m/s.
 
 :::
 

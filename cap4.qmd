@@ -258,7 +258,7 @@ Para ello podemos seguir los siguientes pasos:
 ::: {.example-box}
 <div class="example-title">Ejemplo</div>
 
-Calcular los valores máximos y mínimos absolutos de $f(x)=x^3-3x^2+1$ en el itervalo $[-1/2, 4]$.
+Calcular los valores máximos y mínimos absolutos de $f(x)=x^3-3x^2+1$ en el intervalo $[-1/2, 4]$.
 
 :::
 
@@ -588,7 +588,7 @@ Para determinar la concavidad y puntos de inflexión hacemos la siguiente tabla 
 
 | Intervalo | $x_0$ | $y''(x_0)$ | $y$ |
 | --- | --- | --- | --- | 
-| $(-\infty,0)$ | $-1$ | $+$ | convexa | 
+| $(-\infty,0)$ | -1 | $+$ | convexa | 
 | $(0,2)$ | 1 | $-$ | cóncava | 
 | $(2,+\infty)$ | 3 | $+$ | convexa | 
 
@@ -625,7 +625,7 @@ Podemos ver que $f'(x)=0$ si y sólo si $x=4$. Además, $f'$ no existe cuando $x
 
 | Intervalo | $x_0$ | $f'(x_0)$ | $f$ |
 | --- | --- | --- | --- | 
-| $(-\infty,0)$ | $-1$ | $-$ | decrece | 
+| $(-\infty,0)$ | -1 | $-$ | decrece | 
 | $(0,4)$ | 1 | $+$ | crece | 
 | $(4,6)$ | 5 | $-$ | decrece | 
 | $(6,+\infty)$ | 7 | $-$ | decrece |
@@ -638,9 +638,9 @@ Por otro lado, observando $f''$ vemos que nunca se anula, y no existe cuando $x=
 
 | Intervalo | $x_0$ | $f''(x_0)$ | $f$ |
 | --- | --- | --- | --- | 
-| $(-\infty,0)$ | $-1$ | $-$ | cóncava | 
-| $(0,6)$ | $1$ | $-$ | cóncava | 
-| $(6,+\infty)$ | $7$ | $7$ | convexa |
+| $(-\infty,0)$ | -1 | $-$ | cóncava | 
+| $(0,6)$ | 1 | $-$ | cóncava | 
+| $(6,+\infty)$ | 7 | $+$ | convexa |
 
 :::	
 
